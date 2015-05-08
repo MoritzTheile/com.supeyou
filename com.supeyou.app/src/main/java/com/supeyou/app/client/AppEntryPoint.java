@@ -4,9 +4,9 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.supeyou.auth.web.client.login.loginbutton.LoginButtonWidget;
 import com.supeyou.core.web.client.mainmenu.MainMenuWidget;
+import com.supeyou.crudie.web.client.model.AbstrObservable.Observer;
 import com.supeyou.crudie.web.client.model.AppInfoModel;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
-import com.supeyou.crudie.web.client.model.AbstrObservable.Observer;
 import com.supeyou.crudie.web.client.ui.version.VersionPresenter;
 
 public class AppEntryPoint implements EntryPoint {
@@ -14,7 +14,7 @@ public class AppEntryPoint implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 
-		RootPanel.get("title").getElement().setInnerHTML("Hotel Waltram");
+		RootPanel.get("title").getElement().setInnerHTML("SupeYou");
 
 		RootPanel.get("login").add(new LoginButtonWidget(LoginStateModel.i()));
 
