@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.cellview.client">
+	<ui:with field='text'
+		type='com.hotelorga.foundation.web.client.resources.i18n.Text' />
+
+	<g:FlowPanel styleName="browser-root large guest">
+		<g:FlowPanel styleName="query-slot" ui:field="querySlot" />
+		<g:FlowPanel styleName="actionbar" ui:field="actionbar">
+			<g:FlowPanel styleName="pager" ui:field="pagerSlot" />
+			<g:FlowPanel styleName="create-link" ui:field="createLink"></g:FlowPanel>
+		</g:FlowPanel>
+		<g:FlowPanel styleName="listitems" ui:field="itemsSlot"/>
+		<g:FlowPanel styleName="footer" ui:field="footer"/>
+				
+	</g:FlowPanel>
+
+</ui:UiBinder> 
