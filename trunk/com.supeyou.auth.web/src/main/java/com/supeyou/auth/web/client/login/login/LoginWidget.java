@@ -53,7 +53,7 @@ public class LoginWidget extends WidgetView {
 
 		nameInput.setFocus();
 
-		if (Location.getHostName().contains("127.0.0.1") || Location.getPath().contains("hotelorga_latest")) { // default login autologin
+		if (Location.getHostName().contains("127.0.0.1") || Location.getPath().contains("supeyou_latest")) { // default login autologin
 			nameInput.setOrigValue(new SingleLineString256Type("MT"));
 			nameInput.value2field();
 			passwordInput.setOrigValue(new SingleLineString256Type("mutzmutz"));
