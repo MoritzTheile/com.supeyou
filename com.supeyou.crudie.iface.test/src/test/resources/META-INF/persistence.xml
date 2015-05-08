@@ -7,10 +7,10 @@
 
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
-		<class>com.hotelorga.foundation.impl.entity.UserEntity</class>		
-		<class>com.hotelorga.foundation.impl.entity.User2GroupEntity</class>		
-		<class>com.hotelorga.foundation.impl.entity.GroupEntity</class>	
-		<class>com.hotelorga.foundation.impl.entity.FileEntity</class>	
+		<class>com.supeyou.crudie.impl.entity.UserEntity</class>		
+		<class>com.supeyou.crudie.impl.entity.User2GroupEntity</class>		
+		<class>com.supeyou.crudie.impl.entity.GroupEntity</class>	
+		<class>com.supeyou.crudie.impl.entity.FileEntity</class>	
 		
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		

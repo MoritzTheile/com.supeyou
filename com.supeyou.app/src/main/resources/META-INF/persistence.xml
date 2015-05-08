@@ -7,19 +7,19 @@
 
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
-		<class>com.hotelorga.foundation.impl.entity.UserEntity</class>		
-		<class>com.hotelorga.foundation.impl.entity.User2GroupEntity</class>		
-		<class>com.hotelorga.foundation.impl.entity.GroupEntity</class>	
-		<class>com.hotelorga.foundation.impl.entity.FileEntity</class>	
-		<class>com.hotelorga.core.impl.entity.GuestEntity</class>	
-		<class>com.hotelorga.core.impl.entity.RoomEntity</class>	
-		<class>com.hotelorga.core.impl.entity.GuestGroupEntity</class>	
-		<class>com.hotelorga.core.impl.entity.AcceptanceEntity</class>	
-		<class>com.hotelorga.core.impl.entity.PayerEntity</class>	
-		<class>com.hotelorga.core.impl.entity.Guest2RoomEntity</class>	
-		<class>com.hotelorga.core.impl.entity.Guest2GuestGroupEntity</class>	
-		<class>com.hotelorga.core.impl.entity.Guest2AcceptanceEntity</class>	
-		<class>com.hotelorga.core.impl.entity.Acceptance2PayerEntity</class>	
+		<class>com.supeyou.crudie.impl.entity.UserEntity</class>		
+		<class>com.supeyou.crudie.impl.entity.User2GroupEntity</class>		
+		<class>com.supeyou.crudie.impl.entity.GroupEntity</class>	
+		<class>com.supeyou.crudie.impl.entity.FileEntity</class>	
+		<class>com.supeyou.core.impl.entity.GuestEntity</class>	
+		<class>com.supeyou.core.impl.entity.RoomEntity</class>	
+		<class>com.supeyou.core.impl.entity.GuestGroupEntity</class>	
+		<class>com.supeyou.core.impl.entity.AcceptanceEntity</class>	
+		<class>com.supeyou.core.impl.entity.PayerEntity</class>	
+		<class>com.supeyou.core.impl.entity.Guest2RoomEntity</class>	
+		<class>com.supeyou.core.impl.entity.Guest2GuestGroupEntity</class>	
+		<class>com.supeyou.core.impl.entity.Guest2AcceptanceEntity</class>	
+		<class>com.supeyou.core.impl.entity.Acceptance2PayerEntity</class>	
 
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.cellview.client"
+	xmlns:m="urn:import:com.supeyou.crudie.web.client.fields.types"
+	xmlns:m2="urn:import:com.supeyou.crudie.web.client.uiorga.flatbutton">
+	<ui:with field='text'
+		type='com.supeyou.auth.web.client.resources.i18n.Text' />
+ 
+	<g:FlowPanel styleName="login-root" ui:field="LoginRoot">
+		<g:Label styleName="message-label" ui:field="messageLabel"></g:Label>
+		<g:FlowPanel styleName="form-table">
+		<g:FlowPanel styleName="name-row" ui:field="nameRow">
+			<g:Label styleName="name-label" ui:field="nameLabel" text="{text.LOGIN_LoginId}"></g:Label>
+			<m:FieldForSingleLineString256Type styleName="name-input" ui:field="nameInput"></m:FieldForSingleLineString256Type>
+		</g:FlowPanel>
+
+		<g:FlowPanel styleName="password-row" ui:field="passwordRow">
+			<g:Label styleName="password-label" ui:field="passwordLabel" text="{text.LOGIN_Password}"></g:Label>
+			<m:FieldForSingleLineString256Type styleName="password-input" ui:field="passwordInput"></m:FieldForSingleLineString256Type>
+		</g:FlowPanel>
+		</g:FlowPanel>
+		<m2:FlatButtonWidget styleName="flat-button" ui:field="flatButton" text="{text.LOGIN_BUTTON_Login}"></m2:FlatButtonWidget>
+		
+	</g:FlowPanel>
+
+</ui:UiBinder> 

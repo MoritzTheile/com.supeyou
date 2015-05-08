@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
   <listener>
-    <listener-class>com.hotelorga.app.server.ServletContextListenerImpl</listener-class>
+    <listener-class>com.supeyou.app.server.ServletContextListenerImpl</listener-class>
   </listener>
   <servlet>
     <servlet-name>FileDownloadServlet</servlet-name>
-    <servlet-class>com.hotelorga.foundation.web.server.FileDownloadServlet</servlet-class>
+    <servlet-class>com.supeyou.crudie.web.server.FileDownloadServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>FileDownloadServlet</servlet-name>
@@ -13,7 +13,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>FileUploadServlet</servlet-name>
-    <servlet-class>com.hotelorga.foundation.web.server.FileUploadServlet</servlet-class>
+    <servlet-class>com.supeyou.crudie.web.server.FileUploadServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>FileUploadServlet</servlet-name>
@@ -21,7 +21,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.foundation.web.server.RPCServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.crudie.web.server.RPCServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCServiceImpl</servlet-name>
@@ -29,7 +29,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCUserCRUDServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.foundation.web.server.RPCUserCRUDServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.crudie.web.server.RPCUserCRUDServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCUserCRUDServiceImpl</servlet-name>
@@ -37,7 +37,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCUser2GroupCRUDServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.foundation.web.server.RPCUser2GroupCRUDServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.crudie.web.server.RPCUser2GroupCRUDServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCUser2GroupCRUDServiceImpl</servlet-name>
@@ -45,7 +45,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCGuest2GuestGroupCRUDServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.core.web.server.RPCGuest2GuestGroupCRUDServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.core.web.server.RPCGuest2GuestGroupCRUDServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCGuest2GuestGroupCRUDServiceImpl</servlet-name>
@@ -53,7 +53,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCGuest2AcceptanceCRUDServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.core.web.server.RPCGuest2AcceptanceCRUDServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.core.web.server.RPCGuest2AcceptanceCRUDServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCGuest2AcceptanceCRUDServiceImpl</servlet-name>
@@ -61,7 +61,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCAcceptance2PayerCRUDServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.core.web.server.RPCAcceptance2PayerCRUDServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.core.web.server.RPCAcceptance2PayerCRUDServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCAcceptance2PayerCRUDServiceImpl</servlet-name>
@@ -69,7 +69,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCAuthServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.auth.web.server.RPCAuthServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.auth.web.server.RPCAuthServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCAuthServiceImpl</servlet-name>
@@ -77,7 +77,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCGroupCRUDServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.foundation.web.server.RPCGroupCRUDServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.crudie.web.server.RPCGroupCRUDServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCGroupCRUDServiceImpl</servlet-name>
@@ -85,7 +85,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCFileCRUDServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.foundation.web.server.RPCFileCRUDServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.crudie.web.server.RPCFileCRUDServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCFileCRUDServiceImpl</servlet-name>
@@ -93,7 +93,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCGuestGroupCRUDServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.core.web.server.RPCGuestGroupCRUDServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.core.web.server.RPCGuestGroupCRUDServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCGuestGroupCRUDServiceImpl</servlet-name>
@@ -101,7 +101,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCGuestCRUDServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.core.web.server.RPCGuestCRUDServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.core.web.server.RPCGuestCRUDServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCGuestCRUDServiceImpl</servlet-name>
@@ -109,7 +109,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCRoomCRUDServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.core.web.server.RPCRoomCRUDServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.core.web.server.RPCRoomCRUDServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCRoomCRUDServiceImpl</servlet-name>
@@ -117,7 +117,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCAcceptanceCRUDServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.core.web.server.RPCAcceptanceCRUDServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.core.web.server.RPCAcceptanceCRUDServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCAcceptanceCRUDServiceImpl</servlet-name>
@@ -125,7 +125,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCPayerCRUDServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.core.web.server.RPCPayerCRUDServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.core.web.server.RPCPayerCRUDServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCPayerCRUDServiceImpl</servlet-name>
@@ -133,7 +133,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RPCGuest2RoomCRUDServiceImpl</servlet-name>
-    <servlet-class>com.hotelorga.core.web.server.RPCGuest2RoomCRUDServiceImpl</servlet-class>
+    <servlet-class>com.supeyou.core.web.server.RPCGuest2RoomCRUDServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCGuest2RoomCRUDServiceImpl</servlet-name>
