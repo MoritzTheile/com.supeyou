@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p1="urn:import:com.google.gwt.user.cellview.client"
+	>
+	<ui:with field='text' type='com.supeyou.crudie.web.client.resources.i18n.Text' />
+
+	<g:FlowPanel  styleName="guestcalculation"  ui:field="rootPanel">
+		<g:FlowPanel styleName="column-A"  ui:field="columnA"/>
+		<g:FlowPanel styleName="column-B"  ui:field="columnB"/>
+		<g:FlowPanel styleName="column-C"  ui:field="columnC"/>
+		<g:FlowPanel styleName="column-D"  ui:field="columnD"/>
+		<g:FlowPanel styleName="column-E"  ui:field="columnE"/>
+		<g:FlowPanel styleName="column-F"  ui:field="columnF"/>
+		<g:FlowPanel styleName="column-G"  ui:field="columnG"/>
+		<g:FlowPanel styleName="column-H"  ui:field="columnH"/>
+		<g:FlowPanel styleName="column-I"  ui:field="columnI"/>
+		<g:FlowPanel styleName="column-J"  ui:field="columnJ"/>
+		<g:FlowPanel styleName="column-K"  ui:field="columnK"/>
+		<g:FlowPanel styleName="column-L"  ui:field="columnL"/>
+		<g:FlowPanel styleName="column-M"  ui:field="columnM"/>
+		<g:FlowPanel styleName="column-N"  ui:field="columnN"/>
+	</g:FlowPanel>
+
+</ui:UiBinder> 

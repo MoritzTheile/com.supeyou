@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:p1="urn:import:com.google.gwt.user.cellview.client"
+	xmlns:m2="urn:import:com.supeyou.crudie.web.client.uiorga.flatbutton"
+	xmlns:m3="urn:import:com.supeyou.crudie.web.client.uiorga.linkbutton">
+	<ui:with field='text' type='com.supeyou.auth.web.client.resources.i18n.Text' />
+	<m3:LinkButtonWidget  ui:field="logInOutButton"></m3:LinkButtonWidget>
+</ui:UiBinder> 

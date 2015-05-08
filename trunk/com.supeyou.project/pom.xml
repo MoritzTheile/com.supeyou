@@ -36,18 +36,14 @@
 		</pluginManagement>
 	</build>
 	<modules>
-		<module>../com.hotelorga.app</module>
-		<!-- <module>../com.hotelorga.auth.app</module> -->
-		<module>../com.hotelorga.auth.iface</module>
-		<!-- <module>../com.hotelorga.auth.impl</module> -->
-		<module>../com.hotelorga.auth.web</module>
-		<!-- <module>../com.hotelorga.foundation.app</module> -->
-		<module>../com.hotelorga.core.iface</module>
-		<module>../com.hotelorga.core.impl</module>
-		<module>../com.hotelorga.core.web</module>
-		<module>../com.hotelorga.foundation.iface</module>
-		<module>../com.hotelorga.foundation.iface.test</module>
-		<module>../com.hotelorga.foundation.impl</module>
-		<module>../com.hotelorga.foundation.web</module>
+		<module>../com.supeyou.app</module>
+		<module>../com.supeyou.auth.web</module>
+		<module>../com.supeyou.core.iface</module>
+		<module>../com.supeyou.core.impl</module>
+		<module>../com.supeyou.core.web</module>
+		<module>../com.supeyou.crudie.iface</module>
+		<module>../com.supeyou.crudie.iface.test</module>
+		<module>../com.supeyou.crudie.impl</module>
+		<module>../com.supeyou.crudie.web</module>
 	</modules>
 </project>
