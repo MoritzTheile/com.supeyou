@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.cellview.client"
+	xmlns:m="urn:import:com.hotelorga.foundation.web.client.fields.types">
+	<ui:with field='text'
+		type='com.hotelorga.foundation.web.client.resources.i18n.Text' />
+
+	<g:FlowPanel styleName="list-pager-root" ui:field="ListPagerRoot">
+		<g:FlowPanel styleName="all-back-button" ui:field="allBackButton"/>
+		<g:FlowPanel styleName="one-back-button" ui:field="oneBackButton"/>
+		<g:Label styleName="label" ui:field="label"></g:Label>
+		<g:FlowPanel styleName="one-forward-button" ui:field="oneForwardButton"/>
+		<g:FlowPanel styleName="all-forward-button" ui:field="allForwardButton"/>
+	</g:FlowPanel>
+
+</ui:UiBinder> 

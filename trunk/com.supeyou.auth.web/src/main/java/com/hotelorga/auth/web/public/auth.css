@@ -1,0 +1,33 @@
+
+
+.login-root {
+	border-style: solid;
+	border-color: #AAAAAA;
+
+	border-radius: 3px;
+	padding: 20px 12px;
+
+	width: 300px;
+
+	border-width: 1px;
+}
+
+.login-root .message-label{
+	color: red;
+	font-size: 12px;
+	margin-bottom: 12px;	
+}
+
+.login-root .form-table{
+    display: table;
+    margin: 20px 0px 12px 0px;
+
+}
+.login-root .form-table > *{
+    display: table-row;
+}
+.login-root .form-table > * > *{
+    display: table-cell;
+    margin: 0px 12px 12px 12px;
+	vertical-align: top;
+}

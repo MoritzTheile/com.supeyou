@@ -1,0 +1,97 @@
+body {
+	padding: 0;
+	margin: 0;
+	position: relative!;
+  	top:0px;
+	right:0px;
+	left:0px;
+	bottom:0px;   
+}
+
+#header {
+    padding:0;
+    margin:0;
+    position: fixed;
+	top:0px;
+	right:0px;
+	left:0px;
+	height: 32px;
+    background-color: #EEEEEE;
+}
+
+#title{
+	color: #777777;
+	font-size: 17px;
+	position: absolute;
+	top: 3px;
+	left: 22px;
+}
+
+#login{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+ #main {
+    padding:0;
+    margin:0;
+    
+    position: absolute;
+    top:32px;
+	right:0px;
+	left:0px;
+	bottom:12px;
+	
+	overflow: auto;
+}
+
+ #footer {
+    padding:0;
+    margin:0;
+    position: fixed;
+	right:0px;
+	left:0px;
+	bottom:0px;
+	height: 12px;
+   background-color:#EEEEEE;
+}
+
+#footer .app-version {
+	position: absolute;
+	right: 0px;
+	top: 1px;
+	font-size: 8px;
+}
+
+.main-menu .menu {
+	position: relative;
+	top: 0px;
+	right: 0px;
+	left:0px;
+	background-color: #EEEEEE;
+}
+ 	
+.main-menu .menu > * {
+	cursor: pointer;
+	display: inline-block;	
+	padding-right: 24px;
+	padding-left: 24px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	border-right: solid 1px #DDDDDD;
+	border-top: solid 1px #DDDDDD;
+
+	color: #777777;
+
+
+}
+
+.main-menu .menu > *:hover {
+	color:black;
+	background-color: #F1F1F1;
+} 
+.main-menu .menu > *.selected {
+	color:black;
+	background-color: white;
+} 

@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field='text' type='com.hotelorga.foundation.web.client.resources.i18n.Text' />
+	<g:FlowPanel ui:field="root" styleName="popup-root">
+		<g:FlowPanel ui:field="glass" styleName="popup-glass">
+		</g:FlowPanel>
+		<g:FlowPanel ui:field="contentSlot" styleName="content-slot">
+		</g:FlowPanel>
+	</g:FlowPanel>
+</ui:UiBinder> 
