@@ -114,7 +114,7 @@ public class ExcelGenerator {
 			break;
 		}
 
-		row.createCell(2).setCellValue("Hotel Waltram");
+		row.createCell(2).setCellValue("Hotel SupeYou");
 
 	}
 
