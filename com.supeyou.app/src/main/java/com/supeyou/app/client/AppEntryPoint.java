@@ -14,7 +14,7 @@ public class AppEntryPoint implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 
-		RootPanel.get("title").getElement().setInnerHTML("SupeYou");
+		// RootPanel.get("title").getElement().setInnerHTML("SupeYou");
 
 		RootPanel.get("login").add(new LoginButtonWidget(LoginStateModel.i()));
 
