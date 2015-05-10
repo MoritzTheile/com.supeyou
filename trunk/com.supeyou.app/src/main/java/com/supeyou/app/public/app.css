@@ -17,6 +17,12 @@ body {
 	left:0px;
 	height: 32px;
     background-color: #EEEEEE;
+    
+    background-repeat: no-repeat;
+	background-position: 28px 0px;
+	background-size: 8%;
+    background-image: url("images/SupeYou-logo.png");
+    
 }
 
 #title{
