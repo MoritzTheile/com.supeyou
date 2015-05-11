@@ -12,15 +12,7 @@ public class AdminMenuWidget extends WidgetView {
 		final Label menuItem1 = new Label("Benutzer");
 		final Label menuItem2 = new Label("<- Assos ->");
 		final Label menuItem3 = new Label("Gruppen");
-		final Label menuItem4 = new Label("GuestGroups");
-		final Label menuItem5 = new Label("Guests");
-		final Label menuItem6 = new Label("Rooms");
-		final Label menuItem7 = new Label("Acceptance");
-		final Label menuItem8 = new Label("Payer");
-		final Label menuItem9 = new Label("Guest2Room");
-		final Label menuItem10 = new Label("Guest2GuestGroup");
-		final Label menuItem11 = new Label("Guest2Acceptance");
-		final Label menuItem12 = new Label("Acceptance2Payer");
+		final Label menuItem4 = new Label("Heroes");
 
 		MenuAndDisplay menuAndDisplay = new MenuAndDisplay(menu, display) {
 
@@ -38,8 +30,8 @@ public class AdminMenuWidget extends WidgetView {
 				if (menuItem3 == menuItem) {
 					return new com.supeyou.crudie.web.client.rpc.group.chooserlarge.ChooserLargeWidget();
 				}
-				if (menuItem6 == menuItem) {
-					return new com.supeyou.core.web.client.rpc.room.chooserlarge.ChooserLargeWidget();
+				if (menuItem4 == menuItem) {
+					return new com.supeyou.core.web.client.rpc.hero.chooserlarge.ChooserLargeWidget();
 				}
 
 				return null;
@@ -51,14 +43,6 @@ public class AdminMenuWidget extends WidgetView {
 		menuAndDisplay.addItem(menuItem2);
 		menuAndDisplay.addItem(menuItem3);
 		menuAndDisplay.addItem(menuItem4);
-		menuAndDisplay.addItem(menuItem5);
-		menuAndDisplay.addItem(menuItem6);
-		menuAndDisplay.addItem(menuItem7);
-		menuAndDisplay.addItem(menuItem8);
-		menuAndDisplay.addItem(menuItem9);
-		menuAndDisplay.addItem(menuItem10);
-		menuAndDisplay.addItem(menuItem11);
-		menuAndDisplay.addItem(menuItem12);
 
 		menuAndDisplay.selectMenuItem(menuItem3);
 

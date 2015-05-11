@@ -77,6 +77,4 @@ public interface Text extends Messages {
 
 	String LINK_Import();
 
-	String FIELD_NAME_RoomName();
-
 }
