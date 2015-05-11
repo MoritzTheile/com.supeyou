@@ -88,20 +88,6 @@ public class ChooserLargeWidget extends WidgetView {
 		/*
 		 * if no display scope is specified this algorithm finds one:
 		 */
-		if (fromDate == null && toDate == null) {
-
-			this.fromDate = com.supeyou.core.web.client.rpc.guest2room.chooserlarge.item.ItemWidget.incDateByDays(System.currentTimeMillis(), -30);
-			this.toDate = com.supeyou.core.web.client.rpc.guest2room.chooserlarge.item.ItemWidget.incDateByDays(System.currentTimeMillis(), 30);
-
-		} else if (fromDate == null && toDate != null) {
-
-			this.fromDate = com.supeyou.core.web.client.rpc.guest2room.chooserlarge.item.ItemWidget.incDateByDays(toDate, -60);
-
-		} else if (fromDate != null && toDate == null) {
-
-			this.toDate = com.supeyou.core.web.client.rpc.guest2room.chooserlarge.item.ItemWidget.incDateByDays(fromDate, 60);
-
-		}
 
 		fromdateSlot.add(new FieldForDateType(fromDate) {
 			@Override

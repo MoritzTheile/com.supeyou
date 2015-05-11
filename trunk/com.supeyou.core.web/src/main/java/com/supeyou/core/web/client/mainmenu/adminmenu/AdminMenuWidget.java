@@ -38,35 +38,8 @@ public class AdminMenuWidget extends WidgetView {
 				if (menuItem3 == menuItem) {
 					return new com.supeyou.crudie.web.client.rpc.group.chooserlarge.ChooserLargeWidget();
 				}
-				if (menuItem4 == menuItem) {
-					return new com.supeyou.core.web.client.rpc.guestgroup.chooserlarge.ChooserLargeWidget();
-				}
-				if (menuItem5 == menuItem) {
-					return new com.supeyou.core.web.client.rpc.guest.chooserlarge.ChooserLargeWidget();
-				}
 				if (menuItem6 == menuItem) {
 					return new com.supeyou.core.web.client.rpc.room.chooserlarge.ChooserLargeWidget();
-				}
-				if (menuItem7 == menuItem) {
-					return new com.supeyou.core.web.client.rpc.acceptance.chooserlarge.ChooserLargeWidget();
-				}
-				if (menuItem8 == menuItem) {
-					return new com.supeyou.core.web.client.rpc.payer.chooserlarge.ChooserLargeWidget();
-				}
-				if (menuItem9 == menuItem) {
-					return new com.supeyou.core.web.client.rpc.guest2room.chooserlarge.ChooserLargeWidget();
-				}
-
-				if (menuItem10 == menuItem) {
-					return new com.supeyou.core.web.client.rpc.guest2guestgroup.chooserlarge.ChooserLargeWidget();
-				}
-
-				if (menuItem11 == menuItem) {
-					return new com.supeyou.core.web.client.rpc.guest2acceptance.chooserlarge.ChooserLargeWidget();
-				}
-
-				if (menuItem12 == menuItem) {
-					return new com.supeyou.core.web.client.rpc.acceptance2payer.chooserlarge.ChooserLargeWidget();
 				}
 
 				return null;

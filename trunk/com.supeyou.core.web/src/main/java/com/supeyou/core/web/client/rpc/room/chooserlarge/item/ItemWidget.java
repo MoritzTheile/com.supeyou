@@ -13,13 +13,8 @@ public class ItemWidget extends WidgetView {
 
 	private RoomDTO thisDTO;
 
-	private DateType fromDate = null;
-	private DateType toDate = null;;
-
 	public ItemWidget(RoomDTO dto, DateType fromDate, DateType toDate) {
 		this(dto);
-		this.fromDate = fromDate;
-		this.toDate = toDate;
 	}
 
 	public ItemWidget(RoomDTO dto) {
@@ -40,8 +35,6 @@ public class ItemWidget extends WidgetView {
 		if (thisDTO.getComment() != null) {
 			columnTwo.add(new Label(thisDTO.getComment().value()));
 		}
-		columnThree.clear();
-		columnThree.add(new com.supeyou.core.web.client.rpc.guest2room.assoaeditor.AssoAEditorWidget(thisDTO, true, fromDate, toDate));
 	}
 
 	private String renderInfoString() {

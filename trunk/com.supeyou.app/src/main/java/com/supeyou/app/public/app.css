@@ -15,11 +15,11 @@ body {
 	top:0px;
 	right:0px;
 	left:0px;
-	height: 32px;
+	height: 45px;
     background-color: #EEEEEE;
     
     background-repeat: no-repeat;
-	background-position: 28px -6px;
+	background-position: 28px 0px;
 	background-size: 8%;
     background-image: url("images/SupeYou-logo.png");
     
@@ -44,7 +44,7 @@ body {
     margin:0;
     
     position: absolute;
-    top:32px;
+    top:45px;
 	right:0px;
 	left:0px;
 	bottom:12px;
