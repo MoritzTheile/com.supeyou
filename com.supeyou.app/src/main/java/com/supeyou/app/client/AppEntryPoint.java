@@ -4,6 +4,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.supeyou.app.client.view.landingpage.LandingPageWidget;
 import com.supeyou.auth.web.client.login.loginbutton.LoginButtonWidget;
+import com.supeyou.core.web.client.mainmenu.MainMenuWidget;
 import com.supeyou.crudie.web.client.model.AbstrObservable.Observer;
 import com.supeyou.crudie.web.client.model.AppInfoModel;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
@@ -39,6 +40,7 @@ public class AppEntryPoint implements EntryPoint {
 		appInfoModel.updateFromServer();
 
 		RootPanel.get("main").add(new LandingPageWidget());
+		RootPanel.get("main").add(new MainMenuWidget());
 	}
 
 }
