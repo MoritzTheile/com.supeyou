@@ -75,7 +75,7 @@
 	background-color: lightgray;
 }
 
-.browser-root.large.room .gwt-TextBox{
+.browser-root.large.hero .gwt-TextBox{
 	margin-top:3px;
     width: 70px;
     padding: 2px 4px 2px 4px;
@@ -86,30 +86,30 @@
     box-shadow: 0 0 0 1px transparent;
 }
 
-.browser-root.large.room  .label1of2{
+.browser-root.large.hero  .label1of2{
     margin: 4px
 }
-.browser-root.large.room  .label2of2{
+.browser-root.large.hero  .label2of2{
     margin: 4px
 }
-.browser-root.large.room{
+.browser-root.large.hero{
 	position: relative;
 }
  
-.browser-root.large.room .query-slot {
+.browser-root.large.hero .query-slot {
 	margin-bottom: 12px;
 } 
 
-.browser-root.large.room .settings {
+.browser-root.large.hero .settings {
 	position: absolute;
 	top: 100px;
 	left: 220px;
 } 
 
-.browser-root.large.room .pager {
+.browser-root.large.hero .pager {
 } 
 
-.browser-root.large.room .column.one{
+.browser-root.large.hero .column.one{
 	margin-bottom: 24px;
 }
  
@@ -120,7 +120,7 @@
 	background-color:#00CCFF;
 }
  
-.asso-list-slot  .listitem.guest2room {
+.asso-list-slot  .listitem.guest2hero {
 	padding: 1px; 
 	border: 1px solid #d4d4d4;	
 	border-radius: 3px;
@@ -131,12 +131,12 @@
 }
 
  
-.browser-root.large.room .timebar {
+.browser-root.large.hero .timebar {
 	padding: 1px 0px 0px 3px;
 	font-size: 10px;
 } 
 
-.browser-root.large.room .timebar .gwt-Label{
+.browser-root.large.hero .timebar .gwt-Label{
 	padding: 0px 0px 0px 3px;
 	font-size: 10px;
 	width: 190px;

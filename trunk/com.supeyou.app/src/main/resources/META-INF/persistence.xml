@@ -11,7 +11,7 @@
 		<class>com.supeyou.crudie.impl.entity.User2GroupEntity</class>		
 		<class>com.supeyou.crudie.impl.entity.GroupEntity</class>	
 		<class>com.supeyou.crudie.impl.entity.FileEntity</class>	
-		<class>com.supeyou.core.impl.entity.RoomEntity</class>	
+		<class>com.supeyou.core.impl.entity.HeroEntity</class>	
 
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		
