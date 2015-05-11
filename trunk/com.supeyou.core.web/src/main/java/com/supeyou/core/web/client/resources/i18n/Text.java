@@ -2,7 +2,6 @@ package com.supeyou.core.web.client.resources.i18n;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.Messages;
-import com.supeyou.core.web.client.resources.i18n.Text;
 
 public interface Text extends Messages {
 
@@ -17,5 +16,7 @@ public interface Text extends Messages {
 	String FIELD_WRONG_FORMAT_SinleLineText();
 
 	String FIELD_WRONG_FORMAT_MultiLineText();
+
+	String ADDHERO_Text_HTML();
 
 }
