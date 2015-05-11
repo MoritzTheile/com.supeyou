@@ -3,7 +3,6 @@ package com.supeyou.core.web.client.mainmenu;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.supeyou.core.web.client.mainmenu.othermenu.OtherMenuWidget;
-import com.supeyou.core.web.client.rpc.room.chooserlarge.ChooserLargeWidget;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.uiorga.menuanddisplay.MenuAndDisplay;
 
@@ -22,18 +21,6 @@ public class MainMenuWidget extends WidgetView {
 
 			@Override
 			public Widget getWidgetFor(Widget menuItem) {
-				if (menuItem1 == menuItem) {
-					return new com.supeyou.core.web.client.rpc.guest.chooserlarge.ChooserLargeWidget();
-				}
-				if (menuItem2 == menuItem) {
-					return new ChooserLargeWidget();
-				}
-				if (menuItem3 == menuItem) {
-					return new com.supeyou.core.web.client.rpc.acceptance.chooserlarge.ChooserLargeWidget();
-				}
-				if (menuItem4 == menuItem) {
-					return new com.supeyou.core.web.client.rpc.guestgroupcalc.chooserlarge.ChooserLargeWidget();
-				}
 				if (menuItem5 == menuItem) {
 					return new OtherMenuWidget();
 				}
