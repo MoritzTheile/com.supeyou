@@ -2,6 +2,7 @@ package com.supeyou.core.web.client.mainmenu;
 
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
+import com.supeyou.core.web.client.rpc.hero.chooserlarge.ChooserLargeWidget;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.uiorga.menuanddisplay.MenuAndDisplay;
 
@@ -17,7 +18,7 @@ public class MainMenuWidget extends WidgetView {
 			@Override
 			public Widget getWidgetFor(Widget menuItem) {
 				if (menuItem1 == menuItem) {
-					return new Label("TODO codemarker=akgall");
+					return new ChooserLargeWidget();
 				}
 				return null;
 			}

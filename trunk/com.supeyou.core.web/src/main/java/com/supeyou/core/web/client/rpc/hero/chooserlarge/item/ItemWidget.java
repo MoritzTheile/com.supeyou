@@ -4,7 +4,6 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Label;
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.web.client.rpc.hero.RPCCRUDProxy;
-import com.supeyou.crudie.iface.datatype.types.DateType;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
 
 public class ItemWidget extends WidgetView {
@@ -12,10 +11,6 @@ public class ItemWidget extends WidgetView {
 	private final ItemWidget thisWidget;
 
 	private HeroDTO thisDTO;
-
-	public ItemWidget(HeroDTO dto, DateType fromDate, DateType toDate) {
-		this(dto);
-	}
 
 	public ItemWidget(HeroDTO dto) {
 
