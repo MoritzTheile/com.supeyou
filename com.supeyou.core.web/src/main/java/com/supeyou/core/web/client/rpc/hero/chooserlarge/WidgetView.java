@@ -15,12 +15,6 @@ public class WidgetView extends Composite {
 	FlowPanel querySlot;
 
 	@UiField
-	FlowPanel fromdateSlot;
-
-	@UiField
-	FlowPanel todateSlot;
-
-	@UiField
 	FlowPanel pagerSlot;
 
 	@UiField

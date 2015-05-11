@@ -13,8 +13,6 @@ import com.supeyou.core.web.client.rpc.hero.form.FormWidget;
 import com.supeyou.core.web.client.rpc.hero.imexport.ExportLink;
 import com.supeyou.core.web.client.rpc.hero.imexport.ImportLink;
 import com.supeyou.core.web.client.rpc.hero.query.QueryWidget;
-import com.supeyou.crudie.iface.datatype.types.DateType;
-import com.supeyou.crudie.web.client.fields.types.FieldForDateType;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.resources.GWTSTATICS;
 import com.supeyou.crudie.web.client.rpc.abstr.list.AbstrListDataProvider;
@@ -24,9 +22,8 @@ import com.supeyou.crudie.web.client.rpc.abstr.list.listpager.ListPagerWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 
 public class ChooserLargeWidget extends WidgetView {
+
 	private final AbstrListDataProvider<HeroDTO, HeroFetchQuery> dataProvider;
-	private DateType fromDate;
-	private DateType toDate;
 
 	public ChooserLargeWidget() {
 
@@ -85,28 +82,6 @@ public class ChooserLargeWidget extends WidgetView {
 
 		querySlot.add(new QueryWidget(dataProvider));
 
-		/*
-		 * if no display scope is specified this algorithm finds one:
-		 */
-
-		fromdateSlot.add(new FieldForDateType(fromDate) {
-			@Override
-			public void onHasChanged(DateType value) {
-				fromDate = value;
-				setOrigValue(value);
-				dataProvider.fetchData();
-			}
-		});
-
-		todateSlot.add(new FieldForDateType(toDate) {
-			@Override
-			public void onHasChanged(DateType value) {
-				toDate = value;
-				setOrigValue(value);
-				dataProvider.fetchData();
-			}
-		});
-
 		pagerSlot.add(new ListPagerWidget(dataProvider));
 
 		createLink.addDomHandler(new ClickHandler() {
@@ -145,7 +120,7 @@ public class ChooserLargeWidget extends WidgetView {
 
 	public ItemWidget getHeroWidget(final HeroDTO data) {
 
-		return new ItemWidget(data, fromDate, toDate);
+		return new ItemWidget(data);
 	}
 
 }
