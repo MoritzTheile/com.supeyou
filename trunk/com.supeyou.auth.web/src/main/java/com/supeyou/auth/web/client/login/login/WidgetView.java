@@ -38,6 +38,9 @@ public class WidgetView extends Composite {
 	@UiField
 	FlatButtonWidget flatButton;
 
+	@UiField
+	FlatButtonWidget cancelFlatButton;
+
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}
 
