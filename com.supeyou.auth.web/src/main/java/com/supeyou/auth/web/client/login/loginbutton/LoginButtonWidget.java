@@ -2,14 +2,13 @@ package com.supeyou.auth.web.client.login.loginbutton;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.supeyou.auth.web.client.login.login.LoginWidget;
 import com.supeyou.auth.web.client.resources.i18n.Text;
 import com.supeyou.auth.web.client.rpc.RPCAuthServiceAsync;
 import com.supeyou.crudie.iface.dto.UserDTO;
-import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.model.AbstrObservable.Observer;
+import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 
 public class LoginButtonWidget extends WidgetView {
@@ -52,13 +51,13 @@ public class LoginButtonWidget extends WidgetView {
 		render();
 
 		// autologin
-		new Timer() {
-			@Override
-			public void run() {
-				login();
-
-			}
-		}.schedule(200);
+		// new Timer() {
+		// @Override
+		// public void run() {
+		// login();
+		//
+		// }
+		// }.schedule(200);
 
 	}
 
