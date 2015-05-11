@@ -39,34 +39,6 @@
     <servlet-name>RPCUser2GroupCRUDServiceImpl</servlet-name>
     <servlet-class>com.supeyou.crudie.web.server.RPCUser2GroupCRUDServiceImpl</servlet-class>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>RPCUser2GroupCRUDServiceImpl</servlet-name>
-    <url-pattern>/RPCUser2GroupCRUDServiceImpl</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>RPCGuest2GuestGroupCRUDServiceImpl</servlet-name>
-    <servlet-class>com.supeyou.core.web.server.RPCGuest2GuestGroupCRUDServiceImpl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RPCGuest2GuestGroupCRUDServiceImpl</servlet-name>
-    <url-pattern>/RPCGuest2GuestGroupCRUDServiceImpl</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>RPCGuest2AcceptanceCRUDServiceImpl</servlet-name>
-    <servlet-class>com.supeyou.core.web.server.RPCGuest2AcceptanceCRUDServiceImpl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RPCGuest2AcceptanceCRUDServiceImpl</servlet-name>
-    <url-pattern>/RPCGuest2AcceptanceCRUDServiceImpl</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>RPCAcceptance2PayerCRUDServiceImpl</servlet-name>
-    <servlet-class>com.supeyou.core.web.server.RPCAcceptance2PayerCRUDServiceImpl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RPCAcceptance2PayerCRUDServiceImpl</servlet-name>
-    <url-pattern>/RPCAcceptance2PayerCRUDServiceImpl</url-pattern>
-  </servlet-mapping>
   <servlet>
     <servlet-name>RPCAuthServiceImpl</servlet-name>
     <servlet-class>com.supeyou.auth.web.server.RPCAuthServiceImpl</servlet-class>
@@ -92,52 +64,12 @@
     <url-pattern>/RPCFileCRUDServiceImpl</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>RPCGuestGroupCRUDServiceImpl</servlet-name>
-    <servlet-class>com.supeyou.core.web.server.RPCGuestGroupCRUDServiceImpl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RPCGuestGroupCRUDServiceImpl</servlet-name>
-    <url-pattern>/RPCGuestGroupCRUDServiceImpl</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>RPCGuestCRUDServiceImpl</servlet-name>
-    <servlet-class>com.supeyou.core.web.server.RPCGuestCRUDServiceImpl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RPCGuestCRUDServiceImpl</servlet-name>
-    <url-pattern>/RPCGuestCRUDServiceImpl</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>RPCRoomCRUDServiceImpl</servlet-name>
     <servlet-class>com.supeyou.core.web.server.RPCRoomCRUDServiceImpl</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RPCRoomCRUDServiceImpl</servlet-name>
     <url-pattern>/RPCRoomCRUDServiceImpl</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>RPCAcceptanceCRUDServiceImpl</servlet-name>
-    <servlet-class>com.supeyou.core.web.server.RPCAcceptanceCRUDServiceImpl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RPCAcceptanceCRUDServiceImpl</servlet-name>
-    <url-pattern>/RPCAcceptanceCRUDServiceImpl</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>RPCPayerCRUDServiceImpl</servlet-name>
-    <servlet-class>com.supeyou.core.web.server.RPCPayerCRUDServiceImpl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RPCPayerCRUDServiceImpl</servlet-name>
-    <url-pattern>/RPCPayerCRUDServiceImpl</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>RPCGuest2RoomCRUDServiceImpl</servlet-name>
-    <servlet-class>com.supeyou.core.web.server.RPCGuest2RoomCRUDServiceImpl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RPCGuest2RoomCRUDServiceImpl</servlet-name>
-    <url-pattern>/RPCGuest2RoomCRUDServiceImpl</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
