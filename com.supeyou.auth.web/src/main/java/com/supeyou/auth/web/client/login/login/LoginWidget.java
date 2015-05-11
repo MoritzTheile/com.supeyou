@@ -5,15 +5,13 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
-import com.google.gwt.user.client.Window.Location;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.supeyou.auth.web.client.resources.i18n.Text;
 import com.supeyou.auth.web.client.rpc.RPCAuthServiceAsync;
-import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
 
-public class LoginWidget extends WidgetView {
+public abstract class LoginWidget extends WidgetView {
 
 	private final LoginStateModel loginStateModel;
 
@@ -46,6 +44,17 @@ public class LoginWidget extends WidgetView {
 			}
 
 		});
+
+		cancelFlatButton.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				close();
+
+			}
+
+		});
 	}
 
 	@Override
@@ -53,14 +62,14 @@ public class LoginWidget extends WidgetView {
 
 		nameInput.setFocus();
 
-		if (Location.getHostName().contains("127.0.0.1") || Location.getPath().contains("supeyou_latest")) { // default login autologin
-			nameInput.setOrigValue(new SingleLineString256Type("MT"));
-			nameInput.value2field();
-			passwordInput.setOrigValue(new SingleLineString256Type("mutzmutz"));
-			passwordInput.render();
-			login();
-
-		}
+		// if (Location.getHostName().contains("127.0.0.1") || Location.getPath().contains("supeyou_latest")) { // default login autologin
+		// nameInput.setOrigValue(new SingleLineString256Type("MT"));
+		// nameInput.value2field();
+		// passwordInput.setOrigValue(new SingleLineString256Type("mutzmutz"));
+		// passwordInput.render();
+		// login();
+		//
+		// }
 
 	}
 
@@ -96,5 +105,7 @@ public class LoginWidget extends WidgetView {
 
 		});
 	}
+
+	public abstract void close();
 
 }

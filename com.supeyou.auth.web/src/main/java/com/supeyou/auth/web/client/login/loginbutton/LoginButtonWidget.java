@@ -63,7 +63,7 @@ public class LoginButtonWidget extends WidgetView {
 
 	private void login() {
 
-		final PopupWidget popupWidget = new PopupWidget(false);
+		final PopupWidget popupWidget = new PopupWidget(true);
 
 		LoginWidget loginWidget = new LoginWidget(thisLoginStateModel) {
 
@@ -76,6 +76,12 @@ public class LoginButtonWidget extends WidgetView {
 
 				super.userLoggedIn(result);
 
+			}
+
+			@Override
+			public void close() {
+
+				popupWidget.closePopup();
 			}
 
 		};

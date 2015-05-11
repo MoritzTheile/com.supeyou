@@ -20,6 +20,7 @@
 		</g:FlowPanel>
 		</g:FlowPanel>
 		<m2:FlatButtonWidget styleName="flat-button" ui:field="flatButton" text="{text.LOGIN_BUTTON_Login}"></m2:FlatButtonWidget>
+		<m2:FlatButtonWidget styleName="flat-button" ui:field="cancelFlatButton" text="Abbrechen"></m2:FlatButtonWidget>
 		
 	</g:FlowPanel>
 
