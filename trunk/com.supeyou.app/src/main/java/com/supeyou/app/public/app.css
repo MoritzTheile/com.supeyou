@@ -71,12 +71,21 @@ body {
 }
 
 .landingpage-root .text{
+	margin-top: 50px;
+	margin-bottom:  10px;
+	font-size: 20px;
+	text-align: center;
+	color: gray;
+}
+
+.addhero-root .text{
 	margin-top: 60px;
 	margin-bottom:  60px;
 	font-size: 20px;
 	text-align: center;
 	color: gray;
 }
+
 .main-menu .menu {
 	position: relative;
 	top: 0px;
