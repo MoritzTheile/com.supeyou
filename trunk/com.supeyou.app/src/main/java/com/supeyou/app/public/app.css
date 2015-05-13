@@ -78,7 +78,8 @@ body {
 }
 
 .addhero-root .text{
-	margin-left: 60px;
+	margin-left: 30px;
+	margin-right: 30px;
 	margin-bottom:  60px;
 	font-size: 20px;
 	text-align: left;
