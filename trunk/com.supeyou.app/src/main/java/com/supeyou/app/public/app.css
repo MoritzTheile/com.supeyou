@@ -78,10 +78,10 @@ body {
 }
 
 .addhero-root .text{
-	margin-top: 60px;
+	margin-left: 60px;
 	margin-bottom:  60px;
 	font-size: 20px;
-	text-align: center;
+	text-align: left;
 	color: gray;
 }
 

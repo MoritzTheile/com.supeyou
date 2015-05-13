@@ -12,7 +12,7 @@ public class MainMenuWidget extends WidgetView {
 	public MainMenuWidget() {
 
 		final Label menuItem1 = new Label("Choose Hero");
-		final Label menuItem2 = new Label("Add Hero");
+		final Label menuItem2 = new Label("Join As Hero");
 
 		MenuAndDisplay menuAndDisplay = new MenuAndDisplay(menu, display) {
 
