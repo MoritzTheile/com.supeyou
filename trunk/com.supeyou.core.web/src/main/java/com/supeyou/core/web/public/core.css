@@ -139,6 +139,20 @@
 	left: 220px;
 } 
 
+.browser-root.large.hero .listitems{
+	padding:12px;
+}
+.browser-root.large.hero .listitems>div{
+	 text-align: center;
+}
+
+.browser-root.large.hero .listitem.large{
+	display: inline-block;
+	margin: 18px;
+	width: 240px;
+	height: 240px;
+}
+
 .browser-root.large.hero .pager {
 } 
 
