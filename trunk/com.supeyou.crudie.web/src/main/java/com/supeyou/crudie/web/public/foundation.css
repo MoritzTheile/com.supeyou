@@ -99,10 +99,6 @@
   	content:"\f055"; 
 }
 
-
-.query-slot{
-	/*margin-bottom: 32px;*/
-}
 .query-root .gwt-ListBox{
 	padding: 4px 12px 3px 32px;
 	border-radius: 5px;
@@ -142,7 +138,7 @@
 	position:absolute;
 	top:0px;
 	left: 0px;
-	width: 155px;
+	width: 300px;
 	padding: 6px 12px 6px 32px;
 	border-radius: 5px;
 	transition: all 0.40s ease-in-out;
