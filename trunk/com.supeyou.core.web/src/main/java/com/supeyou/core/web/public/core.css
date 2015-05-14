@@ -104,13 +104,35 @@
 }
  
 .browser-root.large.hero .query-slot {
-	/* height: 32px; */
+	position: relative;
 } 
 
-.browser-root.large.hero .query-slot .search-text-field-root{
-	/* position: relative; */
+.browser-root.large.hero .query-root{
+	position:relative;
+	/* margin: 12px; */
+	
+	/* border-style: solid; */
+	/* border-color: blue; */
+	/* width: 400px; */
+	height: 30px;
+	width: 350px;      
+	margin: 32px auto 0 auto;
 }
 
+.browser-root.large.hero .search-text-field-root:after {
+  position: absolute;
+  font-family: FontAwesome;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: normal;
+  top: 10px;
+  left: 10px;
+  color: lightgray;
+  content: "\f002";
+}
+.browser-root.large.hero .search-text-field{
+	height: 24px;
+}
 .browser-root.large.hero .settings {
 	position: absolute;
 	top: 100px;
