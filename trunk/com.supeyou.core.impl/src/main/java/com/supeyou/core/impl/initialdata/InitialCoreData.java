@@ -19,10 +19,10 @@ public class InitialCoreData {
 	private void init() throws CRUDException {
 
 		admin = UserCRUDServiceImpl.i().getInitialAdmin();
-		hero1 = createHero("Tara McCartney", "./heroPics/TaraMcCartney.jpg", "http://unitedforhope.com", "Dedicate her skills to empower India’s rural poor.");
-		hero2 = createHero("Hero 002", "", "", "");
-		hero3 = createHero("Hero 003", "", "", "");
-		hero4 = createHero("Hero 004", "", "", "");
+		hero1 = createHero("Moritz Theile", "./heroPics/MoritzTheile.jpg", "http://mtheile.com", "SupeYou Developer");
+		hero2 = createHero("Martina Fuchs", "./heroPics/MartinaFuchs.jpg", "https://www.xing.com/profile/Martina_Fuchs60", "SupeYou Coach");
+		hero3 = createHero("Nikolaus Teixeira", "./heroPics/NikolausTeixeira.jpg", "http://willkommen-in-muenchen.de", "Engagiert sich für münchner Flüchtlinge");
+		hero4 = createHero("Tara McCartney", "./heroPics/TaraMcCartney.jpg", "http://unitedforhope.com", "Dedicate her skills to empower India’s rural poor.");
 
 	}
 
