@@ -19,17 +19,20 @@ public class InitialCoreData {
 	private void init() throws CRUDException {
 
 		admin = UserCRUDServiceImpl.i().getInitialAdmin();
-		hero1 = createHero("Hero 001");
-		hero2 = createHero("Hero 002");
-		hero3 = createHero("Hero 003");
-		hero4 = createHero("Hero 004");
+		hero1 = createHero("Tara McCartney", "./heroPics/TaraMcCartney.jpg", "http://unitedforhope.com", "Dedicate her skills to empower India’s rural poor.");
+		hero2 = createHero("Hero 002", "", "", "");
+		hero3 = createHero("Hero 003", "", "", "");
+		hero4 = createHero("Hero 004", "", "", "");
 
 	}
 
-	private HeroDTO createHero(String name) throws CRUDException {
+	private HeroDTO createHero(String name, String imageURL, String websiteURL, String comment) throws CRUDException {
 
 		HeroDTO dto = new HeroDTO();
 		dto.setName(new SingleLineString256Type(name));
+		dto.setImageURL(new SingleLineString256Type(imageURL));
+		dto.setWebsiteURL(new SingleLineString256Type(websiteURL));
+		dto.setComment(new SingleLineString256Type(comment));
 		return HeroCRUDServiceImpl.i().updadd(admin, dto);
 
 	}
