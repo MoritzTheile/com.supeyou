@@ -16,13 +16,13 @@ public class WidgetView extends Composite {
 	FlowPanel itemRoot;
 
 	@UiField
-	FlowPanel columnOne;
+	FlowPanel nameSlot;
 	@UiField
-	FlowPanel columnTwo;
+	FlowPanel imageSlot;
 	@UiField
-	FlowPanel columnThree;
+	FlowPanel websiteSlot;
 	@UiField
-	FlowPanel columnFour;
+	FlowPanel commentSlot;
 
 	interface ThisBinder extends UiBinder<Widget, WidgetView> {
 	}

@@ -1,7 +1,10 @@
 package com.supeyou.core.web.client.rpc.hero.chooserlarge.item;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Image;
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.web.client.rpc.hero.RPCCRUDProxy;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
@@ -20,25 +23,36 @@ public class ItemWidget extends WidgetView {
 
 		thisWidget = this;
 
+		websiteSlot.addDomHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				event.stopPropagation();
+
+			}
+		}, ClickEvent.getType());
+
 	}
 
 	private void render() {
 
-		columnOne.clear();
-		columnOne.add(new Label(renderInfoString()));
-		columnTwo.clear();
-		if (thisDTO.getComment() != null) {
-			columnTwo.add(new Label(thisDTO.getComment().value()));
-		}
-	}
-
-	private String renderInfoString() {
-		String infos = "";
+		nameSlot.clear();
 		if (thisDTO.getName() != null) {
-			infos += thisDTO.getName().value();
+			nameSlot.add(new HTML(thisDTO.getName().value()));
+		}
+		imageSlot.clear();
+		if (thisDTO.getImageURL() != null) {
+			imageSlot.add(new Image(thisDTO.getImageURL().value()));
+		}
+		websiteSlot.clear();
+		if (thisDTO.getWebsiteURL() != null) {
+			websiteSlot.add(new HTML("<a target=\"_blank\" href=\"" + thisDTO.getWebsiteURL().value() + "\">" + thisDTO.getWebsiteURL().value() + "</a>"));
+		}
+		commentSlot.clear();
+		if (thisDTO.getComment() != null) {
+			commentSlot.add(new HTML(thisDTO.getComment().value()));
 		}
 
-		return infos;
 	}
 
 	private CRUDProxyListener<HeroDTO> listener = new CRUDProxyListener<HeroDTO>() {
