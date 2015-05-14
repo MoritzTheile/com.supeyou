@@ -86,6 +86,10 @@
     box-shadow: 0 0 0 1px transparent;
 }
 
+.browser-root.large.hero {
+	/*margin-bottom: 32px;*/
+}
+
 .browser-root.large.hero  .label1of2{
     margin: 4px
 }
@@ -94,11 +98,18 @@
 }
 .browser-root.large.hero{
 	position: relative;
+	width: 100%;
+	padding:0px;
+	margin:0px;
 }
  
 .browser-root.large.hero .query-slot {
-	margin-bottom: 12px;
+	/* height: 32px; */
 } 
+
+.browser-root.large.hero .query-slot .search-text-field-root{
+	/* position: relative; */
+}
 
 .browser-root.large.hero .settings {
 	position: absolute;
