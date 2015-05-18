@@ -33,6 +33,12 @@ public class HeroPageWidget extends WidgetView {
 			}
 		});
 
+	}
+
+	private void render() {
+
+		driverSlot.add(new ItemWidget(heroDTO));
+
 		// tmp hack:
 		if (heroDTO.getName().value().toLowerCase().contains("theile")) {
 			obsInvSlot.add(new HTML(
@@ -45,12 +51,6 @@ public class HeroPageWidget extends WidgetView {
 
 					));
 		}
-
-	}
-
-	private void render() {
-
-		driverSlot.add(new ItemWidget(heroDTO));
 
 	}
 
