@@ -5,7 +5,7 @@
 	>
 	<ui:with field='text' type='com.supeyou.crudie.web.client.resources.i18n.Text' />
 
-	<g:FlowPanel  styleName="listitem large"  ui:field="itemRoot">
+	<g:FlowPanel  styleName="hero listitem large"  ui:field="itemRoot">
 		<g:FlowPanel styleName="name-slot" ui:field="nameSlot"></g:FlowPanel>
 		<g:FlowPanel styleName="image-slot" ui:field="imageSlot"></g:FlowPanel>
 		<g:FlowPanel styleName="website-slot" ui:field="websiteSlot"></g:FlowPanel>

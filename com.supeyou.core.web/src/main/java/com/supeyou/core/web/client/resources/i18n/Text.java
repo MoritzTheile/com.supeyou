@@ -19,4 +19,6 @@ public interface Text extends Messages {
 
 	String ADDHERO_Text_HTML();
 
+	String LANDINGPAGE_Text_HTML();
+
 }

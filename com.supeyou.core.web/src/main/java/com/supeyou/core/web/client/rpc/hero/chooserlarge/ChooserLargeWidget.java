@@ -4,9 +4,11 @@ import java.util.List;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.ui.Widget;
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.HeroFetchQuery;
+import com.supeyou.core.web.client.HistoryController.ANCHOR;
 import com.supeyou.core.web.client.rpc.hero.ListDataProvider;
 import com.supeyou.core.web.client.rpc.hero.chooserlarge.item.ItemWidget;
 import com.supeyou.core.web.client.rpc.hero.form.FormWidget;
@@ -58,17 +60,7 @@ public class ChooserLargeWidget extends WidgetView {
 
 				if (selection.size() == 1) {
 
-					final PopupWidget formPopup = new PopupWidget(false);
-					formPopup.setPosition(100, 700);
-					formPopup.init(
-							new FormWidget(dataProvider, selection.iterator().next()) {
-								@Override
-								protected void close() {
-									widgetList.getSelectionModel().clearSelection();
-									formPopup.closePopup();
-								}
-							}
-							);
+					History.newItem(ANCHOR.HERO.name() + "_" + selection.iterator().next().getId().value());
 
 				} else {
 					// nothing yet
