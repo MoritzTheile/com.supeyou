@@ -12,10 +12,10 @@ import javax.persistence.Query;
 
 import com.supeyou.crudie.iface.CRUDService;
 import com.supeyou.crudie.iface.datatype.CRUDException;
-import com.supeyou.crudie.iface.datatype.FetchQuery;
-import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.datatype.CRUDException.CODE;
+import com.supeyou.crudie.iface.datatype.FetchQuery;
 import com.supeyou.crudie.iface.datatype.FetchQuery.SORTDIRECTION;
+import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.datatype.enums.MIMETYPE;
 import com.supeyou.crudie.iface.datatype.types.AbstrType;
 import com.supeyou.crudie.iface.datatype.types.FileIDType;
@@ -118,7 +118,7 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 
 			public void checkPermissions(UserEntity actor) throws CRUDException {
 
-				STATICS.checkActorNotNull(actor);
+				// STATICS.checkActorNotNull(actor);
 				// STATICS.checkActorIsAdmin(actor);
 
 			}
