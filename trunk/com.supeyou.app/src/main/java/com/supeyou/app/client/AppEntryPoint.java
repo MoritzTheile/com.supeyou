@@ -1,10 +1,12 @@
 package com.supeyou.app.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.History;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.supeyou.app.client.view.landingpage.LandingPageWidget;
 import com.supeyou.auth.web.client.login.loginbutton.LoginButtonWidget;
-import com.supeyou.core.web.client.mainmenu.MainMenuWidget;
+import com.supeyou.core.web.client.HistoryController;
+import com.supeyou.core.web.client.HistoryController.ANCHOR;
 import com.supeyou.crudie.web.client.model.AbstrObservable.Observer;
 import com.supeyou.crudie.web.client.model.AppInfoModel;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
@@ -24,12 +26,14 @@ public class AppEntryPoint implements EntryPoint {
 			@Override
 			public void modelHasChanged(Void changes) {
 
+				Window.alert("LoginStateModel has changed");
+
 				if (LoginStateModel.i().getLoggedInUser() != null) {
 
 					// RootPanel.get("main").add(new MainMenuWidget());
 
 				} else {
-					RootPanel.get("main").clear();
+					// RootPanel.get("main").clear();
 				}
 
 			}
@@ -39,8 +43,13 @@ public class AppEntryPoint implements EntryPoint {
 		RootPanel.get("footer").add(new VersionPresenter(appInfoModel));
 		appInfoModel.updateFromServer();
 
-		RootPanel.get("main").add(new LandingPageWidget());
-		RootPanel.get("main").add(new MainMenuWidget());
-	}
+		HistoryController.i();
 
+		if (History.getToken() == null || History.getToken().equals("")) {
+			History.newItem(ANCHOR.LP.name());
+		} else {
+			HistoryController.i().show(History.getToken());
+		}
+
+	}
 }

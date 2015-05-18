@@ -1,4 +1,4 @@
-package com.supeyou.app.client.view.landingpage;
+package com.supeyou.core.web.client.view.landingpage;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

@@ -9,6 +9,4 @@ public interface Text extends Messages {
 
 	String MULTIUSE_AppName();
 
-	String LANDINGPAGE_Text_HTML();
-
 }

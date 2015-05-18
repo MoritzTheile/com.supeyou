@@ -4,7 +4,7 @@
 	xmlns:m="urn:import:com.supeyou.crudie.web.client.fields.types"
 	xmlns:m2="urn:import:com.supeyou.crudie.web.client.uiorga.flatbutton">
 	<ui:with field='text'
-		type='com.supeyou.app.client.resources.i18n.Text' />
+		type='com.supeyou.core.web.client.resources.i18n.Text' />
  
 	<g:FlowPanel styleName="landingpage-root" ui:field="root">
 		<g:HTML styleName="text" HTML="{text.LANDINGPAGE_Text_HTML}"></g:HTML>

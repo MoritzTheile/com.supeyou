@@ -1,4 +1,4 @@
-package com.supeyou.app.client.view.landingpage;
+package com.supeyou.core.web.client.view.landingpage;
 
 
 public class LandingPageWidget extends WidgetView {
