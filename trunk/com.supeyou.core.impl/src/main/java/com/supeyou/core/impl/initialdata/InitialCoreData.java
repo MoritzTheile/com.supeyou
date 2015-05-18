@@ -22,7 +22,7 @@ public class InitialCoreData {
 		hero1 = createHero("Moritz Theile", "./heroPics/MoritzTheile.jpg", "http://mtheile.com", "SupeYou Developer");
 		hero2 = createHero("Martina Fuchs", "./heroPics/MartinaFuchs.jpg", "https://www.xing.com/profile/Martina_Fuchs60", "SupeYou Coach");
 		hero3 = createHero("Nikolaus Teixeira", "./heroPics/NikolausTeixeira.jpg", "http://willkommen-in-muenchen.de", "Engagiert sich für münchner Flüchtlinge");
-		hero4 = createHero("Tara McCartney", "./heroPics/TaraMcCartney.jpg", "http://unitedforhope.com", "Dedicate her skills to empower India’s rural poor.");
+		hero4 = createHero("Tara McCartney", "./heroPics/TaraMcCartney.jpg", "http://unitedforhope.com", "Dedicates her skills to empower India’s rural poor.");
 
 	}
 
