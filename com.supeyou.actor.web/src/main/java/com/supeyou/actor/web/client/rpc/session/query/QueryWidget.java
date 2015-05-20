@@ -6,19 +6,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.supeyou.actor.iface.dto.SessionDTO;
+import com.supeyou.actor.iface.dto.SessionFetchQuery;
+import com.supeyou.actor.web.client.rpc.session.query.sortdirection.SortDirectionWidget;
 import com.supeyou.crudie.iface.datatype.FetchQuery.SORTDIRECTION;
-import com.supeyou.crudie.iface.dto.GroupDTO;
-import com.supeyou.crudie.iface.dto.GroupFetchQuery;
 import com.supeyou.crudie.web.client.fields.types.AbstrListBoxField;
 import com.supeyou.crudie.web.client.resources.i18n.Text;
 import com.supeyou.crudie.web.client.rpc.abstr.list.AbstrListDataProvider;
-import com.supeyou.actor.web.client.rpc.session.query.sortdirection.SortDirectionWidget;
 import com.supeyou.crudie.web.client.ui.searchtext.SearchTextWidget;
 import com.supeyou.crudie.web.client.ui.searchtext.SearchTextWidget.Listener;
 
 public class QueryWidget extends WidgetView {
 
-	public QueryWidget(final AbstrListDataProvider<GroupDTO, GroupFetchQuery> dataProvider) {
+	public QueryWidget(final AbstrListDataProvider<SessionDTO, SessionFetchQuery> dataProvider) {
 
 		searchSlot.add(new SearchTextWidget(dataProvider.getFetchQuery().getSearchString(), new Listener() {
 
@@ -80,10 +80,10 @@ public class QueryWidget extends WidgetView {
 		{
 			final Map<String, String> column2label = new HashMap<String, String>();
 
-			// column2label.put(GroupFetchQuery.COLUMN_EMAILADDRESS, Text.i.QUERY_COLUMN_EMAILADDRESS());
-			// column2label.put(GroupFetchQuery.COLUMN_BIRTHDATE, Text.i.QUERY_COLUMN_BIRTHDATE());
-			// column2label.put(GroupFetchQuery.COLUMN_AMOUNT, Text.i.QUERY_COLUMN_AMOUNT());
-			// column2label.put(GroupFetchQuery.COLUMN_ACTIVE, Text.i.QUERY_COLUMN_ACTIVE());
+			// column2label.put(SessionFetchQuery.COLUMN_EMAILADDRESS, Text.i.QUERY_COLUMN_EMAILADDRESS());
+			// column2label.put(SessionFetchQuery.COLUMN_BIRTHDATE, Text.i.QUERY_COLUMN_BIRTHDATE());
+			// column2label.put(SessionFetchQuery.COLUMN_AMOUNT, Text.i.QUERY_COLUMN_AMOUNT());
+			// column2label.put(SessionFetchQuery.COLUMN_ACTIVE, Text.i.QUERY_COLUMN_ACTIVE());
 
 			sortSlot.add(new AbstrListBoxField<String>(dataProvider.getFetchQuery().getOrderByColumn(), false) {
 

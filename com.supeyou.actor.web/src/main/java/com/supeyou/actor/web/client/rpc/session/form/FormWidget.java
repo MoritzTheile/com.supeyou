@@ -6,29 +6,29 @@ import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.supeyou.crudie.iface.dto.GroupDTO;
-import com.supeyou.crudie.iface.dto.GroupFetchQuery;
+import com.supeyou.actor.iface.dto.SessionDTO;
+import com.supeyou.actor.iface.dto.SessionFetchQuery;
+import com.supeyou.actor.web.client.rpc.session.RPCCRUDProxy;
+import com.supeyou.actor.web.client.rpc.session.form.fields.FieldsWidget;
 import com.supeyou.crudie.web.client.model.AbstrObservable.Observer;
 import com.supeyou.crudie.web.client.resources.i18n.Text;
 import com.supeyou.crudie.web.client.rpc.abstr.list.AbstrListDataProvider;
-import com.supeyou.actor.web.client.rpc.session.RPCCRUDProxy;
-import com.supeyou.actor.web.client.rpc.session.form.fields.FieldsWidget;
 
 public class FormWidget extends WidgetView {
 
-	public FormWidget(AbstrListDataProvider<GroupDTO, GroupFetchQuery> dataProvider, GroupDTO userDTO) {
+	public FormWidget(AbstrListDataProvider<SessionDTO, SessionFetchQuery> dataProvider, SessionDTO userDTO) {
 
 		init(dataProvider, userDTO);
 
 	}
 
-	public FormWidget(AbstrListDataProvider<GroupDTO, GroupFetchQuery> dataProvider) {
+	public FormWidget(AbstrListDataProvider<SessionDTO, SessionFetchQuery> dataProvider) {
 
-		init(dataProvider, new GroupDTO());
+		init(dataProvider, new SessionDTO());
 
 	}
 
-	private void init(AbstrListDataProvider<GroupDTO, GroupFetchQuery> dataProvider, final GroupDTO dto) {
+	private void init(AbstrListDataProvider<SessionDTO, SessionFetchQuery> dataProvider, final SessionDTO dto) {
 
 		dataProvider.addObserver(new Observer<Void>() {
 
@@ -113,11 +113,11 @@ public class FormWidget extends WidgetView {
 		}
 	}
 
-	private void save(GroupDTO userDTO) {
-		RPCCRUDProxy.i().updadd(userDTO, new AsyncCallback<GroupDTO>() {
+	private void save(SessionDTO userDTO) {
+		RPCCRUDProxy.i().updadd(userDTO, new AsyncCallback<SessionDTO>() {
 
 			@Override
-			public void onSuccess(GroupDTO result) {
+			public void onSuccess(SessionDTO result) {
 				updadded(result);
 
 			}
@@ -140,7 +140,7 @@ public class FormWidget extends WidgetView {
 		// can be overwritten
 	}
 
-	protected void updadded(GroupDTO dto) {
+	protected void updadded(SessionDTO dto) {
 		// can be overwritten
 	}
 

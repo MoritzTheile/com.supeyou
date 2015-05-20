@@ -21,4 +21,6 @@ public interface Text extends Messages {
 
 	String LOGIN_WrongCredentials();
 
+	String FIELD_NAME_SessionId();
+
 }

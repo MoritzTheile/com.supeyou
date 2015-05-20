@@ -1,33 +1,33 @@
 package com.supeyou.actor.web.client.rpc.session;
 
-import com.supeyou.crudie.iface.dto.GroupDTO;
-import com.supeyou.crudie.iface.dto.GroupFetchQuery;
-import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDServiceAsync;
+import com.supeyou.actor.iface.dto.SessionDTO;
+import com.supeyou.actor.iface.dto.SessionFetchQuery;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
+import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDServiceAsync;
 import com.supeyou.crudie.web.client.rpc.abstr.list.AbstrListDataProvider;
 
-public class ListDataProvider extends AbstrListDataProvider<GroupDTO, GroupFetchQuery> {
+public class ListDataProvider extends AbstrListDataProvider<SessionDTO, SessionFetchQuery> {
 
-	public ListDataProvider(GroupFetchQuery fetchQuery) {
+	public ListDataProvider(SessionFetchQuery fetchQuery) {
 		super(fetchQuery);
 
-		RPCCRUDProxy.i().addListenerForAllDTOs(new CRUDProxyListener<GroupDTO>() {
+		RPCCRUDProxy.i().addListenerForAllDTOs(new CRUDProxyListener<SessionDTO>() {
 
 			@Override
-			public void wasUpdated(GroupDTO dto) {
+			public void wasUpdated(SessionDTO dto) {
 				// nothing
 
 			}
 
 			@Override
-			public void wasDeleted(GroupDTO dto) {
+			public void wasDeleted(SessionDTO dto) {
 
 				fetchData();
 
 			}
 
 			@Override
-			public void wasCreated(GroupDTO dto) {
+			public void wasCreated(SessionDTO dto) {
 				fetchData();
 
 			}
@@ -36,7 +36,7 @@ public class ListDataProvider extends AbstrListDataProvider<GroupDTO, GroupFetch
 	}
 
 	@Override
-	public RPCAbstractCRUDServiceAsync<GroupDTO, GroupFetchQuery> getAbstractCRUDService() {
+	public RPCAbstractCRUDServiceAsync<SessionDTO, SessionFetchQuery> getAbstractCRUDService() {
 
 		return RPCCRUDServiceAsync.i;
 	}

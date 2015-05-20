@@ -1,14 +1,14 @@
 package com.supeyou.actor.web.client.rpc.session;
 
-import com.supeyou.crudie.iface.dto.GroupDTO;
-import com.supeyou.crudie.iface.dto.GroupFetchQuery;
+import com.supeyou.actor.iface.dto.SessionDTO;
+import com.supeyou.actor.iface.dto.SessionFetchQuery;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDServiceAsync;
 
-public class RPCCRUDProxy extends RPCAbstractCRUDProxy<GroupDTO, GroupFetchQuery> {
+public class RPCCRUDProxy extends RPCAbstractCRUDProxy<SessionDTO, SessionFetchQuery> {
 
 	@Override
-	public RPCAbstractCRUDServiceAsync<GroupDTO, GroupFetchQuery> getAbstractCRUDService() {
+	public RPCAbstractCRUDServiceAsync<SessionDTO, SessionFetchQuery> getAbstractCRUDService() {
 		return RPCCRUDServiceAsync.i;
 	}
 
