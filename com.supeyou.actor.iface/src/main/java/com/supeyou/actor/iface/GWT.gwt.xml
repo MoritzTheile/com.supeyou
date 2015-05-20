@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+
+  <source path='datatype'/>
+  <source path='dto'/>
+  <source path='common'/>
+
+</module>

@@ -37,7 +37,9 @@
 	</build>
 	<modules>
 		<module>../com.supeyou.app</module>
-		<module>../com.supeyou.auth.web</module>
+		<module>../com.supeyou.actor.iface</module>
+		<module>../com.supeyou.actor.impl</module>
+		<module>../com.supeyou.actor.web</module>
 		<module>../com.supeyou.core.iface</module>
 		<module>../com.supeyou.core.impl</module>
 		<module>../com.supeyou.core.web</module>
