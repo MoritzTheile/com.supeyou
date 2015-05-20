@@ -95,13 +95,21 @@
 		<servlet-name>RPCHeroCRUDServiceImpl</servlet-name>
 		<url-pattern>/RPCHeroCRUDServiceImpl</url-pattern>
 	</servlet-mapping>
-		<servlet>
+	<servlet>
 		<servlet-name>RPCSessionCRUDServiceImpl</servlet-name>
 		<servlet-class>com.supeyou.actor.web.server.RPCSessionCRUDServiceImpl</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>RPCSessionCRUDServiceImpl</servlet-name>
 		<url-pattern>/RPCSessionCRUDServiceImpl</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RPCActingUserCRUDServiceImpl</servlet-name>
+		<servlet-class>com.supeyou.actor.web.server.RPCActingUserCRUDServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RPCActingUserCRUDServiceImpl</servlet-name>
+		<url-pattern>/RPCActingUserCRUDServiceImpl</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>

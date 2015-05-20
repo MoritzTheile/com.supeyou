@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.enums.ROLE;
-import com.supeyou.crudie.iface.datatype.types.EmailAddressType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.GroupDTO;
 import com.supeyou.crudie.iface.dto.User2GroupDTO;
@@ -84,7 +83,6 @@ public class InitialData {
 		List<ROLE> roles = new ArrayList<>();
 		userDTO.setRoles(roles);
 		userDTO.setLoginId(new SingleLineString256Type(name + "@mtheile.com"));
-		userDTO.setEmailAddress(new EmailAddressType(name + "@mtheile.com"));
 		return UserCRUDServiceImpl.i().updadd(initialAdmin, userDTO);
 	}
 
@@ -92,7 +90,6 @@ public class InitialData {
 		for (int i = 0; i < 120; i++) {
 			UserDTO userDTO = new UserDTO();
 			userDTO.setLoginId(new SingleLineString256Type("initialUser" + i + "@mtheile.com"));
-			userDTO.setEmailAddress(new EmailAddressType("initialUser" + i + "@mtheile.com"));
 			UserCRUDServiceImpl.i().updadd(initialAdmin, userDTO);
 		}
 	}

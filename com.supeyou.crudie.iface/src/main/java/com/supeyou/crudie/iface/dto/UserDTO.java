@@ -9,15 +9,12 @@ import com.supeyou.crudie.iface.datatype.enums.LOCALE;
 import com.supeyou.crudie.iface.datatype.enums.ROLE;
 import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.datatype.types.DateType;
-import com.supeyou.crudie.iface.datatype.types.EmailAddressType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.datatype.types.UserIDType;
 
 public class UserDTO extends AbstrDTO<UserIDType> implements Serializable {
 
 	private static final long serialVersionUID = 242457943L;
-
-	private EmailAddressType emailAddress;
 
 	private SingleLineString256Type loginId;
 
@@ -58,14 +55,6 @@ public class UserDTO extends AbstrDTO<UserIDType> implements Serializable {
 
 	public void setLoginId(SingleLineString256Type name) {
 		this.loginId = name;
-	}
-
-	public EmailAddressType getEmailAddress() {
-		return emailAddress;
-	}
-
-	public void setEmailAddress(EmailAddressType emailAddress) {
-		this.emailAddress = emailAddress;
 	}
 
 	public List<ROLE> getRoles() {

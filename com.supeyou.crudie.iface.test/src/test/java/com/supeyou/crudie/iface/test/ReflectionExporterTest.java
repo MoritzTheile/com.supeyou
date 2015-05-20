@@ -9,7 +9,6 @@ import com.supeyou.crudie.iface.datatype.enums.LOCALE;
 import com.supeyou.crudie.iface.datatype.enums.ROLE;
 import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.datatype.types.DateType;
-import com.supeyou.crudie.iface.datatype.types.EmailAddressType;
 import com.supeyou.crudie.iface.datatype.types.UserIDType;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.impl.dtohelper.ReflectionExporter;
@@ -32,8 +31,6 @@ public class ReflectionExporterTest {
 		dto.setAmount(amount);
 		DateType date = new DateType("2015-02-16");
 		dto.setBirthday(date);
-		EmailAddressType email = new EmailAddressType("test@test.de");
-		dto.setEmailAddress(email);
 		dto.setLocale(LOCALE.de);
 
 		Map<String, String> row = ReflectionExporter.fillStringMap(dto);
@@ -47,7 +44,6 @@ public class ReflectionExporterTest {
 		Assert.assertEquals(active + "", row.get("Active"));
 		Assert.assertEquals(amount + "", row.get("Amount"));
 		Assert.assertEquals(date + "", row.get("Birthday"));
-		Assert.assertEquals(email + "", row.get("EmailAddress"));
 		Assert.assertEquals(LOCALE.de + "", row.get("Locale"));
 
 	}

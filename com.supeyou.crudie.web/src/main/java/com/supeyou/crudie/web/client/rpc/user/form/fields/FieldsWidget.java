@@ -9,7 +9,6 @@ import com.supeyou.crudie.iface.datatype.enums.LOCALE;
 import com.supeyou.crudie.iface.datatype.enums.ROLE;
 import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.datatype.types.DateType;
-import com.supeyou.crudie.iface.datatype.types.EmailAddressType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.web.client.fields.base.AbstrCompositeField;
@@ -17,7 +16,6 @@ import com.supeyou.crudie.web.client.fields.base.Field;
 import com.supeyou.crudie.web.client.fields.types.FieldForAmountType;
 import com.supeyou.crudie.web.client.fields.types.FieldForBoolean;
 import com.supeyou.crudie.web.client.fields.types.FieldForDateType;
-import com.supeyou.crudie.web.client.fields.types.FieldForEmailAddressType;
 import com.supeyou.crudie.web.client.fields.types.FieldForLocale;
 import com.supeyou.crudie.web.client.fields.types.FieldForRoles;
 import com.supeyou.crudie.web.client.fields.types.FieldForSingleLineString256Type;
@@ -51,18 +49,6 @@ public class FieldsWidget extends WidgetView {
 
 		);
 
-		put(
-
-				Text.i.FIELD_NAME_Email(),
-				new FieldForEmailAddressType(thisDto.getEmailAddress()) {
-
-					@Override
-					public void onHasChanged(EmailAddressType value) {
-						thisDto.setEmailAddress(value);
-						hasChanged();
-					}
-
-				});
 		put(
 
 				Text.i.FIELD_NAME_Active(),

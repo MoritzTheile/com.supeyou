@@ -40,9 +40,6 @@ public class ItemWidget extends WidgetView {
 		if (thisDTO.getLoginId() != null) {
 			infos += thisDTO.getLoginId().value() + "\n";
 		}
-		if (thisDTO.getEmailAddress() != null) {
-			infos += thisDTO.getEmailAddress().value();
-		}
 		if (thisDTO.getBirthday() != null) {
 			infos += ", " + HELPER.date2string(thisDTO.getBirthday());
 		}
