@@ -6,13 +6,13 @@ import org.junit.Test;
 import com.supeyou.actor.impl.initialdata.InitialActorData;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 
-public class SessionTest {
+public class ActingUser2SessionTest {
 
 	@Test
 	public void test() throws CRUDException {
 
-		Assert.assertNotNull(InitialActorData.i().session1);
-		Assert.assertNotNull(InitialActorData.i().session1.getId());
+		Assert.assertNotNull(InitialActorData.i().actingUser121ession1DTO);
+		Assert.assertNotNull(InitialActorData.i().actingUser121ession1DTO.getId());
 	}
 
 }

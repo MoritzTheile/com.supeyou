@@ -12,6 +12,7 @@ public class ActingUserTest {
 	public void test() throws CRUDException {
 
 		Assert.assertNotNull(InitialActorData.i().actingUser1);
+		Assert.assertNotNull(InitialActorData.i().actingUser1.getId());
 	}
 
 }
