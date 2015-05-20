@@ -1,7 +1,0 @@
-com\supeyou\actor\impl\ActingUserCRUDServiceImpl.class
-com\supeyou\actor\impl\initialdata\InitialActorData.class
-com\supeyou\actor\impl\entity\ActingUser2SessionEntity.class
-com\supeyou\actor\impl\entity\SessionEntity.class
-com\supeyou\actor\impl\entity\ActingUserEntity.class
-com\supeyou\actor\impl\ActingUser2SessionCRUDServiceImpl.class
-com\supeyou\actor\impl\SessionCRUDServiceImpl.class
