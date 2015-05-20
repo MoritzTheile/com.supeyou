@@ -95,6 +95,15 @@
 		<servlet-name>RPCHeroCRUDServiceImpl</servlet-name>
 		<url-pattern>/RPCHeroCRUDServiceImpl</url-pattern>
 	</servlet-mapping>
+		<servlet>
+		<servlet-name>RPCSessionCRUDServiceImpl</servlet-name>
+		<servlet-class>com.supeyou.actor.web.server.RPCSessionCRUDServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RPCSessionCRUDServiceImpl</servlet-name>
+		<url-pattern>/RPCSessionCRUDServiceImpl</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

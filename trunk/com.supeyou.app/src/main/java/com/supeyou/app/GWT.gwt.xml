@@ -25,8 +25,9 @@
   <inherits name="com.google.gwt.i18n.I18N"/> 
   
   <inherits name="com.google.gwt.resources.Resources" />
-  <inherits name="com.supeyou.crudie.web.GWT"/>
+  
   <inherits name="com.supeyou.actor.web.GWT"/>
+  <inherits name="com.supeyou.crudie.web.GWT"/>
   <inherits name="com.supeyou.core.web.GWT"/>
   
   

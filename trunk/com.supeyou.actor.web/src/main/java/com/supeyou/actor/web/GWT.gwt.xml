@@ -24,6 +24,7 @@
   
   <inherits name="com.google.gwt.resources.Resources" />
   <inherits name="com.supeyou.crudie.web.GWT" />
+  <inherits name="com.supeyou.actor.iface.GWT" />
   
 
    <extend-property name="locale" values="de"/>

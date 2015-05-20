@@ -1,7 +1,7 @@
 package com.supeyou.actor.impl.initialdata;
 
 import com.supeyou.actor.iface.dto.SessionDTO;
-import com.supeyou.actor.impl.HeroCRUDServiceImpl;
+import com.supeyou.actor.impl.SessionCRUDServiceImpl;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.UserDTO;
@@ -27,7 +27,7 @@ public class InitialActorData {
 		SessionDTO dto = new SessionDTO();
 		dto.setHttpSessionId(new SingleLineString256Type(httpSessionId));
 		dto.setBrowserMark(new SingleLineString256Type(browserMark));
-		return HeroCRUDServiceImpl.i().updadd(admin, dto);
+		return SessionCRUDServiceImpl.i().updadd(admin, dto);
 
 	}
 
