@@ -2,17 +2,17 @@ package com.supeyou.actor.web.client.rpc.session.chooserlarge.item;
 
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Label;
-import com.supeyou.crudie.iface.dto.GroupDTO;
-import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
+import com.supeyou.actor.iface.dto.SessionDTO;
 import com.supeyou.actor.web.client.rpc.session.RPCCRUDProxy;
+import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
 
 public class ItemWidget extends WidgetView {
 
 	private final ItemWidget thisWidget;
 
-	private GroupDTO thisDTO;
+	private SessionDTO thisDTO;
 
-	public ItemWidget(GroupDTO dto) {
+	public ItemWidget(SessionDTO dto) {
 
 		this.thisDTO = dto;
 
@@ -30,23 +30,23 @@ public class ItemWidget extends WidgetView {
 		columnOne.add(new Label(renderInfoString()));
 
 		columnThree.clear();
-		columnThree.add(new com.supeyou.crudie.web.client.rpc.user2group.assoaeditor.AssoAEditorWidget(thisDTO, false));
+		// columnThree.add(new com.supeyou.crudie.web.client.rpc.user2group.assoaeditor.AssoAEditorWidget(thisDTO, false));
 
 	}
 
 	private String renderInfoString() {
 		String infos = "";
-		if (thisDTO.getName() != null) {
-			infos += thisDTO.getName().value();
+		if (thisDTO.getHttpSessionId() != null) {
+			infos += thisDTO.getHttpSessionId().value();
 		}
 
 		return infos;
 	}
 
-	private CRUDProxyListener<GroupDTO> listener = new CRUDProxyListener<GroupDTO>() {
+	private CRUDProxyListener<SessionDTO> listener = new CRUDProxyListener<SessionDTO>() {
 
 		@Override
-		public void wasUpdated(GroupDTO dto) {
+		public void wasUpdated(SessionDTO dto) {
 
 			final String updatedStyle = "updated";
 
@@ -72,14 +72,14 @@ public class ItemWidget extends WidgetView {
 		}
 
 		@Override
-		public void wasDeleted(GroupDTO dto) {
+		public void wasDeleted(SessionDTO dto) {
 
 			removeFromParent();
 
 		}
 
 		@Override
-		public void wasCreated(GroupDTO dto) {
+		public void wasCreated(SessionDTO dto) {
 
 			// not possible
 

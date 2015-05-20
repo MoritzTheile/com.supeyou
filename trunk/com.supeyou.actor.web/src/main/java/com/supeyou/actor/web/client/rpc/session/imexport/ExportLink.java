@@ -3,18 +3,18 @@ package com.supeyou.actor.web.client.rpc.session.imexport;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.supeyou.actor.iface.dto.SessionFetchQuery;
+import com.supeyou.actor.web.client.rpc.session.RPCCRUDServiceAsync;
 import com.supeyou.crudie.iface.datatype.types.FileIDType;
 import com.supeyou.crudie.iface.dto.FileDTO;
-import com.supeyou.crudie.iface.dto.GroupFetchQuery;
 import com.supeyou.crudie.web.client.resources.i18n.Text;
-import com.supeyou.actor.web.client.rpc.session.RPCCRUDServiceAsync;
 import com.supeyou.crudie.web.client.ui.fileviewer.FileViewerWidget;
 import com.supeyou.crudie.web.client.uiorga.linkbutton.LinkButtonWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 
 public class ExportLink extends LinkButtonWidget {
 
-	public ExportLink(final GroupFetchQuery fetchQuery) {
+	public ExportLink(final SessionFetchQuery fetchQuery) {
 
 		setText(Text.i.LINK_Export());
 
