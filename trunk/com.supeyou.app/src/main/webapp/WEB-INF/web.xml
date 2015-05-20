@@ -10,7 +10,7 @@
 
 	<filter>
 		<filter-name>BrowserMarkingFilter</filter-name>
-		<filter-class>com.supeyou.auth.web.server.BrowserMarkingFilter</filter-class>
+		<filter-class>com.supeyou.actor.web.server.BrowserMarkingFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>BrowserMarkingFilter</filter-name>
@@ -20,7 +20,7 @@
 	
 	<filter>
 		<filter-name>ActorFilter</filter-name>
-		<filter-class>com.supeyou.auth.web.server.ActorFilter</filter-class>
+		<filter-class>com.supeyou.actor.web.server.ActorFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>ActorFilter</filter-name>
@@ -65,7 +65,7 @@
 	</servlet>
 	<servlet>
 		<servlet-name>RPCAuthServiceImpl</servlet-name>
-		<servlet-class>com.supeyou.auth.web.server.RPCAuthServiceImpl</servlet-class>
+		<servlet-class>com.supeyou.actor.web.server.RPCAuthServiceImpl</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>RPCAuthServiceImpl</servlet-name>
