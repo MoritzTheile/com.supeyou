@@ -71,6 +71,6 @@ public abstract class RPCAbstrCRUDServiceImpl<D extends AbstrDTO<?>, F extends F
 	}
 
 	public UserDTO getActor() {
-		return SessionStore.getAuthenticatedActor(this.getThreadLocalRequest().getSession());
+		return SessionStore.getActor(this.getThreadLocalRequest().getSession());
 	}
 }

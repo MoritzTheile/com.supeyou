@@ -30,7 +30,7 @@ public class UserEntity extends AbstrEntity<UserIDType> {
 	 */
 
 	// @Index(name = "LOGINID_INDEX")
-	@Column(name = UserFetchQuery.COLUMN_LOGINID, nullable = false, length = 256, unique = true)
+	@Column(name = UserFetchQuery.COLUMN_LOGINID, nullable = true, length = 256, unique = true)
 	private String loginId;
 
 	// @Index(name = "EMAILADDRESS_INDEX")
