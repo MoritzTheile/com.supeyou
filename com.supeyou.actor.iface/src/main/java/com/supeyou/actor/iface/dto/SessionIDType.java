@@ -3,19 +3,19 @@ package com.supeyou.actor.iface.dto;
 import com.supeyou.crudie.iface.datatype.types.AbstrType;
 import com.supeyou.crudie.iface.datatype.types.TypeException;
 
-public class HeroIDType extends AbstrType<Long> {
+public class SessionIDType extends AbstrType<Long> {
 
 	private static final long serialVersionUID = 820234979692L;
 
-	public HeroIDType() {
+	public SessionIDType() {
 
 	}
 
-	public HeroIDType(Long value) {
+	public SessionIDType(Long value) {
 		setValue(value);
 	}
 
-	public HeroIDType(String stringValue) {
+	public SessionIDType(String stringValue) {
 		setValue(new Long(stringValue));
 	}
 
