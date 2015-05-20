@@ -23,7 +23,7 @@ public class InitialActorData {
 		admin = UserCRUDServiceImpl.i().getInitialAdmin();
 		session1 = create("ajkajsdf", "78345919");
 		session2 = create("erze8ak", "837862992");
-		actingUser1 = create("");
+		actingUser1 = create("aActingUserId_278t");
 
 	}
 

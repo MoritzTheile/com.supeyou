@@ -11,7 +11,7 @@ public class ActingUserTest {
 	@Test
 	public void test() throws CRUDException {
 
-		Assert.assertNotNull(InitialActorData.i().session1);
+		Assert.assertNotNull(InitialActorData.i().actingUser1);
 	}
 
 }
