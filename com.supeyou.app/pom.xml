@@ -12,7 +12,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.hotelorga</groupId>
-			<artifactId>auth.web</artifactId>
+			<artifactId>actor.web</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
