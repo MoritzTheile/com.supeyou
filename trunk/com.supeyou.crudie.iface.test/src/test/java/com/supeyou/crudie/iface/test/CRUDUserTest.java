@@ -14,7 +14,6 @@ import com.supeyou.crudie.iface.datatype.enums.MIMETYPE;
 import com.supeyou.crudie.iface.datatype.enums.ROLE;
 import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.datatype.types.DateType;
-import com.supeyou.crudie.iface.datatype.types.EmailAddressType;
 import com.supeyou.crudie.iface.datatype.types.FileIDType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.datatype.types.UserIDType;
@@ -35,8 +34,6 @@ public class CRUDUserTest {
 
 		UserDTO actor = userService.getInitialAdmin();
 
-		System.out.println(actor.getEmailAddress().value() + " - " + actor.getRoles());
-
 		String email = "DagobertDuck1@moritztheile.de";
 
 		UserIDType userID1 = createUser(actor, email);
@@ -44,7 +41,6 @@ public class CRUDUserTest {
 		UserDTO userDTO1 = userService.get(actor, userID1);
 
 		Assert.assertNotNull(userDTO1);
-		Assert.assertEquals(email, userDTO1.getEmailAddress().value());
 
 		userService.delete(actor, userID1);
 
@@ -132,7 +128,6 @@ public class CRUDUserTest {
 		Assert.assertEquals(userDTO.getActive(), importedUser.getActive());
 		Assert.assertEquals(userDTO.getAmount(), importedUser.getAmount());
 		Assert.assertEquals(userDTO.getBirthday(), importedUser.getBirthday());
-		Assert.assertEquals(userDTO.getEmailAddress(), importedUser.getEmailAddress());
 		Assert.assertEquals(userDTO.getLocale(), importedUser.getLocale());
 		Assert.assertEquals(userDTO.getLoginId(), importedUser.getLoginId());
 
@@ -144,7 +139,6 @@ public class CRUDUserTest {
 		userDTO.setActive(true);
 		userDTO.setAmount(new AmountType(9999));
 		userDTO.setBirthday(new DateType("2014-12-23"));
-		userDTO.setEmailAddress(new EmailAddressType("testImport@crudusertest.de"));
 		userDTO.setLocale(LOCALE.de);
 		userDTO.setLoginId(new SingleLineString256Type("testImport@crudusertest"));
 
@@ -157,7 +151,6 @@ public class CRUDUserTest {
 
 		UserDTO userDTO = new UserDTO();
 		userDTO.setLoginId(new SingleLineString256Type(name1));
-		userDTO.setEmailAddress(new EmailAddressType(name1));
 
 		UserDTO reloadedUserDTO = userService.updadd(adminUserDTO, userDTO);
 

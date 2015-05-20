@@ -44,9 +44,6 @@ public class ReflectionImporterTest {
 		Assert.assertNotNull(dto.getId());
 		Assert.assertEquals(id, dto.getId() + "");
 
-		Assert.assertNotNull(dto.getEmailAddress());
-		Assert.assertEquals(email, dto.getEmailAddress().value());
-
 		Assert.assertNotNull(dto.getActive());
 		Assert.assertEquals(active, dto.getActive() + "");
 
@@ -83,8 +80,6 @@ public class ReflectionImporterTest {
 					e.printStackTrace();
 				}
 				Assert.assertEquals(2, dtos.size());
-				// random test:
-				Assert.assertEquals(dtos.iterator().next().getEmailAddress().value(), "test@test.de");
 			}
 
 			@Override

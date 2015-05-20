@@ -16,7 +16,6 @@ import com.supeyou.crudie.iface.datatype.enums.LOCALE;
 import com.supeyou.crudie.iface.datatype.enums.ROLE;
 import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.datatype.types.DateType;
-import com.supeyou.crudie.iface.datatype.types.EmailAddressType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.datatype.types.UserIDType;
 import com.supeyou.crudie.iface.dto.UserFetchQuery;
@@ -32,10 +31,6 @@ public class UserEntity extends AbstrEntity<UserIDType> {
 	// @Index(name = "LOGINID_INDEX")
 	@Column(name = UserFetchQuery.COLUMN_LOGINID, nullable = true, length = 256, unique = true)
 	private String loginId;
-
-	// @Index(name = "EMAILADDRESS_INDEX")
-	@Column(name = UserFetchQuery.COLUMN_EMAILADDRESS, nullable = true, length = 256, unique = true)
-	private String emailAddress;
 
 	@Column(name = UserFetchQuery.COLUMN_AMOUNT)
 	private Integer amount;
@@ -55,18 +50,6 @@ public class UserEntity extends AbstrEntity<UserIDType> {
 	// no getter or setter, just for defining cascades
 	@OneToMany(mappedBy = "a"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private Collection<User2GroupEntity> user2groupCollection = new ArrayList<User2GroupEntity>();
-
-	public EmailAddressType getEmailAddress() {
-		return new EmailAddressType(emailAddress);
-	}
-
-	public void setEmailAddress(EmailAddressType emailAddress) {
-		if (emailAddress != null) {
-			this.emailAddress = emailAddress.value();
-		} else {
-			this.emailAddress = null;
-		}
-	}
 
 	public SingleLineString256Type getLoginId() {
 		if (this.loginId != null) {

@@ -33,7 +33,7 @@ public class ItemWidget extends WidgetView {
 
 	private String renderInfoString() {
 		String infos = "";
-		infos += thisDTO.getEmailAddress().value();
+		infos += thisDTO.getLoginId().value();
 
 		return infos;
 	}

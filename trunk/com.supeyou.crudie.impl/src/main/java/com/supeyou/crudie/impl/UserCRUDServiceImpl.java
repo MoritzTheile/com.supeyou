@@ -5,7 +5,6 @@ import javax.persistence.EntityManager;
 import com.supeyou.crudie.iface.UserCRUDService;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.enums.ROLE;
-import com.supeyou.crudie.iface.datatype.types.EmailAddressType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.datatype.types.UserIDType;
 import com.supeyou.crudie.iface.dto.UserDTO;
@@ -40,7 +39,6 @@ public class UserCRUDServiceImpl extends AbstrCRUDServiceImpl<UserDTO, UserEntit
 
 					entity.setId(initialAdminId);
 					entity.setLoginId(new SingleLineString256Type("MT"));
-					entity.setEmailAddress(new EmailAddressType("theile@mtheile.com"));
 					entity.getRoles().add(ROLE.ADMIN);
 
 					em.merge(entity);

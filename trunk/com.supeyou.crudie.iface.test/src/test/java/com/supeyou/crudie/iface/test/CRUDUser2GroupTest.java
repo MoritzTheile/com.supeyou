@@ -10,7 +10,6 @@ import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.datatype.enums.MIMETYPE;
 import com.supeyou.crudie.iface.datatype.enums.ROLE;
-import com.supeyou.crudie.iface.datatype.types.EmailAddressType;
 import com.supeyou.crudie.iface.datatype.types.FileIDType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
@@ -36,7 +35,6 @@ public class CRUDUser2GroupTest {
 		{// fetch all assos
 			DTOFetchList<User2GroupDTO> fetchList = User2GroupCRUDServiceImpl.i().fetchList(initialData.initialAdmin, new Page(), new User2GroupFetchQuery());
 			for (User2GroupDTO dto : fetchList) {
-				Assert.assertNotNull(dto.getDtoA().getEmailAddress());
 				Assert.assertNotNull(dto.getDtoB().getName());
 			}
 
@@ -166,7 +164,6 @@ public class CRUDUser2GroupTest {
 			List<ROLE> roles = new ArrayList<>();
 			userDTO.setRoles(roles);
 			userDTO.setLoginId(new SingleLineString256Type("UserA" + "@mtheile.com"));
-			userDTO.setEmailAddress(new EmailAddressType("UserA" + "@mtheile.com"));
 			userDTO.setId(UserCRUDServiceImpl.i().updadd(initialData.initialAdmin, userDTO).getId());
 
 		}
