@@ -15,7 +15,7 @@ public class SessionStore {
 	// a secret key, only known to this class
 	public static final String SESSIONKEY_FOR_AUTHENTICATED_ACTOR = "SESSIONKEY_FOR_AUTHENTICATED_ACTOR_e8t7w4t59";
 
-	public static UserDTO getAuthenticatedActor(final HttpSession httpSession) {
+	public static UserDTO getActor(final HttpSession httpSession) {
 
 		Object userDTOObject = httpSession.getAttribute(SESSIONKEY_FOR_AUTHENTICATED_ACTOR);
 
@@ -26,7 +26,7 @@ public class SessionStore {
 		return (UserDTO) userDTOObject;
 	}
 
-	public static void setAuthenticatedActor(final HttpSession httpSession, UserDTO authenticateActor) {
+	public static void setActor(final HttpSession httpSession, UserDTO authenticateActor) {
 
 		httpSession.setAttribute(SESSIONKEY_FOR_AUTHENTICATED_ACTOR, authenticateActor);
 

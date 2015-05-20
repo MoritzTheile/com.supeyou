@@ -109,19 +109,19 @@ public class FileUploadServlet extends HttpServlet {
 
 						byte[] allData = buffer.toByteArray();
 
-						FileCRUDServiceImpl.i().setData(SessionStore.getAuthenticatedActor(req.getSession()), new FileIDType(new Long(fileId)), allData);
+						FileCRUDServiceImpl.i().setData(SessionStore.getActor(req.getSession()), new FileIDType(new Long(fileId)), allData);
 
 					} finally {
 						inputStream.close();
 					}
 
-					FileDTO fileDTO = FileCRUDServiceImpl.i().get(SessionStore.getAuthenticatedActor(req.getSession()), new FileIDType(new Long(fileId)));
+					FileDTO fileDTO = FileCRUDServiceImpl.i().get(SessionStore.getActor(req.getSession()), new FileIDType(new Long(fileId)));
 
 					fileDTO.setName(new SingleLineString256Type(fileName));
 
 					fileDTO.setMimetype(getMIMETYPE(item.getContentType()));
 
-					FileCRUDServiceImpl.i().updadd(SessionStore.getAuthenticatedActor(req.getSession()), fileDTO);
+					FileCRUDServiceImpl.i().updadd(SessionStore.getActor(req.getSession()), fileDTO);
 
 					// resp.setStatus(HttpServletResponse.SC_CREATED);
 					resp.setStatus(HttpServletResponse.SC_OK);

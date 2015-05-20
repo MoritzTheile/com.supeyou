@@ -35,11 +35,11 @@ public class FileDownloadServlet extends HttpServlet {
 
 			String fileId = req.getParameter(GWTSTATICS.FILE_ID_TOKEN);
 
-			FileDTO file = FileCRUDServiceImpl.i().get(SessionStore.getAuthenticatedActor(req.getSession()), new FileIDType(fileId));
+			FileDTO file = FileCRUDServiceImpl.i().get(SessionStore.getActor(req.getSession()), new FileIDType(fileId));
 
 			if (file != null) {
 
-				byte[] data = FileCRUDServiceImpl.i().getData(SessionStore.getAuthenticatedActor(req.getSession()), new FileIDType(fileId));
+				byte[] data = FileCRUDServiceImpl.i().getData(SessionStore.getActor(req.getSession()), new FileIDType(fileId));
 
 				String mimetype = MIMETYPE.APPLICATION_OCTEDSTREAM.getMimeTypeString();
 				if (file.getMimetype() != null) {

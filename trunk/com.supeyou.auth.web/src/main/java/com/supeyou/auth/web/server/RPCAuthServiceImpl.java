@@ -66,7 +66,7 @@ public class RPCAuthServiceImpl extends RemoteServiceServlet implements
 	@Override
 	public void sessionLogout() {
 
-		SessionStore.setAuthenticatedActor(this.getThreadLocalRequest().getSession(), null);
+		SessionStore.setActor(this.getThreadLocalRequest().getSession(), null);
 		this.getThreadLocalRequest().getSession().invalidate();
 
 	}
@@ -90,7 +90,7 @@ public class RPCAuthServiceImpl extends RemoteServiceServlet implements
 			authenticatedActor = UserCRUDServiceImpl.i().updadd(initialAdmin, authenticatedActor);
 		}
 
-		SessionStore.setAuthenticatedActor(this.getThreadLocalRequest().getSession(), authenticatedActor);
+		SessionStore.setActor(this.getThreadLocalRequest().getSession(), authenticatedActor);
 
 		return authenticatedActor;
 	}
