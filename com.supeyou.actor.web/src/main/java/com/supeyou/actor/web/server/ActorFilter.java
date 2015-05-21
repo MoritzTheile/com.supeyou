@@ -12,6 +12,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
+import com.supeyou.crudie.iface.dto.UserDTO;
+import com.supeyou.crudie.impl.UserCRUDServiceImpl;
 import com.supeyou.crudie.web.server.SessionStore;
 
 /**
@@ -57,11 +60,19 @@ public class ActorFilter implements Filter {
 
 			// TODO
 
+			log.log(Level.INFO, "creating an anonymous actor");
 			// creating anonymous actor
+			UserDTO actor = new UserDTO();
+			actor.setLoginId(new SingleLineString256Type("anonymousActor_" + System.currentTimeMillis()));
+			SessionStore.setActor(httpServletRequest.getSession(), UserCRUDServiceImpl.i().updadd(null, actor));
 
 			// UserDTO anonymousActor = new UserDTO();
 			// anonymousActor.set
 			// TODO
+
+		} catch (Exception e) {
+
+			log.log(Level.SEVERE, "Problems on assigning actor to http session", e);
 
 		} finally {
 

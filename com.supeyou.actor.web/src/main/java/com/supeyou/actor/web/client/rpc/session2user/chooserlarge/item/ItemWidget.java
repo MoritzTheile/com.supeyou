@@ -1,18 +1,18 @@
-package com.supeyou.actor.web.client.rpc.session.chooserlarge.item;
+package com.supeyou.actor.web.client.rpc.session2user.chooserlarge.item;
 
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Label;
-import com.supeyou.actor.iface.dto.SessionDTO;
-import com.supeyou.actor.web.client.rpc.session.RPCCRUDProxy;
+import com.supeyou.actor.iface.dto.Session2UserDTO;
+import com.supeyou.actor.web.client.rpc.session2user.RPCCRUDProxy;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
 
 public class ItemWidget extends WidgetView {
 
 	private final ItemWidget thisWidget;
 
-	private SessionDTO thisDTO;
+	private Session2UserDTO thisDTO;
 
-	public ItemWidget(SessionDTO dto) {
+	public ItemWidget(Session2UserDTO dto) {
 
 		this.thisDTO = dto;
 
@@ -27,30 +27,14 @@ public class ItemWidget extends WidgetView {
 	private void render() {
 
 		columnOne.clear();
-		columnOne.add(new Label(renderInfoString()));
-
-		columnThree.clear();
-		// columnThree.add(new com.supeyou.crudie.web.client.rpc.user2group.assoaeditor.AssoAEditorWidget(thisDTO, false));
+		columnOne.add(new Label(thisDTO.getDtoA().getHttpSessionId() + " <-> " + thisDTO.getDtoB().getLoginId()));
 
 	}
 
-	private String renderInfoString() {
-		String infos = "";
-		if (thisDTO.getHttpSessionId() != null) {
-			infos += thisDTO.getHttpSessionId().value();
-		}
-
-		if (thisDTO.getBrowserMark() != null) {
-			infos += " " + thisDTO.getBrowserMark().value();
-		}
-
-		return infos;
-	}
-
-	private CRUDProxyListener<SessionDTO> listener = new CRUDProxyListener<SessionDTO>() {
+	private CRUDProxyListener<Session2UserDTO> listener = new CRUDProxyListener<Session2UserDTO>() {
 
 		@Override
-		public void wasUpdated(SessionDTO dto) {
+		public void wasUpdated(Session2UserDTO dto) {
 
 			final String updatedStyle = "updated";
 
@@ -76,14 +60,14 @@ public class ItemWidget extends WidgetView {
 		}
 
 		@Override
-		public void wasDeleted(SessionDTO dto) {
+		public void wasDeleted(Session2UserDTO dto) {
 
 			removeFromParent();
 
 		}
 
 		@Override
-		public void wasCreated(SessionDTO dto) {
+		public void wasCreated(Session2UserDTO dto) {
 
 			// not possible
 

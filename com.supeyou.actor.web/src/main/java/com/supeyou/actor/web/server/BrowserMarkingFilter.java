@@ -14,6 +14,10 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.supeyou.actor.iface.dto.SessionDTO;
+import com.supeyou.actor.impl.SessionCRUDServiceImpl;
+import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
+
 /**
  * This filter ensures a cookie for recognizing browser.
  * 
@@ -50,9 +54,15 @@ public class BrowserMarkingFilter implements Filter {
 
 			HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
 
-			if (getBrowserMark(httpServletRequest) == null) {
+			if (getBrowserMark(httpServletRequest) == null) {// Browser unknown
 
-				setBrowserMarkCookie(httpServletResponse);
+				String mark = setBrowserMarkCookie(httpServletResponse);
+
+				saveMarkToSessionEntity(httpServletRequest, mark);
+
+			} else {// Browser known
+
+				saveMarkToSessionEntity(httpServletRequest, getBrowserMark(httpServletRequest));
 
 			}
 
@@ -64,13 +74,31 @@ public class BrowserMarkingFilter implements Filter {
 
 	}
 
-	private void setBrowserMarkCookie(HttpServletResponse httpServletResponse) {
+	private void saveMarkToSessionEntity(HttpServletRequest httpServletRequest, String mark) {
+		try {// Updating session entity
 
-		Cookie cookie = new Cookie(BROWSER_MARK_COOKIE_KEY, BROWSER_MARK_COOKIE_VALUE_PREFIX + getRandom());
+			SessionDTO sessionDTO = SessionCRUDServiceImpl.i().getBySessionId(null, httpServletRequest.getSession().getId());
+			sessionDTO.setBrowserMark(new SingleLineString256Type(mark));
+			SessionCRUDServiceImpl.i().updadd(null, sessionDTO);
+
+		} catch (Exception e) {
+
+			log.log(Level.WARNING, "Problems on saving browser mark to session", e);
+
+		}
+	}
+
+	private String setBrowserMarkCookie(HttpServletResponse httpServletResponse) {
+
+		String mark = BROWSER_MARK_COOKIE_VALUE_PREFIX + getRandom();
+
+		Cookie cookie = new Cookie(BROWSER_MARK_COOKIE_KEY, mark);
 
 		cookie.setMaxAge(3 * 365 * 24 * 3600); // 3 Years
 
 		httpServletResponse.addCookie(cookie);
+
+		return mark;
 
 	}
 
