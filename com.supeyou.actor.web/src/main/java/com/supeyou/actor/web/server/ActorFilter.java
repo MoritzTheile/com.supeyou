@@ -91,8 +91,8 @@ public class ActorFilter implements Filter {
 
 				actor = new UserDTO();
 				actor.setLoginId(new SingleLineString256Type("anonymousActor_" + System.currentTimeMillis()));
-				SessionStore.setActor(httpServletRequest.getSession(), UserCRUDServiceImpl.i().updadd(null, actor));
-				UserCRUDServiceImpl.i().updadd(actor, actor);
+				actor = UserCRUDServiceImpl.i().updadd(null, actor);
+				SessionStore.setActor(httpServletRequest.getSession(), actor);
 
 			}
 
