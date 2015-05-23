@@ -3,6 +3,7 @@ package com.supeyou.app.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.supeyou.actor.web.client.login.loginbutton.LoginButtonWidget;
 import com.supeyou.core.web.client.HistoryController;
@@ -51,10 +52,11 @@ public class AppEntryPoint implements EntryPoint {
 			HistoryController.i().show(History.getToken());
 		}
 
-		RootPanel.get("main").add(new com.supeyou.actor.web.client.rpc.actinguser.chooserlarge.ChooserLargeWidget());
-		RootPanel.get("main").add(new com.supeyou.actor.web.client.rpc.actinguser2session.chooserlarge.ChooserLargeWidget());
+		RootPanel.get("main").add(new Label("Session"));
 		RootPanel.get("main").add(new com.supeyou.actor.web.client.rpc.session.chooserlarge.ChooserLargeWidget());
-
+		RootPanel.get("main").add(new Label("Session2User"));
+		RootPanel.get("main").add(new com.supeyou.actor.web.client.rpc.session2user.chooserlarge.ChooserLargeWidget());
+		RootPanel.get("main").add(new Label("User"));
 		RootPanel.get("main").add(new com.supeyou.crudie.web.client.rpc.user.chooserlarge.ChooserLargeWidget());
 
 	}

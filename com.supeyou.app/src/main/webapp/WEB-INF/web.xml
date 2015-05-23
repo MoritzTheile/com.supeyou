@@ -108,22 +108,6 @@
 		<url-pattern>/RPCSessionCRUDServiceImpl</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>RPCActingUserCRUDServiceImpl</servlet-name>
-		<servlet-class>com.supeyou.actor.web.server.RPCActingUserCRUDServiceImpl</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>RPCActingUserCRUDServiceImpl</servlet-name>
-		<url-pattern>/RPCActingUserCRUDServiceImpl</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>RPCActingUser2SessionCRUDServiceImpl</servlet-name>
-		<servlet-class>com.supeyou.actor.web.server.RPCActingUser2SessionCRUDServiceImpl</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>RPCActingUser2SessionCRUDServiceImpl</servlet-name>
-		<url-pattern>/RPCActingUser2SessionCRUDServiceImpl</url-pattern>
-	</servlet-mapping>
-	<servlet>
 		<servlet-name>RPCSession2UserCRUDServiceImpl</servlet-name>
 		<servlet-class>com.supeyou.actor.web.server.RPCSession2UserCRUDServiceImpl</servlet-class>
 	</servlet>

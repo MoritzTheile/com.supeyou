@@ -1,10 +1,6 @@
 package com.supeyou.actor.impl.initialdata;
 
-import com.supeyou.actor.iface.dto.ActingUser2SessionDTO;
-import com.supeyou.actor.iface.dto.ActingUserDTO;
 import com.supeyou.actor.iface.dto.SessionDTO;
-import com.supeyou.actor.impl.ActingUser2SessionCRUDServiceImpl;
-import com.supeyou.actor.impl.ActingUserCRUDServiceImpl;
 import com.supeyou.actor.impl.SessionCRUDServiceImpl;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
@@ -18,31 +14,11 @@ public class InitialActorData {
 	public SessionDTO session1;
 	public SessionDTO session2;
 
-	public ActingUserDTO actingUser1;
-
-	public ActingUser2SessionDTO actingUser121ession1DTO;
-
 	private void init() throws CRUDException {
 
 		admin = UserCRUDServiceImpl.i().getInitialAdmin();
 		session1 = create("ajkajsdf", "78345919");
 		session2 = create("erze8ak", "837862992");
-		actingUser1 = create("aActingUserId_278t");
-
-		actingUser121ession1DTO = new ActingUser2SessionDTO();
-
-		actingUser121ession1DTO.setDtoA(actingUser1);
-		actingUser121ession1DTO.setDtoB(session1);
-
-		actingUser121ession1DTO = ActingUser2SessionCRUDServiceImpl.i().updadd(admin, actingUser121ession1DTO);
-
-	}
-
-	private ActingUserDTO create(String string) throws CRUDException {
-
-		ActingUserDTO dto = new ActingUserDTO();
-		dto.setLoginId(new SingleLineString256Type(string));
-		return ActingUserCRUDServiceImpl.i().updadd(admin, dto);
 
 	}
 
