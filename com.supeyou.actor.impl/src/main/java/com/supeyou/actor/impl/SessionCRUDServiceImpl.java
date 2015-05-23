@@ -10,6 +10,7 @@ import com.supeyou.actor.iface.dto.SessionDTO;
 import com.supeyou.actor.iface.dto.SessionFetchQuery;
 import com.supeyou.actor.impl.entity.SessionEntity;
 import com.supeyou.crudie.iface.datatype.CRUDException;
+import com.supeyou.crudie.iface.datatype.FetchQuery.SORTDIRECTION;
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
 import com.supeyou.crudie.iface.dto.UserDTO;
@@ -20,6 +21,8 @@ public class SessionCRUDServiceImpl extends AbstrCRUDServiceImpl<SessionDTO, Ses
 
 	private Logger log = Logger.getLogger(SessionCRUDServiceImpl.class.getName());
 
+	private static final String OPERAND = "AND";
+
 	@Override
 	protected String getWhereClause(EntityManager em, UserEntity actor, SessionFetchQuery query) {
 
@@ -27,8 +30,17 @@ public class SessionCRUDServiceImpl extends AbstrCRUDServiceImpl<SessionDTO, Ses
 
 		if (query.getHttpSessionId() != null && !query.getHttpSessionId().isEmpty()) {
 
-			whereClause += " " + "httpSessionId" + " = '" + query.getHttpSessionId() + "' ";
+			whereClause += OPERAND + " " + "httpSessionId" + " = '" + query.getHttpSessionId() + "' ";
 
+		}
+		if (query.getBrowserMark() != null && !query.getBrowserMark().isEmpty()) {
+
+			whereClause += OPERAND + " " + "browserMark" + " = '" + query.getBrowserMark() + "' ";
+
+		}
+
+		if (whereClause.startsWith(OPERAND)) {
+			whereClause = whereClause.substring(OPERAND.length(), whereClause.length());
 		}
 
 		if (!"".equals(whereClause)) {
@@ -55,6 +67,37 @@ public class SessionCRUDServiceImpl extends AbstrCRUDServiceImpl<SessionDTO, Ses
 			if (sessionDTOs.size() != 1) {
 
 				log.log(Level.SEVERE, "There are " + sessionDTOs.size() + " sessions found but there should exactly be one. ");
+
+				return null;
+			}
+
+			return sessionDTOs.iterator().next();
+
+		} catch (CRUDException e) {
+
+			log.log(Level.SEVERE, "Problems on fetching session by id", e);
+
+		}
+
+		return null;
+
+	}
+
+	@Override
+	public SessionDTO getNewestSessionOnBrowser(UserDTO actor, String browserMark) {
+
+		try {
+
+			SessionFetchQuery dtoQuery = new SessionFetchQuery();
+
+			dtoQuery.setBrowserMark(browserMark);
+
+			dtoQuery.setSortDirection(SORTDIRECTION.DESC);
+
+			DTOFetchList<SessionDTO> sessionDTOs = SessionCRUDServiceImpl.i().fetchList(actor, new Page(), dtoQuery);
+			if (sessionDTOs.size() == 0) {
+
+				log.log(Level.SEVERE, "There are no sessions found for browserMark '" + browserMark + "'.");
 
 				return null;
 			}
