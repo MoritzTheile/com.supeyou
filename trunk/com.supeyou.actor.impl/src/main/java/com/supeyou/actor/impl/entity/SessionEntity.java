@@ -22,7 +22,7 @@ public class SessionEntity extends AbstrEntity<SessionIDType> {
 	private String browserMark;
 
 	@OneToMany(mappedBy = "b"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-	private Collection<ActingUser2SessionEntity> actingUser2sessionCollection = new ArrayList<ActingUser2SessionEntity>();
+	private Collection<Session2UserEntity> actingUser2sessionCollection = new ArrayList<Session2UserEntity>();
 
 	public SingleLineString256Type getHttpSessionId() {
 		if (httpSessionId == null) {
