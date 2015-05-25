@@ -17,6 +17,7 @@ import com.supeyou.actor.iface.dto.Session2UserFetchQuery;
 import com.supeyou.actor.iface.dto.SessionDTO;
 import com.supeyou.actor.impl.Session2UserCRUDServiceImpl;
 import com.supeyou.actor.impl.SessionCRUDServiceImpl;
+import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
@@ -47,33 +48,50 @@ public class ActorFilter implements Filter {
 
 			if (!(servletRequest instanceof HttpServletRequest)) {
 
-				log.log(Level.WARNING, "servletRequest is not instance of HttpServletRequest");
-
-				return;
+				throw new Exception("servletRequest is not instance of HttpServletRequest");
 
 			}
 
 			HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 
-			if (SessionStore.getActor(httpServletRequest.getSession()) != null) {
-
-				// nothing to do, session has actor already
-
-				return;
-
-			}
-
 			SessionDTO sessionDTO = SessionCRUDServiceImpl.i().getBySessionId(null, httpServletRequest.getSession().getId());
-
 			if (sessionDTO == null) {
 
-				log.log(Level.SEVERE, "SessionDTO not found. Session won't be attached to user.");
-
-				return;
+				throw new Exception("SessionDTO not found. Session won't be attached to user.");
 
 			}
 
-			UserDTO actor = null;
+			UserDTO actor = getActor(httpServletRequest, sessionDTO);
+
+			{// if not yet connected, attaching session to actor
+				Session2UserFetchQuery session2UserFetchQuery = new Session2UserFetchQuery();
+				session2UserFetchQuery.setIdA(sessionDTO.getId());
+				session2UserFetchQuery.setIdB(actor.getId());
+				if (Session2UserCRUDServiceImpl.i().fetchList(actor, new Page(), session2UserFetchQuery).size() == 0) {
+
+					Session2UserDTO session2UserDTO = new Session2UserDTO();
+					session2UserDTO.setDtoA(sessionDTO);
+					session2UserDTO.setDtoB(actor);
+					Session2UserCRUDServiceImpl.i().updadd(actor, session2UserDTO);
+
+				}
+			}
+		} catch (Exception e) {
+
+			log.log(Level.SEVERE, "Problems on assigning actor to http session.", e);
+
+		} finally {
+
+			filterChain.doFilter(servletRequest, servletResponse);
+
+		}
+
+	}
+
+	private UserDTO getActor(HttpServletRequest httpServletRequest, SessionDTO sessionDTO) throws CRUDException {
+		UserDTO actor = SessionStore.getActor(httpServletRequest.getSession());
+
+		if (actor == null) {// session doesn't have actor so getting one somehow ...
 
 			{// trying to find actor by BrowserMark
 
@@ -105,29 +123,17 @@ public class ActorFilter implements Filter {
 				actor = new UserDTO();
 				actor.setLoginId(new SingleLineString256Type("anonymousActor_" + System.currentTimeMillis()));
 				actor = UserCRUDServiceImpl.i().updadd(null, actor);
-				SessionStore.setActor(httpServletRequest.getSession(), actor);
 
 			}
 
-			{// attaching session to actor
+			SessionStore.setActor(httpServletRequest.getSession(), actor);
 
-				Session2UserDTO session2UserDTO = new Session2UserDTO();
-				session2UserDTO.setDtoA(sessionDTO);
-				session2UserDTO.setDtoB(actor);
-				Session2UserCRUDServiceImpl.i().updadd(actor, session2UserDTO);
+		} else {
 
-			}
-
-		} catch (Exception e) {
-
-			log.log(Level.SEVERE, "Problems on assigning actor to http session.", e);
-
-		} finally {
-
-			filterChain.doFilter(servletRequest, servletResponse);
+			// nothing to do, session has actor already
 
 		}
-
+		return actor;
 	}
 
 	@Override
