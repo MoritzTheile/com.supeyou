@@ -19,8 +19,7 @@ import com.supeyou.actor.impl.SessionCRUDServiceImpl;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 
 /**
- * This filter ensures a cookie for recognizing browser.
- * 
+ * This filter sets a browser mark cookie for recognizing browsers.
  * 
  * @author MoritzTheile
  * 
@@ -31,6 +30,7 @@ public class BrowserMarkingFilter implements Filter {
 
 	@Override
 	public void destroy() {
+
 		// nothing
 
 	}
@@ -39,11 +39,6 @@ public class BrowserMarkingFilter implements Filter {
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
 		try {
-
-			if (!(servletRequest instanceof HttpServletRequest)) {
-				log.log(Level.WARNING, "servletRequest is not instance of HttpServletRequest");
-				return;
-			}
 
 			HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 
@@ -75,6 +70,7 @@ public class BrowserMarkingFilter implements Filter {
 	}
 
 	private void saveMarkToSessionEntity(HttpServletRequest httpServletRequest, String mark) {
+
 		try {// Updating session entity
 
 			SessionDTO sessionDTO = SessionCRUDServiceImpl.i().getBySessionId(null, httpServletRequest.getSession().getId());
@@ -86,6 +82,7 @@ public class BrowserMarkingFilter implements Filter {
 			log.log(Level.WARNING, "Problems on saving browser mark to session", e);
 
 		}
+
 	}
 
 	private String setBrowserMarkCookie(HttpServletResponse httpServletResponse) {
@@ -102,8 +99,8 @@ public class BrowserMarkingFilter implements Filter {
 
 	}
 
-	private static String BROWSER_MARK_COOKIE_VALUE_PREFIX = "BROWSER_MARK_";
-	private static String BROWSER_MARK_COOKIE_KEY = "BROWSER_MARK_COOKIE_KEY";
+	private static String BROWSER_MARK_COOKIE_VALUE_PREFIX = "SY_BMC_";
+	private static String BROWSER_MARK_COOKIE_KEY = "SY_BMCK";
 
 	public static String getBrowserMark(HttpServletRequest httpServletRequest) {
 
@@ -138,10 +135,14 @@ public class BrowserMarkingFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
+
 		// nothing
+
 	}
 
 	private static String getRandom() {
+
 		return ("" + Math.random()).replaceAll("\\.", "");
+
 	}
 }

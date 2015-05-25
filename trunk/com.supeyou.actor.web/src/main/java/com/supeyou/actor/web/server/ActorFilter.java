@@ -74,9 +74,11 @@ public class ActorFilter implements Filter {
 
 			}
 			{// if not yet connected, attaching session to actor
+
 				Session2UserFetchQuery session2UserFetchQuery = new Session2UserFetchQuery();
 				session2UserFetchQuery.setIdA(sessionDTO.getId());
 				session2UserFetchQuery.setIdB(actor.getId());
+
 				if (Session2UserCRUDServiceImpl.i().fetchList(actor, new Page(), session2UserFetchQuery).size() == 0) {
 
 					Session2UserDTO session2UserDTO = new Session2UserDTO();
@@ -85,7 +87,9 @@ public class ActorFilter implements Filter {
 					Session2UserCRUDServiceImpl.i().updadd(actor, session2UserDTO);
 
 				}
+
 			}
+
 		} catch (Exception e) {
 
 			log.log(Level.SEVERE, "Problems on assigning actor to http session.", e);
@@ -107,30 +111,31 @@ public class ActorFilter implements Filter {
 	}
 
 	private UserDTO getActorByCookie(HttpServletRequest httpServletRequest, SessionDTO sessionDTO, UserDTO actor) throws CRUDException {
-		{// trying to find actor by BrowserMark
+		// trying to find actor by BrowserMark
 
-			SessionDTO newestSessionOnBrowser = SessionCRUDServiceImpl.i().getNewestSessionOnBrowserButNotCurrent(null, BrowserMarkingFilter.getBrowserMark(httpServletRequest), sessionDTO);
-			if (newestSessionOnBrowser != null) {
+		SessionDTO newestSessionOnBrowser = SessionCRUDServiceImpl.i().getNewestSessionOnBrowserButNotCurrent(null, BrowserMarkingFilter.getBrowserMark(httpServletRequest), sessionDTO);
+		if (newestSessionOnBrowser != null) {
 
-				Session2UserFetchQuery session2UserFetchQuery = new Session2UserFetchQuery();
-				session2UserFetchQuery.setIdA(newestSessionOnBrowser.getId());
-				DTOFetchList<Session2UserDTO> session2UserDTOs = Session2UserCRUDServiceImpl.i().fetchList(null, new Page(), session2UserFetchQuery);
+			Session2UserFetchQuery session2UserFetchQuery = new Session2UserFetchQuery();
+			session2UserFetchQuery.setIdA(newestSessionOnBrowser.getId());
+			DTOFetchList<Session2UserDTO> session2UserDTOs = Session2UserCRUDServiceImpl.i().fetchList(null, new Page(), session2UserFetchQuery);
 
-				if (session2UserDTOs.size() == 0) {
+			if (session2UserDTOs.size() == 0) {
 
-					log.log(Level.WARNING, "Session id=" + httpServletRequest.getSession().getId() + " is not assigned to an user");
+				log.log(Level.WARNING, "Session id=" + httpServletRequest.getSession().getId() + " is not assigned to an user");
 
-				} else {
+			} else {
 
-					actor = session2UserDTOs.iterator().next().getDtoB();
+				actor = session2UserDTOs.iterator().next().getDtoB();
 
-					if (session2UserDTOs.size() > 1) {
-						log.log(Level.WARNING, "Session id=" + httpServletRequest.getSession().getId() + " is assigned to multiple users (" + session2UserDTOs.size() + ")");
-					}
-
+				if (session2UserDTOs.size() > 1) {
+					log.log(Level.WARNING, "Session id=" + httpServletRequest.getSession().getId() + " is assigned to multiple users (" + session2UserDTOs.size() + ")");
 				}
+
 			}
+
 		}
+
 		return actor;
 	}
 
