@@ -110,10 +110,13 @@ public class ActorFilter implements Filter {
 		return actor;
 	}
 
+	/**
+	 * trying to find actor by BrowserMark
+	 */
 	private UserDTO getActorByCookie(HttpServletRequest httpServletRequest, SessionDTO sessionDTO, UserDTO actor) throws CRUDException {
-		// trying to find actor by BrowserMark
 
 		SessionDTO newestSessionOnBrowser = SessionCRUDServiceImpl.i().getNewestSessionOnBrowserButNotCurrent(null, BrowserMarkingFilter.getBrowserMark(httpServletRequest), sessionDTO);
+
 		if (newestSessionOnBrowser != null) {
 
 			Session2UserFetchQuery session2UserFetchQuery = new Session2UserFetchQuery();
@@ -129,7 +132,9 @@ public class ActorFilter implements Filter {
 				actor = session2UserDTOs.iterator().next().getDtoB();
 
 				if (session2UserDTOs.size() > 1) {
+
 					log.log(Level.WARNING, "Session id=" + httpServletRequest.getSession().getId() + " is assigned to multiple users (" + session2UserDTOs.size() + ")");
+
 				}
 
 			}
