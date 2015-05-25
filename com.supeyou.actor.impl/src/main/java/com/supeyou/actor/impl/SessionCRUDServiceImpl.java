@@ -84,7 +84,7 @@ public class SessionCRUDServiceImpl extends AbstrCRUDServiceImpl<SessionDTO, Ses
 	}
 
 	@Override
-	public SessionDTO getNewestSessionOnBrowser(UserDTO actor, String browserMark) {
+	public SessionDTO getNewestSessionOnBrowserButNotCurrent(UserDTO actor, String browserMark, SessionDTO currentSessionDTO) {
 
 		try {
 
@@ -102,7 +102,18 @@ public class SessionCRUDServiceImpl extends AbstrCRUDServiceImpl<SessionDTO, Ses
 				return null;
 			}
 
-			return sessionDTOs.iterator().next();
+			for (SessionDTO sessionDTO : sessionDTOs) {
+
+				// don't use current Session
+				if (!sessionDTO.equals(currentSessionDTO)) {
+
+					return sessionDTO;
+
+				}
+
+			}
+
+			return null;
 
 		} catch (CRUDException e) {
 
