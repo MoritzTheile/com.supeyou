@@ -113,9 +113,11 @@ public class ActorFilter implements Filter {
 	/**
 	 * trying to find actor by BrowserMark
 	 */
-	private UserDTO getActorByCookie(HttpServletRequest httpServletRequest, SessionDTO sessionDTO, UserDTO actor) throws CRUDException {
+	private UserDTO getActorByCookie(HttpServletRequest httpServletRequest, SessionDTO currentSessionDTO, UserDTO actor) throws CRUDException {
 
-		SessionDTO newestSessionOnBrowser = SessionCRUDServiceImpl.i().getNewestSessionOnBrowserButNotCurrent(null, BrowserMarkingFilter.getBrowserMark(httpServletRequest), sessionDTO);
+		String browserMark = BrowserMarkingFilter.getBrowserMark(httpServletRequest);
+
+		SessionDTO newestSessionOnBrowser = SessionCRUDServiceImpl.i().getNewestSessionOnBrowserButNotCurrent(null, browserMark, currentSessionDTO);
 
 		if (newestSessionOnBrowser != null) {
 
