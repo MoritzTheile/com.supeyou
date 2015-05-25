@@ -63,18 +63,31 @@ public class ActorFilter implements Filter {
 
 			}
 
+			SessionDTO sessionDTO = SessionCRUDServiceImpl.i().getBySessionId(null, httpServletRequest.getSession().getId());
+
+			if (sessionDTO == null) {
+
+				log.log(Level.SEVERE, "SessionDTO not found. Session won't be attached to user.");
+
+				return;
+
+			}
+
 			UserDTO actor = null;
 
 			{// trying to find actor by BrowserMark
 
-				SessionDTO newestSessionOnBrowser = SessionCRUDServiceImpl.i().getNewestSessionOnBrowser(null, BrowserMarkingFilter.getBrowserMark(httpServletRequest));
+				SessionDTO newestSessionOnBrowser = SessionCRUDServiceImpl.i().getNewestSessionOnBrowserButNotCurrent(null, BrowserMarkingFilter.getBrowserMark(httpServletRequest), sessionDTO);
 				if (newestSessionOnBrowser != null) {
 
 					Session2UserFetchQuery session2UserFetchQuery = new Session2UserFetchQuery();
 					session2UserFetchQuery.setIdA(newestSessionOnBrowser.getId());
 					DTOFetchList<Session2UserDTO> session2UserDTOs = Session2UserCRUDServiceImpl.i().fetchList(null, new Page(), session2UserFetchQuery);
+
 					if (session2UserDTOs.size() == 0) {
+
 						log.log(Level.WARNING, "Session id=" + httpServletRequest.getSession().getId() + " is not assigned to an user");
+
 					} else {
 
 						actor = session2UserDTOs.iterator().next().getDtoB();
@@ -97,16 +110,6 @@ public class ActorFilter implements Filter {
 			}
 
 			{// attaching session to actor
-
-				SessionDTO sessionDTO = SessionCRUDServiceImpl.i().getBySessionId(actor, httpServletRequest.getSession().getId());
-
-				if (sessionDTO == null) {
-
-					log.log(Level.SEVERE, "SessionDTO not found. Session won't be attached to user.");
-
-					return;
-
-				}
 
 				Session2UserDTO session2UserDTO = new Session2UserDTO();
 				session2UserDTO.setDtoA(sessionDTO);

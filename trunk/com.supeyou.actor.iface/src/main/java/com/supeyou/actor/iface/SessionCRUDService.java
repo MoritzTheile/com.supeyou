@@ -9,6 +9,6 @@ public interface SessionCRUDService extends CRUDService<SessionDTO, SessionFetch
 
 	SessionDTO getBySessionId(UserDTO actor, String sessionID);
 
-	SessionDTO getNewestSessionOnBrowser(UserDTO actor, String browserMark);
+	SessionDTO getNewestSessionOnBrowserButNotCurrent(UserDTO actor, String browserMark, SessionDTO sessionDTO);
 
 }
