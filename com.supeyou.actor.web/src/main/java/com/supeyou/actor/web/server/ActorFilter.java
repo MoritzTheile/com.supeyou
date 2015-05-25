@@ -46,23 +46,33 @@ public class ActorFilter implements Filter {
 
 		try {
 
-			if (!(servletRequest instanceof HttpServletRequest)) {
-
-				throw new Exception("servletRequest is not instance of HttpServletRequest");
-
-			}
-
 			HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 
 			SessionDTO sessionDTO = SessionCRUDServiceImpl.i().getBySessionId(null, httpServletRequest.getSession().getId());
+
 			if (sessionDTO == null) {
 
 				throw new Exception("SessionDTO not found. Session won't be attached to user.");
 
 			}
 
-			UserDTO actor = getActor(httpServletRequest, sessionDTO);
+			UserDTO actor = SessionStore.getActor(httpServletRequest.getSession());
 
+			if (actor == null) {// session doesn't have actor so getting one somehow ...
+
+				actor = getActorByCookie(httpServletRequest, sessionDTO, actor);
+
+				if (actor == null) {// actor not found, creating anonymous actor
+
+					actor = createNewActor();
+
+				}
+
+				// by now we can be sure there is an actor
+
+				SessionStore.setActor(httpServletRequest.getSession(), actor);
+
+			}
 			{// if not yet connected, attaching session to actor
 				Session2UserFetchQuery session2UserFetchQuery = new Session2UserFetchQuery();
 				session2UserFetchQuery.setIdA(sessionDTO.getId());
@@ -88,50 +98,38 @@ public class ActorFilter implements Filter {
 
 	}
 
-	private UserDTO getActor(HttpServletRequest httpServletRequest, SessionDTO sessionDTO) throws CRUDException {
-		UserDTO actor = SessionStore.getActor(httpServletRequest.getSession());
+	private UserDTO createNewActor() throws CRUDException {
+		UserDTO actor;
+		actor = new UserDTO();
+		actor.setLoginId(new SingleLineString256Type("anonymousActor_" + System.currentTimeMillis()));
+		actor = UserCRUDServiceImpl.i().updadd(null, actor);
+		return actor;
+	}
 
-		if (actor == null) {// session doesn't have actor so getting one somehow ...
+	private UserDTO getActorByCookie(HttpServletRequest httpServletRequest, SessionDTO sessionDTO, UserDTO actor) throws CRUDException {
+		{// trying to find actor by BrowserMark
 
-			{// trying to find actor by BrowserMark
+			SessionDTO newestSessionOnBrowser = SessionCRUDServiceImpl.i().getNewestSessionOnBrowserButNotCurrent(null, BrowserMarkingFilter.getBrowserMark(httpServletRequest), sessionDTO);
+			if (newestSessionOnBrowser != null) {
 
-				SessionDTO newestSessionOnBrowser = SessionCRUDServiceImpl.i().getNewestSessionOnBrowserButNotCurrent(null, BrowserMarkingFilter.getBrowserMark(httpServletRequest), sessionDTO);
-				if (newestSessionOnBrowser != null) {
+				Session2UserFetchQuery session2UserFetchQuery = new Session2UserFetchQuery();
+				session2UserFetchQuery.setIdA(newestSessionOnBrowser.getId());
+				DTOFetchList<Session2UserDTO> session2UserDTOs = Session2UserCRUDServiceImpl.i().fetchList(null, new Page(), session2UserFetchQuery);
 
-					Session2UserFetchQuery session2UserFetchQuery = new Session2UserFetchQuery();
-					session2UserFetchQuery.setIdA(newestSessionOnBrowser.getId());
-					DTOFetchList<Session2UserDTO> session2UserDTOs = Session2UserCRUDServiceImpl.i().fetchList(null, new Page(), session2UserFetchQuery);
+				if (session2UserDTOs.size() == 0) {
 
-					if (session2UserDTOs.size() == 0) {
+					log.log(Level.WARNING, "Session id=" + httpServletRequest.getSession().getId() + " is not assigned to an user");
 
-						log.log(Level.WARNING, "Session id=" + httpServletRequest.getSession().getId() + " is not assigned to an user");
+				} else {
 
-					} else {
+					actor = session2UserDTOs.iterator().next().getDtoB();
 
-						actor = session2UserDTOs.iterator().next().getDtoB();
-
-						if (session2UserDTOs.size() > 1) {
-							log.log(Level.WARNING, "Session id=" + httpServletRequest.getSession().getId() + " is assigned to multiple users (" + session2UserDTOs.size() + ")");
-						}
-
+					if (session2UserDTOs.size() > 1) {
+						log.log(Level.WARNING, "Session id=" + httpServletRequest.getSession().getId() + " is assigned to multiple users (" + session2UserDTOs.size() + ")");
 					}
+
 				}
 			}
-
-			if (actor == null) {// actor not found, creating anonymous actor
-
-				actor = new UserDTO();
-				actor.setLoginId(new SingleLineString256Type("anonymousActor_" + System.currentTimeMillis()));
-				actor = UserCRUDServiceImpl.i().updadd(null, actor);
-
-			}
-
-			SessionStore.setActor(httpServletRequest.getSession(), actor);
-
-		} else {
-
-			// nothing to do, session has actor already
-
 		}
 		return actor;
 	}
