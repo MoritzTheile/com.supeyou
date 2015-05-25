@@ -118,11 +118,15 @@ public class BrowserMarkingFilter implements Filter {
 
 	private static Cookie getCookie(HttpServletRequest httpServletRequest, String key) {
 
-		for (Cookie cookie : httpServletRequest.getCookies()) {
+		if (httpServletRequest.getCookies() != null) {// getCookies can be null!
 
-			if (cookie.getName().equals(key)) {
+			for (Cookie cookie : httpServletRequest.getCookies()) {
 
-				return cookie;
+				if (cookie.getName().equals(key)) {
+
+					return cookie;
+
+				}
 
 			}
 
