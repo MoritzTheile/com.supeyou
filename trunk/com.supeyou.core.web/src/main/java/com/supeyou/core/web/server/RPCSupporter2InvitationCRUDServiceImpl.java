@@ -22,7 +22,7 @@ public class RPCSupporter2InvitationCRUDServiceImpl extends RPCAbstrCRUDServiceI
 		// this reflection approach prevents compile-dependency to module com.supeyou.crudie.impl
 		// it could be replaced by spring eventually
 		try {
-			Class<?> clazz = Class.forName("com.supeyou.actor.impl.Supporter2InvitationCRUDServiceImpl");
+			Class<?> clazz = Class.forName("com.supeyou.core.impl.Supporter2InvitationCRUDServiceImpl");
 			Class<?>[] params = new Class<?>[0];
 			Method method_i = clazz.getMethod("i", params);
 			Object[] objects = new Object[0];
