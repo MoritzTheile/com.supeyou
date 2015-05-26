@@ -58,6 +58,18 @@ public class AppEntryPoint implements EntryPoint {
 		RootPanel.get("main").add(new com.supeyou.actor.web.client.rpc.session2user.chooserlarge.ChooserLargeWidget());
 		RootPanel.get("main").add(new Label("User"));
 		RootPanel.get("main").add(new com.supeyou.crudie.web.client.rpc.user.chooserlarge.ChooserLargeWidget());
+		RootPanel.get("main").add(new Label("Supporter"));
+		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.supporter.chooserlarge.ChooserLargeWidget());
+		RootPanel.get("main").add(new Label("Supporter2Invitation"));
+		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.supporter2invitation.chooserlarge.ChooserLargeWidget());
+		RootPanel.get("main").add(new Label("Invitation2Supporter"));
+		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.invitation2supporter.chooserlarge.ChooserLargeWidget());
+		RootPanel.get("main").add(new Label("Invitation"));
+		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.invitation.chooserlarge.ChooserLargeWidget());
+		RootPanel.get("main").add(new Label("Supporter2Donation"));
+		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.supporter2donation.chooserlarge.ChooserLargeWidget());
+		RootPanel.get("main").add(new Label("Donation"));
+		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.donation.chooserlarge.ChooserLargeWidget());
 
 	}
 }
