@@ -91,6 +91,16 @@
 		<servlet-name>RPCFileCRUDServiceImpl</servlet-name>
 		<url-pattern>/RPCFileCRUDServiceImpl</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RPCDonationCRUDServiceImpl</servlet-name>
+		<servlet-class>com.supeyou.core.web.server.RPCDonationCRUDServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RPCDonationCRUDServiceImpl</servlet-name>
+		<url-pattern>/RPCDonationCRUDServiceImpl</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>RPCHeroCRUDServiceImpl</servlet-name>
 		<servlet-class>com.supeyou.core.web.server.RPCHeroCRUDServiceImpl</servlet-class>
@@ -99,6 +109,52 @@
 		<servlet-name>RPCHeroCRUDServiceImpl</servlet-name>
 		<url-pattern>/RPCHeroCRUDServiceImpl</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RPCInvitation2SupporterCRUDServiceImpl</servlet-name>
+		<servlet-class>com.supeyou.core.web.server.RPCInvitation2SupporterCRUDServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RPCInvitation2SupporterCRUDServiceImpl</servlet-name>
+		<url-pattern>/RPCInvitation2SupporterCRUDServiceImpl</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RPCInvitationCRUDServiceImpl</servlet-name>
+		<servlet-class>com.supeyou.core.web.server.RPCInvitationCRUDServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RPCInvitationCRUDServiceImpl</servlet-name>
+		<url-pattern>/RPCInvitationCRUDServiceImpl</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RPCSupporter2InvitationCRUDServiceImpl</servlet-name>
+		<servlet-class>com.supeyou.core.web.server.RPCSupporter2InvitationCRUDServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RPCSupporter2InvitationCRUDServiceImpl</servlet-name>
+		<url-pattern>/RPCSupporter2InvitationCRUDServiceImpl</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RPCSupporterCRUDServiceImpl</servlet-name>
+		<servlet-class>com.supeyou.core.web.server.RPCSupporterCRUDServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RPCSupporterCRUDServiceImpl</servlet-name>
+		<url-pattern>/RPCSupporterCRUDServiceImpl</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RPCUser2SupporterCRUDServiceImpl</servlet-name>
+		<servlet-class>com.supeyou.core.web.server.RPCUser2SupporterCRUDServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RPCUser2SupporterCRUDServiceImpl</servlet-name>
+		<url-pattern>/RPCUser2SupporterCRUDServiceImpl</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>RPCSessionCRUDServiceImpl</servlet-name>
 		<servlet-class>com.supeyou.actor.web.server.RPCSessionCRUDServiceImpl</servlet-class>
