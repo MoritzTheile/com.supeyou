@@ -12,6 +12,12 @@
 		<class>com.supeyou.crudie.impl.entity.GroupEntity</class>	
 		<class>com.supeyou.crudie.impl.entity.FileEntity</class>	
 		<class>com.supeyou.core.impl.entity.HeroEntity</class>
+		<class>com.supeyou.core.impl.entity.SupporterEntity</class>
+		<class>com.supeyou.core.impl.entity.Supporter2InvitationEntity</class>
+		<class>com.supeyou.core.impl.entity.InvitationEntity</class>
+		<class>com.supeyou.core.impl.entity.Invitation2SupporterEntity</class>
+		<class>com.supeyou.core.impl.entity.Supporter2DonationEntity</class>
+		<class>com.supeyou.core.impl.entity.DonationEntity</class>
 		<class>com.supeyou.actor.impl.entity.Session2UserEntity</class>	
 		<class>com.supeyou.actor.impl.entity.SessionEntity</class>	
 
