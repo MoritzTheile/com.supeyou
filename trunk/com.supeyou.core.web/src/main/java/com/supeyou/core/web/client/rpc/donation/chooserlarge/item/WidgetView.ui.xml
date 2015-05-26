@@ -1,0 +1,15 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p1="urn:import:com.google.gwt.user.cellview.client"
+	>
+	<ui:with field='text' type='com.supeyou.crudie.web.client.resources.i18n.Text' />
+
+	<g:FlowPanel  styleName="hero listitem large"  ui:field="itemRoot">
+		<g:FlowPanel styleName="name-slot" ui:field="nameSlot"></g:FlowPanel>
+		<g:FlowPanel styleName="image-slot" ui:field="imageSlot"></g:FlowPanel>
+		<g:FlowPanel styleName="website-slot" ui:field="websiteSlot"></g:FlowPanel>
+		<g:FlowPanel styleName="comment-slot" ui:field="commentSlot"></g:FlowPanel>
+	</g:FlowPanel>
+
+</ui:UiBinder> 
