@@ -15,8 +15,6 @@ import com.supeyou.core.web.client.rpc.supporter.form.FormWidget;
 import com.supeyou.core.web.client.rpc.supporter.imexport.ExportLink;
 import com.supeyou.core.web.client.rpc.supporter.imexport.ImportLink;
 import com.supeyou.core.web.client.rpc.supporter.query.QueryWidget;
-import com.supeyou.crudie.web.client.model.LoginStateModel;
-import com.supeyou.crudie.web.client.resources.GWTSTATICS;
 import com.supeyou.crudie.web.client.rpc.abstr.list.AbstrListDataProvider;
 import com.supeyou.crudie.web.client.rpc.abstr.list.AbstrListWidgetList;
 import com.supeyou.crudie.web.client.rpc.abstr.list.ListSelectionModel.SelectionListener;
@@ -29,15 +27,15 @@ public class ChooserLargeWidget extends WidgetView {
 
 	public ChooserLargeWidget() {
 
-		if (LoginStateModel.i().userIsAdmin()) {// UI visibility
-			pagerSlot.removeStyleName(GWTSTATICS.HIDESTYLE_CSS);
-			createLink.removeStyleName(GWTSTATICS.HIDESTYLE_CSS);
-			footer.removeStyleName(GWTSTATICS.HIDESTYLE_CSS);
-		} else {
-			pagerSlot.addStyleName(GWTSTATICS.HIDESTYLE_CSS);
-			createLink.addStyleName(GWTSTATICS.HIDESTYLE_CSS);
-			footer.addStyleName(GWTSTATICS.HIDESTYLE_CSS);
-		}
+		// if (LoginStateModel.i().userIsAdmin()) {// UI visibility
+		// pagerSlot.removeStyleName(GWTSTATICS.HIDESTYLE_CSS);
+		// createLink.removeStyleName(GWTSTATICS.HIDESTYLE_CSS);
+		// footer.removeStyleName(GWTSTATICS.HIDESTYLE_CSS);
+		// } else {
+		// pagerSlot.addStyleName(GWTSTATICS.HIDESTYLE_CSS);
+		// createLink.addStyleName(GWTSTATICS.HIDESTYLE_CSS);
+		// footer.addStyleName(GWTSTATICS.HIDESTYLE_CSS);
+		// }
 
 		dataProvider = new ListDataProvider(new SupporterFetchQuery());
 		dataProvider.setPageSize(5);

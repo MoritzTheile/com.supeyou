@@ -102,6 +102,15 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>RPCSupporter2DonationCRUDServiceImpl</servlet-name>
+		<servlet-class>com.supeyou.core.web.server.RPCSupporter2DonationCRUDServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RPCSupporter2DonationCRUDServiceImpl</servlet-name>
+		<url-pattern>/RPCSupporter2DonationCRUDServiceImpl</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>RPCHeroCRUDServiceImpl</servlet-name>
 		<servlet-class>com.supeyou.core.web.server.RPCHeroCRUDServiceImpl</servlet-class>
 	</servlet>
