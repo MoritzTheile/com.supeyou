@@ -88,16 +88,22 @@ public class SessionCRUDServiceImpl extends AbstrCRUDServiceImpl<SessionDTO, Ses
 
 		try {
 
+			if (browserMark == null || browserMark.isEmpty()) {
+				return null;
+			}
+
 			SessionFetchQuery dtoQuery = new SessionFetchQuery();
 
 			dtoQuery.setBrowserMark(browserMark);
 
+			// have newest on top
 			dtoQuery.setSortDirection(SORTDIRECTION.DESC);
 
 			DTOFetchList<SessionDTO> sessionDTOs = SessionCRUDServiceImpl.i().fetchList(actor, new Page(), dtoQuery);
+
 			if (sessionDTOs.size() == 0) {
 
-				log.log(Level.SEVERE, "There are no sessions found for browserMark '" + browserMark + "'.");
+				log.log(Level.WARNING, "There are no sessions found for browserMark '" + browserMark + "'.");
 
 				return null;
 			}
