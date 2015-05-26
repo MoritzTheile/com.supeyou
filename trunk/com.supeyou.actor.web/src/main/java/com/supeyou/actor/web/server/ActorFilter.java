@@ -44,6 +44,7 @@ public class ActorFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
+		// System.out.println("ActorFilter: starting to filter");
 		try {
 
 			HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
@@ -66,11 +67,21 @@ public class ActorFilter implements Filter {
 
 					actor = createNewActor();
 
+					// System.out.println("ActorFilter: new Actor created (loginId=" + actor.getLoginId() + ")");
+
+				} else {
+
+					// System.out.println("ActorFilter: actor found by cookie (id=" + httpServletRequest.getSession().getId() + ")");
+
 				}
 
 				// by now we can be sure there is an actor
 
 				SessionStore.setActor(httpServletRequest.getSession(), actor);
+
+			} else {
+
+				// System.out.println("ActorFilter: actor found by session (id=" + httpServletRequest.getSession().getId() + ")");
 
 			}
 			{// if not yet connected, attaching session to actor
@@ -81,10 +92,15 @@ public class ActorFilter implements Filter {
 
 				if (Session2UserCRUDServiceImpl.i().fetchList(actor, new Page(), session2UserFetchQuery).size() == 0) {
 
+					// System.out.println("ActorFilter: attaching session to actor");
+
 					Session2UserDTO session2UserDTO = new Session2UserDTO();
 					session2UserDTO.setDtoA(sessionDTO);
 					session2UserDTO.setDtoB(actor);
 					Session2UserCRUDServiceImpl.i().updadd(actor, session2UserDTO);
+
+				} else {
+					// System.out.println("ActorFilter:  session already connected to actor");
 
 				}
 
@@ -116,6 +132,8 @@ public class ActorFilter implements Filter {
 	private UserDTO getActorByCookie(HttpServletRequest httpServletRequest, SessionDTO currentSessionDTO, UserDTO actor) throws CRUDException {
 
 		String browserMark = BrowserMarkingFilter.getBrowserMark(httpServletRequest);
+
+		// System.out.println("ActorFilter: cookie (id=" + browserMark + ")");
 
 		SessionDTO newestSessionOnBrowser = SessionCRUDServiceImpl.i().getNewestSessionOnBrowserButNotCurrent(null, browserMark, currentSessionDTO);
 
@@ -151,11 +169,4 @@ public class ActorFilter implements Filter {
 		// nothing
 	}
 
-	public static void main(String[] args) {
-		System.out.println(getRandom());
-	}
-
-	private static String getRandom() {
-		return ("" + Math.random()).replaceAll("\\.", "");
-	}
 }
