@@ -2,25 +2,25 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.hotelorga</groupId>
+		<groupId>com.supeyou</groupId>
 		<artifactId>parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../com.hotelorga.project</relativePath>
+		<relativePath>../com.supeyou.project</relativePath>
 	</parent>
 	<artifactId>core.web</artifactId>
 	<dependencies>
 		<dependency>
-			<groupId>com.hotelorga</groupId>
+			<groupId>com.supeyou</groupId>
 			<artifactId>foundation.web</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>com.hotelorga</groupId>
+			<groupId>com.supeyou</groupId>
 			<artifactId>core.iface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>com.hotelorga</groupId>
+			<groupId>com.supeyou</groupId>
 			<artifactId>core.impl</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
