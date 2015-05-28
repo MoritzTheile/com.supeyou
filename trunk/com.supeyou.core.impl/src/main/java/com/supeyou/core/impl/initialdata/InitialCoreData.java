@@ -141,17 +141,19 @@ public class InitialCoreData {
 	}
 
 	private SupporterDTO createSupporter(String string) throws CRUDException {
+
 		SupporterDTO supporterDTO = new SupporterDTO();
 		supporterDTO.setComment(new SingleLineString256Type(string));
-		SupporterCRUDServiceImpl.i().updadd(admin, supporterDTO);
-		return supporterDTO;
+		return SupporterCRUDServiceImpl.i().updadd(admin, supporterDTO);
+
 	}
 
 	private InvitationDTO createInvitation(String string) throws CRUDException {
+
 		InvitationDTO invitationDTO = new InvitationDTO();
 		invitationDTO.setComment(new SingleLineString256Type(string));
-		InvitationCRUDServiceImpl.i().updadd(admin, invitationDTO);
-		return invitationDTO;
+		return InvitationCRUDServiceImpl.i().updadd(admin, invitationDTO);
+
 	}
 
 	private HeroDTO createHero(String name, String imageURL, String websiteURL, String comment) throws CRUDException {
