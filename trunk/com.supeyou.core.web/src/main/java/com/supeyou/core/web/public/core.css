@@ -1,3 +1,7 @@
+.invitation-button-slot{
+	text-align:center;
+	padding: 48px 0 32px 0;
+}
 
 .obsInv-slot > *{
 	text-align:center;

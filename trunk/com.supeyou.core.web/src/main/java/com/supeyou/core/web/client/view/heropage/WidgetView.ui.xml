@@ -7,8 +7,11 @@
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
  
 	<g:FlowPanel styleName="heropage-root" ui:field="root">
+	
 		<g:FlowPanel styleName="driver-slot" ui:field="driverSlot"></g:FlowPanel>
 		<g:FlowPanel styleName="obsInv-slot" ui:field="obsInvSlot"></g:FlowPanel>
+		<g:FlowPanel styleName="invitation-button-slot" ui:field="invitationButtonSlot"></g:FlowPanel>
+	
 	</g:FlowPanel>
 
 </ui:UiBinder> 
