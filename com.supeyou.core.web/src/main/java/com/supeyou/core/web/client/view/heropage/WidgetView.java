@@ -18,6 +18,9 @@ public class WidgetView extends Composite {
 	FlowPanel driverSlot;
 
 	@UiField
+	FlowPanel invitationButtonSlot;
+
+	@UiField
 	FlowPanel obsInvSlot;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {

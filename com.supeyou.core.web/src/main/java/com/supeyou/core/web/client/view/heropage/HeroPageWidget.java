@@ -5,8 +5,10 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.HeroIDType;
+import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.rpc.hero.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.rpc.hero.chooserlarge.item.ItemWidget;
+import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 
 public class HeroPageWidget extends WidgetView {
 
@@ -38,6 +40,10 @@ public class HeroPageWidget extends WidgetView {
 	private void render() {
 
 		driverSlot.add(new ItemWidget(heroDTO));
+
+		FlatButtonWidget flatButtonWidget = new FlatButtonWidget();
+		flatButtonWidget.setText(Text.i.BUTTON_Invite());
+		invitationButtonSlot.add(flatButtonWidget);
 
 		// tmp hack:
 		if (heroDTO.getName().value().toLowerCase().contains("theile")) {

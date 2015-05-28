@@ -21,4 +21,6 @@ public interface Text extends Messages {
 
 	String LANDINGPAGE_Text_HTML();
 
+	String BUTTON_Invite();
+
 }
