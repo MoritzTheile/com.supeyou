@@ -23,4 +23,6 @@ public interface Text extends Messages {
 
 	String BUTTON_Invite();
 
+	String INVITE_Text_HTML();
+
 }

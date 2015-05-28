@@ -1,5 +1,7 @@
 package com.supeyou.core.web.client.view.heropage;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
@@ -8,7 +10,9 @@ import com.supeyou.core.iface.dto.HeroIDType;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.rpc.hero.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.rpc.hero.chooserlarge.item.ItemWidget;
+import com.supeyou.core.web.client.view.heropage.invite.InviteWidget;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
+import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 
 public class HeroPageWidget extends WidgetView {
 
@@ -43,6 +47,16 @@ public class HeroPageWidget extends WidgetView {
 
 		FlatButtonWidget flatButtonWidget = new FlatButtonWidget();
 		flatButtonWidget.setText(Text.i.BUTTON_Invite());
+		flatButtonWidget.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				new PopupWidget(new InviteWidget(heroDTO, null), true);
+
+			}
+		});
+
 		invitationButtonSlot.add(flatButtonWidget);
 
 		// tmp hack:
