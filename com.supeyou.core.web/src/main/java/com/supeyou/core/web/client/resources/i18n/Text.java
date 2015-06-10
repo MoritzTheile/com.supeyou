@@ -25,4 +25,6 @@ public interface Text extends Messages {
 
 	String INVITE_Text_HTML();
 
+	String MISSION_Text_HTML();
+
 }
