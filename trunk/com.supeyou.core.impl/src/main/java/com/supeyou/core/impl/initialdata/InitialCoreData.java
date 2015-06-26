@@ -61,6 +61,7 @@ public class InitialCoreData {
 		hero4 = createHero("Tara McCartney", "./heroPics/TaraMcCartney.jpg", "http://unitedforhope.org", "Dedicates her skills to empower India’s rural poor.");
 
 		supporter_Hugo = createSupporter("Hugo");
+		System.out.println("supporter_Hugo.getId()=" + supporter_Hugo.getId());
 		supporter_Andrea = createSupporter("Andrea");
 		supporter_Manfred = createSupporter("Manfred");
 		supporter_Otto = createSupporter("Otto");
