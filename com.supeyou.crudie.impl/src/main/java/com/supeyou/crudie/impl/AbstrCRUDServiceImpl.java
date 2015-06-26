@@ -63,39 +63,45 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 
 			@SuppressWarnings("unchecked")
 			protected DTOFetchList<D> transactionBody() throws Exception {
-				DTOFetchList<D> fetchList = new DTOFetchList<D>();
+				DTOFetchList<D> fetchList = null;
 
-				{// count all
+				if ((fetchList = getFetchListWithIndividualMethod(page, dtoQuery)) == null) {
 
-					Query query = getCountQuery(em, actor, dtoQuery);
+					fetchList = new DTOFetchList<D>();
 
-					Long count = (Long) query.getSingleResult();
+					{// count all
 
-					fetchList.setTotalSize(count.intValue());
+						Query query = getCountQuery(em, actor, dtoQuery);
 
-				}
+						Long count = (Long) query.getSingleResult();
 
-				{// get page data
-
-					Query query = getEntityQuery(em, actor, dtoQuery);
-
-					if (page != null && page.getStartIndex() < (page.getStartIndex() + page.getPageSize())) {
-
-						if (page.getStartIndex() < 0 && page.getPageSize() < 0) {
-							throw new CRUDException(CODE.INVALID_PAGESIZE, "startIndex=" + page.getStartIndex() + "pageSize=" + page.getPageSize());
-
-						}
-
-						query.setFirstResult(page.getStartIndex());
-						query.setMaxResults(page.getPageSize());
+						fetchList.setTotalSize(count.intValue());
 
 					}
 
-					for (E entity : (List<E>) query.getResultList()) {
+					{// get page data
 
-						D dto = helper.entity2DTO(entity);
-						postprocessEntity2DTO(em, entity, dto);
-						fetchList.add(dto);
+						Query query = getEntityQuery(em, actor, dtoQuery);
+
+						if (page != null && page.getStartIndex() < (page.getStartIndex() + page.getPageSize())) {
+
+							if (page.getStartIndex() < 0 && page.getPageSize() < 0) {
+								throw new CRUDException(CODE.INVALID_PAGESIZE, "startIndex=" + page.getStartIndex() + "pageSize=" + page.getPageSize());
+
+							}
+
+							query.setFirstResult(page.getStartIndex());
+							query.setMaxResults(page.getPageSize());
+
+						}
+
+						for (E entity : (List<E>) query.getResultList()) {
+
+							D dto = helper.entity2DTO(entity);
+							postprocessEntity2DTO(em, entity, dto);
+							fetchList.add(dto);
+
+						}
 
 					}
 
@@ -104,7 +110,17 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 				return fetchList;
 
 			}
+
 		}.execute();
+	}
+
+	/**
+	 * If the query can not be executed with generic means this method can be overridden in subclass to implement specific algorithms.
+	 * 
+	 */
+	public DTOFetchList<D> getFetchListWithIndividualMethod(Page page, F dtoQuery) {
+		// made for overriding
+		return null;
 	}
 
 	protected void postprocessEntity2DTO(EntityManager em, E entity, D dto) throws Exception {

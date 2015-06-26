@@ -65,9 +65,11 @@ public class Invitation2SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<In
 		if (query.getIdB() != null) {
 			whereClause += "b=" + query.getIdB().value() + " AND ";
 		}
+
 		if (whereClause.endsWith("AND ")) {
 			whereClause = whereClause.substring(0, whereClause.length() - 4);
 		}
+
 		if (!"".equals(whereClause)) {
 			whereClause = " WHERE " + whereClause;
 		}
