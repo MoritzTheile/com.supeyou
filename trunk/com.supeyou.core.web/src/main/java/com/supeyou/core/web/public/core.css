@@ -1,3 +1,25 @@
+
+.invitationclicks-root{
+	padding: 5px 5px 5px 5px;
+	border: solid;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+}
+
+.invitationclicks-root .edge-slot{
+	height: 50px;
+	
+}
+
+.invitationclicks-root .image-slot{
+	height: 20px;
+	background-repeat: no-repeat;
+  	background-image: url("core/images/emoticon.smile.png");
+  	background-position:50% 0px ;
+
+}
+
 .invitation-button-slot{
 	text-align:center;
 	padding: 48px 0 32px 0;
