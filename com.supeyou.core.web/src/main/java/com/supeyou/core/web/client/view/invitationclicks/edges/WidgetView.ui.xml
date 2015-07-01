@@ -6,14 +6,7 @@
 	<ui:with field='text'
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
  
-	<g:FlowPanel styleName="invitationclicks-root" ui:field="root">
-	
-		<g:Label styleName="amount-label" ui:field="amountLabel"/>
-		<g:FlowPanel styleName="image-slot" ui:field="imageSlot"/>
-		<g:Label styleName="name-Label" ui:field="nameLabel"/>
-		<g:FlowPanel styleName="edge-slot" ui:field="edgeSlot"/>
-		<g:FlowPanel styleName="children-slot" ui:field="childrenSlot"/>
-		
-	</g:FlowPanel>
+  		<g:FlowPanel styleName="canvas-slot" ui:field="canvasSlot">
+		</g:FlowPanel>
 
 </ui:UiBinder> 
