@@ -73,7 +73,8 @@ public class AppEntryPoint implements EntryPoint {
 
 				for (SupporterDTO supporterDTO : result) {
 
-					RootPanel.get("main").add(new InvitationclicksWidget(supporterDTO));
+					RootPanel.get("main").add(new InvitationclicksWidget(null, supporterDTO));
+
 					break;
 				}
 
