@@ -17,6 +17,8 @@ public class EdgesWidget extends WidgetView {
 		canvas = Canvas.createIfSupported();
 		canvas.setCoordinateSpaceWidth(width);
 		canvas.setCoordinateSpaceHeight(height);
+		// canvas.setWidth("" + width);
+		// canvas.setHeight("" + height);
 		canvasSlot.add(canvas);
 
 	}
@@ -31,13 +33,15 @@ public class EdgesWidget extends WidgetView {
 
 		for (Edge edge : edges) {
 			Context2d context1 = canvas.getContext2d();
-			context1.beginPath();
-			context1.moveTo(canvas.getCoordinateSpaceWidth() / 2 - 1, 0);
-			context1.lineTo(canvas.getCoordinateSpaceWidth() / 2 + 1, 0);
+			context1.moveTo(canvas.getCoordinateSpaceWidth() / 2, 0);
+			context1.bezierCurveTo(
+					canvas.getCoordinateSpaceWidth() / 2, canvas.getCoordinateSpaceHeight() / 2,
+					edge.getDistanceFromMiddle(), canvas.getCoordinateSpaceHeight() / 2,
+					edge.getDistanceFromMiddle(), canvas.getCoordinateSpaceHeight());
 
-			context1.lineTo(edge.getDistanceFromMiddle(), canvas.getCoordinateSpaceHeight());
-			context1.fill();
-			context1.closePath();
+			context1.setStrokeStyle("red");
+
+			context1.stroke();
 
 		}
 	}
