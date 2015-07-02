@@ -1,14 +1,13 @@
 package com.supeyou.core.web.client.view.invitationclicks;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Node;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
-import com.supeyou.core.iface.dto.Invitation2SupporterFetchQuery;
-import com.supeyou.core.iface.dto.Supporter2InvitationDTO;
-import com.supeyou.core.iface.dto.Supporter2InvitationFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
+import com.supeyou.core.iface.dto.SupporterFetchQuery;
 import com.supeyou.core.web.client.view.invitationclicks.edges.Edge;
 import com.supeyou.core.web.client.view.invitationclicks.edges.EdgesWidget;
 import com.supeyou.crudie.iface.datatype.Page;
@@ -16,85 +15,110 @@ import com.supeyou.crudie.iface.dto.DTOFetchList;
 
 public class InvitationclicksWidget extends WidgetView {
 
-	private final InvitationclicksWidget invitationclicksWidget;
+	private final List<SupporterDTO> childrenStillLoading = new ArrayList<>();
 
-	public InvitationclicksWidget(final SupporterDTO supporterDTO) {
+	private final InvitationclicksWidget parentWidget;
 
-		this.invitationclicksWidget = this;
+	private final InvitationclicksWidget thisWidget;
 
+	private final SupporterDTO supporterDTO;
+
+	public InvitationclicksWidget(final InvitationclicksWidget parentWidget, final SupporterDTO supporterDTO) {
+
+		thisWidget = this;
 		nameLabel.setText(supporterDTO.getComment().value());
 
-		Supporter2InvitationFetchQuery supporter2InvitationFetchQuery = new Supporter2InvitationFetchQuery();
+		this.supporterDTO = supporterDTO;
 
-		supporter2InvitationFetchQuery.setIdA(supporterDTO.getId());
+		this.parentWidget = parentWidget;
 
-		com.supeyou.core.web.client.rpc.supporter2invitation.RPCCRUDServiceAsync.i.fetchList(new Page(), supporter2InvitationFetchQuery, new AsyncCallback<DTOFetchList<Supporter2InvitationDTO>>() {
+		SupporterFetchQuery supporterFetchQuery = new SupporterFetchQuery();
+
+		supporterFetchQuery.setInvitor(supporterDTO);
+
+		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.fetchList(new Page(), supporterFetchQuery, new AsyncCallback<DTOFetchList<SupporterDTO>>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
+
 				caught.printStackTrace();
 
 			}
 
 			@Override
-			public void onSuccess(DTOFetchList<Supporter2InvitationDTO> result) {
+			public void onSuccess(DTOFetchList<SupporterDTO> childrenDTO) {
 
-				for (Supporter2InvitationDTO supporter2InvitationDTO : result) {
+				if (childrenDTO.isEmpty()) {
 
-					Invitation2SupporterFetchQuery query = new Invitation2SupporterFetchQuery();
+					if (parentWidget != null) {
+						parentWidget.loadingAChildFinished(supporterDTO);
+					}
 
-					query.setIdA(supporter2InvitationDTO.getDtoB().getId());
+				} else {
 
-					com.supeyou.core.web.client.rpc.invitation2supporter.RPCCRUDServiceAsync.i.fetchList(new Page(), query, new AsyncCallback<DTOFetchList<Invitation2SupporterDTO>>() {
+					childrenStillLoading.addAll(childrenDTO);
 
-						@Override
-						public void onSuccess(DTOFetchList<Invitation2SupporterDTO> result) {
+					for (final SupporterDTO childSupporterDTO : childrenDTO) {
 
-							for (Invitation2SupporterDTO invitation2SupporterDTO : result) {
+						childrenSlot.add(new InvitationclicksWidget(thisWidget, childSupporterDTO));
 
-								childrenSlot.add(new InvitationclicksWidget(invitation2SupporterDTO.getDtoB()));
-
-							}
-
-						}
-
-						@Override
-						public void onFailure(Throwable caught) {
-
-							caught.printStackTrace();
-
-						}
-
-					});
+					}
 
 				}
 
-				renderEdges();
 			}
 		});
 
 	}
 
+	/**
+	 * before calling this, the children have to be loaded
+	 */
 	protected void renderEdges() {
 
-		EdgesWidget edgesWidget = new EdgesWidget(invitationclicksWidget.getOffsetWidth(), 10);
+		EdgesWidget edgesWidget = new EdgesWidget(thisWidget.getOffsetWidth(), 30);
+
+		int lowerEndpointFromLeft = 0;
 
 		for (int i = 0; i < childrenSlot.getElement().getChildNodes().getLength(); i++) {
+
 			Node node = childrenSlot.getElement().getChildNodes().getItem(i);
+
 			if (node instanceof Element) {
-				Window.alert(((Element) node).getInnerText());
+
+				int width = ((Element) node).getClientWidth();
+
+				lowerEndpointFromLeft += width;
+
+				Edge edgeWidget = new Edge(lowerEndpointFromLeft - width / 2);
+
+				edgesWidget.addNewEdge(edgeWidget);
 			}
 
 		}
-		Edge edgeWidget = new Edge(70);
-
-		edgesWidget.addNewEdge(edgeWidget);
 
 		edgesWidget.render();
 
 		edgeSlot.add(edgesWidget);
 
-		super.onLoad();
 	}
+
+	protected void loadingAChildFinished(SupporterDTO childSupporterDTO) {
+
+		childrenStillLoading.remove(childSupporterDTO);
+
+		if (childrenStillLoading.isEmpty()) {
+
+			renderEdges();
+
+			if (parentWidget != null) {
+
+				parentWidget.loadingAChildFinished(supporterDTO);
+
+			}
+
+		}
+
+	};
 
 }

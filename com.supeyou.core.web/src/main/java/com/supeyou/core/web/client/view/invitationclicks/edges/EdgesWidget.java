@@ -29,15 +29,17 @@ public class EdgesWidget extends WidgetView {
 
 	public void render() {
 
-		Context2d context1 = canvas.getContext2d();
-		context1.beginPath();
-		context1.moveTo(25, 0);
-		context1.lineTo(0, 20);
-		context1.lineTo(25, 40);
-		context1.lineTo(25, 0);
-		context1.fill();
-		context1.closePath();
+		for (Edge edge : edges) {
+			Context2d context1 = canvas.getContext2d();
+			context1.beginPath();
+			context1.moveTo(canvas.getCoordinateSpaceWidth() / 2 - 1, 0);
+			context1.lineTo(canvas.getCoordinateSpaceWidth() / 2 + 1, 0);
 
+			context1.lineTo(edge.getDistanceFromMiddle(), canvas.getCoordinateSpaceHeight());
+			context1.fill();
+			context1.closePath();
+
+		}
 	}
 
 }
