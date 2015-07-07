@@ -1,6 +1,5 @@
 package com.supeyou.core.web.client.view.invitationclicks;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.dom.client.Element;
@@ -18,13 +17,12 @@ import com.supeyou.crudie.iface.dto.DTOFetchList;
 
 public class InvitationclicksWidget extends WidgetView {
 
-	private final List<SupporterDTO> childrenStillLoading = new ArrayList<>();
+	private final SupporterDTO supporterDTO;
 
-	private final InvitationclicksWidget parentWidget;
+	private List<SupporterDTO> childrenSupporterDTO;
 
 	private final InvitationclicksWidget thisWidget;
-
-	private final SupporterDTO supporterDTO;
+	private final InvitationclicksWidget parentWidget;
 
 	public enum COLLAPSE_MODE {
 		COLLAPSED, EXPANDED
@@ -36,18 +34,95 @@ public class InvitationclicksWidget extends WidgetView {
 
 		thisWidget = this;
 
+		this.parentWidget = parentWidget;
+
 		this.supporterDTO = supporterDTO;
 
-		this.parentWidget = parentWidget;
+		SupporterFetchQuery supporterFetchQuery = new SupporterFetchQuery();
+
+		supporterFetchQuery.setInvitor(supporterDTO);
+
+		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.fetchList(new Page(), supporterFetchQuery, new AsyncCallback<DTOFetchList<SupporterDTO>>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+
+				caught.printStackTrace();
+
+			}
+
+			@Override
+			public void onSuccess(DTOFetchList<SupporterDTO> childrenDTO) {
+
+				childrenSupporterDTO = childrenDTO;
+
+				render();
+
+			}
+
+		});
 
 	}
 
-	/**
-	 * before calling this, the children have to be loaded
-	 */
-	protected void renderEdges() {
+	private void render() {
 
-		final EdgesWidget edgesWidget = new EdgesWidget(thisWidget.getOffsetWidth(), 30);
+		edgeSlot.clear();
+		childrenSlot.clear();
+
+		nameLabel.setText(supporterDTO.getComment().value());
+
+		if (COLLAPSE_MODE.EXPANDED.equals(collapseMode)) {
+
+			for (SupporterDTO childSupporterDTO : childrenSupporterDTO) {
+
+				childrenSlot.add(new InvitationclicksWidget(thisWidget, childSupporterDTO));
+
+			}
+
+		} else {
+
+			if (!childrenSupporterDTO.isEmpty()) {
+				Label expandButton = new Label("+ " + childrenSupporterDTO.size());
+
+				expandButton.addClickHandler(new ClickHandler() {
+
+					@Override
+					public void onClick(ClickEvent event) {
+
+						collapseMode = COLLAPSE_MODE.EXPANDED;
+
+						render();
+
+					}
+				});
+
+				childrenSlot.add(expandButton);
+
+			}
+
+			if (parentWidget != null) {
+				parentWidget.childFinishedLoading(supporterDTO);
+			}
+
+		}
+
+	}
+
+	protected void childFinishedLoading(SupporterDTO childSupporterDTO) {
+		renderEdges();
+		if (parentWidget != null) {
+			parentWidget.childFinishedLoading(supporterDTO);
+		}
+	};
+
+	/**
+	 * before calling this, children have to be completely loaded and rendered
+	 */
+	private void renderEdges() {
+
+		edgeSlot.clear();
+
+		final EdgesWidget edgesWidget = new EdgesWidget(this.getOffsetWidth(), 30);
 
 		edgesWidget.addDomHandler(new ClickHandler() {
 
@@ -82,102 +157,9 @@ public class InvitationclicksWidget extends WidgetView {
 		}
 
 		edgesWidget.render();
-		edgeSlot.clear();
+
 		edgeSlot.add(edgesWidget);
 
-	}
-
-	private void render() {
-
-		nameLabel.setText(supporterDTO.getComment().value());
-
-		edgeSlot.clear();
-		childrenSlot.clear();
-
-		if (COLLAPSE_MODE.EXPANDED.equals(collapseMode)) {
-
-			SupporterFetchQuery supporterFetchQuery = new SupporterFetchQuery();
-
-			supporterFetchQuery.setInvitor(supporterDTO);
-
-			com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.fetchList(new Page(), supporterFetchQuery, new AsyncCallback<DTOFetchList<SupporterDTO>>() {
-
-				@Override
-				public void onFailure(Throwable caught) {
-
-					caught.printStackTrace();
-
-				}
-
-				@Override
-				public void onSuccess(DTOFetchList<SupporterDTO> childrenDTO) {
-
-					if (childrenDTO.isEmpty()) {
-
-						if (parentWidget != null) {
-							parentWidget.loadingAChildFinished(supporterDTO);
-						}
-
-					} else {
-
-						childrenStillLoading.addAll(childrenDTO);
-
-						for (final SupporterDTO childSupporterDTO : childrenDTO) {
-
-							childrenSlot.add(new InvitationclicksWidget(thisWidget, childSupporterDTO));
-
-						}
-
-					}
-
-				}
-			});
-
-		} else {
-
-			Label expandButton = new Label("+");
-			expandButton.addClickHandler(new ClickHandler() {
-
-				@Override
-				public void onClick(ClickEvent event) {
-
-					collapseMode = COLLAPSE_MODE.EXPANDED;
-					render();
-
-				}
-			});
-
-			childrenSlot.add(expandButton);
-
-			if (parentWidget != null) {
-				parentWidget.loadingAChildFinished(supporterDTO);
-			}
-
-		}
-	}
-
-	protected void loadingAChildFinished(SupporterDTO childSupporterDTO) {
-
-		childrenStillLoading.remove(childSupporterDTO);
-
-		if (childrenStillLoading.isEmpty()) {
-
-			renderEdges();
-
-			if (parentWidget != null) {
-
-				parentWidget.loadingAChildFinished(supporterDTO);
-
-			}
-
-		}
-
-	};
-
-	@Override
-	protected void onLoad() {
-		render();
-		super.onLoad();
 	}
 
 }
