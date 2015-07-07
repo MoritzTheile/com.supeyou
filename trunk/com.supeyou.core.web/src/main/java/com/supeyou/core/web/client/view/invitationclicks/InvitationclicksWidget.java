@@ -24,6 +24,8 @@ public class InvitationclicksWidget extends WidgetView {
 	private final InvitationclicksWidget thisWidget;
 	private final InvitationclicksWidget parentWidget;
 
+	private final Integer level;
+
 	public enum COLLAPSE_MODE {
 		COLLAPSED, EXPANDED
 	};
@@ -31,12 +33,21 @@ public class InvitationclicksWidget extends WidgetView {
 	private COLLAPSE_MODE collapseMode = COLLAPSE_MODE.COLLAPSED;
 
 	public InvitationclicksWidget(final InvitationclicksWidget parentWidget, final SupporterDTO supporterDTO) {
+		this(parentWidget, supporterDTO, 1);
+	}
 
+	private InvitationclicksWidget(final InvitationclicksWidget parentWidget, final SupporterDTO supporterDTO, Integer level) {
 		thisWidget = this;
+
+		this.level = level;
 
 		this.parentWidget = parentWidget;
 
 		this.supporterDTO = supporterDTO;
+
+		if (level < 2) {
+			collapseMode = COLLAPSE_MODE.EXPANDED;
+		}
 
 		SupporterFetchQuery supporterFetchQuery = new SupporterFetchQuery();
 
@@ -75,7 +86,7 @@ public class InvitationclicksWidget extends WidgetView {
 
 			for (SupporterDTO childSupporterDTO : childrenSupporterDTO) {
 
-				childrenSlot.add(new InvitationclicksWidget(thisWidget, childSupporterDTO));
+				childrenSlot.add(new InvitationclicksWidget(thisWidget, childSupporterDTO, new Integer(level + 1)));
 
 			}
 
