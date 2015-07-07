@@ -1,7 +1,7 @@
 
 .invitationclicks-root{
 	white-space: nowrap;
-	padding: 0 6px;
+	padding: 0;
 	display: inline-block;
 	vertical-align: top;
 	text-align: center;
@@ -19,6 +19,13 @@
   	background-position:50% 0px ;
 
 }
+.invitationclicks-root .name-Label{
+	
+	padding: 0 6px;
+	font-size: 9px;
+	
+}
+
 
 .invitation-button-slot{
 	text-align:center;
