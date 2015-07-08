@@ -15,4 +15,6 @@ public interface RPCAuthService extends RemoteService {
 
 	void sessionLogout();
 
+	UserDTO getActorOfSession();
+
 }

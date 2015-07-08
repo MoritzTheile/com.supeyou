@@ -15,4 +15,6 @@ public interface RPCAuthServiceAsync {
 
 	void sessionLogout(AsyncCallback<Void> callback);
 
+	void getActorOfSession(AsyncCallback<UserDTO> callback);
+
 }

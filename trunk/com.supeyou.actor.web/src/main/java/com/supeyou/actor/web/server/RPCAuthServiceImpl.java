@@ -64,6 +64,12 @@ public class RPCAuthServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
+	public UserDTO getActorOfSession() {
+		return SessionStore.getActor(this.getThreadLocalRequest().getSession());
+
+	}
+
+	@Override
 	public void sessionLogout() {
 
 		SessionStore.setActor(this.getThreadLocalRequest().getSession(), null);
