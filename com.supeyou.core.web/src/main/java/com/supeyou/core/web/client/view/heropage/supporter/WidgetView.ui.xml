@@ -6,7 +6,8 @@
 	<ui:with field='text'
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
  
-  		<g:FlowPanel styleName="canvas-slot" ui:field="canvasSlot">
-		</g:FlowPanel>
+	<g:FlowPanel styleName="supporter-root" ui:field="root">
+	
+	</g:FlowPanel>
 
 </ui:UiBinder> 

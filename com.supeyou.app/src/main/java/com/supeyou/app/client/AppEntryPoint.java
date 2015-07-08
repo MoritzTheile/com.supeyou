@@ -1,17 +1,12 @@
 package com.supeyou.app.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.supeyou.actor.web.client.login.loginbutton.LoginButtonWidget;
-import com.supeyou.core.iface.dto.SupporterDTO;
-import com.supeyou.core.iface.dto.SupporterFetchQuery;
 import com.supeyou.core.web.client.HistoryController;
-import com.supeyou.core.web.client.view.invitationclicks.InvitationclicksWidget;
-import com.supeyou.crudie.iface.datatype.FetchQuery.SORTDIRECTION;
-import com.supeyou.crudie.iface.datatype.Page;
-import com.supeyou.crudie.iface.dto.DTOFetchList;
+import com.supeyou.core.web.client.HistoryController.ANCHOR;
 import com.supeyou.crudie.web.client.model.AbstrObservable.Observer;
 import com.supeyou.crudie.web.client.model.AppInfoModel;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
@@ -21,8 +16,6 @@ public class AppEntryPoint implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
-
-		// RootPanel.get("title").getElement().setInnerHTML("SupeYou");
 
 		RootPanel.get("login").add(new LoginButtonWidget(LoginStateModel.i()));
 
@@ -50,36 +43,11 @@ public class AppEntryPoint implements EntryPoint {
 
 		HistoryController.i();
 
-		// if (History.getToken() == null || History.getToken().equals("")) {
-		// History.newItem(ANCHOR.LP.name());
-		// } else {
-		// HistoryController.i().show(History.getToken());
-
-		// }
-
-		SupporterFetchQuery query = new SupporterFetchQuery();
-		query.setSortDirection(SORTDIRECTION.ASC);
-		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.fetchList(new Page(), query, new AsyncCallback<DTOFetchList<SupporterDTO>>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-
-				caught.printStackTrace();
-
-			}
-
-			@Override
-			public void onSuccess(DTOFetchList<SupporterDTO> result) {
-
-				for (SupporterDTO supporterDTO : result) {
-
-					RootPanel.get("main").add(new InvitationclicksWidget(null, supporterDTO));
-
-					break;
-				}
-
-			}
-		});
+		if (History.getToken() == null || History.getToken().equals("")) {
+			History.newItem(ANCHOR.LP.name());
+		} else {
+			HistoryController.i().show(History.getToken());
+		}
 
 		// RootPanel.get("main").add(new Label("Session"));
 		// RootPanel.get("main").add(new com.supeyou.actor.web.client.rpc.session.chooserlarge.ChooserLargeWidget());

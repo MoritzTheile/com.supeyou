@@ -6,7 +6,7 @@
 	<ui:with field='text'
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
  
-	<g:FlowPanel styleName="invitationclicks-root" ui:field="root">
+	<g:FlowPanel styleName="supportertree-root" ui:field="root">
 	
 		<g:Label styleName="amount-label" ui:field="amountLabel"/>
 		<g:FlowPanel styleName="image-slot" ui:field="imageSlot"/>
