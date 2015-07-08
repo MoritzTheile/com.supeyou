@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.view.invitationclicks.edges;
+package com.supeyou.core.web.client.view.heropage.supporter;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -12,7 +12,7 @@ public class WidgetView extends Composite {
 	private static ThisUiBinder uiBinder = GWT.create(ThisUiBinder.class);
 
 	@UiField
-	FlowPanel canvasSlot;
+	FlowPanel root;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}

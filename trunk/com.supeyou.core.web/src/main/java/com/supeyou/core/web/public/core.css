@@ -1,5 +1,8 @@
+.supporter-root{
+	text-align: center;
+}
 
-.invitationclicks-root{
+.supportertree-root{
 	white-space: nowrap;
 	padding: 0;
 	display: inline-block;
@@ -7,19 +10,19 @@
 	text-align: center;
 }
 
-.invitationclicks-root .edge-slot{
+.supportertree-root .edge-slot{
 	height: 50px;
 	
 }
 
-.invitationclicks-root .image-slot{
+.supportertree-root .image-slot{
 	height: 20px;
 	background-repeat: no-repeat;
   	background-image: url("core/images/emoticon.smile.png");
   	background-position:50% 0px ;
 }
 
-.invitationclicks-root .name-Label{
+.supportertree-root .name-Label{
 	
 	padding: 0 6px;
 	font-size: 9px;
