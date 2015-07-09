@@ -34,8 +34,8 @@ public class ItemWidget extends WidgetView {
 	private String renderInfoString() {
 
 		String infos = "";
-		if (thisDTO.getName() != null) {
-			infos += thisDTO.getName().value();
+		if (thisDTO.getWebsiteURL() != null) {
+			infos += thisDTO.getWebsiteURL().value();
 		}
 
 		return infos;

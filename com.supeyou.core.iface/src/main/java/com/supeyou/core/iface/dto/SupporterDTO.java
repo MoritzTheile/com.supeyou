@@ -9,7 +9,7 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 
 	private static final long serialVersionUID = 824618946818L;
 
-	private SingleLineString256Type comment;
+	private SingleLineString256Type tmpHeroName;
 
 	public SupporterDTO() {
 
@@ -33,12 +33,12 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 		return super.getId();
 	}
 
-	public SingleLineString256Type getComment() {
-		return comment;
+	public SingleLineString256Type getTmpHeroName() {
+		return tmpHeroName;
 	}
 
-	public void setComment(SingleLineString256Type comment) {
-		this.comment = comment;
+	public void setTmpHeroName(SingleLineString256Type tmpHeroName) {
+		this.tmpHeroName = tmpHeroName;
 	}
 
 }

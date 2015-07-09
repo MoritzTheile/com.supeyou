@@ -1,6 +1,5 @@
 package com.supeyou.core.impl.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -12,32 +11,11 @@ import com.supeyou.crudie.impl.entity.AbstrEntity;
 @Table(name = "HeroEntity")
 public class HeroEntity extends AbstrEntity<HeroIDType> {
 
-	/**
-	 * Login of User. Can be used additionally to the email.
-	 */
-	@Column(name = "NAME", nullable = true, length = 256, unique = true)
-	private String name;
-
 	private String imageURL;
 
 	private String websiteURL;
 
 	private String comment;
-
-	public SingleLineString256Type getName() {
-		if (name == null) {
-			return null;
-		}
-		return new SingleLineString256Type(name);
-	}
-
-	public void setName(SingleLineString256Type name) {
-		if (name != null) {
-			this.name = name.value();
-		} else {
-			this.name = null;
-		}
-	}
 
 	public SingleLineString256Type getComment() {
 		if (comment == null) {

@@ -65,6 +65,7 @@ public class HeroPageWidget extends WidgetView {
 		invitationButtonSlot.add(flatButtonWidget);
 		SupporterFetchQuery query = new SupporterFetchQuery();
 		query.setSortDirection(SORTDIRECTION.ASC);
+
 		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.fetchList(new Page(), query, new AsyncCallback<DTOFetchList<SupporterDTO>>() {
 
 			@Override
@@ -79,7 +80,7 @@ public class HeroPageWidget extends WidgetView {
 
 				for (SupporterDTO supporterDTO : result) {
 
-					supporterSlot.add(new SupporterWidget(heroDTO, supporterDTO));
+					supporterSlot.add(new SupporterWidget(supporterDTO));
 
 					break;
 				}
@@ -101,5 +102,4 @@ public class HeroPageWidget extends WidgetView {
 		// }
 
 	}
-
 }

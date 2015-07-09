@@ -20,21 +20,7 @@ public class FieldsWidget extends WidgetView {
 
 		this.thisDto = dto;
 
-		put(
-
-				"Hero",
-
-				new FieldForSingleLineString256Type(thisDto.getName(), true) {
-
-					@Override
-					public void onHasChanged(SingleLineString256Type value) {
-						thisDto.setName(value);
-						hasChanged();
-					}
-
-				}
-
-		);
+		
 
 		put(
 

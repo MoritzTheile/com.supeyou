@@ -80,7 +80,7 @@ public class SupporterTreeWidget extends WidgetView {
 		edgeSlot.clear();
 		childrenSlot.clear();
 
-		nameLabel.setText(supporterDTO.getComment().value());
+		nameLabel.setText(supporterDTO.getTmpHeroName().value());
 
 		if (COLLAPSE_MODE.EXPANDED.equals(collapseMode)) {
 

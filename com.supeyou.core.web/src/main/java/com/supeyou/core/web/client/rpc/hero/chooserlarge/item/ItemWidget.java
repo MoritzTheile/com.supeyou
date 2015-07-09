@@ -36,10 +36,6 @@ public class ItemWidget extends WidgetView {
 
 	private void render() {
 
-		nameSlot.clear();
-		if (thisDTO.getName() != null) {
-			nameSlot.add(new HTML(thisDTO.getName().value()));
-		}
 		imageSlot.clear();
 		if (thisDTO.getImageURL() != null) {
 			imageSlot.add(new Image(thisDTO.getImageURL().value()));
