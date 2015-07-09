@@ -19,6 +19,8 @@ public class InitialCoreData {
 
 	public UserDTO admin;
 
+	public UserDTO mTheile;
+
 	public HeroDTO hero1;
 	public HeroDTO hero2;
 	public HeroDTO hero3;
@@ -55,13 +57,15 @@ public class InitialCoreData {
 	private void init() throws CRUDException {
 
 		admin = UserCRUDServiceImpl.i().getInitialAdmin();
+
+		mTheile = createUser("theile@mtheile.com");
+
 		hero1 = createHero("Moritz Theile", "./heroPics/MoritzTheile.jpg", "http://mtheile.com", "SupeYou Developer");
 		hero2 = createHero("Martina Fuchs", "./heroPics/MartinaFuchs.jpg", "https://www.xing.com/profile/Martina_Fuchs60", "SupeYou Coach");
 		hero3 = createHero("Nikolaus Teixeira", "./heroPics/NikolausTeixeira.jpg", "http://willkommen-in-muenchen.de", "Engagiert sich für münchner Flüchtlinge");
 		hero4 = createHero("Tara McCartney", "./heroPics/TaraMcCartney.jpg", "http://unitedforhope.org", "Dedicates her skills to empower India’s rural poor.");
 
 		supporter_Hugo = createSupporter("Hugo");
-		System.out.println("supporter_Hugo.getId()=" + supporter_Hugo.getId());
 		supporter_Andrea = createSupporter("Andrea");
 		supporter_Manfred = createSupporter("Manfred");
 		supporter_Otto = createSupporter("Otto");
@@ -125,6 +129,12 @@ public class InitialCoreData {
 		createInvitation2Supporter(invitation_0205_0734, supporter_Melanie);
 		createInvitation2Supporter(invitation_0205_0734, supporter_Marion);
 
+	}
+
+	private UserDTO createUser(String name) throws CRUDException {
+		UserDTO userDTO = new UserDTO();
+		userDTO.setLoginId(new SingleLineString256Type(name));
+		return UserCRUDServiceImpl.i().updadd(admin, userDTO);
 	}
 
 	private void createInvitation2Supporter(InvitationDTO a, SupporterDTO b) throws CRUDException {
