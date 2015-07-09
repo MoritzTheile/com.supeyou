@@ -12,6 +12,7 @@
 		<class>com.supeyou.core.impl.entity.HeroEntity</class>
 		<class>com.supeyou.core.impl.entity.SupporterEntity</class>
 		<class>com.supeyou.core.impl.entity.Supporter2InvitationEntity</class>
+		<class>com.supeyou.core.impl.entity.User2SupporterEntity</class>
 		<class>com.supeyou.core.impl.entity.InvitationEntity</class>
 		<class>com.supeyou.core.impl.entity.Invitation2SupporterEntity</class>
 		<class>com.supeyou.core.impl.entity.Supporter2DonationEntity</class>
