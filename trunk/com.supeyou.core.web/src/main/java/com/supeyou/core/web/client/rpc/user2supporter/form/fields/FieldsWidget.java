@@ -111,8 +111,8 @@ public class FieldsWidget extends WidgetView {
 					@Override
 					public Widget getWidget(SupporterDTO dto) {
 						String label = "- - -";
-						if (dto != null && dto.getComment() != null) {
-							label = dto.getComment().value();
+						if (dto != null && dto.getTmpHeroName() != null) {
+							label = dto.getTmpHeroName().value();
 						}
 						return new Label(label);
 					}

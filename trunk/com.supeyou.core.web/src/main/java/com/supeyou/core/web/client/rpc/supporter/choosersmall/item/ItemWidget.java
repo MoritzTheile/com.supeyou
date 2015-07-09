@@ -34,8 +34,8 @@ public class ItemWidget extends WidgetView {
 	private String renderInfoString() {
 
 		String infos = "";
-		if (thisDTO.getComment() != null) {
-			infos += thisDTO.getComment().value();
+		if (thisDTO.getTmpHeroName() != null) {
+			infos += thisDTO.getTmpHeroName().value();
 		}
 
 		return infos;

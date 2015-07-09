@@ -2,7 +2,7 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
-             
+
 <persistence-unit name="appData">
 
 		<class>com.supeyou.crudie.impl.entity.UserEntity</class>		
@@ -13,6 +13,8 @@
 		<class>com.supeyou.core.impl.entity.SupporterEntity</class>
 		<class>com.supeyou.core.impl.entity.Supporter2InvitationEntity</class>
 		<class>com.supeyou.core.impl.entity.User2SupporterEntity</class>
+		<class>com.supeyou.core.impl.entity.User2HeroEntity</class>
+		<class>com.supeyou.core.impl.entity.Hero2SupporterEntity</class>
 		<class>com.supeyou.core.impl.entity.InvitationEntity</class>
 		<class>com.supeyou.core.impl.entity.Invitation2SupporterEntity</class>
 		<class>com.supeyou.core.impl.entity.Supporter2DonationEntity</class>

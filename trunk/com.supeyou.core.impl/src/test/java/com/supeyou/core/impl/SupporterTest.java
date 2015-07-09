@@ -11,7 +11,7 @@ public class SupporterTest {
 
 	@Test
 	public void test() throws CRUDException {
-		assertNotNull(InitialCoreData.i().mTheile);
+		assertNotNull(InitialCoreData.i().admin);
 
 	}
 

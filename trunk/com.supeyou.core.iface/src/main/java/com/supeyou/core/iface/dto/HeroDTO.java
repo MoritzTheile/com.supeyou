@@ -9,7 +9,6 @@ public class HeroDTO extends AbstrDTO<HeroIDType> implements Serializable {
 
 	private static final long serialVersionUID = 824618946818L;
 
-	private SingleLineString256Type name;
 	private SingleLineString256Type imageURL;
 	private SingleLineString256Type websiteURL;
 	private SingleLineString256Type comment;
@@ -34,14 +33,6 @@ public class HeroDTO extends AbstrDTO<HeroIDType> implements Serializable {
 	@Override
 	public HeroIDType getId() {
 		return super.getId();
-	}
-
-	public SingleLineString256Type getName() {
-		return name;
-	}
-
-	public void setName(SingleLineString256Type name) {
-		this.name = name;
 	}
 
 	public SingleLineString256Type getComment() {
