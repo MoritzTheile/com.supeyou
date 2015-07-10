@@ -32,6 +32,9 @@ public class UserEntity extends AbstrEntity<UserIDType> {
 	@Column(name = UserFetchQuery.COLUMN_LOGINID, nullable = true, length = 256, unique = true)
 	private String loginId;
 
+	@Column(name = UserFetchQuery.COLUMN_AUTHTOKEN, nullable = true, length = 256, unique = true)
+	private String authToken;
+
 	@Column(name = UserFetchQuery.COLUMN_AMOUNT)
 	private Integer amount;
 
@@ -64,6 +67,22 @@ public class UserEntity extends AbstrEntity<UserIDType> {
 			this.loginId = loginId.value();
 		} else {
 			this.loginId = null;
+		}
+	}
+
+	public SingleLineString256Type getAuthToken() {
+		if (this.authToken != null) {
+			return new SingleLineString256Type(authToken);
+		} else {
+			return null;
+		}
+	}
+
+	public void setAuthToken(SingleLineString256Type authToken) {
+		if (authToken != null) {
+			this.authToken = authToken.value();
+		} else {
+			this.authToken = null;
 		}
 	}
 

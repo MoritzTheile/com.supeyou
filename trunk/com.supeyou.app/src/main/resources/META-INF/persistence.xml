@@ -14,12 +14,13 @@
 		<class>com.supeyou.core.impl.entity.HeroEntity</class>
 		<class>com.supeyou.core.impl.entity.SupporterEntity</class>
 		<class>com.supeyou.core.impl.entity.Supporter2InvitationEntity</class>
+		<class>com.supeyou.core.impl.entity.User2SupporterEntity</class>
+		<class>com.supeyou.core.impl.entity.User2HeroEntity</class>
+		<class>com.supeyou.core.impl.entity.Hero2SupporterEntity</class>
 		<class>com.supeyou.core.impl.entity.InvitationEntity</class>
 		<class>com.supeyou.core.impl.entity.Invitation2SupporterEntity</class>
 		<class>com.supeyou.core.impl.entity.Supporter2DonationEntity</class>
 		<class>com.supeyou.core.impl.entity.DonationEntity</class>
-		<class>com.supeyou.actor.impl.entity.Session2UserEntity</class>	
-		<class>com.supeyou.actor.impl.entity.SessionEntity</class>	
 
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		
@@ -31,6 +32,7 @@
 			<property name="hibernate.cache.use_query_cache" value="false"/>
 			<property name="hibernate.cache.use_second_level_cache" value="false"/>
 			<property name="hibernate.generate_statistics" value="false"/>	
+			
 			
 			<!-- Otherwise there is a "Unable to get the default Bean Validation factory" error: -->
 			<property name="javax.persistence.validation.mode" value="none"/>		

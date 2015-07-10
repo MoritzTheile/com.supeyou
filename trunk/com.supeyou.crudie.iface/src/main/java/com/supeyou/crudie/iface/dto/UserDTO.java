@@ -17,6 +17,7 @@ public class UserDTO extends AbstrDTO<UserIDType> implements Serializable {
 	private static final long serialVersionUID = 242457943L;
 
 	private SingleLineString256Type loginId;
+	private SingleLineString256Type authToken;
 
 	private List<ROLE> roles = new ArrayList<ROLE>();
 
@@ -107,6 +108,14 @@ public class UserDTO extends AbstrDTO<UserIDType> implements Serializable {
 
 	public void setActive(Boolean active) {
 		this.active = active;
+	}
+
+	public SingleLineString256Type getAuthToken() {
+		return authToken;
+	}
+
+	public void setAuthToken(SingleLineString256Type authToken) {
+		this.authToken = authToken;
 	}
 
 }
