@@ -9,7 +9,7 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 
 	private static final long serialVersionUID = 824618946818L;
 
-	private SingleLineString256Type tmpHeroName;
+	private SingleLineString256Type tmpHeroName = new SingleLineString256Type("no name");
 
 	public SupporterDTO() {
 

@@ -6,6 +6,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.actor.web.client.login.loginbutton.LoginButtonWidget;
 import com.supeyou.actor.web.client.rpc.RPCAuthServiceAsync;
 import com.supeyou.core.web.client.HistoryController;
@@ -42,22 +43,43 @@ public class AppEntryPoint implements EntryPoint {
 			}
 		});
 
-		RPCAuthServiceAsync.i.getActorOfSession(new AsyncCallback<UserDTO>() {
+		if (LoginStateModel.i().getLoggedInUser() == null) {// trying to login with authToken
+			RPCAuthServiceAsync.i.authenticateActor(Window.Location.getParameter(ActorStatics.AUTHTOKEN_KEY), new AsyncCallback<UserDTO>() {
 
-			@Override
-			public void onSuccess(UserDTO result) {
+				@Override
+				public void onFailure(Throwable caught) {
 
-				LoginStateModel.i().setLoggedInUser(result);
+					caught.printStackTrace();
 
-			}
+				}
 
-			@Override
-			public void onFailure(Throwable caught) {
+				@Override
+				public void onSuccess(UserDTO result) {
 
-				caught.printStackTrace();
+					LoginStateModel.i().setLoggedInUser(result);
 
-			}
-		});
+				}
+			});
+		}
+
+		//
+		//
+		// RPCAuthServiceAsync.i.getActorOfSession(new AsyncCallback<UserDTO>() {
+		//
+		// @Override
+		// public void onSuccess(UserDTO result) {
+		//
+		// LoginStateModel.i().setLoggedInUser(result);
+		//
+		// }
+		//
+		// @Override
+		// public void onFailure(Throwable caught) {
+		//
+		// caught.printStackTrace();
+		//
+		// }
+		// });
 
 		AppInfoModel appInfoModel = new AppInfoModel();
 		RootPanel.get("footer").add(new VersionPresenter(appInfoModel));
