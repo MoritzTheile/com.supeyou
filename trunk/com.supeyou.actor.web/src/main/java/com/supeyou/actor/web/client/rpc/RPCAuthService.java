@@ -17,4 +17,6 @@ public interface RPCAuthService extends RemoteService {
 
 	UserDTO getActorOfSession();
 
+	UserDTO authenticateActor(String authToken) throws CRUDException;
+
 }

@@ -30,6 +30,24 @@ public class RPCAuthServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
+	public UserDTO authenticateActor(String authToken) throws CRUDException {
+
+		UserFetchQuery dtoQuery = new UserFetchQuery();
+
+		dtoQuery.setAuthToken(new SingleLineString256Type(authToken));
+
+		for (UserDTO userDTO : UserCRUDServiceImpl.i().fetchList(null, new Page(), dtoQuery)) {
+
+			SessionStore.setActor(this.getThreadLocalRequest().getSession(), userDTO);
+
+			return userDTO;
+		}
+
+		return null;
+
+	}
+
+	@Override
 	public UserDTO authenticateActor(String loginName, String password) throws CRUDException {
 
 		if (loginName.equals("MT")) {
