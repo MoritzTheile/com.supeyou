@@ -1,6 +1,7 @@
 package com.supeyou.core.impl;
 
 import com.supeyou.core.iface.InvitationCRUDService;
+import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.InvitationFetchQuery;
 import com.supeyou.core.iface.dto.Supporter2InvitationDTO;
@@ -81,6 +82,16 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 			}
 
 		}.execute();
+
+	}
+
+	@Override
+	public void acceptInvitation(UserDTO actorDTO, InvitationDTO invitationDTO, SupporterDTO supporterDTO) throws CRUDException {
+
+		Invitation2SupporterDTO invitation2SupporterDTO = new Invitation2SupporterDTO();
+		invitation2SupporterDTO.setDtoA(invitationDTO);
+		invitation2SupporterDTO.setDtoB(supporterDTO);
+		Invitation2SupporterCRUDServiceImpl.i().updadd(actorDTO, invitation2SupporterDTO);
 
 	}
 
