@@ -45,19 +45,19 @@ public class InitialCoreData {
 	public UserDTO user_Marion;
 
 	public SupporterDTO supporter_Hugo;
-	// public SupporterDTO supporter_Andrea;
-	// public SupporterDTO supporter_Manfred;
-	// public SupporterDTO supporter_Otto;
-	// public SupporterDTO supporter_Emma;
-	// public SupporterDTO supporter_Hermann;
-	// public SupporterDTO supporter_Marie;
-	// public SupporterDTO supporter_Gunnar;
-	// public SupporterDTO supporter_Christian;
-	// public SupporterDTO supporter_Herbert;
-	// public SupporterDTO supporter_Eugen;
-	// public SupporterDTO supporter_Thomas;
-	// public SupporterDTO supporter_Melanie;
-	// public SupporterDTO supporter_Marion;
+	public SupporterDTO supporter_Andrea;
+	public SupporterDTO supporter_Manfred;
+	public SupporterDTO supporter_Otto;
+	public SupporterDTO supporter_Emma;
+	public SupporterDTO supporter_Hermann;
+	public SupporterDTO supporter_Marie;
+	public SupporterDTO supporter_Gunnar;
+	public SupporterDTO supporter_Christian;
+	public SupporterDTO supporter_Herbert;
+	public SupporterDTO supporter_Eugen;
+	public SupporterDTO supporter_Thomas;
+	public SupporterDTO supporter_Melanie;
+	public SupporterDTO supporter_Marion;
 
 	public InvitationDTO invitation_0105_1945;
 	public InvitationDTO invitation_0105_1948;
@@ -101,68 +101,57 @@ public class InitialCoreData {
 		hero_Tara = createHero(user_Tara, "./heroPics/TaraMcCartney.jpg", "http://unitedforhope.org", "Dedicates her skills to empower India’s rural poor.");
 
 		supporter_Hugo = createSupporter(user_Hugo, hero_Martina);
-		// supporter_Andrea = createSupporter("Andrea");
-		// supporter_Manfred = createSupporter("Manfred");
-		// supporter_Otto = createSupporter("Otto");
-		// supporter_Emma = createSupporter("Emma");
-		// supporter_Hermann = createSupporter("Hermann");
-		// supporter_Marie = createSupporter("Marie");
-		// supporter_Gunnar = createSupporter("Gunnar");
-		// supporter_Christian = createSupporter("Christian");
-		// supporter_Herbert = createSupporter("Herbert");
-		// supporter_Eugen = createSupporter("Eugen");
-		// supporter_Thomas = createSupporter("Thomas");
-		// supporter_Melanie = createSupporter("Melanie");
-		// supporter_Marion = createSupporter("Marion");
+		supporter_Andrea = createSupporter(user_Hugo, hero_Martina);
+		supporter_Manfred = createSupporter(user_Manfred, hero_Martina);
+		supporter_Otto = createSupporter(user_Otto, hero_Martina);
+		supporter_Emma = createSupporter(user_Emma, hero_Martina);
+		supporter_Hermann = createSupporter(user_Hermann, hero_Martina);
+		supporter_Marie = createSupporter(user_Marie, hero_Martina);
+		supporter_Gunnar = createSupporter(user_Gunnar, hero_Martina);
+		supporter_Christian = createSupporter(user_Christian, hero_Martina);
+		supporter_Herbert = createSupporter(user_Herbert, hero_Martina);
+		supporter_Eugen = createSupporter(user_Eugen, hero_Martina);
+		supporter_Thomas = createSupporter(user_Thomas, hero_Martina);
+		supporter_Melanie = createSupporter(user_Melanie, hero_Martina);
+		supporter_Marion = createSupporter(user_Marion, hero_Martina);
 
-		invitation_0105_1945 = createInvitation("0105_1945");
-		// createSupporter2Invitation(supporter_Hugo, invitation_0105_1945);
-		// createInvitation2Supporter(invitation_0105_1945, supporter_Andrea);
-		// createInvitation2Supporter(invitation_0105_1945, supporter_Manfred);
-		//
-		// invitation_0105_1948 = createInvitation("0105_1948");
-		// createSupporter2Invitation(supporter_Hugo, invitation_0105_1948);
-		// createInvitation2Supporter(invitation_0105_1948, supporter_Otto);
-		//
-		// invitation_0105_2225 = createInvitation("0105_2225");
-		// createSupporter2Invitation(supporter_Andrea, invitation_0105_2225);
-		// createInvitation2Supporter(invitation_0105_2225, supporter_Emma);
-		//
-		// invitation_0105_2232 = createInvitation("0105_2232");
-		// createSupporter2Invitation(supporter_Andrea, invitation_0105_2232);
-		// createInvitation2Supporter(invitation_0105_2232, supporter_Hermann);
-		//
-		// invitation_0205_1045 = createInvitation("0205_1045");
-		// createSupporter2Invitation(supporter_Manfred, invitation_0205_1045);
-		//
-		// invitation_0205_1243 = createInvitation("0205_1243");
-		// createSupporter2Invitation(supporter_Otto, invitation_0205_1243);
-		// createInvitation2Supporter(invitation_0205_1243, supporter_Marie);
-		//
-		// invitation_0205_1245 = createInvitation("0205_1245");
-		// createSupporter2Invitation(supporter_Otto, invitation_0205_1245);
-		// createInvitation2Supporter(invitation_0205_1245, supporter_Gunnar);
-		// createInvitation2Supporter(invitation_0205_1245, supporter_Christian);
-		// createInvitation2Supporter(invitation_0205_1245, supporter_Herbert);
-		//
-		// invitation_0205_1248 = createInvitation("0205_1248");
-		// createSupporter2Invitation(supporter_Otto, invitation_0205_1248);
-		//
-		// invitation_0105_2322 = createInvitation("0105_2322");
-		// createSupporter2Invitation(supporter_Hermann, invitation_0105_2322);
-		// createInvitation2Supporter(invitation_0105_2322, supporter_Eugen);
-		//
-		// invitation_0305_1948 = createInvitation("0305_1948");
-		// createSupporter2Invitation(supporter_Gunnar, invitation_0305_1948);
-		// createInvitation2Supporter(invitation_0305_1948, supporter_Thomas);
-		//
-		// invitation_0405_0945 = createInvitation("0405_0945");
-		// createSupporter2Invitation(supporter_Gunnar, invitation_0405_0945);
-		//
-		// invitation_0205_0734 = createInvitation("0205_0734");
-		// createSupporter2Invitation(supporter_Eugen, invitation_0205_0734);
-		// createInvitation2Supporter(invitation_0205_0734, supporter_Melanie);
-		// createInvitation2Supporter(invitation_0205_0734, supporter_Marion);
+		invitation_0105_1945 = createInvitation("0105_1945", supporter_Hugo);
+		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0105_1945, supporter_Andrea);
+		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0105_1945, supporter_Manfred);
+
+		invitation_0105_1948 = createInvitation("0105_1948", supporter_Hugo);
+		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0105_1948, supporter_Otto);
+
+		invitation_0105_2225 = createInvitation("0105_2225", supporter_Andrea);
+		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0105_2225, supporter_Emma);
+
+		invitation_0105_2232 = createInvitation("0105_2232", supporter_Andrea);
+		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0105_2232, supporter_Hermann);
+
+		invitation_0205_1045 = createInvitation("0205_1045", supporter_Manfred);
+
+		invitation_0205_1243 = createInvitation("0205_1243", supporter_Otto);
+		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0205_1243, supporter_Marie);
+
+		invitation_0205_1245 = createInvitation("0205_1245", supporter_Otto);
+		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0205_1245, supporter_Gunnar);
+		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0205_1245, supporter_Christian);
+		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0205_1245, supporter_Herbert);
+
+		invitation_0205_1248 = createInvitation("0205_1248", supporter_Otto);
+
+		invitation_0105_2322 = createInvitation("0105_2322", supporter_Hermann);
+		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0105_2322, supporter_Eugen);
+
+		invitation_0305_1948 = createInvitation("0305_1948", supporter_Gunnar);
+		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0305_1948, supporter_Thomas);
+
+		invitation_0405_0945 = createInvitation("0405_0945", supporter_Gunnar);
+
+		invitation_0205_0734 = createInvitation("0205_0734", supporter_Eugen);
+
+		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0205_0734, supporter_Melanie);
+		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0205_0734, supporter_Marion);
 
 	}
 
@@ -192,9 +181,9 @@ public class InitialCoreData {
 
 	}
 
-	private InvitationDTO createInvitation(String string) throws CRUDException {
+	private InvitationDTO createInvitation(String string, SupporterDTO supporterDTO) throws CRUDException {
 
-		InvitationDTO invitationDTO = new InvitationDTO();
+		InvitationDTO invitationDTO = InvitationCRUDServiceImpl.i().create(admin, supporterDTO);
 		invitationDTO.setComment(new SingleLineString256Type(string));
 		return InvitationCRUDServiceImpl.i().updadd(admin, invitationDTO);
 

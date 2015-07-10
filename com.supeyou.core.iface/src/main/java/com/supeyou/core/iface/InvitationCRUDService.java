@@ -13,4 +13,6 @@ public interface InvitationCRUDService extends CRUDService<InvitationDTO, Invita
 
 	InvitationDTO create(UserDTO actorDTO, SupporterDTO supporterDTO) throws CRUDException;
 
+	void acceptInvitation(UserDTO actorDTO, InvitationDTO invitationDTO, SupporterDTO supporterDTO) throws CRUDException;
+
 }
