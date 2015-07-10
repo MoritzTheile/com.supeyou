@@ -7,15 +7,12 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.HeroIDType;
 import com.supeyou.core.iface.dto.SupporterDTO;
-import com.supeyou.core.iface.dto.SupporterFetchQuery;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.rpc.hero.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.rpc.hero.chooserlarge.item.ItemWidget;
 import com.supeyou.core.web.client.view.heropage.invite.InviteWidget;
 import com.supeyou.core.web.client.view.heropage.supporter.SupporterWidget;
-import com.supeyou.crudie.iface.datatype.FetchQuery.SORTDIRECTION;
-import com.supeyou.crudie.iface.datatype.Page;
-import com.supeyou.crudie.iface.dto.DTOFetchList;
+import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 
@@ -63,10 +60,8 @@ public class HeroPageWidget extends WidgetView {
 		});
 
 		invitationButtonSlot.add(flatButtonWidget);
-		SupporterFetchQuery query = new SupporterFetchQuery();
-		query.setSortDirection(SORTDIRECTION.ASC);
 
-		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.fetchList(new Page(), query, new AsyncCallback<DTOFetchList<SupporterDTO>>() {
+		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.get(LoginStateModel.i().getLoggedInUser(), heroDTO, new AsyncCallback<SupporterDTO>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -76,14 +71,9 @@ public class HeroPageWidget extends WidgetView {
 			}
 
 			@Override
-			public void onSuccess(DTOFetchList<SupporterDTO> result) {
+			public void onSuccess(SupporterDTO result) {
 
-				for (SupporterDTO supporterDTO : result) {
-
-					supporterSlot.add(new SupporterWidget(supporterDTO));
-
-					break;
-				}
+				supporterSlot.add(new SupporterWidget(result));
 
 			}
 		});

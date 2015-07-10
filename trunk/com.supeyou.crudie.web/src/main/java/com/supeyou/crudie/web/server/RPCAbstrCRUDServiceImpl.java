@@ -15,7 +15,7 @@ public abstract class RPCAbstrCRUDServiceImpl<D extends AbstrDTO<?>, F extends F
 
 	private static final long serialVersionUID = -27013432633344054L;
 
-	private final CRUDService<D, F> crudService;
+	protected final CRUDService<D, F> crudService;
 
 	public RPCAbstrCRUDServiceImpl() {
 
