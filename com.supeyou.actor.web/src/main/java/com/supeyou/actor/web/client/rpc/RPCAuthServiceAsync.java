@@ -17,4 +17,6 @@ public interface RPCAuthServiceAsync {
 
 	void getActorOfSession(AsyncCallback<UserDTO> callback);
 
+	void authenticateActor(String authToken, AsyncCallback<UserDTO> callback);
+
 }
