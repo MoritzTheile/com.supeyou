@@ -19,6 +19,7 @@ import com.supeyou.core.impl.entity.User2SupporterEntity;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.CRUDException.CODE;
 import com.supeyou.crudie.iface.datatype.Page;
+import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.impl.AbstrCRUDServiceImpl;
@@ -165,6 +166,10 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 			dto.setTmpHeroName(user2SupporterEntity.getA().getLoginId());
 			// there is only one user2supporter allowed but breaking anyway:
 			break;
+		}
+
+		if (dto.getTmpHeroName() == null) {
+			dto.setTmpHeroName(new SingleLineString256Type("unknown name"));
 		}
 
 		super.postprocessEntity2DTO(em, entity, dto);

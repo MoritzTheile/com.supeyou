@@ -10,12 +10,21 @@ import com.supeyou.crudie.iface.datatype.types.UserIDType;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.iface.dto.UserFetchQuery;
 import com.supeyou.crudie.impl.entity.UserEntity;
+import com.supeyou.crudie.impl.util.Random;
 import com.supeyou.crudie.impl.util.STATICS;
 import com.supeyou.crudie.impl.util.TransactionTemplate;
 
 public class UserCRUDServiceImpl extends AbstrCRUDServiceImpl<UserDTO, UserEntity, UserFetchQuery> implements UserCRUDService {
 
 	private static final UserIDType initialAdminId = new UserIDType(1L);
+
+	@Override
+	protected void beforeUpdadd(EntityManager em, UserEntity actor, UserDTO dto) {
+		if (dto.getAuthToken() == null) {
+			dto.setAuthToken(new SingleLineString256Type(Random.randomKey(12)));
+		}
+		super.beforeUpdadd(em, actor, dto);
+	}
 
 	@Override
 	public UserDTO getInitialAdmin() throws CRUDException {
