@@ -4,16 +4,25 @@ import java.lang.reflect.Method;
 
 import javax.servlet.annotation.WebServlet;
 
+import com.supeyou.core.iface.SupporterCRUDService;
+import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.iface.dto.SupporterFetchQuery;
 import com.supeyou.core.web.client.rpc.supporter.RPCCRUDService;
 import com.supeyou.crudie.iface.CRUDService;
+import com.supeyou.crudie.iface.datatype.CRUDException;
+import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.web.server.RPCAbstrCRUDServiceImpl;
 
 @WebServlet("/RPCSupporterCRUDServiceImpl")
 public class RPCSupporterCRUDServiceImpl extends RPCAbstrCRUDServiceImpl<SupporterDTO, SupporterFetchQuery> implements RPCCRUDService {
 
 	private static final long serialVersionUID = 893034576566110L;
+
+	@Override
+	public SupporterDTO get(UserDTO userDTO, HeroDTO heroDTO) throws CRUDException {
+		return ((SupporterCRUDService) getCRUDService()).get(getActor(), userDTO, heroDTO);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
