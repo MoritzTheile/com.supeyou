@@ -53,10 +53,15 @@ public class UserCRUDServiceImpl extends AbstrCRUDServiceImpl<UserDTO, UserEntit
 
 	@Override
 	protected String getWhereClause(EntityManager em, UserEntity actor, UserFetchQuery query) {
+
 		String whereClause = "";
-		if (query.getSearchString() != null && !query.getSearchString().isEmpty()) {
+
+		if (query.getAuthToken() != null) {
+			whereClause = "where " + UserFetchQuery.COLUMN_AUTHTOKEN + " = '" + query.getAuthToken() + "'";
+		} else if (query.getSearchString() != null && !query.getSearchString().isEmpty()) {
 			whereClause = "where " + UserFetchQuery.COLUMN_EMAILADDRESS + " like '%" + query.getSearchString() + "%'";
 		}
+
 		return whereClause;
 	}
 
