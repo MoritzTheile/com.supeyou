@@ -1,14 +1,10 @@
 package com.supeyou.core.impl.initialdata;
 
 import com.supeyou.core.iface.dto.HeroDTO;
-import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
 import com.supeyou.core.iface.dto.InvitationDTO;
-import com.supeyou.core.iface.dto.Supporter2InvitationDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.impl.HeroCRUDServiceImpl;
-import com.supeyou.core.impl.Invitation2SupporterCRUDServiceImpl;
 import com.supeyou.core.impl.InvitationCRUDServiceImpl;
-import com.supeyou.core.impl.Supporter2InvitationCRUDServiceImpl;
 import com.supeyou.core.impl.SupporterCRUDServiceImpl;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
@@ -159,20 +155,6 @@ public class InitialCoreData {
 		UserDTO userDTO = new UserDTO();
 		userDTO.setLoginId(new SingleLineString256Type(name));
 		return UserCRUDServiceImpl.i().updadd(admin, userDTO);
-	}
-
-	private void createInvitation2Supporter(InvitationDTO a, SupporterDTO b) throws CRUDException {
-		Invitation2SupporterDTO asso = new Invitation2SupporterDTO();
-		asso.setDtoA(a);
-		asso.setDtoB(b);
-		Invitation2SupporterCRUDServiceImpl.i().updadd(admin, asso);
-	}
-
-	private void createSupporter2Invitation(SupporterDTO a, InvitationDTO b) throws CRUDException {
-		Supporter2InvitationDTO asso = new Supporter2InvitationDTO();
-		asso.setDtoA(a);
-		asso.setDtoB(b);
-		Supporter2InvitationCRUDServiceImpl.i().updadd(admin, asso);
 	}
 
 	private SupporterDTO createSupporter(UserDTO userDTO, HeroDTO heroDTO) throws CRUDException {
