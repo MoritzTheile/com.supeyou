@@ -1,5 +1,6 @@
 package com.supeyou.core.impl.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -13,6 +14,9 @@ public class InvitationEntity extends AbstrEntity<InvitationIDType> {
 
 	private String comment;
 
+	@Column(nullable = false, length = 256, unique = true)
+	private String token;
+
 	public SingleLineString256Type getComment() {
 		if (comment == null) {
 			return null;
@@ -25,6 +29,21 @@ public class InvitationEntity extends AbstrEntity<InvitationIDType> {
 			this.comment = comment.value();
 		} else {
 			this.comment = null;
+		}
+	}
+
+	public SingleLineString256Type getToken() {
+		if (token == null) {
+			return null;
+		}
+		return new SingleLineString256Type(token);
+	}
+
+	public void setToken(SingleLineString256Type token) {
+		if (token != null) {
+			this.token = token.value();
+		} else {
+			this.token = null;
 		}
 	}
 

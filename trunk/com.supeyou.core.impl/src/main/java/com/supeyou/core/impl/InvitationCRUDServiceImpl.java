@@ -1,5 +1,7 @@
 package com.supeyou.core.impl;
 
+import javax.persistence.EntityManager;
+
 import com.supeyou.core.iface.InvitationCRUDService;
 import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
 import com.supeyou.core.iface.dto.InvitationDTO;
@@ -11,9 +13,11 @@ import com.supeyou.core.impl.entity.InvitationEntity;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.CRUDException.CODE;
 import com.supeyou.crudie.iface.datatype.Page;
+import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.impl.AbstrCRUDServiceImpl;
 import com.supeyou.crudie.impl.entity.UserEntity;
+import com.supeyou.crudie.impl.util.Random;
 import com.supeyou.crudie.impl.util.STATICS;
 import com.supeyou.crudie.impl.util.TransactionTemplate;
 
@@ -93,6 +97,32 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 		invitation2SupporterDTO.setDtoB(supporterDTO);
 		Invitation2SupporterCRUDServiceImpl.i().updadd(actorDTO, invitation2SupporterDTO);
 
+	}
+
+	@Override
+	protected void beforeUpdadd(EntityManager em, UserEntity actor, InvitationDTO dto) {
+		if (dto.getToken() == null) {
+			dto.setToken(new SingleLineString256Type(Random.randomKey(6)));
+		}
+		super.beforeUpdadd(em, actor, dto);
+	}
+
+	@Override
+	protected String getWhereClause(EntityManager em, UserEntity actor, InvitationFetchQuery query) {
+
+		String whereClause = "";
+
+		if (query.getToken() != null) {
+
+			whereClause = "where " + " token " + " = '" + query.getToken() + "'";
+
+		} else if (query.getSearchString() != null && !query.getSearchString().isEmpty()) {
+
+			whereClause = "where " + "comment " + " like '%" + query.getSearchString() + "%'";
+
+		}
+
+		return whereClause;
 	}
 
 	// Singleton

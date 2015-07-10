@@ -11,6 +11,8 @@ public class InvitationDTO extends AbstrDTO<InvitationIDType> implements Seriali
 
 	private SingleLineString256Type comment;
 
+	private SingleLineString256Type token;
+
 	public InvitationDTO() {
 
 	}
@@ -39,6 +41,14 @@ public class InvitationDTO extends AbstrDTO<InvitationIDType> implements Seriali
 
 	public void setComment(SingleLineString256Type comment) {
 		this.comment = comment;
+	}
+
+	public SingleLineString256Type getToken() {
+		return token;
+	}
+
+	public void setToken(SingleLineString256Type token) {
+		this.token = token;
 	}
 
 }
