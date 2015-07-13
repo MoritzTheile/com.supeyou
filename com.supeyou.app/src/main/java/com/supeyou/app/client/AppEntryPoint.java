@@ -11,6 +11,8 @@ import com.supeyou.actor.web.client.login.loginbutton.LoginButtonWidget;
 import com.supeyou.actor.web.client.rpc.RPCAuthServiceAsync;
 import com.supeyou.core.web.client.HistoryController;
 import com.supeyou.core.web.client.HistoryController.ANCHOR;
+import com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync;
+import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.web.client.model.AppInfoModel;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
@@ -68,12 +70,44 @@ public class AppEntryPoint implements EntryPoint {
 			}
 
 		} else {
+
 			postAuthInitilization();
+
 		}
 
 	}
 
 	private void postAuthInitilization() {
+
+		if (Window.Location.getParameter(ActorStatics.INVITTOKEN_KEY) != null) {
+
+			RPCCRUDServiceAsync.i.acceptInvitation(LoginStateModel.i().getLoggedInUser(), new SingleLineString256Type(Window.Location.getParameter(ActorStatics.INVITTOKEN_KEY)), new AsyncCallback<Void>() {
+
+				@Override
+				public void onFailure(Throwable caught) {
+
+					caught.printStackTrace();
+
+				}
+
+				@Override
+				public void onSuccess(Void result) {
+
+					postInvitLinkHandling();
+
+				}
+
+			});
+
+		} else {
+
+			postInvitLinkHandling();
+
+		}
+
+	}
+
+	private void postInvitLinkHandling() {
 
 		AppInfoModel appInfoModel = new AppInfoModel();
 		RootPanel.get("footer").add(new VersionPresenter(appInfoModel));
@@ -105,5 +139,6 @@ public class AppEntryPoint implements EntryPoint {
 		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.supporter2donation.chooserlarge.ChooserLargeWidget());
 		RootPanel.get("main").add(new Label("Donation"));
 		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.donation.chooserlarge.ChooserLargeWidget());
+
 	}
 }
