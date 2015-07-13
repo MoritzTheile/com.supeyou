@@ -97,7 +97,7 @@ public class InitialCoreData {
 		hero_Tara = createHero(user_Tara, "./heroPics/TaraMcCartney.jpg", "http://unitedforhope.org", "Dedicates her skills to empower India’s rural poor.");
 
 		supporter_Hugo = createSupporter(user_Hugo, hero_Martina);
-		supporter_Andrea = createSupporter(user_Hugo, hero_Martina);
+		supporter_Andrea = createSupporter(user_Andrea, hero_Martina);
 		supporter_Manfred = createSupporter(user_Manfred, hero_Martina);
 		supporter_Otto = createSupporter(user_Otto, hero_Martina);
 		supporter_Emma = createSupporter(user_Emma, hero_Martina);
@@ -145,7 +145,6 @@ public class InitialCoreData {
 		invitation_0405_0945 = createInvitation("0405_0945", supporter_Gunnar);
 
 		invitation_0205_0734 = createInvitation("0205_0734", supporter_Eugen);
-
 		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0205_0734, supporter_Melanie);
 		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0205_0734, supporter_Marion);
 

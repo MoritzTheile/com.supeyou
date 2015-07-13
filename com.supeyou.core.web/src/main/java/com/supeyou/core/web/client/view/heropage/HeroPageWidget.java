@@ -47,20 +47,6 @@ public class HeroPageWidget extends WidgetView {
 
 		driverSlot.add(new ItemWidget(heroDTO));
 
-		FlatButtonWidget flatButtonWidget = new FlatButtonWidget();
-		flatButtonWidget.setText(Text.i.BUTTON_Invite());
-		flatButtonWidget.addClickHandler(new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-
-				new PopupWidget(new InviteWidget(heroDTO, null), true);
-
-			}
-		});
-
-		invitationButtonSlot.add(flatButtonWidget);
-
 		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.get(LoginStateModel.i().getLoggedInUser(), heroDTO, new AsyncCallback<SupporterDTO>() {
 
 			@Override
@@ -71,9 +57,23 @@ public class HeroPageWidget extends WidgetView {
 			}
 
 			@Override
-			public void onSuccess(SupporterDTO result) {
+			public void onSuccess(final SupporterDTO result) {
 
 				supporterSlot.add(new SupporterWidget(result));
+
+				FlatButtonWidget flatButtonWidget = new FlatButtonWidget();
+				flatButtonWidget.setText(Text.i.BUTTON_Invite());
+				flatButtonWidget.addClickHandler(new ClickHandler() {
+
+					@Override
+					public void onClick(ClickEvent event) {
+
+						new PopupWidget(new InviteWidget(heroDTO, result), true);
+
+					}
+				});
+
+				invitationButtonSlot.add(flatButtonWidget);
 
 			}
 		});

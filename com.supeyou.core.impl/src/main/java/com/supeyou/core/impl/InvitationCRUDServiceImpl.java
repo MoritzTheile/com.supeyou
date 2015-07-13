@@ -114,7 +114,7 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 
 		if (query.getToken() != null) {
 
-			whereClause = "where " + " token " + " = '" + query.getToken() + "'";
+			whereClause = "where " + " token" + "= '" + query.getToken() + "'";
 
 		} else if (query.getSearchString() != null && !query.getSearchString().isEmpty()) {
 
