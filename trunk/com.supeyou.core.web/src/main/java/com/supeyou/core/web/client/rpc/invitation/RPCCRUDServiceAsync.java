@@ -2,6 +2,7 @@ package com.supeyou.core.web.client.rpc.invitation;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.InvitationFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
@@ -15,6 +16,6 @@ public interface RPCCRUDServiceAsync extends RPCAbstractCRUDServiceAsync<Invitat
 
 	void create(SupporterDTO supporterDTO, AsyncCallback<InvitationDTO> callback);
 
-	void acceptInvitation(UserDTO userDTO, SingleLineString256Type token, AsyncCallback<Void> callback);
+	void acceptInvitation(UserDTO userDTO, SingleLineString256Type token, AsyncCallback<HeroDTO> callback);
 
 }

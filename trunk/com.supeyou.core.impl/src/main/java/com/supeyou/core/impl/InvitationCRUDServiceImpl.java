@@ -11,8 +11,8 @@ import com.supeyou.core.iface.dto.Supporter2InvitationDTO;
 import com.supeyou.core.iface.dto.Supporter2InvitationFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.impl.entity.Hero2SupporterEntity;
-import com.supeyou.core.impl.entity.Invitation2SupporterEntity;
 import com.supeyou.core.impl.entity.InvitationEntity;
+import com.supeyou.core.impl.entity.Supporter2InvitationEntity;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.CRUDException.CODE;
 import com.supeyou.crudie.iface.datatype.Page;
@@ -118,10 +118,11 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 				InvitationEntity invitationEntity = em.find(InvitationEntity.class, invitationDTO.getId().value());
 
 				// there has to be one supporter per invitation exactly:
-				for (Invitation2SupporterEntity invitation2SupporterEntity : invitationEntity.getInvitation2SupporterEntity()) {
-
+				for (Supporter2InvitationEntity supporter2Invitation : invitationEntity.getSupporter2InvitationCollection()) {
+					System.out.println("supporter2Invitation found");
 					// there has to be one hero per supporter exactly:
-					for (Hero2SupporterEntity hero2SupporterEntity : invitation2SupporterEntity.getB().getHero2SupporterCollection()) {
+					for (Hero2SupporterEntity hero2SupporterEntity : supporter2Invitation.getA().getHero2SupporterCollection()) {
+						System.out.println("hero2SupporterEntity.getA().getWebsiteURL()=" + hero2SupporterEntity.getA().getWebsiteURL());
 
 						return HeroCRUDServiceImpl.i().helper.entity2DTO(hero2SupporterEntity.getA());
 
@@ -137,7 +138,7 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 	}
 
 	@Override
-	public void acceptInvitation(UserDTO actorDTO, UserDTO userDTO, SingleLineString256Type token) throws CRUDException {
+	public HeroDTO acceptInvitation(UserDTO actorDTO, UserDTO userDTO, SingleLineString256Type token) throws CRUDException {
 
 		InvitationDTO invitationDTO = null;
 
@@ -156,12 +157,17 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 			}
 		}
 
+		System.out.println("invitationDTO=" + invitationDTO);
+
 		HeroDTO heroDTO = getHero(actorDTO, invitationDTO);
+
+		System.out.println("heroDTO=" + heroDTO);
 
 		SupporterDTO supporterDTO = SupporterCRUDServiceImpl.i().getOrCreate(actorDTO, userDTO, heroDTO);
 
 		acceptInvitation(actorDTO, invitationDTO, supporterDTO);
 
+		return heroDTO;
 	}
 
 	@Override

@@ -20,15 +20,26 @@ public class InvitationEntity extends AbstrEntity<InvitationIDType> {
 
 	private String comment;
 
-	@OneToMany(mappedBy = "a"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-	private Collection<Invitation2SupporterEntity> invitation2SupporterEntity = new ArrayList<Invitation2SupporterEntity>();
+	@OneToMany(mappedBy = "b"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+	private Collection<Supporter2InvitationEntity> supporter2InvitationCollection = new ArrayList<Supporter2InvitationEntity>();
 
-	public Collection<Invitation2SupporterEntity> getInvitation2SupporterEntity() {
-		return invitation2SupporterEntity;
+	@OneToMany(mappedBy = "a"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+	private Collection<Invitation2SupporterEntity> invitation2SupporterCollection = new ArrayList<Invitation2SupporterEntity>();
+
+	public Collection<Supporter2InvitationEntity> getSupporter2InvitationCollection() {
+		return supporter2InvitationCollection;
 	}
 
-	public void setInvitation2SupporterEntity(Collection<Invitation2SupporterEntity> invitation2SupporterEntity) {
-		this.invitation2SupporterEntity = invitation2SupporterEntity;
+	public void setSupporter2InvitationCollection(Collection<Supporter2InvitationEntity> supporter2InvitationCollection) {
+		this.supporter2InvitationCollection = supporter2InvitationCollection;
+	}
+
+	public Collection<Invitation2SupporterEntity> getInvitation2SupporterCollection() {
+		return invitation2SupporterCollection;
+	}
+
+	public void setInvitation2SupporterCollection(Collection<Invitation2SupporterEntity> invitation2SupporterCollection) {
+		this.invitation2SupporterCollection = invitation2SupporterCollection;
 	}
 
 	@Column(nullable = false, length = 256, unique = true)
