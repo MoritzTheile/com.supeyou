@@ -2,14 +2,14 @@ package com.supeyou.core.iface.dto;
 
 import java.io.Serializable;
 
-import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.AbstrDTO;
+import com.supeyou.crudie.iface.dto.UserDTO;
 
 public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializable {
 
 	private static final long serialVersionUID = 824618946818L;
 
-	private SingleLineString256Type tmpHeroName = new SingleLineString256Type("no name");
+	private UserDTO userDTO;
 
 	public SupporterDTO() {
 
@@ -33,12 +33,12 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 		return super.getId();
 	}
 
-	public SingleLineString256Type getTmpHeroName() {
-		return tmpHeroName;
+	public UserDTO getUserDTO() {
+		return userDTO;
 	}
 
-	public void setTmpHeroName(SingleLineString256Type tmpHeroName) {
-		this.tmpHeroName = tmpHeroName;
+	public void setUserDTO(UserDTO userDTO) {
+		this.userDTO = userDTO;
 	}
 
 }

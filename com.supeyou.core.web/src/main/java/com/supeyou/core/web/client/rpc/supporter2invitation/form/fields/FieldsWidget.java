@@ -63,8 +63,8 @@ public class FieldsWidget extends WidgetView {
 					@Override
 					public Widget getWidget(SupporterDTO dto) {
 						String label = "- - -";
-						if (dto != null && dto.getTmpHeroName() != null) {
-							label = dto.getTmpHeroName().value();
+						if (dto != null && dto.getUserDTO().getLoginId() != null) {
+							label = dto.getUserDTO().getLoginId().value();
 						}
 						return new Label(label);
 					}

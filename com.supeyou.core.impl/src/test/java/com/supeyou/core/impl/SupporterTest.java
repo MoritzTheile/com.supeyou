@@ -16,14 +16,25 @@ public class SupporterTest {
 
 	@Test
 	public void test() throws CRUDException {
+
 		assertNotNull(InitialCoreData.i().admin);
 
 		SupporterFetchQuery dtoQuery = new SupporterFetchQuery();
+
 		dtoQuery.setInvitor(InitialCoreData.i().supporter_Hugo);
+
 		DTOFetchList<SupporterDTO> fetchList = SupporterCRUDServiceImpl.i().fetchList(InitialCoreData.i().admin, new Page(), dtoQuery);
+
 		for (SupporterDTO supporterDTO : fetchList) {
-			System.out.println(supporterDTO.getTmpHeroName() + "");
+
+			System.out.println(supporterDTO
+
+					.getUserDTO()
+
+					.getLoginId() + "");
+
 		}
+
 		Assert.assertEquals(3, fetchList.size());
 
 	}
