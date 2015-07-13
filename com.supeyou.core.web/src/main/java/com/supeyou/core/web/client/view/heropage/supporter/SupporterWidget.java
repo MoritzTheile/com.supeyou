@@ -7,7 +7,7 @@ public class SupporterWidget extends WidgetView {
 
 	public SupporterWidget(SupporterDTO supporterDTO) {
 
-		root.add(new SupporterTreeWidget(null, supporterDTO));
+		root.add(new SupporterTreeWidget(supporterDTO));
 
 	}
 

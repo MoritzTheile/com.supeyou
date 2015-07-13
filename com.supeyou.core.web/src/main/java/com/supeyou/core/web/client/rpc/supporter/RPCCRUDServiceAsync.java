@@ -14,4 +14,6 @@ public interface RPCCRUDServiceAsync extends RPCAbstractCRUDServiceAsync<Support
 
 	void get(UserDTO userDTO, HeroDTO heroDTO, AsyncCallback<SupporterDTO> callback);
 
+	void getOrCreate(UserDTO userDTO, HeroDTO heroDTO, AsyncCallback<SupporterDTO> callback);
+
 }

@@ -32,11 +32,12 @@ public class SupporterTreeWidget extends WidgetView {
 
 	private COLLAPSE_MODE collapseMode = COLLAPSE_MODE.COLLAPSED;
 
-	public SupporterTreeWidget(final SupporterTreeWidget parentWidget, final SupporterDTO supporterDTO) {
-		this(parentWidget, supporterDTO, 1);
+	public SupporterTreeWidget(final SupporterDTO supporterDTO) {
+		this(supporterDTO, null, 1);
 	}
 
-	private SupporterTreeWidget(final SupporterTreeWidget parentWidget, final SupporterDTO supporterDTO, Integer level) {
+	private SupporterTreeWidget(final SupporterDTO supporterDTO, final SupporterTreeWidget parentWidget, Integer level) {
+
 		thisWidget = this;
 
 		this.level = level;
@@ -90,13 +91,14 @@ public class SupporterTreeWidget extends WidgetView {
 
 			for (SupporterDTO childSupporterDTO : childrenSupporterDTO) {
 
-				childrenSlot.add(new SupporterTreeWidget(thisWidget, childSupporterDTO, new Integer(level + 1)));
+				childrenSlot.add(new SupporterTreeWidget(childSupporterDTO, thisWidget, new Integer(level + 1)));
 
 			}
 
 		} else {
 
 			if (!childrenSupporterDTO.isEmpty()) {
+
 				Label expandButton = new Label("+ " + childrenSupporterDTO.size());
 
 				expandButton.addClickHandler(new ClickHandler() {

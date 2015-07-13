@@ -47,7 +47,7 @@ public class HeroPageWidget extends WidgetView {
 
 		driverSlot.add(new ItemWidget(heroDTO));
 
-		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.get(LoginStateModel.i().getLoggedInUser(), heroDTO, new AsyncCallback<SupporterDTO>() {
+		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.getOrCreate(LoginStateModel.i().getLoggedInUser(), heroDTO, new AsyncCallback<SupporterDTO>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
