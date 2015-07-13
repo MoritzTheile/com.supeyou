@@ -3,12 +3,15 @@ package com.supeyou.core.impl;
 import javax.persistence.EntityManager;
 
 import com.supeyou.core.iface.InvitationCRUDService;
+import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.InvitationFetchQuery;
 import com.supeyou.core.iface.dto.Supporter2InvitationDTO;
 import com.supeyou.core.iface.dto.Supporter2InvitationFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
+import com.supeyou.core.impl.entity.Hero2SupporterEntity;
+import com.supeyou.core.impl.entity.Invitation2SupporterEntity;
 import com.supeyou.core.impl.entity.InvitationEntity;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.CRUDException.CODE;
@@ -96,6 +99,68 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 		invitation2SupporterDTO.setDtoA(invitationDTO);
 		invitation2SupporterDTO.setDtoB(supporterDTO);
 		Invitation2SupporterCRUDServiceImpl.i().updadd(actorDTO, invitation2SupporterDTO);
+
+	}
+
+	private HeroDTO getHero(UserDTO actorDTO, final InvitationDTO invitationDTO) throws CRUDException {
+
+		return new TransactionTemplate<HeroDTO>(actorDTO, STATICS.getEntityManager()) {
+
+			public void checkPermissions(UserEntity actor) throws CRUDException {
+
+				// STATICS.checkActorNotNull(actor);
+				// STATICS.checkActorIsAdmin(actor);
+
+			}
+
+			protected HeroDTO transactionBody() throws Exception {
+
+				InvitationEntity invitationEntity = em.find(InvitationEntity.class, invitationDTO.getId().value());
+
+				// there has to be one supporter per invitation exactly:
+				for (Invitation2SupporterEntity invitation2SupporterEntity : invitationEntity.getInvitation2SupporterEntity()) {
+
+					// there has to be one hero per supporter exactly:
+					for (Hero2SupporterEntity hero2SupporterEntity : invitation2SupporterEntity.getB().getHero2SupporterCollection()) {
+
+						return HeroCRUDServiceImpl.i().helper.entity2DTO(hero2SupporterEntity.getA());
+
+					}
+
+				}
+
+				return null;
+
+			}
+		}.execute();
+
+	}
+
+	@Override
+	public void acceptInvitation(UserDTO actorDTO, UserDTO userDTO, SingleLineString256Type token) throws CRUDException {
+
+		InvitationDTO invitationDTO = null;
+
+		{// retrieving invitationDTO by token
+			InvitationFetchQuery dtoQuery = new InvitationFetchQuery();
+			dtoQuery.setToken(token);
+
+			for (InvitationDTO invitationDTO_current : InvitationCRUDServiceImpl.i().fetchList(actorDTO, new Page(), dtoQuery)) {
+
+				invitationDTO = invitationDTO_current;
+
+			}
+
+			if (invitationDTO == null) {
+				throw new CRUDException(CODE.NO_ENTITY_FOUND_BY_GIVEN_ID, "there was no invitation with token=" + token);
+			}
+		}
+
+		HeroDTO heroDTO = getHero(actorDTO, invitationDTO);
+
+		SupporterDTO supporterDTO = SupporterCRUDServiceImpl.i().getOrCreate(actorDTO, userDTO, heroDTO);
+
+		acceptInvitation(actorDTO, invitationDTO, supporterDTO);
 
 	}
 

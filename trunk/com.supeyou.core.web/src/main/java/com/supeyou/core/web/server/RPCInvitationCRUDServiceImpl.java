@@ -11,6 +11,8 @@ import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.rpc.invitation.RPCCRUDService;
 import com.supeyou.crudie.iface.CRUDService;
 import com.supeyou.crudie.iface.datatype.CRUDException;
+import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
+import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.web.server.RPCAbstrCRUDServiceImpl;
 
 @WebServlet("/RPCInvitationCRUDServiceImpl")
@@ -21,6 +23,11 @@ public class RPCInvitationCRUDServiceImpl extends RPCAbstrCRUDServiceImpl<Invita
 	@Override
 	public InvitationDTO create(SupporterDTO supporterDTO) throws CRUDException {
 		return ((InvitationCRUDService) getCRUDService()).create(getActor(), supporterDTO);
+	}
+
+	@Override
+	public void acceptInvitation(UserDTO userDTO, SingleLineString256Type token) throws CRUDException {
+		((InvitationCRUDService) getCRUDService()).acceptInvitation(getActor(), userDTO, token);
 	}
 
 	@SuppressWarnings("unchecked")
