@@ -155,8 +155,8 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 					Hero2SupporterCRUDServiceImpl.i().updadd(actorDTO, hero2SupporterDTO);
 
 				}
-
-				return supporter;
+				// dto has to be reloaded to consider new assoziations
+				return get(actorDTO, supporter.getId());
 			}
 
 		}.execute();

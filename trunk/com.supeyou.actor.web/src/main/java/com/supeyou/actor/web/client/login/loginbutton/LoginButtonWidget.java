@@ -108,10 +108,15 @@ public class LoginButtonWidget extends WidgetView {
 	private void render() {
 
 		if (thisLoginStateModel.getLoggedInUser() == null) {
+
 			logInOutButton.setText(Text.i.LOGIN_BUTTON_Login());
+
 		} else {
-			logInOutButton.setText(Text.i.LOGIN_BUTTON_Logout());
+
+			logInOutButton.setText(thisLoginStateModel.getLoggedInUser().getLoginId() + " " + Text.i.LOGIN_BUTTON_Logout());
+
 		}
+
 	}
 
 }

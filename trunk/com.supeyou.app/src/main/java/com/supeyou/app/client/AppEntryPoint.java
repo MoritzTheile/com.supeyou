@@ -12,7 +12,6 @@ import com.supeyou.actor.web.client.rpc.RPCAuthServiceAsync;
 import com.supeyou.core.web.client.HistoryController;
 import com.supeyou.core.web.client.HistoryController.ANCHOR;
 import com.supeyou.crudie.iface.dto.UserDTO;
-import com.supeyou.crudie.web.client.model.AbstrObservable.Observer;
 import com.supeyou.crudie.web.client.model.AppInfoModel;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.ui.version.VersionPresenter;
@@ -23,25 +22,6 @@ public class AppEntryPoint implements EntryPoint {
 	public void onModuleLoad() {
 
 		RootPanel.get("login").add(new LoginButtonWidget(LoginStateModel.i()));
-
-		LoginStateModel.i().addObserver(new Observer<Void>() {
-
-			@Override
-			public void modelHasChanged(Void changes) {
-
-				if (LoginStateModel.i().getLoggedInUser() != null) {
-
-					Window.alert("logged in user is "
-							+ " " + LoginStateModel.i().getLoggedInUser().getLoginId());
-
-				} else {
-
-					Window.alert("no user logged in");
-
-				}
-
-			}
-		});
 
 		if (LoginStateModel.i().getLoggedInUser() == null) {// trying to login with authToken
 
@@ -94,6 +74,7 @@ public class AppEntryPoint implements EntryPoint {
 	}
 
 	private void postAuthInitilization() {
+
 		AppInfoModel appInfoModel = new AppInfoModel();
 		RootPanel.get("footer").add(new VersionPresenter(appInfoModel));
 		appInfoModel.updateFromServer();
