@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import com.supeyou.core.iface.InvitationCRUDService;
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
+import com.supeyou.core.iface.dto.Invitation2SupporterFetchQuery;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.InvitationFetchQuery;
 import com.supeyou.core.iface.dto.Supporter2InvitationDTO;
@@ -94,6 +95,14 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 
 	@Override
 	public void acceptInvitation(UserDTO actorDTO, InvitationDTO invitationDTO, SupporterDTO supporterDTO) throws CRUDException {
+
+		Invitation2SupporterFetchQuery dtoQuery = new Invitation2SupporterFetchQuery();
+		dtoQuery.setIdA(invitationDTO.getId());
+		dtoQuery.setIdB(supporterDTO.getId());
+		if (Invitation2SupporterCRUDServiceImpl.i().fetchList(actorDTO, new Page(), dtoQuery).size() > 0) {
+			// there should be max one invitation2supporter element
+			return;
+		}
 
 		Invitation2SupporterDTO invitation2SupporterDTO = new Invitation2SupporterDTO();
 		invitation2SupporterDTO.setDtoA(invitationDTO);
