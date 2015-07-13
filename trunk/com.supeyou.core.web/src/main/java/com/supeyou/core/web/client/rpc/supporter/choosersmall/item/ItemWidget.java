@@ -34,8 +34,8 @@ public class ItemWidget extends WidgetView {
 	private String renderInfoString() {
 
 		String infos = "";
-		if (thisDTO.getTmpHeroName() != null) {
-			infos += thisDTO.getTmpHeroName().value();
+		if (thisDTO.getUserDTO().getLoginId() != null) {
+			infos += thisDTO.getUserDTO().getLoginId().value();
 		}
 
 		return infos;

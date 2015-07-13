@@ -6,23 +6,21 @@ import com.supeyou.core.iface.SupporterCRUDService;
 import com.supeyou.core.iface.dto.Hero2SupporterDTO;
 import com.supeyou.core.iface.dto.Hero2SupporterFetchQuery;
 import com.supeyou.core.iface.dto.HeroDTO;
-import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
-import com.supeyou.core.iface.dto.Invitation2SupporterFetchQuery;
-import com.supeyou.core.iface.dto.Supporter2InvitationDTO;
-import com.supeyou.core.iface.dto.Supporter2InvitationFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.iface.dto.SupporterFetchQuery;
 import com.supeyou.core.iface.dto.User2SupporterDTO;
 import com.supeyou.core.iface.dto.User2SupporterFetchQuery;
+import com.supeyou.core.impl.entity.Invitation2SupporterEntity;
+import com.supeyou.core.impl.entity.Supporter2InvitationEntity;
 import com.supeyou.core.impl.entity.SupporterEntity;
 import com.supeyou.core.impl.entity.User2SupporterEntity;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.CRUDException.CODE;
 import com.supeyou.crudie.iface.datatype.Page;
-import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.impl.AbstrCRUDServiceImpl;
+import com.supeyou.crudie.impl.UserCRUDServiceImpl;
 import com.supeyou.crudie.impl.entity.UserEntity;
 import com.supeyou.crudie.impl.util.STATICS;
 import com.supeyou.crudie.impl.util.TransactionTemplate;
@@ -30,7 +28,8 @@ import com.supeyou.crudie.impl.util.TransactionTemplate;
 public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO, SupporterEntity, SupporterFetchQuery> implements SupporterCRUDService {
 
 	@Override
-	public DTOFetchList<SupporterDTO> fetchList(UserDTO actorDTO, Page page, SupporterFetchQuery dtoQuery) throws CRUDException {
+	public DTOFetchList<SupporterDTO> fetchList(UserDTO actorDTO, final Page page, final SupporterFetchQuery dtoQuery) throws CRUDException {
+
 		if (dtoQuery.getInvitor() == null) {
 
 			return super.fetchList(actorDTO, page, dtoQuery);
@@ -43,31 +42,36 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 
 			}
 
-			DTOFetchList<SupporterDTO> fetchList = new DTOFetchList<>();
+			return new TransactionTemplate<DTOFetchList<SupporterDTO>>(actorDTO, STATICS.getEntityManager()) {
 
-			Supporter2InvitationFetchQuery supporter2InvitationFetchQuery = new Supporter2InvitationFetchQuery();
+				public void checkPermissions(UserEntity actor) throws CRUDException {
 
-			supporter2InvitationFetchQuery.setIdA(dtoQuery.getInvitor().getId());
-
-			DTOFetchList<Supporter2InvitationDTO> supporter2Invitations = Supporter2InvitationCRUDServiceImpl.i().fetchList(actorDTO, new Page(), supporter2InvitationFetchQuery);
-
-			for (Supporter2InvitationDTO supporter2InvitationDTO : supporter2Invitations) {
-
-				Invitation2SupporterFetchQuery query = new Invitation2SupporterFetchQuery();
-
-				query.setIdA(supporter2InvitationDTO.getDtoB().getId());
-
-				DTOFetchList<Invitation2SupporterDTO> invitation2Supporters = Invitation2SupporterCRUDServiceImpl.i().fetchList(actorDTO, new Page(), query);
-
-				for (Invitation2SupporterDTO invitation2SupporterDTO : invitation2Supporters) {
-
-					fetchList.add(invitation2SupporterDTO.getDtoB());
+					// STATICS.checkActorNotNull(actor);
+					// STATICS.checkActorIsAdmin(actor);
 
 				}
 
-			}
+				protected DTOFetchList<SupporterDTO> transactionBody() throws Exception {
 
-			return fetchList;
+					DTOFetchList<SupporterDTO> fetchList = new DTOFetchList<SupporterDTO>();
+
+					SupporterEntity parent = em.find(SupporterEntity.class, dtoQuery.getInvitor().getId().value());
+
+					for (Supporter2InvitationEntity entity : parent.getSupporter2invitationCollection()) {
+
+						for (Invitation2SupporterEntity invitation2SupporterEntity : entity.getB().getInvitation2SupporterEntity()) {
+
+							SupporterDTO dto = helper.entity2DTO(invitation2SupporterEntity.getB());
+							postprocessEntity2DTO(em, invitation2SupporterEntity.getB(), dto);
+							fetchList.add(dto);
+
+						}
+
+					}
+
+					return fetchList;
+				}
+			}.execute();
 
 		}
 
@@ -162,14 +166,13 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 	@Override
 	protected void postprocessEntity2DTO(EntityManager em, SupporterEntity entity, SupporterDTO dto) throws Exception {
 
-		for (User2SupporterEntity user2SupporterEntity : entity.getSupporter2UserCollection()) {
-			dto.setTmpHeroName(user2SupporterEntity.getA().getLoginId());
-			// there is only one user2supporter allowed but breaking anyway:
-			break;
-		}
+		for (User2SupporterEntity user2SupporterEntity : entity.getUser2SupporterCollection()) {
 
-		if (dto.getTmpHeroName() == null) {
-			dto.setTmpHeroName(new SingleLineString256Type("unknown name"));
+			dto.setUserDTO(UserCRUDServiceImpl.i().helper.entity2DTO(user2SupporterEntity.getA()));
+
+			// there is only one user2supporter allowed but breaking the loop anyway:
+			break;
+
 		}
 
 		super.postprocessEntity2DTO(em, entity, dto);

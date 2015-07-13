@@ -53,7 +53,7 @@ public class ItemWidget extends WidgetView {
 		String infos = "";
 
 		if (dto.getDtoB() != null) {
-			infos += dto.getDtoB().getTmpHeroName();
+			infos += dto.getDtoB().getUserDTO().getLoginId();
 		}
 
 		return infos;

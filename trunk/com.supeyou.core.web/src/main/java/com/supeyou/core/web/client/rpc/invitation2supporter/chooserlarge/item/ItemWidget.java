@@ -27,7 +27,7 @@ public class ItemWidget extends WidgetView {
 	private void render() {
 
 		columnOne.clear();
-		columnOne.add(new Label(thisDTO.getDtoA().getComment() + " <-> " + thisDTO.getDtoB().getTmpHeroName()));
+		columnOne.add(new Label(thisDTO.getDtoA().getComment() + " <-> " + thisDTO.getDtoB().getUserDTO().getLoginId()));
 
 	}
 

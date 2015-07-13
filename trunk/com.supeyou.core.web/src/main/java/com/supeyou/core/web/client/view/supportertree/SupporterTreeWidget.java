@@ -80,8 +80,8 @@ public class SupporterTreeWidget extends WidgetView {
 		edgeSlot.clear();
 		childrenSlot.clear();
 
-		if (supporterDTO != null && supporterDTO.getTmpHeroName() != null) {
-			nameLabel.setText(supporterDTO.getTmpHeroName().value());
+		if (supporterDTO != null && supporterDTO.getUserDTO().getLoginId() != null) {
+			nameLabel.setText(supporterDTO.getUserDTO().getLoginId().value());
 		} else {
 			nameLabel.setText("null");
 		}

@@ -1,7 +1,13 @@
 package com.supeyou.core.impl.entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.supeyou.core.iface.dto.InvitationIDType;
@@ -13,6 +19,17 @@ import com.supeyou.crudie.impl.entity.AbstrEntity;
 public class InvitationEntity extends AbstrEntity<InvitationIDType> {
 
 	private String comment;
+
+	@OneToMany(mappedBy = "a"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+	private Collection<Invitation2SupporterEntity> invitation2SupporterEntity = new ArrayList<Invitation2SupporterEntity>();
+
+	public Collection<Invitation2SupporterEntity> getInvitation2SupporterEntity() {
+		return invitation2SupporterEntity;
+	}
+
+	public void setInvitation2SupporterEntity(Collection<Invitation2SupporterEntity> invitation2SupporterEntity) {
+		this.invitation2SupporterEntity = invitation2SupporterEntity;
+	}
 
 	@Column(nullable = false, length = 256, unique = true)
 	private String token;

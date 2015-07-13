@@ -36,8 +36,8 @@ public class ItemWidget extends WidgetView {
 	private void render() {
 
 		commentSlot.clear();
-		if (thisDTO.getTmpHeroName() != null) {
-			commentSlot.add(new HTML(thisDTO.getTmpHeroName().value()));
+		if (thisDTO.getUserDTO().getLoginId() != null) {
+			commentSlot.add(new HTML(thisDTO.getUserDTO().getLoginId().value()));
 		}
 
 	}
