@@ -44,43 +44,56 @@ public class AppEntryPoint implements EntryPoint {
 		});
 
 		if (LoginStateModel.i().getLoggedInUser() == null) {// trying to login with authToken
-			RPCAuthServiceAsync.i.authenticateActor(Window.Location.getParameter(ActorStatics.AUTHTOKEN_KEY), new AsyncCallback<UserDTO>() {
 
-				@Override
-				public void onFailure(Throwable caught) {
+			if (Window.Location.getParameter(ActorStatics.AUTHTOKEN_KEY) != null) {
 
-					caught.printStackTrace();
+				RPCAuthServiceAsync.i.authenticateActor(Window.Location.getParameter(ActorStatics.AUTHTOKEN_KEY), new AsyncCallback<UserDTO>() {
 
-				}
+					@Override
+					public void onFailure(Throwable caught) {
 
-				@Override
-				public void onSuccess(UserDTO result) {
+						caught.printStackTrace();
 
-					LoginStateModel.i().setLoggedInUser(result);
+					}
 
-				}
-			});
+					@Override
+					public void onSuccess(UserDTO result) {
+
+						LoginStateModel.i().setLoggedInUser(result);
+						postAuthInitilization();
+
+					}
+				});
+			} else {
+
+				RPCAuthServiceAsync.i.getActorOfSession(new AsyncCallback<UserDTO>() {
+
+					@Override
+					public void onSuccess(UserDTO result) {
+
+						LoginStateModel.i().setLoggedInUser(result);
+						postAuthInitilization();
+
+					}
+
+					@Override
+					public void onFailure(Throwable caught) {
+
+						caught.printStackTrace();
+
+					}
+
+				});
+
+			}
+
+		} else {
+			postAuthInitilization();
 		}
 
-		//
-		//
-		// RPCAuthServiceAsync.i.getActorOfSession(new AsyncCallback<UserDTO>() {
-		//
-		// @Override
-		// public void onSuccess(UserDTO result) {
-		//
-		// LoginStateModel.i().setLoggedInUser(result);
-		//
-		// }
-		//
-		// @Override
-		// public void onFailure(Throwable caught) {
-		//
-		// caught.printStackTrace();
-		//
-		// }
-		// });
+	}
 
+	private void postAuthInitilization() {
 		AppInfoModel appInfoModel = new AppInfoModel();
 		RootPanel.get("footer").add(new VersionPresenter(appInfoModel));
 		appInfoModel.updateFromServer();
@@ -111,6 +124,5 @@ public class AppEntryPoint implements EntryPoint {
 		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.supporter2donation.chooserlarge.ChooserLargeWidget());
 		RootPanel.get("main").add(new Label("Donation"));
 		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.donation.chooserlarge.ChooserLargeWidget());
-
 	}
 }
