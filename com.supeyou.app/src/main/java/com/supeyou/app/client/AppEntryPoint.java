@@ -11,6 +11,7 @@ import com.supeyou.actor.web.client.login.loginbutton.LoginButtonWidget;
 import com.supeyou.actor.web.client.rpc.RPCAuthServiceAsync;
 import com.supeyou.core.web.client.HistoryController;
 import com.supeyou.core.web.client.HistoryController.ANCHOR;
+import com.supeyou.core.web.client.resources.CoreStatics;
 import com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.UserDTO;
@@ -79,9 +80,9 @@ public class AppEntryPoint implements EntryPoint {
 
 	private void postAuthInitilization() {
 
-		if (Window.Location.getParameter(ActorStatics.INVITTOKEN_KEY) != null) {
+		if (Window.Location.getParameter(CoreStatics.INVITTOKEN_KEY) != null) {
 
-			RPCCRUDServiceAsync.i.acceptInvitation(LoginStateModel.i().getLoggedInUser(), new SingleLineString256Type(Window.Location.getParameter(ActorStatics.INVITTOKEN_KEY)), new AsyncCallback<Void>() {
+			RPCCRUDServiceAsync.i.acceptInvitation(LoginStateModel.i().getLoggedInUser(), new SingleLineString256Type(Window.Location.getParameter(CoreStatics.INVITTOKEN_KEY)), new AsyncCallback<Void>() {
 
 				@Override
 				public void onFailure(Throwable caught) {
