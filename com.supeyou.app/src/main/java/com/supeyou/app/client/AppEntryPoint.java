@@ -4,11 +4,11 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.actor.web.client.login.loginbutton.LoginButtonWidget;
 import com.supeyou.actor.web.client.rpc.RPCAuthServiceAsync;
+import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.web.client.HistoryController;
 import com.supeyou.core.web.client.HistoryController.ANCHOR;
 import com.supeyou.core.web.client.resources.CoreStatics;
@@ -25,6 +25,12 @@ public class AppEntryPoint implements EntryPoint {
 	public void onModuleLoad() {
 
 		RootPanel.get("login").add(new LoginButtonWidget(LoginStateModel.i()));
+
+		HistoryController.i();
+
+		AppInfoModel appInfoModel = new AppInfoModel();
+		RootPanel.get("footer").add(new VersionPresenter(appInfoModel));
+		appInfoModel.updateFromServer();
 
 		if (LoginStateModel.i().getLoggedInUser() == null) {// trying to login with authToken
 
@@ -82,7 +88,7 @@ public class AppEntryPoint implements EntryPoint {
 
 		if (Window.Location.getParameter(CoreStatics.INVITTOKEN_KEY) != null) {
 
-			RPCCRUDServiceAsync.i.acceptInvitation(LoginStateModel.i().getLoggedInUser(), new SingleLineString256Type(Window.Location.getParameter(CoreStatics.INVITTOKEN_KEY)), new AsyncCallback<Void>() {
+			RPCCRUDServiceAsync.i.acceptInvitation(LoginStateModel.i().getLoggedInUser(), new SingleLineString256Type(Window.Location.getParameter(CoreStatics.INVITTOKEN_KEY)), new AsyncCallback<HeroDTO>() {
 
 				@Override
 				public void onFailure(Throwable caught) {
@@ -92,9 +98,14 @@ public class AppEntryPoint implements EntryPoint {
 				}
 
 				@Override
-				public void onSuccess(Void result) {
+				public void onSuccess(HeroDTO result) {
 
-					postInvitLinkHandling();
+					if (result != null) {
+						History.newItem(ANCHOR.HERO.name() + "_" + result.getId().value());
+					} else {
+						Window.alert("no hero found for invitation " + Window.Location.getParameter(CoreStatics.INVITTOKEN_KEY));
+						History.newItem(ANCHOR.LP.name());
+					}
 
 				}
 
@@ -102,44 +113,32 @@ public class AppEntryPoint implements EntryPoint {
 
 		} else {
 
-			postInvitLinkHandling();
-
-		}
-
-	}
-
-	private void postInvitLinkHandling() {
-
-		AppInfoModel appInfoModel = new AppInfoModel();
-		RootPanel.get("footer").add(new VersionPresenter(appInfoModel));
-		appInfoModel.updateFromServer();
-
-		HistoryController.i();
-
-		if (History.getToken() == null || History.getToken().equals("")) {
 			History.newItem(ANCHOR.LP.name());
-		} else {
-			HistoryController.i().show(History.getToken());
+
 		}
 
-		RootPanel.get("main").add(new Label("Session"));
-		RootPanel.get("main").add(new com.supeyou.actor.web.client.rpc.session.chooserlarge.ChooserLargeWidget());
-		RootPanel.get("main").add(new Label("Session2User"));
-		RootPanel.get("main").add(new com.supeyou.actor.web.client.rpc.session2user.chooserlarge.ChooserLargeWidget());
-		RootPanel.get("main").add(new Label("User"));
-		RootPanel.get("main").add(new com.supeyou.crudie.web.client.rpc.user.chooserlarge.ChooserLargeWidget());
-		RootPanel.get("main").add(new Label("Supporter"));
-		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.supporter.chooserlarge.ChooserLargeWidget());
-		RootPanel.get("main").add(new Label("Supporter2Invitation"));
-		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.supporter2invitation.chooserlarge.ChooserLargeWidget());
-		RootPanel.get("main").add(new Label("Invitation2Supporter"));
-		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.invitation2supporter.chooserlarge.ChooserLargeWidget());
-		RootPanel.get("main").add(new Label("Invitation"));
-		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.invitation.chooserlarge.ChooserLargeWidget());
-		RootPanel.get("main").add(new Label("Supporter2Donation"));
-		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.supporter2donation.chooserlarge.ChooserLargeWidget());
-		RootPanel.get("main").add(new Label("Donation"));
-		RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.donation.chooserlarge.ChooserLargeWidget());
-
 	}
+
+	// private void sdf() {
+	//
+	// RootPanel.get("main").add(new Label("Session"));
+	// RootPanel.get("main").add(new com.supeyou.actor.web.client.rpc.session.chooserlarge.ChooserLargeWidget());
+	// RootPanel.get("main").add(new Label("Session2User"));
+	// RootPanel.get("main").add(new com.supeyou.actor.web.client.rpc.session2user.chooserlarge.ChooserLargeWidget());
+	// RootPanel.get("main").add(new Label("User"));
+	// RootPanel.get("main").add(new com.supeyou.crudie.web.client.rpc.user.chooserlarge.ChooserLargeWidget());
+	// RootPanel.get("main").add(new Label("Supporter"));
+	// RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.supporter.chooserlarge.ChooserLargeWidget());
+	// RootPanel.get("main").add(new Label("Supporter2Invitation"));
+	// RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.supporter2invitation.chooserlarge.ChooserLargeWidget());
+	// RootPanel.get("main").add(new Label("Invitation2Supporter"));
+	// RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.invitation2supporter.chooserlarge.ChooserLargeWidget());
+	// RootPanel.get("main").add(new Label("Invitation"));
+	// RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.invitation.chooserlarge.ChooserLargeWidget());
+	// RootPanel.get("main").add(new Label("Supporter2Donation"));
+	// RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.supporter2donation.chooserlarge.ChooserLargeWidget());
+	// RootPanel.get("main").add(new Label("Donation"));
+	// RootPanel.get("main").add(new com.supeyou.core.web.client.rpc.donation.chooserlarge.ChooserLargeWidget());
+	//
+	// }
 }

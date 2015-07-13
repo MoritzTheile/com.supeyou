@@ -1,5 +1,6 @@
 package com.supeyou.core.iface;
 
+import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.InvitationFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
@@ -16,6 +17,6 @@ public interface InvitationCRUDService extends CRUDService<InvitationDTO, Invita
 
 	void acceptInvitation(UserDTO actorDTO, InvitationDTO invitationDTO, SupporterDTO supporterDTO) throws CRUDException;
 
-	void acceptInvitation(UserDTO actorDTO, UserDTO userDTO, SingleLineString256Type token) throws CRUDException;
+	HeroDTO acceptInvitation(UserDTO actorDTO, UserDTO userDTO, SingleLineString256Type token) throws CRUDException;
 
 }
