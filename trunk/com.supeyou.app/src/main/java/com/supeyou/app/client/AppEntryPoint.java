@@ -1,6 +1,8 @@
 package com.supeyou.app.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -25,6 +27,14 @@ public class AppEntryPoint implements EntryPoint {
 	public void onModuleLoad() {
 
 		RootPanel.get("login").add(new LoginButtonWidget(LoginStateModel.i()));
+		RootPanel.get("title").addDomHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				History.newItem(ANCHOR.LP.name());
+
+			}
+		}, ClickEvent.getType());
 
 		HistoryController.i();
 
@@ -101,7 +111,8 @@ public class AppEntryPoint implements EntryPoint {
 				public void onSuccess(HeroDTO result) {
 
 					if (result != null) {
-						History.newItem(ANCHOR.HERO.name() + "_" + result.getId().value());
+						History.newItem(ANCHOR.HERO.name() + "_" + result.getId().value(), false);
+						History.fireCurrentHistoryState();
 					} else {
 						Window.alert("no hero found for invitation " + Window.Location.getParameter(CoreStatics.INVITTOKEN_KEY));
 						History.newItem(ANCHOR.LP.name());
