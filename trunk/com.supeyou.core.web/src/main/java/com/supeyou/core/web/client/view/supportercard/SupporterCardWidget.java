@@ -9,7 +9,7 @@ public class SupporterCardWidget extends WidgetView {
 	public SupporterCardWidget(SupporterDTO supporterDTO) {
 
 		heroSlot.add(new ItemWidget(supporterDTO.getHeroDTO()));
-		root.add(new SupporterWidget(supporterDTO));
+		supporterSlot.add(new SupporterWidget(supporterDTO));
 
 	}
 
