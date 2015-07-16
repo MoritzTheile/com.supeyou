@@ -124,7 +124,7 @@ public class AppEntryPoint implements EntryPoint {
 
 		} else {
 
-			History.newItem(ANCHOR.LP.name());
+			History.fireCurrentHistoryState();
 
 		}
 

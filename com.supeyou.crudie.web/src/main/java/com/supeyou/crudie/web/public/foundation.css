@@ -413,15 +413,14 @@
 }
 
 .flat-button {
-	display: initial;
-	border-bottom: 1px solid #d4d4d4;
-    background-color: #2d90ec;
-    background: linear-gradient(#3291e2, #2d90ec);
-    border-radius: 8px;
-    cursor: pointer;
-    color: white;
-    text-align: center;
-    padding: 4px 12px
+  border-bottom: 1px solid #d4d4d4;
+  background-color: #2d90ec;
+  background: linear-gradient(#3291e2, #2d90ec);
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  padding: 4px 2px;
 }
 .link-button {
 	cursor: pointer;

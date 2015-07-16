@@ -38,6 +38,8 @@ public class HistoryController {
 			showLandingPage();
 		} else if (ANCHOR.HERO.name().equals(anchorParts[0])) {
 			showHeroPage(anchorParts);
+		} else {
+			showLandingPage();
 		}
 	}
 
