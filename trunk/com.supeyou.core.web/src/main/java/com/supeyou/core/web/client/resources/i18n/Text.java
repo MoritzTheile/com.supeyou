@@ -29,6 +29,8 @@ public interface Text extends Messages {
 
 	String EUROSYMBOL();
 
+	String THATS_YOU();
+
 	String YOUR_GENERATED_RESULT();
 
 	String YOUR_RESULT();

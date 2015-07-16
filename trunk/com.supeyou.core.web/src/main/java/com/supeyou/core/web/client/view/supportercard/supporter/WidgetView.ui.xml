@@ -9,7 +9,7 @@
 	<g:FlowPanel styleName="supporter-root" ui:field="root">
 		<g:FlowPanel styleName="left-column" ui:field="leftColumn">
 			<g:FlowPanel styleName="you-image" ui:field="youImage"></g:FlowPanel>
-			<g:Label styleName="you-label" ui:field="youLabel"></g:Label>
+			<g:Label styleName="you-label" text="{text.THATS_YOU}" ui:field="youLabel"></g:Label>
 		</g:FlowPanel>
 		<g:FlowPanel styleName="right-column" ui:field="rightColumn">
 			<g:Label styleName="your-generated-result" text="{text.EUROSYMBOL}" ui:field="yourGeneratedResult"></g:Label>
