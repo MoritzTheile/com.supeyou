@@ -6,8 +6,9 @@
 	<ui:with field='text'
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
  
-	<g:FlowPanel styleName="supporter-root" ui:field="root">
+	<g:FlowPanel styleName="supporter-card-root card" ui:field="root">
 		<g:FlowPanel styleName="hero-slot" ui:field="heroSlot"></g:FlowPanel>
+		<g:FlowPanel styleName="supporter-slot" ui:field="supporterSlot"></g:FlowPanel>
 	</g:FlowPanel>
 
 </ui:UiBinder> 

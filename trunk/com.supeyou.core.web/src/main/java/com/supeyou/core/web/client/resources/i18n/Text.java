@@ -27,4 +27,10 @@ public interface Text extends Messages {
 
 	String MISSION_Text_HTML();
 
+	String EUROSYMBOL();
+
+	String YOUR_GENERATED_RESULT();
+
+	String YOUR_RESULT();
+
 }
