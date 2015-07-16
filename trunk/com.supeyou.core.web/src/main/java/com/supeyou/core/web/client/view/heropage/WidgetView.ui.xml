@@ -8,9 +8,9 @@
  
 	<g:FlowPanel styleName="heropage-root" ui:field="root">
 	
-		<g:FlowPanel styleName="driver-slot" ui:field="driverSlot"></g:FlowPanel>
-		<g:FlowPanel styleName="supporter-slot" ui:field="supporterSlot"></g:FlowPanel>
+		<g:FlowPanel styleName="supporter-card-slot" ui:field="supporterCardSlot"></g:FlowPanel>
 		<g:FlowPanel styleName="invitation-button-slot" ui:field="invitationButtonSlot"></g:FlowPanel>
+		<g:FlowPanel styleName="supportertree-slot" ui:field="supporterTreeSlot"></g:FlowPanel>
 	
 	</g:FlowPanel>
 

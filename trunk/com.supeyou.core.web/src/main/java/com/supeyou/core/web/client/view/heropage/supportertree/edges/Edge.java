@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.view.supportertree.edges;
+package com.supeyou.core.web.client.view.heropage.supportertree.edges;
 
 public class Edge {
 

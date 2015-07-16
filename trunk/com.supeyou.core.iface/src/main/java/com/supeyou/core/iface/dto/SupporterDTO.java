@@ -11,6 +11,8 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 
 	private UserDTO userDTO;
 
+	private HeroDTO heroDTO;
+
 	public SupporterDTO() {
 
 	}
@@ -39,6 +41,14 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 
 	public void setUserDTO(UserDTO userDTO) {
 		this.userDTO = userDTO;
+	}
+
+	public HeroDTO getHeroDTO() {
+		return heroDTO;
+	}
+
+	public void setHeroDTO(HeroDTO heroDTO) {
+		this.heroDTO = heroDTO;
 	}
 
 }

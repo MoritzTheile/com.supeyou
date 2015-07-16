@@ -9,9 +9,9 @@ import com.supeyou.core.iface.dto.HeroIDType;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.rpc.hero.RPCCRUDServiceAsync;
-import com.supeyou.core.web.client.rpc.hero.chooserlarge.item.ItemWidget;
 import com.supeyou.core.web.client.view.heropage.invite.InviteWidget;
-import com.supeyou.core.web.client.view.heropage.supporter.SupporterWidget;
+import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidget;
+import com.supeyou.core.web.client.view.supportercard.SupporterCardWidget;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
@@ -45,8 +45,6 @@ public class HeroPageWidget extends WidgetView {
 
 	private void render() {
 
-		driverSlot.add(new ItemWidget(heroDTO));
-
 		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.getOrCreate(LoginStateModel.i().getLoggedInUser(), heroDTO, new AsyncCallback<SupporterDTO>() {
 
 			@Override
@@ -59,7 +57,7 @@ public class HeroPageWidget extends WidgetView {
 			@Override
 			public void onSuccess(final SupporterDTO result) {
 
-				supporterSlot.add(new SupporterWidget(result));
+				supporterCardSlot.add(new SupporterCardWidget(result));
 
 				FlatButtonWidget flatButtonWidget = new FlatButtonWidget();
 				flatButtonWidget.setText(Text.i.BUTTON_Invite());
@@ -74,6 +72,8 @@ public class HeroPageWidget extends WidgetView {
 				});
 
 				invitationButtonSlot.add(flatButtonWidget);
+
+				supporterTreeSlot.add(new SupporterTreeWidget(result));
 
 			}
 		});

@@ -15,13 +15,13 @@ public class WidgetView extends Composite {
 	FlowPanel root;
 
 	@UiField
-	FlowPanel driverSlot;
+	FlowPanel supporterCardSlot;
 
 	@UiField
 	FlowPanel invitationButtonSlot;
 
 	@UiField
-	FlowPanel supporterSlot;
+	FlowPanel supporterTreeSlot;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}
