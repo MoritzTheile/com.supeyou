@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.view.supportertree;
+package com.supeyou.core.web.client.view.heropage.supportertree;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Label;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.iface.dto.SupporterFetchQuery;
-import com.supeyou.core.web.client.view.supportertree.edges.Edge;
-import com.supeyou.core.web.client.view.supportertree.edges.EdgesWidget;
+import com.supeyou.core.web.client.view.heropage.supportertree.edges.Edge;
+import com.supeyou.core.web.client.view.heropage.supportertree.edges.EdgesWidget;
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
 

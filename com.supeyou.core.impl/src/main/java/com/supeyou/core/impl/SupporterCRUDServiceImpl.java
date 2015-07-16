@@ -10,6 +10,7 @@ import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.iface.dto.SupporterFetchQuery;
 import com.supeyou.core.iface.dto.User2SupporterDTO;
 import com.supeyou.core.iface.dto.User2SupporterFetchQuery;
+import com.supeyou.core.impl.entity.Hero2SupporterEntity;
 import com.supeyou.core.impl.entity.Invitation2SupporterEntity;
 import com.supeyou.core.impl.entity.Supporter2InvitationEntity;
 import com.supeyou.core.impl.entity.SupporterEntity;
@@ -171,6 +172,15 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 			dto.setUserDTO(UserCRUDServiceImpl.i().helper.entity2DTO(user2SupporterEntity.getA()));
 
 			// there is only one user2supporter allowed but breaking the loop anyway:
+			break;
+
+		}
+
+		for (Hero2SupporterEntity user2SupporterEntity : entity.getHero2SupporterCollection()) {
+
+			dto.setHeroDTO(HeroCRUDServiceImpl.i().helper.entity2DTO(user2SupporterEntity.getA()));
+
+			// there is only one hero2supporter allowed but breaking the loop anyway:
 			break;
 
 		}

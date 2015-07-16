@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.view.heropage.supporter;
+package com.supeyou.core.web.client.view.supportercard;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -13,6 +13,9 @@ public class WidgetView extends Composite {
 
 	@UiField
 	FlowPanel root;
+
+	@UiField
+	FlowPanel heroSlot;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}

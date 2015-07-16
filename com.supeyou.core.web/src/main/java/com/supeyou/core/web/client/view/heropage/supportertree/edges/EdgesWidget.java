@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.view.supportertree.edges;
+package com.supeyou.core.web.client.view.heropage.supportertree.edges;
 
 import java.util.ArrayList;
 import java.util.List;
