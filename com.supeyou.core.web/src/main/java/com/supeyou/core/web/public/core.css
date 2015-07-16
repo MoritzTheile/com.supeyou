@@ -1,21 +1,50 @@
-.supporter-root{
+.supporter-card-root{
 	text-align: center;
 }
 
+.supporter-root{
+	text-align:left;
+}
+.supporter-root > *{
+	display: inline-block;
+}
+.supporter-root .left-column{
+	width:100px;
+	vertical-align: top;
+}
+.supporter-root .right-column{
+	
+}
+
 .supportertree-root{
+	
 	white-space: nowrap;
 	padding: 0;
 	display: inline-block;
 	vertical-align: top;
+	
 }
 
+
+
 .supportertree-slot{
+	
 	text-align: center;
 	
 }
 
 .supportertree-root .edge-slot{
+	
 	height: 50px;
+	
+}
+
+.supporter-root .you-image{
+	
+	height: 20px;
+  	background-repeat: no-repeat;
+  	background-image: url("core/images/emoticon.smile.png");
+  	background-position: 50% 0px;
 	
 }
 
@@ -190,21 +219,38 @@
 .browser-root.large.hero .listitems>div{
 	 text-align: center;
 }
+.supporter-card-slot{
+	text-align:center;
+}
+.card{
+	margin: 18px;
+	border-radius: 3px;
+	border: 1px solid #d4d4d4;
+	box-shadow: 0px 0px 6px #888888;
+	width: 240px;
+ 	text-align: center;
+ 	display: inline-block;
+}
+.card  .hero-slot{
+	border-bottom: 1px solid #d4d4d4;
+	
+}
 
 .hero.listitem.large{
-
-	padding: 1px 8px 12px 8px;
-	border-radius: 6px;
+ 
+ 	width: 240px;
+ 	display: inline-block;
 	margin-bottom: 24px;
-	border: 1px solid #d4d4d4;
-	box-shadow: 0px 0px 10px #888888;
-
 	text-align:center;
-
-	display: inline-block;
-	margin: 0px 16px 32px 16px;
-	width: 240px;
 	color: gray;
+	
+ }
+
+.browser-root .hero.listitem.large{
+	
+	padding: 1px 8px 12px 8px;
+	margin: 0px 16px 32px 16px;
+	
 }
 
 .hero.listitem.large .name-slot{
@@ -229,10 +275,7 @@
 .browser-root.large.hero .pager {
 } 
 
-.hero-slot{
-	text-align:center;
-	margin: 32px;
-}
+
 
 .browser-root.large.hero .column.one{
 	margin-bottom: 24px;
