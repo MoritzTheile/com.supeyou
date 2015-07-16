@@ -240,6 +240,7 @@
 	width: 240px;
  	text-align: center;
  	display: inline-block;
+	color: gray;
 }
 .card  .hero-slot{
 	border-bottom: 1px solid #d4d4d4;
