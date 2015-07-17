@@ -5,6 +5,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -13,6 +14,8 @@ import com.google.gwt.user.client.ui.Widget;
 public class PopupWidget extends WidgetView {
 
 	private boolean glassPaneClickCloses = false;
+
+	private HandlerRegistration handlerRegistration;
 
 	public PopupWidget(Widget content, int top, int left, boolean glassPaneClickCloses) {
 
@@ -57,7 +60,7 @@ public class PopupWidget extends WidgetView {
 				@Override
 				public void onClick(ClickEvent event) {
 
-					closePopup();
+					History.back();
 
 				}
 
@@ -101,9 +104,9 @@ public class PopupWidget extends WidgetView {
 
 		}, ClickEvent.getType());
 
-		History.newItem("POPUP");
+		History.newItem("POPUP", false);
 
-		History.addValueChangeHandler(new ValueChangeHandler<String>() {
+		handlerRegistration = History.addValueChangeHandler(new ValueChangeHandler<String>() {
 
 			@Override
 			public void onValueChange(ValueChangeEvent<String> event) {
@@ -118,7 +121,17 @@ public class PopupWidget extends WidgetView {
 
 	public void closePopup() {
 
+		removeHistoryListener();
+
 		removeFromParent();
+
+	}
+
+	private void removeHistoryListener() {
+		if (handlerRegistration != null) {
+			handlerRegistration.removeHandler();
+			handlerRegistration = null;
+		}
 
 	}
 
