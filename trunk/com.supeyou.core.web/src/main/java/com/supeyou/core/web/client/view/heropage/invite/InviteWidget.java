@@ -4,11 +4,13 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.CoreStatics;
 import com.supeyou.core.web.client.rpc.invitation.RPCCRUDProxy;
 import com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync;
+import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.web.client.fields.types.FieldForSingleLineString256Type;
 import com.supeyou.crudie.web.client.resources.URLHelper;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
@@ -96,16 +98,31 @@ public class InviteWidget extends WidgetView {
 	}
 
 	private void render(final InvitationDTO invitationDTO) {
-
-		linkLabel.setText(URLHelper.getCurrentURL() + "?" + CoreStatics.INVITTOKEN_KEY + "=" + invitationDTO.getToken());
+		String url = URLHelper.getCurrentURL() + "?" + CoreStatics.INVITTOKEN_KEY + "=" + invitationDTO.getToken();
+		linkLabel.setText(url);
 
 		linkNameTextBoxSlot.clear();
-		linkNameTextBoxSlot.add(new FieldForSingleLineString256Type(invitationDTO.getComment()) {
+		final FieldForSingleLineString256Type name = new FieldForSingleLineString256Type(invitationDTO.getComment()) {
 			public void onHasChanged(com.supeyou.crudie.iface.datatype.types.SingleLineString256Type value) {
 				invitationDTO.setComment(value);
 				RPCCRUDProxy.i().updadd(invitationDTO);
 			}
-		});
+		};
+
+		name.addDomHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				name.setOrigValue(new SingleLineString256Type(""));
+
+			}
+		}, ClickEvent.getType());
+		linkNameTextBoxSlot.add(name);
+
+		shareButton.clear();
+
+		shareButton.add(new HTMLPanel("<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\"> </a>"));
 
 	}
 }
