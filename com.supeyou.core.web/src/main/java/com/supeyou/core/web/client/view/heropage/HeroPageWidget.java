@@ -66,7 +66,7 @@ public class HeroPageWidget extends WidgetView {
 					@Override
 					public void onClick(ClickEvent event) {
 
-						new PopupWidget(new InviteWidget(heroDTO, result), true);
+						new PopupWidget(new InviteWidget(result), true);
 
 					}
 				});
