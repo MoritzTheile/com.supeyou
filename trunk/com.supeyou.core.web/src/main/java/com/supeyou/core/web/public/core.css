@@ -1,3 +1,12 @@
+.invite-root{
+	
+	padding: 18px 18px 120px 18px;
+	background-color: white;
+	color: gray;
+	text-align: center;
+	
+}
+
 .supporter-card-root{
 	text-align: center;
 }

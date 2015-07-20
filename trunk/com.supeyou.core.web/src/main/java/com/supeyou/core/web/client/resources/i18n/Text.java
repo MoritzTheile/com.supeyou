@@ -23,7 +23,13 @@ public interface Text extends Messages {
 
 	String BUTTON_Invite();
 
+	String INVITE_HeaderLabel();
+
 	String INVITE_Text_HTML();
+
+	String INVITE_LinkHintLabel();
+
+	String INVITE_LinkNameLabel();
 
 	String MISSION_Text_HTML();
 

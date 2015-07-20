@@ -8,9 +8,22 @@
  
 	<g:FlowPanel styleName="invite-root" ui:field="root">
 	
-		<g:HTML styleName="text" HTML="{text.INVITE_Text_HTML}"></g:HTML>
-
-		<g:Label styleName="invitation-label" ui:field="invitationLabel"></g:Label>
+		<g:FlowPanel styleName="header" >
+			<g:Label  styleName="header-label" text="{text.INVITE_HeaderLabel}"></g:Label>
+			<g:FlowPanel styleName="close-button" ui:field="closeButton"></g:FlowPanel>
+		</g:FlowPanel>
+		
+		<g:HTML styleName="text-html" HTML="{text.INVITE_Text_HTML}"></g:HTML>
+		
+		<g:FlowPanel styleName="link-row" >
+			<g:FlowPanel styleName="reload-button" ui:field="reloadButton"></g:FlowPanel>
+			<g:Label styleName="link-label" ui:field="linkLabel"></g:Label>
+			<g:FlowPanel styleName="share-button" ui:field="shareButton"></g:FlowPanel>
+		</g:FlowPanel>
+		
+		<g:Label  styleName="link-hint-label" text="{text.INVITE_LinkHintLabel}"></g:Label>
+		<g:FlowPanel  styleName="link-name-textbox-slot"  ui:field="linkNameTextBoxSlot"></g:FlowPanel>
+		<g:Label styleName="link-name-label"  text="{text.INVITE_LinkNameLabel}"></g:Label>
 	</g:FlowPanel>
 
 </ui:UiBinder> 

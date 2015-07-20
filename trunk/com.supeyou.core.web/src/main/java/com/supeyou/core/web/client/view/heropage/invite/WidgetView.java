@@ -16,7 +16,19 @@ public class WidgetView extends Composite {
 	FlowPanel root;
 
 	@UiField
-	Label invitationLabel;
+	FlowPanel closeButton;
+
+	@UiField
+	FlowPanel reloadButton;
+
+	@UiField
+	Label linkLabel;
+
+	@UiField
+	FlowPanel shareButton;
+
+	@UiField
+	FlowPanel linkNameTextBoxSlot;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}
