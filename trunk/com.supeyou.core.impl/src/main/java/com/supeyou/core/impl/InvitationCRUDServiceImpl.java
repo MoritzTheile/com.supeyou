@@ -82,7 +82,7 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 			protected InvitationDTO transactionBody() throws Exception {
 				InvitationDTO invitationDTO = new InvitationDTO();
 				// dd.MM.yyyy
-				invitationDTO.setComment(new SingleLineString256Type(new SimpleDateFormat("hh:mm:ss").format(new Date())));
+				invitationDTO.setComment(new SingleLineString256Type(new SimpleDateFormat("HH:mm:ss").format(new Date())));
 				invitationDTO = privateUpdadd(actorDTO, invitationDTO);
 
 				// all supporter need this association

@@ -30,6 +30,12 @@ public class WidgetView extends Composite {
 	@UiField
 	FlowPanel linkNameTextBoxSlot;
 
+	@UiField
+	FlowPanel shareButtonMail;
+
+	@UiField
+	FlowPanel shareButtonWhatsapp;
+
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}
 
