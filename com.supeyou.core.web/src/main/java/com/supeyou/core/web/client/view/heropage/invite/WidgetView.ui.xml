@@ -17,7 +17,7 @@
 		
 		<g:FlowPanel styleName="link-row" >
 			<g:FlowPanel styleName="reload-button" ui:field="reloadButton"></g:FlowPanel>
-			<g:Label styleName="link-label" ui:field="linkLabel"></g:Label>
+			<g:Label styleName="link-label field-style" ui:field="linkLabel"></g:Label>
 			<g:FlowPanel styleName="share-button" ui:field="shareButton"></g:FlowPanel>
 		</g:FlowPanel>
 		
