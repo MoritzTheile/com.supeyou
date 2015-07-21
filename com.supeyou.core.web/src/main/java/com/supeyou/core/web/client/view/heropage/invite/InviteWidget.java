@@ -3,8 +3,8 @@ package com.supeyou.core.web.client.view.heropage.invite;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.CoreStatics;
@@ -16,6 +16,8 @@ import com.supeyou.crudie.web.client.resources.URLHelper;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
 
 public class InviteWidget extends WidgetView {
+
+	private InvitationDTO invitationDTO;
 
 	public InviteWidget(final SupporterDTO supporterDTO) {
 
@@ -39,6 +41,28 @@ public class InviteWidget extends WidgetView {
 
 			}
 		});
+
+		shareButtonMail.addDomHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				Window.open("mailto:?subject=Hi&body=Please spread: " + getInvitURL(invitationDTO), "_self", "status=0,toolbar=0,menubar=0,location=0");
+
+			}
+
+		}, ClickEvent.getType());
+
+		shareButtonWhatsapp.addDomHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				Window.open("whatsapp://send?text=Please spread: " + getInvitURL(invitationDTO), "_self", "status=0,toolbar=0,menubar=0,location=0");
+
+			}
+
+		}, ClickEvent.getType());
 
 	}
 
@@ -98,7 +122,10 @@ public class InviteWidget extends WidgetView {
 	}
 
 	private void render(final InvitationDTO invitationDTO) {
-		String url = URLHelper.getCurrentURL() + "?" + CoreStatics.INVITTOKEN_KEY + "=" + invitationDTO.getToken();
+
+		this.invitationDTO = invitationDTO;
+
+		String url = getInvitURL(invitationDTO);
 		linkLabel.setText(url);
 
 		linkNameTextBoxSlot.clear();
@@ -120,9 +147,10 @@ public class InviteWidget extends WidgetView {
 		}, ClickEvent.getType());
 		linkNameTextBoxSlot.add(name);
 
-		shareButton.clear();
+	}
 
-		shareButton.add(new HTMLPanel("<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\"> </a>"));
-
+	private String getInvitURL(final InvitationDTO invitationDTO) {
+		String url = URLHelper.getCurrentURL() + "?" + CoreStatics.INVITTOKEN_KEY + "=" + invitationDTO.getToken();
+		return url;
 	}
 }

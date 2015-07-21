@@ -24,11 +24,14 @@ public class WidgetView extends Composite {
 	@UiField
 	Label linkLabel;
 
-	@UiField
-	FlowPanel shareButton;
+	// @UiField
+	// FlowPanel shareButton;
 
 	@UiField
 	FlowPanel linkNameTextBoxSlot;
+
+	@UiField
+	FlowPanel shareButtonClipboard;
 
 	@UiField
 	FlowPanel shareButtonMail;
