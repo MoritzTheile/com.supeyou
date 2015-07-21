@@ -393,11 +393,15 @@
 }
 
 .content-slot{
-	position: absolute;
+	/* position: absolute;
 	top: 30%;
     left: 50%;
-    margin-left: -160px;
-    
+    margin-left: -160px; */
+    position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   }
 
 .popup-glass .content-slot > *{
