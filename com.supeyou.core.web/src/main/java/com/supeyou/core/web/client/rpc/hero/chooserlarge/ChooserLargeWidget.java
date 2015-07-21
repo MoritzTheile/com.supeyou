@@ -18,7 +18,6 @@ import com.supeyou.core.web.client.rpc.hero.query.QueryWidget;
 import com.supeyou.crudie.web.client.rpc.abstr.list.AbstrListDataProvider;
 import com.supeyou.crudie.web.client.rpc.abstr.list.AbstrListWidgetList;
 import com.supeyou.crudie.web.client.rpc.abstr.list.ListSelectionModel.SelectionListener;
-import com.supeyou.crudie.web.client.rpc.abstr.list.listpager.ListPagerWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 
 public class ChooserLargeWidget extends WidgetView {
@@ -72,7 +71,9 @@ public class ChooserLargeWidget extends WidgetView {
 
 		querySlot.add(new QueryWidget(dataProvider));
 
-		pagerSlot.add(new ListPagerWidget(dataProvider));
+		// pagerSlot.add(new ListPagerWidget(dataProvider));
+
+		createLink.setVisible(false);
 
 		createLink.addDomHandler(new ClickHandler() {
 

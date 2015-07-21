@@ -43,7 +43,7 @@
 	right:0;
 	height: 16px;
 	width: 16px;
-	margin: 8px;
+	margin: 10px;
 	
 	background-repeat: no-repeat;
   	background-image: url("core/images/fontawesome/times_808080_32.png");
@@ -70,7 +70,7 @@
 }
 .invite-root .link-row .reload-button{
 	position: absolute;
-	padding:8px;
+	padding:8px 8px 4px 8px;
   	height: 16px;
 	width: 16px;
 	border-right: 1px solid #BDBDBD;
