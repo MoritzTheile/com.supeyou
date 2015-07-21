@@ -21,14 +21,14 @@
 			<g:Label styleName="link-label field-style" ui:field="linkLabel"></g:Label>
 		</g:FlowPanel>
 		
-		<g:Label  styleName="link-hint-label" text="{text.INVITE_LinkHintLabel}"></g:Label>
+		<g:HTML  styleName="link-hint-label" HTML="{text.INVITE_LinkHintLabel}"></g:HTML>
 		
 		<g:FlowPanel styleName="share-buttons-slot" >
 		
-			<g:FlowPanel styleName="share-button clipboard" ui:field="shareButtonClipboard">
+			<!-- <g:FlowPanel styleName="share-button clipboard" ui:field="shareButtonClipboard">
 				<g:FlowPanel styleName="image clipboard"></g:FlowPanel>
 				<g:Label styleName="label clipboard" text="Copy to clipboard and use messenger of your choice"></g:Label>
-			</g:FlowPanel>
+			</g:FlowPanel> -->
 	
 			<g:FlowPanel styleName="share-button mail" ui:field="shareButtonMail">
 				<g:FlowPanel styleName="image mail"></g:FlowPanel>
