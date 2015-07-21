@@ -3,7 +3,6 @@ package com.supeyou.core.web.client.mainmenu;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.supeyou.core.web.client.mainmenu.addhero.AddHeroWidget;
-import com.supeyou.core.web.client.mainmenu.mission.MissionWidget;
 import com.supeyou.core.web.client.rpc.hero.chooserlarge.ChooserLargeWidget;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.uiorga.menuanddisplay.MenuAndDisplay;
@@ -14,7 +13,7 @@ public class MainMenuWidget extends WidgetView {
 
 		final Label menuItem1 = new Label("Choose Hero");
 		final Label menuItem2 = new Label("Join As Hero");
-		final Label menuItem3 = new Label("The Mission");
+		// final Label menuItem3 = new Label("The Mission");
 
 		MenuAndDisplay menuAndDisplay = new MenuAndDisplay(menu, display) {
 
@@ -26,9 +25,9 @@ public class MainMenuWidget extends WidgetView {
 				if (menuItem2 == menuItem) {
 					return new AddHeroWidget();
 				}
-				if (menuItem3 == menuItem) {
-					return new MissionWidget();
-				}
+				// if (menuItem3 == menuItem) {
+				// return new MissionWidget();
+				// }
 
 				return null;
 			}
@@ -36,7 +35,7 @@ public class MainMenuWidget extends WidgetView {
 
 		menuAndDisplay.addItem(menuItem1);
 		menuAndDisplay.addItem(menuItem2);
-		menuAndDisplay.addItem(menuItem3);
+		// menuAndDisplay.addItem(menuItem3);
 
 		if (LoginStateModel.i().userIsAdmin()) {
 
