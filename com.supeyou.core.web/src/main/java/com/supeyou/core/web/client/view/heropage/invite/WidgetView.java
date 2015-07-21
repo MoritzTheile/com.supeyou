@@ -31,9 +31,6 @@ public class WidgetView extends Composite {
 	FlowPanel linkNameTextBoxSlot;
 
 	@UiField
-	FlowPanel shareButtonClipboard;
-
-	@UiField
 	FlowPanel shareButtonMail;
 
 	@UiField

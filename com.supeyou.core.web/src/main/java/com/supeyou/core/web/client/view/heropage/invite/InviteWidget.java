@@ -3,6 +3,7 @@ package com.supeyou.core.web.client.view.heropage.invite;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.supeyou.core.iface.dto.InvitationDTO;
@@ -22,6 +23,16 @@ public class InviteWidget extends WidgetView {
 	public InviteWidget(final SupporterDTO supporterDTO) {
 
 		createInvitation(supporterDTO);
+
+		closeButton.addDomHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				History.back();
+
+			}
+		}, ClickEvent.getType());
 
 		reloadButton.addDomHandler(new ClickHandler() {
 
@@ -47,7 +58,7 @@ public class InviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				Window.open("mailto:?subject=Hi&body=Please spread: " + getInvitURL(invitationDTO), "_self", "status=0,toolbar=0,menubar=0,location=0");
+				Window.open("mailto:?subject=Hi&body=Please go to: " + getInvitURL(invitationDTO), "_self", "status=0,toolbar=0,menubar=0,location=0");
 
 			}
 
@@ -58,7 +69,7 @@ public class InviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				Window.open("whatsapp://send?text=Please spread: " + getInvitURL(invitationDTO), "_self", "status=0,toolbar=0,menubar=0,location=0");
+				Window.open("whatsapp://send?text=Please go to: " + getInvitURL(invitationDTO), "_self", "status=0,toolbar=0,menubar=0,location=0");
 
 			}
 
