@@ -1,21 +1,25 @@
 #login *{
 	color:#EEEEEE;
 }
+html{
+	height: 100%;
+  	background-repeat: repeat;
+  	background-image: url("core/images/nature2_background.jpg");
+
+}
 
 body {
-	padding: 0;
-	margin: 0;
-	position: relative!;
-  	top:0px;
-	right:0px;
-	left:0px;
-	bottom:0px;   
+	width: 400px !important;
+  	margin: 24px auto !important;
+  	background: #fff !important;
+  	position:relative !important;
 }
 
 #header {
     padding:0;
     margin:0;
-    position: fixed;
+    /* position: fixed; */
+    position: relative;
 	top:0px;
 	right:0px;
 	left:0px;
@@ -50,7 +54,7 @@ body {
     padding:0;
     margin:0;
     
-    position: absolute;
+    position: relative;
     top:45px;
 	right:0px;
 	left:0px;
@@ -61,8 +65,9 @@ body {
 
  #footer {
     padding:0;
-    margin:0;
-    position: fixed;
+    margin-top: 120px;
+/* position: fixed; */
+    position: relative;
 	right:0px;
 	left:0px;
 	bottom:0px;
