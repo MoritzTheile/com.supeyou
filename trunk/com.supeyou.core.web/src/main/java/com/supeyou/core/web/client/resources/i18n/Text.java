@@ -31,6 +31,10 @@ public interface Text extends Messages {
 
 	String INVITE_LinkNameLabel();
 
+	String INVITE_ShareWithMail();
+
+	String INVITE_ShareWithWhatsApp();
+
 	String MISSION_Text_HTML();
 
 	String EUROSYMBOL();

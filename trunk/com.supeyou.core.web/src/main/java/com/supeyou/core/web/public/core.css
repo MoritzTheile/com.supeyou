@@ -41,6 +41,7 @@
 .invite-root .link-row{
 	vertical-align:middle;
 	white-space: nowrap;
+	position: relative;
 }
 
 .invite-root .link-row > * {
@@ -49,16 +50,18 @@
 }
 .invite-root .link-label{
 	background-color: #C6D9F1;
+	padding-left: 40px;
 }
 .invite-root .link-row .reload-button{
-	
-	height: 16px;
+	position: absolute;
+	padding:8px;
+  	height: 16px;
 	width: 16px;
-	margin: 0px 12px;
-  	background-repeat: no-repeat;
+	background-repeat: no-repeat;
+	border-right: 1px solid #BDBDBD;
   	background-image: url("core/images/fontawesome/refresh_808080_32.png");
   	background-size:16px;
-  	background-position: 50% 0px;
+  	background-position: 50% 8px;
   	cursor: pointer;
 }
 
@@ -69,11 +72,13 @@
 }
 
 .invite-root .share-button{
-	vertical-align: middle;
+	margin: 12px 0 12px 0;
 }
 
 .invite-root .share-button > *{
 	display: inline-block;
+  	vertical-align: middle;
+  	cursor:pointer;
 }
 
 .invite-root .link-row .share-button{
@@ -90,6 +95,19 @@
 .invite-root .link-hint-label{
 	font-size: 10px;
 }
+
+.invite-root .share-button .image.clipboard{
+	
+	height: 32px;
+	width: 32px;
+	margin: 0px 12px;
+  	background-repeat: no-repeat;
+  	background-image: url("core/images/clipboard.jpg");
+  	background-size:32px;
+  	background-position: 50% 0px;
+  	cursor: pointer;
+}
+
 
 .invite-root .share-button .image.mail{
 	
