@@ -12,8 +12,6 @@ import com.supeyou.core.web.client.HistoryController.ANCHOR;
 import com.supeyou.core.web.client.rpc.hero.ListDataProvider;
 import com.supeyou.core.web.client.rpc.hero.chooserlarge.item.ItemWidget;
 import com.supeyou.core.web.client.rpc.hero.form.FormWidget;
-import com.supeyou.core.web.client.rpc.hero.imexport.ExportLink;
-import com.supeyou.core.web.client.rpc.hero.imexport.ImportLink;
 import com.supeyou.core.web.client.rpc.hero.query.QueryWidget;
 import com.supeyou.crudie.web.client.rpc.abstr.list.AbstrListDataProvider;
 import com.supeyou.crudie.web.client.rpc.abstr.list.AbstrListWidgetList;
@@ -98,14 +96,14 @@ public class ChooserLargeWidget extends WidgetView {
 
 		dataProvider.fetchData();
 
-		footer.add(new ExportLink(dataProvider.getFetchQuery()));
-
-		footer.add(new ImportLink() {
-			@Override
-			public void importFinished() {
-				dataProvider.fetchData();
-			}
-		});
+		// footer.add(new ExportLink(dataProvider.getFetchQuery()));
+		//
+		// footer.add(new ImportLink() {
+		// @Override
+		// public void importFinished() {
+		// dataProvider.fetchData();
+		// }
+		// });
 
 	}
 
