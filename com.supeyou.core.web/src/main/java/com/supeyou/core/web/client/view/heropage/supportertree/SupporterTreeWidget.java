@@ -82,24 +82,7 @@ public class SupporterTreeWidget extends WidgetView {
 		edgeSlot.clear();
 		childrenSlot.clear();
 
-		if (supporterDTO != null && supporterDTO.getUserDTO().getLoginId() != null) {
-
-			if (!supporterDTO.getUserDTO().getLoginId().value().startsWith("anonymous")) {
-
-				nameLabel.setText(supporterDTO.getUserDTO().getLoginId().value());
-				nameLabel.setTitle(getClickedLinks(supporterDTO));
-
-			} else {
-
-				nameLabel.setText(getClickedLinks(supporterDTO));
-
-			}
-
-		} else {
-
-			nameLabel.setText("null");
-
-		}
+		nameLabel.setHTML(getHtml(supporterDTO));
 
 		if (COLLAPSE_MODE.EXPANDED.equals(collapseMode)) {
 
@@ -139,19 +122,49 @@ public class SupporterTreeWidget extends WidgetView {
 
 	}
 
+	private String getHtml(SupporterDTO supporterDTO2) {
+
+		String html = "";
+
+		if (supporterDTO2 != null && supporterDTO2.getUserDTO().getLoginId() != null) {
+
+			if (!supporterDTO2.getUserDTO().getLoginId().value().startsWith("anonymous")) {
+
+				html += supporterDTO2.getUserDTO().getLoginId().value();
+
+			} else {
+
+				html += "anonym";
+
+			}
+
+			html += getClickedLinks(supporterDTO2);
+
+		} else {
+
+			nameLabel.setText("null");
+
+		}
+		return html;
+	}
+
 	private String getClickedLinks(SupporterDTO supporterDTO2) {
+
+		if (supporterDTO2.getInvitationDTOs().size() == 0) {
+			return "";
+		}
 
 		String clickedLinks = "";
 
 		for (InvitationDTO invitationDTO : supporterDTO2.getInvitationDTOs()) {
-			clickedLinks += ", " + invitationDTO.getComment();
+			clickedLinks += "<br>" + invitationDTO.getComment();
 		}
 
-		if (clickedLinks.startsWith(", ")) {
-			clickedLinks = clickedLinks.substring(2, clickedLinks.length());
+		if (clickedLinks.startsWith("<br>")) {
+			clickedLinks = clickedLinks.substring(4, clickedLinks.length());
 		}
 
-		return clickedLinks;
+		return "<br>clicked link:<br>" + clickedLinks;
 
 	}
 

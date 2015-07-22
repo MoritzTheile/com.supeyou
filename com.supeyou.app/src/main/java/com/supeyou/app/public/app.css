@@ -1,12 +1,7 @@
 #login *{
 	color:#EEEEEE;
 }
-html{
-	height: 100%;
-  	background-repeat: repeat;
-  	background-image: url("core/images/nature2_background.jpg");
 
-}
 
 body {
 	background: #fff !important;
@@ -15,7 +10,16 @@ body {
 
 @media only screen and (min-width: 580px) {
 	
+	html{
+	
+		height: 100%;
+	  	background-repeat: repeat;
+	  	background-image: url("core/images/nature2_background.jpg");
+
+	}
+	
 	body {
+	
 		width: 420px !important;
 	  	margin: 24px auto !important;
 	  

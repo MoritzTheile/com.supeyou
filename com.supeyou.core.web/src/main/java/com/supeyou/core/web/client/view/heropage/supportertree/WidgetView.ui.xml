@@ -10,7 +10,7 @@
 	
 		<g:Label styleName="amount-label" ui:field="amountLabel"/>
 		<g:FlowPanel styleName="image-slot" ui:field="imageSlot"/>
-		<g:Label styleName="name-Label" ui:field="nameLabel"/>
+		<g:HTML styleName="name-Label" ui:field="nameLabel"/>
 		<g:FlowPanel styleName="edge-slot" ui:field="edgeSlot"/>
 		<g:FlowPanel styleName="children-slot" ui:field="childrenSlot"/>
 		

@@ -63,8 +63,11 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 						for (Invitation2SupporterEntity invitation2SupporterEntity : entity.getB().getInvitation2SupporterCollection()) {
 
 							SupporterDTO dto = helper.entity2DTO(invitation2SupporterEntity.getB());
-							postprocessEntity2DTO(em, invitation2SupporterEntity.getB(), dto);
-							fetchList.add(dto);
+
+							if (!fetchList.contains(dto)) {
+								postprocessEntity2DTO(em, invitation2SupporterEntity.getB(), dto);
+								fetchList.add(dto);
+							}
 
 						}
 
