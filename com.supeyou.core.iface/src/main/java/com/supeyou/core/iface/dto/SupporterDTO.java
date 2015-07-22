@@ -1,6 +1,8 @@
 package com.supeyou.core.iface.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.supeyou.crudie.iface.dto.AbstrDTO;
 import com.supeyou.crudie.iface.dto.UserDTO;
@@ -12,6 +14,8 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 	private UserDTO userDTO;
 
 	private HeroDTO heroDTO;
+
+	private List<InvitationDTO> invitationDTOs = new ArrayList<>();
 
 	public SupporterDTO() {
 
@@ -49,6 +53,14 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 
 	public void setHeroDTO(HeroDTO heroDTO) {
 		this.heroDTO = heroDTO;
+	}
+
+	public List<InvitationDTO> getInvitationDTOs() {
+		return invitationDTOs;
+	}
+
+	public void setInvitationDTOs(List<InvitationDTO> invitationDTOs) {
+		this.invitationDTOs = invitationDTOs;
 	}
 
 }

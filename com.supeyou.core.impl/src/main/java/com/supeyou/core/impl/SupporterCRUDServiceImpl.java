@@ -185,7 +185,14 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 
 		}
 
+		for (Invitation2SupporterEntity user2SupporterEntity : entity.getInvitation2SupporterCollection()) {
+
+			dto.getInvitationDTOs().add(InvitationCRUDServiceImpl.i().helper.entity2DTO(user2SupporterEntity.getA()));
+
+		}
+
 		super.postprocessEntity2DTO(em, entity, dto);
+
 	}
 
 	// Singleton
