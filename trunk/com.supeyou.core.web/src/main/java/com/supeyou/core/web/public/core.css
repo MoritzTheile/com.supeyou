@@ -155,6 +155,45 @@
   	cursor: pointer;
 }
 
+.invite-root .share-button .image.google{
+	
+	height: 32px;
+	width: 32px;
+	margin: 0px 12px;
+  	background-repeat: no-repeat;
+  	background-image: url("core/images/gplus-icon.png");
+  	background-size:32px;
+  	background-position: 50% 0px;
+  	cursor: pointer;
+}
+
+.invite-root .share-button .image.facebook{
+	
+	height: 32px;
+	width: 32px;
+	margin: 0px 12px;
+  	background-repeat: no-repeat;
+  	background-image: url("core/images/facebook-icon.jpg");
+  	background-size:32px;
+  	background-position: 50% 0px;
+  	cursor: pointer;
+}
+
+.invite-root .share-button .image.twitter{
+	
+	height: 32px;
+	width: 32px;
+	margin: 0px 12px;
+  	background-repeat: no-repeat;
+  	background-image: url("core/images/twitter-icon.jpg");
+  	background-size:32px;
+  	background-position: 50% 0px;
+  	cursor: pointer;
+}
+
+
+
+
 .invite-root .link-name-textbox-slot{
 	margin: 24px 0 0 0;
 }

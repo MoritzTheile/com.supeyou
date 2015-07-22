@@ -40,6 +40,21 @@
 				<g:Label styleName="label whatsapp" text="{text.INVITE_ShareWithWhatsApp}"></g:Label>
 			</g:FlowPanel>
 			
+			<g:FlowPanel styleName="share-button google" ui:field="shareButtonGoogle">
+				<g:FlowPanel styleName="image google"></g:FlowPanel>
+				<g:Label styleName="label whatsapp" text="{text.INVITE_ShareWithGoogle}"></g:Label>
+			</g:FlowPanel>
+			
+			<g:FlowPanel styleName="share-button facebook" ui:field="shareButtonFacebook">
+				<g:FlowPanel styleName="image facebook"></g:FlowPanel>
+				<g:Label styleName="label whatsapp" text="{text.INVITE_ShareWithFacebook}"></g:Label>
+			</g:FlowPanel>
+			
+			<g:FlowPanel styleName="share-button twitter" ui:field="shareButtonTwitter">
+				<g:FlowPanel styleName="image twitter"></g:FlowPanel>
+				<g:Label styleName="label whatsapp" text="{text.INVITE_ShareWithTwitter}"></g:Label>
+			</g:FlowPanel>
+			
 		</g:FlowPanel>
 		
 		<g:FlowPanel  styleName="link-name-textbox-slot"  ui:field="linkNameTextBoxSlot"></g:FlowPanel>
