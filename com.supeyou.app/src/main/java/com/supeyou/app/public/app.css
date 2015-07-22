@@ -9,11 +9,19 @@ html{
 }
 
 body {
-	width: 400px !important;
-  	margin: 24px auto !important;
-  	background: #fff !important;
+	background: #fff !important;
   	position:relative !important;
 }
+
+@media only screen and (min-width: 580px) {
+	
+	body {
+		width: 400px !important;
+	  	margin: 24px auto !important;
+	  
+	}
+} 
+
 
 #header {
     padding:0;
@@ -55,7 +63,7 @@ body {
     margin:0;
     
     position: relative;
-    top:45px;
+    top:0px;
 	right:0px;
 	left:0px;
 	bottom:12px;
@@ -65,7 +73,7 @@ body {
 
  #footer {
     padding:0;
-    margin-top: 120px;
+    margin-top: 32px;
 /* position: fixed; */
     position: relative;
 	right:0px;

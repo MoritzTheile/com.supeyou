@@ -12,7 +12,7 @@ import com.supeyou.core.web.client.view.landingpage.LandingPageWidget;
 public class HistoryController {
 
 	public enum ANCHOR {
-		LP, HERO
+		LP, HEROS, HERO
 	}
 
 	private HistoryController() {
@@ -38,9 +38,18 @@ public class HistoryController {
 			showLandingPage();
 		} else if (ANCHOR.HERO.name().equals(anchorParts[0])) {
 			showHeroPage(anchorParts);
+		} else if (ANCHOR.HEROS.name().equals(anchorParts[0])) {
+			showHerosPage();
 		} else {
 			showLandingPage();
 		}
+	}
+
+	private void showHerosPage() {
+
+		RootPanel.get("main").clear();
+		RootPanel.get("main").add(new MainMenuWidget());
+
 	}
 
 	private static HistoryController instance;
@@ -55,7 +64,7 @@ public class HistoryController {
 	private void showLandingPage() {
 		RootPanel.get("main").clear();
 		RootPanel.get("main").add(new LandingPageWidget());
-		RootPanel.get("main").add(new MainMenuWidget());
+
 	}
 
 	private void showHeroPage(String[] anchor) {

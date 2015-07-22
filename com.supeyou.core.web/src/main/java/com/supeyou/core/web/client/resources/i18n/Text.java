@@ -21,6 +21,10 @@ public interface Text extends Messages {
 
 	String LANDINGPAGE_Text_HTML();
 
+	String HEROSPAGE_ChooseHero();
+
+	String HEROSPAGE_JoinAsHero();
+
 	String BUTTON_Invite();
 
 	String INVITE_HeaderLabel();

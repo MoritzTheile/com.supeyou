@@ -1,3 +1,7 @@
+.landingpage-root .flat-button{
+	margin: 64px 50px 32px 50px;
+}
+
 .field-style{
 	padding: 6px 8px 6px 8px;
   	border-radius: 5px;
@@ -44,7 +48,7 @@
 	right:0;
 	height: 16px;
 	width: 16px;
-	margin: 10px;
+	margin: 14px;
 	
 	background-repeat: no-repeat;
   	background-image: url("core/images/fontawesome/times_808080_32.png");
