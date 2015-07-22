@@ -8,7 +8,8 @@
  
 	<g:FlowPanel styleName="landingpage-root" ui:field="root">
 		<g:HTML styleName="text" HTML="{text.LANDINGPAGE_Text_HTML}"></g:HTML>
-		<g:FlowPanel styleName="heroes" ui:field="heroes"></g:FlowPanel>
+		<g:FlowPanel styleName="choose-hero-button-slot" ui:field="chooseHeroButtonSlot"></g:FlowPanel>
+		
 	</g:FlowPanel>
 
 </ui:UiBinder> 
