@@ -75,6 +75,39 @@ public class InviteWidget extends WidgetView {
 
 		}, ClickEvent.getType());
 
+		shareButtonGoogle.addDomHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				Window.open("https://plus.google.com/share?url==" + getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
+
+			}
+
+		}, ClickEvent.getType());
+
+		shareButtonFacebook.addDomHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				Window.open("http://www.facebook.com/share.php?u=" + getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
+
+			}
+
+		}, ClickEvent.getType());
+
+		shareButtonTwitter.addDomHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				Window.open("https://twitter.com/intent/tweet?text=Please go to: " + getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
+
+			}
+
+		}, ClickEvent.getType());
+
 	}
 
 	private native void markText(Element elem) /*-{
