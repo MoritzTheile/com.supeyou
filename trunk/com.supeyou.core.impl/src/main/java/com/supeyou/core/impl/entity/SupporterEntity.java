@@ -25,6 +25,9 @@ public class SupporterEntity extends AbstrEntity<SupporterIDType> {
 	@OneToMany(mappedBy = "b"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private Collection<Hero2SupporterEntity> hero2SupporterCollection = new ArrayList<Hero2SupporterEntity>();
 
+	@OneToMany(mappedBy = "b"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+	private Collection<Invitation2SupporterEntity> invitation2SupporterCollection = new ArrayList<Invitation2SupporterEntity>();
+
 	public Collection<User2SupporterEntity> getUser2SupporterCollection() {
 		return user2SupporterCollection;
 	}
@@ -65,6 +68,14 @@ public class SupporterEntity extends AbstrEntity<SupporterIDType> {
 
 	public void setHero2SupporterCollection(Collection<Hero2SupporterEntity> hero2SupporterCollection) {
 		this.hero2SupporterCollection = hero2SupporterCollection;
+	}
+
+	public Collection<Invitation2SupporterEntity> getInvitation2SupporterCollection() {
+		return invitation2SupporterCollection;
+	}
+
+	public void setInvitation2SupporterCollection(Collection<Invitation2SupporterEntity> invitation2SupporterCollection) {
+		this.invitation2SupporterCollection = invitation2SupporterCollection;
 	}
 
 }

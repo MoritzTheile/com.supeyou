@@ -8,6 +8,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Label;
+import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.iface.dto.SupporterFetchQuery;
 import com.supeyou.core.web.client.view.heropage.supportertree.edges.Edge;
@@ -82,9 +83,22 @@ public class SupporterTreeWidget extends WidgetView {
 		childrenSlot.clear();
 
 		if (supporterDTO != null && supporterDTO.getUserDTO().getLoginId() != null) {
-			nameLabel.setText(supporterDTO.getUserDTO().getLoginId().value());
+
+			if (!supporterDTO.getUserDTO().getLoginId().value().startsWith("anonymous")) {
+
+				nameLabel.setText(supporterDTO.getUserDTO().getLoginId().value());
+				nameLabel.setTitle(getClickedLinks(supporterDTO));
+
+			} else {
+
+				nameLabel.setText(getClickedLinks(supporterDTO));
+
+			}
+
 		} else {
+
 			nameLabel.setText("null");
+
 		}
 
 		if (COLLAPSE_MODE.EXPANDED.equals(collapseMode)) {
@@ -122,6 +136,22 @@ public class SupporterTreeWidget extends WidgetView {
 			}
 
 		}
+
+	}
+
+	private String getClickedLinks(SupporterDTO supporterDTO2) {
+
+		String clickedLinks = "";
+
+		for (InvitationDTO invitationDTO : supporterDTO2.getInvitationDTOs()) {
+			clickedLinks += ", " + invitationDTO.getComment();
+		}
+
+		if (clickedLinks.startsWith(", ")) {
+			clickedLinks = clickedLinks.substring(2, clickedLinks.length());
+		}
+
+		return clickedLinks;
 
 	}
 
