@@ -2,13 +2,8 @@ package com.supeyou.core.web.client.view.heropage;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.supeyou.core.iface.dto.HeroDTO;
-import com.supeyou.core.iface.dto.HeroIDType;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
-import com.supeyou.core.web.client.rpc.hero.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.view.heropage.invite.InviteWidget;
 import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidget;
 import com.supeyou.core.web.client.view.supportercard.SupporterCardWidget;
@@ -17,65 +12,34 @@ import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 
 public class HeroPageWidget extends WidgetView {
 
-	private HeroDTO heroDTO;
+	private SupporterDTO supporterDTO;
 
-	public HeroPageWidget(HeroIDType dtoId) {
+	public HeroPageWidget(SupporterDTO supporterDTO) {
 
-		RPCCRUDServiceAsync.i.get(dtoId, new AsyncCallback<HeroDTO>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-
-				Window.alert(caught.getMessage());
-				caught.printStackTrace();
-
-			}
-
-			@Override
-			public void onSuccess(HeroDTO result) {
-
-				heroDTO = result;
-				render();
-
-			}
-		});
+		this.supporterDTO = supporterDTO;
+		render();
 
 	}
 
 	private void render() {
 
-		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.getOrCreateRootSupporter(heroDTO, new AsyncCallback<SupporterDTO>() {
+		supporterCardSlot.add(new SupporterCardWidget(supporterDTO));
+
+		FlatButtonWidget flatButtonWidget = new FlatButtonWidget();
+		flatButtonWidget.setText(Text.i.BUTTON_Invite());
+		flatButtonWidget.addClickHandler(new ClickHandler() {
 
 			@Override
-			public void onFailure(Throwable caught) {
+			public void onClick(ClickEvent event) {
 
-				caught.printStackTrace();
-
-			}
-
-			@Override
-			public void onSuccess(final SupporterDTO result) {
-
-				supporterCardSlot.add(new SupporterCardWidget(result));
-
-				FlatButtonWidget flatButtonWidget = new FlatButtonWidget();
-				flatButtonWidget.setText(Text.i.BUTTON_Invite());
-				flatButtonWidget.addClickHandler(new ClickHandler() {
-
-					@Override
-					public void onClick(ClickEvent event) {
-
-						new PopupWidget(new InviteWidget(result), true);
-
-					}
-				});
-
-				invitationButtonSlot.add(flatButtonWidget);
-
-				supporterTreeSlot.add(new SupporterTreeWidget(result));
+				new PopupWidget(new InviteWidget(supporterDTO), true);
 
 			}
 		});
+
+		invitationButtonSlot.add(flatButtonWidget);
+
+		supporterTreeSlot.add(new SupporterTreeWidget(supporterDTO));
 
 		// tmp hack:
 		// if (heroDTO.getName().value().toLowerCase().contains("theile")) {

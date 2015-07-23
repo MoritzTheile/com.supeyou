@@ -3,11 +3,18 @@ package com.supeyou.core.web.client;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.HeroIDType;
+import com.supeyou.core.iface.dto.InvitationDTO;
+import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.mainmenu.MainMenuWidget;
+import com.supeyou.core.web.client.rpc.hero.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.view.heropage.HeroPageWidget;
 import com.supeyou.core.web.client.view.landingpage.LandingPageWidget;
+import com.supeyou.crudie.web.client.model.LoginStateModel;
 
 public class HistoryController {
 
@@ -70,12 +77,118 @@ public class HistoryController {
 	private void showHeroPage(String[] anchor) {
 
 		try {
-			RootPanel.get("main").clear();
-			RootPanel.get("main").add(new HeroPageWidget(new HeroIDType(anchor[1])));
+
+			RPCCRUDServiceAsync.i.get(new HeroIDType(anchor[1]), new AsyncCallback<HeroDTO>() {
+
+				@Override
+				public void onFailure(Throwable caught) {
+
+					Window.alert("codemarker=adogall\n\n" + caught.getMessage());
+					caught.printStackTrace();
+
+				}
+
+				@Override
+				public void onSuccess(HeroDTO result) {
+
+					showHeroPage(result);
+
+				}
+			});
+
 		} catch (Exception e) {
-			// nothing
+			e.printStackTrace();
 		}
 
+	}
+
+	public void showHeroPage(final HeroDTO heroDTO) {
+
+		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.get(LoginStateModel.i().getLoggedInUser(), heroDTO, new AsyncCallback<SupporterDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+
+				caught.printStackTrace();
+
+			}
+
+			@Override
+			public void onSuccess(SupporterDTO result) {
+
+				if (result != null) {
+					showHeroPage(result);
+				} else {
+					createRootInvitationAndFollow(heroDTO);
+				}
+
+			}
+
+		});
+
+	}
+
+	private void createRootInvitationAndFollow(HeroDTO heroDTO) {
+
+		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.getOrCreateRootSupporter(heroDTO, new AsyncCallback<SupporterDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+
+				caught.printStackTrace();
+
+			}
+
+			@Override
+			public void onSuccess(SupporterDTO result) {
+
+				com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync.i.create(result, new AsyncCallback<InvitationDTO>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+
+						caught.printStackTrace();
+
+					}
+
+					@Override
+					public void onSuccess(InvitationDTO result) {
+
+						com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync.i.followInvitation(LoginStateModel.i().getLoggedInUser(), result.getToken(), new AsyncCallback<SupporterDTO>() {
+
+							@Override
+							public void onFailure(Throwable caught) {
+
+								caught.printStackTrace();
+
+							}
+
+							@Override
+							public void onSuccess(SupporterDTO result) {
+
+								showHeroPage(result);
+
+							}
+
+						});
+
+					}
+				});
+
+			}
+		});
+
+	}
+
+	private void showHeroPage(SupporterDTO supporterDTO) {
+		RootPanel.get("main").clear();
+		RootPanel.get("main").add(new HeroPageWidget(supporterDTO));
+
+		String historyToken = ANCHOR.HERO.name() + "_" + supporterDTO.getHeroDTO().getId().value();
+
+		if (!History.getToken().equals(historyToken)) {
+			History.newItem(historyToken, false);
+		}
 	}
 
 }
