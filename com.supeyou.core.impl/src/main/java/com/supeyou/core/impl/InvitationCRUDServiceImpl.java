@@ -98,8 +98,7 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 
 	}
 
-	@Override
-	public void acceptInvitation(UserDTO actorDTO, InvitationDTO invitationDTO, SupporterDTO supporterDTO) throws CRUDException {
+	private void acceptInvitationasdf(UserDTO actorDTO, InvitationDTO invitationDTO, SupporterDTO supporterDTO) throws CRUDException {
 
 		Invitation2SupporterFetchQuery dtoQuery = new Invitation2SupporterFetchQuery();
 		dtoQuery.setIdA(invitationDTO.getId());
@@ -152,7 +151,7 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 	}
 
 	@Override
-	public HeroDTO acceptInvitation(UserDTO actorDTO, UserDTO userDTO, SingleLineString256Type token) throws CRUDException {
+	public SupporterDTO followInvitation(UserDTO actorDTO, UserDTO userDTO, SingleLineString256Type token) throws CRUDException {
 
 		InvitationDTO invitationDTO = null;
 
@@ -177,11 +176,11 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 
 		System.out.println("heroDTO=" + heroDTO);
 
-		SupporterDTO supporterDTO = SupporterCRUDServiceImpl.i().getOrCreate(actorDTO, userDTO, heroDTO);
+		SupporterDTO supporterDTO = SupporterCRUDServiceImpl.i().getOrCreate(actorDTO, heroDTO, userDTO);
 
-		acceptInvitation(actorDTO, invitationDTO, supporterDTO);
+		acceptInvitationasdf(actorDTO, invitationDTO, supporterDTO);
 
-		return heroDTO;
+		return supporterDTO;
 	}
 
 	@Override

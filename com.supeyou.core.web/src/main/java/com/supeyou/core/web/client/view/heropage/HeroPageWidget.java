@@ -12,7 +12,6 @@ import com.supeyou.core.web.client.rpc.hero.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.view.heropage.invite.InviteWidget;
 import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidget;
 import com.supeyou.core.web.client.view.supportercard.SupporterCardWidget;
-import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 
@@ -45,7 +44,7 @@ public class HeroPageWidget extends WidgetView {
 
 	private void render() {
 
-		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.getOrCreate(LoginStateModel.i().getLoggedInUser(), heroDTO, new AsyncCallback<SupporterDTO>() {
+		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.getOrCreateRootSupporter(heroDTO, new AsyncCallback<SupporterDTO>() {
 
 			@Override
 			public void onFailure(Throwable caught) {

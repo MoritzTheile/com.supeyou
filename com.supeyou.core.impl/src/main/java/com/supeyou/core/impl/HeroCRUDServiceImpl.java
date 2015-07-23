@@ -8,11 +8,13 @@ import com.supeyou.core.iface.dto.HeroFetchQuery;
 import com.supeyou.core.iface.dto.User2HeroDTO;
 import com.supeyou.core.iface.dto.User2HeroFetchQuery;
 import com.supeyou.core.impl.entity.HeroEntity;
+import com.supeyou.core.impl.entity.User2HeroEntity;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.CRUDException.CODE;
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.impl.AbstrCRUDServiceImpl;
+import com.supeyou.crudie.impl.UserCRUDServiceImpl;
 import com.supeyou.crudie.impl.entity.UserEntity;
 import com.supeyou.crudie.impl.util.STATICS;
 import com.supeyou.crudie.impl.util.TransactionTemplate;
@@ -104,6 +106,28 @@ public class HeroCRUDServiceImpl extends AbstrCRUDServiceImpl<HeroDTO, HeroEntit
 
 		}.execute();
 
+	}
+
+	@Override
+	public UserDTO getUser(UserDTO actorDTO, final HeroDTO heroDTO) throws CRUDException {
+		return new TransactionTemplate<UserDTO>(actorDTO, STATICS.getEntityManager()) {
+
+			public void checkPermissions(UserEntity actor) throws CRUDException {
+
+				// STATICS.checkActorNotNull(actor);
+				// STATICS.checkActorIsAdmin(actor);
+
+			}
+
+			protected UserDTO transactionBody() throws Exception {
+				HeroEntity heroEntity = em.find(HeroEntity.class, heroDTO.getId().value());
+				for (User2HeroEntity user2HeroEntity : heroEntity.getUser2HeroCollection()) {
+					return UserCRUDServiceImpl.i().helper.entity2DTO(user2HeroEntity.getA());
+				}
+				return null;
+			}
+
+		}.execute();
 	}
 
 	// Singleton

@@ -39,7 +39,7 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 
 			if (page.getPageSize() < Integer.MAX_VALUE) {
 
-				throw new CRUDException(CODE.INVALID_PAGESIZE, "Paging is not yet supported when fetching children.");
+				throw new CRUDException(CODE.INVALID_PAGESIZE, "Paging is not supported when fetching children.");
 
 			}
 
@@ -127,7 +127,16 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 	}
 
 	@Override
-	public SupporterDTO getOrCreate(final UserDTO actorDTO, final UserDTO userDTO, final HeroDTO heroDTO) throws CRUDException {
+	public SupporterDTO getOrCreateRootSupporter(final UserDTO actorDTO, final HeroDTO heroDTO) throws CRUDException {
+
+		return getOrCreate(actorDTO, heroDTO, HeroCRUDServiceImpl.i().getUser(actorDTO, heroDTO));
+
+	}
+
+	/**
+	 * This function is not part of core interface since it would make creation of multiple root supporter possible.
+	 */
+	protected SupporterDTO getOrCreate(final UserDTO actorDTO, final HeroDTO heroDTO, final UserDTO userDTO) throws CRUDException {
 
 		return new TransactionTemplate<SupporterDTO>(actorDTO, STATICS.getEntityManager()) {
 

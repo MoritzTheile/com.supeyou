@@ -5,7 +5,6 @@ import java.lang.reflect.Method;
 import javax.servlet.annotation.WebServlet;
 
 import com.supeyou.core.iface.InvitationCRUDService;
-import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.InvitationFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
@@ -27,8 +26,8 @@ public class RPCInvitationCRUDServiceImpl extends RPCAbstrCRUDServiceImpl<Invita
 	}
 
 	@Override
-	public HeroDTO acceptInvitation(UserDTO userDTO, SingleLineString256Type token) throws CRUDException {
-		return ((InvitationCRUDService) getCRUDService()).acceptInvitation(getActor(), userDTO, token);
+	public SupporterDTO followInvitation(UserDTO userDTO, SingleLineString256Type token) throws CRUDException {
+		return ((InvitationCRUDService) getCRUDService()).followInvitation(getActor(), userDTO, token);
 	}
 
 	@SuppressWarnings("unchecked")
