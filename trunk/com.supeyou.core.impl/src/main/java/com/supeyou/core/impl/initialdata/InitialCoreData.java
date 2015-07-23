@@ -40,6 +40,16 @@ public class InitialCoreData {
 	public UserDTO user_Melanie;
 	public UserDTO user_Marion;
 
+	public SupporterDTO rootSupporter_Moritz;
+	public SupporterDTO rootSupporter_Martina;
+	public SupporterDTO rootSupporter_Nikolaus;
+	public SupporterDTO rootSupporter_Tara;
+
+	public InvitationDTO rootInvitation_Moritz;
+	public InvitationDTO rootInvitation_Martina;
+	public InvitationDTO rootInvitation_Nikolaus;
+	public InvitationDTO rootInvitation_Tara;
+
 	public SupporterDTO supporter_Hugo;
 	public SupporterDTO supporter_Andrea;
 	public SupporterDTO supporter_Manfred;
@@ -96,57 +106,54 @@ public class InitialCoreData {
 		hero_Nikolaus = createHero(user_Nikolaus, "./heroPics/NikolausTeixeira.jpg", "http://willkommen-in-muenchen.de", "Engagiert sich für münchner Flüchtlinge");
 		hero_Tara = createHero(user_Tara, "./heroPics/TaraMcCartney.jpg", "http://unitedforhope.org", "Dedicates her skills to empower India’s rural poor.");
 
-		supporter_Hugo = createSupporter(user_Hugo, hero_Martina);
-		supporter_Andrea = createSupporter(user_Andrea, hero_Martina);
-		supporter_Manfred = createSupporter(user_Manfred, hero_Martina);
-		supporter_Otto = createSupporter(user_Otto, hero_Martina);
-		supporter_Emma = createSupporter(user_Emma, hero_Martina);
-		supporter_Hermann = createSupporter(user_Hermann, hero_Martina);
-		supporter_Marie = createSupporter(user_Marie, hero_Martina);
-		supporter_Gunnar = createSupporter(user_Gunnar, hero_Martina);
-		supporter_Christian = createSupporter(user_Christian, hero_Martina);
-		supporter_Herbert = createSupporter(user_Herbert, hero_Martina);
-		supporter_Eugen = createSupporter(user_Eugen, hero_Martina);
-		supporter_Thomas = createSupporter(user_Thomas, hero_Martina);
-		supporter_Melanie = createSupporter(user_Melanie, hero_Martina);
-		supporter_Marion = createSupporter(user_Marion, hero_Martina);
+		rootSupporter_Moritz = createRootSupporter(hero_Moritz);
+		rootSupporter_Martina = createRootSupporter(hero_Martina);
+		rootSupporter_Nikolaus = createRootSupporter(hero_Nikolaus);
+		rootSupporter_Tara = createRootSupporter(hero_Tara);
+
+		rootInvitation_Moritz = createInvitation("rootInvitation", rootSupporter_Moritz);
+		rootInvitation_Martina = createInvitation("rootInvitation", rootSupporter_Martina);
+		rootInvitation_Nikolaus = createInvitation("rootInvitation", rootSupporter_Nikolaus);
+		rootInvitation_Tara = createInvitation("rootInvitation", rootSupporter_Tara);
+
+		supporter_Hugo = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Hugo, rootInvitation_Martina.getToken());
 
 		invitation_0105_1945 = createInvitation("0105_1945", supporter_Hugo);
-		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0105_1945, supporter_Andrea);
-		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0105_1945, supporter_Manfred);
+		supporter_Andrea = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Andrea, invitation_0105_1945.getToken());
+		supporter_Manfred = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Manfred, invitation_0105_1945.getToken());
 
 		invitation_0105_1948 = createInvitation("0105_1948", supporter_Hugo);
-		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0105_1948, supporter_Otto);
+		supporter_Otto = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Otto, invitation_0105_1948.getToken());
 
 		invitation_0105_2225 = createInvitation("0105_2225", supporter_Andrea);
-		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0105_2225, supporter_Emma);
+		supporter_Emma = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Emma, invitation_0105_2225.getToken());
 
 		invitation_0105_2232 = createInvitation("0105_2232", supporter_Andrea);
-		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0105_2232, supporter_Hermann);
+		supporter_Hermann = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Hermann, invitation_0105_2232.getToken());
 
 		invitation_0205_1045 = createInvitation("0205_1045", supporter_Manfred);
 
 		invitation_0205_1243 = createInvitation("0205_1243", supporter_Otto);
-		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0205_1243, supporter_Marie);
+		supporter_Marie = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Marie, invitation_0205_1243.getToken());
 
 		invitation_0205_1245 = createInvitation("0205_1245", supporter_Otto);
-		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0205_1245, supporter_Gunnar);
-		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0205_1245, supporter_Christian);
-		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0205_1245, supporter_Herbert);
+		supporter_Gunnar = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Gunnar, invitation_0205_1245.getToken());
+		supporter_Christian = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Christian, invitation_0205_1245.getToken());
+		supporter_Herbert = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Herbert, invitation_0205_1245.getToken());
 
 		invitation_0205_1248 = createInvitation("0205_1248", supporter_Otto);
 
 		invitation_0105_2322 = createInvitation("0105_2322", supporter_Hermann);
-		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0105_2322, supporter_Eugen);
+		supporter_Eugen = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Eugen, invitation_0105_2322.getToken());
 
 		invitation_0305_1948 = createInvitation("0305_1948", supporter_Gunnar);
-		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0305_1948, supporter_Thomas);
+		supporter_Thomas = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Thomas, invitation_0305_1948.getToken());
 
 		invitation_0405_0945 = createInvitation("0405_0945", supporter_Gunnar);
 
 		invitation_0205_0734 = createInvitation("0205_0734", supporter_Eugen);
-		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0205_0734, supporter_Melanie);
-		InvitationCRUDServiceImpl.i().acceptInvitation(admin, invitation_0205_0734, supporter_Marion);
+		supporter_Melanie = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Melanie, invitation_0205_0734.getToken());
+		supporter_Marion = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Marion, invitation_0205_0734.getToken());
 
 	}
 
@@ -158,9 +165,9 @@ public class InitialCoreData {
 		return UserCRUDServiceImpl.i().updadd(admin, userDTO);
 	}
 
-	private SupporterDTO createSupporter(UserDTO userDTO, HeroDTO heroDTO) throws CRUDException {
+	private SupporterDTO createRootSupporter(HeroDTO heroDTO) throws CRUDException {
 
-		return SupporterCRUDServiceImpl.i().getOrCreate(admin, userDTO, heroDTO);
+		return SupporterCRUDServiceImpl.i().getOrCreateRootSupporter(admin, heroDTO);
 
 	}
 

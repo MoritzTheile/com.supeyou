@@ -12,4 +12,5 @@ public interface HeroCRUDService extends CRUDService<HeroDTO, HeroFetchQuery> {
 
 	HeroDTO get(UserDTO actorDTO, UserDTO userDTO) throws CRUDException;
 
+	UserDTO getUser(UserDTO actorDTO, HeroDTO heroDTO) throws CRUDException;
 }

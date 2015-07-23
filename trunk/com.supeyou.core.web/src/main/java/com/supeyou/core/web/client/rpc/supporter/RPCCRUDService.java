@@ -14,6 +14,6 @@ public interface RPCCRUDService extends RemoteService, RPCAbstractCRUDService<Su
 
 	SupporterDTO get(UserDTO userDTO, HeroDTO heroDTO) throws CRUDException;
 
-	SupporterDTO getOrCreate(UserDTO userDTO, HeroDTO heroDTO) throws CRUDException;
+	SupporterDTO getOrCreateRootSupporter(HeroDTO heroDTO) throws CRUDException;
 
 }

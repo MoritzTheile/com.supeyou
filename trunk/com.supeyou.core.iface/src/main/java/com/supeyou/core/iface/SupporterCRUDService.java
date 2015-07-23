@@ -17,6 +17,6 @@ public interface SupporterCRUDService extends CRUDService<SupporterDTO, Supporte
 	/**
 	 * If no Supporter exists between given user and hero a new one is created. Otherwise the existing is returned.
 	 */
-	SupporterDTO getOrCreate(UserDTO actorDTO, UserDTO userDTO, HeroDTO heroDTO) throws CRUDException;
+	SupporterDTO getOrCreateRootSupporter(UserDTO actorDTO, HeroDTO heroDTO) throws CRUDException;
 
 }

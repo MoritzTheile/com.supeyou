@@ -1,6 +1,12 @@
 package com.supeyou.core.impl.entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.supeyou.core.iface.dto.HeroIDType;
@@ -16,6 +22,9 @@ public class HeroEntity extends AbstrEntity<HeroIDType> {
 	private String websiteURL;
 
 	private String comment;
+
+	@OneToMany(mappedBy = "b"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+	private Collection<User2HeroEntity> user2HeroCollection = new ArrayList<>();
 
 	public SingleLineString256Type getComment() {
 		if (comment == null) {
@@ -78,6 +87,14 @@ public class HeroEntity extends AbstrEntity<HeroIDType> {
 			this.dbid = null;
 		}
 
+	}
+
+	public Collection<User2HeroEntity> getUser2HeroCollection() {
+		return user2HeroCollection;
+	}
+
+	public void setUser2HeroCollection(Collection<User2HeroEntity> user2HeroCollection) {
+		this.user2HeroCollection = user2HeroCollection;
 	}
 
 }

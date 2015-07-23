@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.actor.web.client.login.loginbutton.LoginButtonWidget;
 import com.supeyou.actor.web.client.rpc.RPCAuthServiceAsync;
-import com.supeyou.core.iface.dto.HeroDTO;
+import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.HistoryController;
 import com.supeyou.core.web.client.HistoryController.ANCHOR;
 import com.supeyou.core.web.client.resources.CoreStatics;
@@ -98,7 +98,7 @@ public class AppEntryPoint implements EntryPoint {
 
 		if (Window.Location.getParameter(CoreStatics.INVITTOKEN_KEY) != null) {
 
-			RPCCRUDServiceAsync.i.acceptInvitation(LoginStateModel.i().getLoggedInUser(), new SingleLineString256Type(Window.Location.getParameter(CoreStatics.INVITTOKEN_KEY)), new AsyncCallback<HeroDTO>() {
+			RPCCRUDServiceAsync.i.followInvitation(LoginStateModel.i().getLoggedInUser(), new SingleLineString256Type(Window.Location.getParameter(CoreStatics.INVITTOKEN_KEY)), new AsyncCallback<SupporterDTO>() {
 
 				@Override
 				public void onFailure(Throwable caught) {
@@ -108,10 +108,10 @@ public class AppEntryPoint implements EntryPoint {
 				}
 
 				@Override
-				public void onSuccess(HeroDTO result) {
+				public void onSuccess(SupporterDTO result) {
 
-					if (result != null) {
-						History.newItem(ANCHOR.HERO.name() + "_" + result.getId().value(), false);
+					if (result.getHeroDTO() != null) {
+						History.newItem(ANCHOR.HERO.name() + "_" + result.getHeroDTO().getId().value(), false);
 						History.fireCurrentHistoryState();
 					} else {
 						Window.alert("no hero found for invitation " + Window.Location.getParameter(CoreStatics.INVITTOKEN_KEY));

@@ -25,8 +25,8 @@ public class RPCSupporterCRUDServiceImpl extends RPCAbstrCRUDServiceImpl<Support
 	}
 
 	@Override
-	public SupporterDTO getOrCreate(UserDTO userDTO, HeroDTO heroDTO) throws CRUDException {
-		return ((SupporterCRUDService) getCRUDService()).getOrCreate(getActor(), userDTO, heroDTO);
+	public SupporterDTO getOrCreateRootSupporter(HeroDTO heroDTO) throws CRUDException {
+		return ((SupporterCRUDService) getCRUDService()).getOrCreateRootSupporter(getActor(), heroDTO);
 	}
 
 	@SuppressWarnings("unchecked")

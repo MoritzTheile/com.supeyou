@@ -2,7 +2,6 @@ package com.supeyou.core.web.client.rpc.invitation;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.InvitationFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
@@ -16,6 +15,6 @@ public interface RPCCRUDService extends RemoteService, RPCAbstractCRUDService<In
 
 	InvitationDTO create(SupporterDTO supporterDTO) throws CRUDException;
 
-	HeroDTO acceptInvitation(UserDTO userDTO, SingleLineString256Type token) throws CRUDException;
+	SupporterDTO followInvitation(UserDTO userDTO, SingleLineString256Type token) throws CRUDException;
 
 }
