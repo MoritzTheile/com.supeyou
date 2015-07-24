@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.cellview.client"
+	xmlns:m="urn:import:com.supeyou.crudie.web.client.fields.types"
+	xmlns:m2="urn:import:com.supeyou.crudie.web.client.uiorga.flatbutton">
+	<ui:with field='text'
+		type='com.supeyou.core.web.client.resources.i18n.Text' />
+ 
+	<g:FlowPanel styleName="supporter-root" ui:field="root">
+		<g:FlowPanel styleName="left-column" ui:field="leftColumn">
+			<g:FlowPanel styleName="you-image" ui:field="youImage"></g:FlowPanel>
+			<g:Label styleName="you-label" text="{text.THATS_YOU}" ui:field="youLabel"></g:Label>
+		</g:FlowPanel>
+		<g:FlowPanel styleName="right-column" ui:field="rightColumn">
+			<g:Label styleName="your-generated-result" text="{text.EUROSYMBOL}" ui:field="yourGeneratedResult"></g:Label>
+			<g:Label styleName="your-generated-result-label" text="{text.YOUR_GENERATED_RESULT}" ui:field="yourGeneratedResultLabel"></g:Label>
+			<g:Label styleName="your-result" text="{text.EUROSYMBOL}" ui:field="yourResult"></g:Label>
+			<g:Label styleName="your-result-label" text="{text.YOUR_RESULT}" ui:field="yourResultLabel"></g:Label>
+	</g:FlowPanel>
+	</g:FlowPanel>
+
+</ui:UiBinder> 

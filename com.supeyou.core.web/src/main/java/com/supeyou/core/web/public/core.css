@@ -453,40 +453,31 @@
 	
 }
 
-.hero.listitem.large{
- 
- 	width: 240px;
- 	display: inline-block;
-	margin-bottom: 24px;
-	text-align:center;
-	color: gray;
-	
- }
 
-.browser-root .hero.listitem.large{
+.browser-root .hero{
 	
 	padding: 1px 8px 12px 8px;
-	margin: 0px 16px 32px 16px;
+	margin: 0px 16px 16px 16px;
 	
 }
 
-.hero.listitem.large .name-slot{
+.hero .name-slot{
 	margin:6px;
 }
 
 
-.hero.listitem.large .image-slot img{
+.hero .image-slot img{
 	width: 60%;
 	border-radius: 5px;
 	margin: 12px  12px  0px  12px;
  
 }
 
-.hero.listitem.large .website-slot{
+.hero .website-slot{
 	margin:0px;
 	font-size: 10px;
 }
-.hero.listitem.large .comment-slot{
+.hero .comment-slot{
 	margin:6px;
 }
 .browser-root.large.hero .pager {
