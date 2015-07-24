@@ -1,7 +1,7 @@
 .landingpage-root .flat-button{
 	margin: 64px 50px 32px 50px;
 }
-
+	
 .field-style{
 	padding: 6px 8px 6px 8px;
   	border-radius: 5px;
@@ -208,20 +208,20 @@
 	text-align: center;
 }
 
-.supporter-root{
+.supporter-root.you{
 	text-align:left;
 	margin: 12px 0;
 }
 
-.supporter-root > *{
+.supporter-root.you > *{
 	display: inline-block;
 }
-.supporter-root .left-column{
+.supporter-root.you .left-column{
 	width:100px;
 	vertical-align: top;
 	text-align: center;
 }
-.supporter-root .right-column{
+.supporter-root.you .right-column{
 
 }
 
