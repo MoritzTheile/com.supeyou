@@ -1,5 +1,7 @@
 package com.supeyou.core.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,6 +14,7 @@ import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.impl.entity.Invitation2SupporterEntity;
 import com.supeyou.core.impl.entity.InvitationEntity;
+import com.supeyou.core.impl.entity.Supporter2InvitationEntity;
 import com.supeyou.core.impl.entity.SupporterEntity;
 import com.supeyou.crudie.iface.CRUDAssoService;
 import com.supeyou.crudie.impl.AbstrCRUDServiceImpl;
@@ -24,6 +27,72 @@ public class Invitation2SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<In
 
 	private AbstrDTOHelper<InvitationEntity, InvitationDTO> aHelper;
 	private AbstrDTOHelper<SupporterEntity, SupporterDTO> bHelper;
+
+	protected void beforeUpdadd(EntityManager em, UserEntity actor, Invitation2SupporterDTO dto) {
+
+		if (dto.getId() == null) { // a new edge will be created so ancestors have to be updated
+			SupporterEntity supporterEntityFrom = InvitationCRUDServiceImpl.i().getSupporter(em, em.find(InvitationEntity.class, dto.getDtoA().getId().value()));
+
+			// asdf3t4 SupporterEntity supporterEntityTo = em.find(SupporterEntity.class, dto.getDtoB().getId().value());
+			// asdf3t4 System.out.println("creating edge from " + SupporterCRUDServiceImpl.i().getUserEntity(em, supporterEntityFrom).getLoginId().value() + " to " + SupporterCRUDServiceImpl.i().getUserEntity(em, supporterEntityTo).getLoginId().value());
+
+			Collection<SupporterEntity> collectedAncestorSupporters = new ArrayList<>();
+
+			handleAncestor(em, supporterEntityFrom, collectedAncestorSupporters);
+
+		}
+
+	}
+
+	private void handleAncestor(EntityManager em, SupporterEntity aSupporterEntity, Collection<SupporterEntity> collectedAncestorSupporters) {
+
+		// if (!collectedAncestorSupporters.contains(aSupporterEntity))
+		{// operation only if not already executed via alternative path to root
+
+			aSupporterEntity.setDecendentCount(aSupporterEntity.getDecendentCount() + 1);
+
+			// asdf3t4 System.out.println("    decendantCount of " + SupporterCRUDServiceImpl.i().getUserEntity(em, aSupporterEntity).getLoginId().value() + " Supporter was incremented to " + aSupporterEntity.getDecendentCount());
+			// em.persist(aSupporterEntity);
+
+		}
+
+		collectedAncestorSupporters.add(aSupporterEntity);
+
+		{// recursion
+
+			Collection<SupporterEntity> directAncestorSupporters = getDirectAncestors(em, aSupporterEntity);
+
+			for (SupporterEntity supporterEntity : directAncestorSupporters) {
+
+				handleAncestor(em, supporterEntity, collectedAncestorSupporters);
+
+			}
+
+		}
+
+	}
+
+	private Collection<SupporterEntity> getDirectAncestors(EntityManager em, SupporterEntity supporterEntity) {
+
+		Collection<SupporterEntity> directAncestorSupporters = new ArrayList<>();
+
+		for (Invitation2SupporterEntity invitation2SupporterEntity : supporterEntity.getInvitation2SupporterCollection()) {
+
+			// asdf3t4 System.out.println("    found an invitation2SupporterEntities");
+
+			for (Supporter2InvitationEntity supporter2InvitationEntity : invitation2SupporterEntity.getA().getSupporter2InvitationCollection()) {
+
+				// asdf3t4 System.out.println("    found an supporter2InvitationEntity");
+
+				directAncestorSupporters.add(supporter2InvitationEntity.getA());
+
+			}
+
+		}
+
+		return directAncestorSupporters;
+
+	}
 
 	@Override
 	protected void postprocessDTO2Entity(EntityManager em, Invitation2SupporterDTO dto, Invitation2SupporterEntity entity) {

@@ -64,6 +64,12 @@ public class InitialCoreDataTest {
 
 		Assert.assertEquals(1, user2heroFetchList.size());
 
+		Assert.assertEquals(13, SupporterCRUDServiceImpl.i().get(InitialCoreData.i().admin, InitialCoreData.i().supporter_Hugo.getId()).getDecendentCount());
+		Assert.assertEquals(5, SupporterCRUDServiceImpl.i().get(InitialCoreData.i().admin, InitialCoreData.i().supporter_Andrea.getId()).getDecendentCount());
+		Assert.assertEquals(3, SupporterCRUDServiceImpl.i().get(InitialCoreData.i().admin, InitialCoreData.i().supporter_Hermann.getId()).getDecendentCount());
+		Assert.assertEquals(2, SupporterCRUDServiceImpl.i().get(InitialCoreData.i().admin, InitialCoreData.i().supporter_Eugen.getId()).getDecendentCount());
+		Assert.assertEquals(0, SupporterCRUDServiceImpl.i().get(InitialCoreData.i().admin, InitialCoreData.i().supporter_Marion.getId()).getDecendentCount());
+
 	}
 
 }

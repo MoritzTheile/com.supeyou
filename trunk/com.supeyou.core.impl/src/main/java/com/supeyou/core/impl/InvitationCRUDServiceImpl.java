@@ -17,6 +17,7 @@ import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.impl.entity.Hero2SupporterEntity;
 import com.supeyou.core.impl.entity.InvitationEntity;
 import com.supeyou.core.impl.entity.Supporter2InvitationEntity;
+import com.supeyou.core.impl.entity.SupporterEntity;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.CRUDException.CODE;
 import com.supeyou.crudie.iface.datatype.Page;
@@ -148,6 +149,15 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 			}
 		}.execute();
 
+	}
+
+	protected SupporterEntity getSupporter(EntityManager em, InvitationEntity invitationEntity) {
+
+		for (Supporter2InvitationEntity supporter2InvitationEntity : invitationEntity.getSupporter2InvitationCollection()) {
+			return supporter2InvitationEntity.getA();
+		}
+
+		return null;
 	}
 
 	@Override
