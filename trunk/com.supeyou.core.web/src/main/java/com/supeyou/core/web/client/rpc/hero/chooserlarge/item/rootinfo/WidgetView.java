@@ -16,28 +16,7 @@ public class WidgetView extends Composite {
 	FlowPanel root;
 
 	@UiField
-	FlowPanel leftColumn;
-
-	@UiField
-	FlowPanel youImage;
-
-	@UiField
-	Label youLabel;
-
-	@UiField
-	FlowPanel rightColumn;
-
-	@UiField
-	Label yourGeneratedResult;
-
-	@UiField
-	Label yourGeneratedResultLabel;
-
-	@UiField
-	Label yourResult;
-
-	@UiField
-	Label yourResultLabel;
+	Label generatedResultLabel;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}

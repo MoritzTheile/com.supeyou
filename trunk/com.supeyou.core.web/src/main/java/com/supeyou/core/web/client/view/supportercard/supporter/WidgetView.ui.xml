@@ -6,7 +6,7 @@
 	<ui:with field='text'
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
  
-	<g:FlowPanel styleName="supporter-root" ui:field="root">
+	<g:FlowPanel styleName="supporter-root you" ui:field="root">
 		<g:FlowPanel styleName="left-column" ui:field="leftColumn">
 			<g:FlowPanel styleName="you-image" ui:field="youImage"></g:FlowPanel>
 			<g:Label styleName="you-label" text="{text.THATS_YOU}" ui:field="youLabel"></g:Label>
