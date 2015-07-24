@@ -183,6 +183,7 @@ public class HistoryController {
 	private void showHeroPage(SupporterDTO supporterDTO) {
 		RootPanel.get("main").clear();
 		RootPanel.get("main").add(new HeroPageWidget(supporterDTO));
+		Window.scrollTo(0, 0);
 
 		String historyToken = ANCHOR.HERO.name() + "_" + supporterDTO.getHeroDTO().getId().value();
 

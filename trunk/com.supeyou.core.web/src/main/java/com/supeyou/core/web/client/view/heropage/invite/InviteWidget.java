@@ -22,6 +22,8 @@ public class InviteWidget extends WidgetView {
 
 	public InviteWidget(final SupporterDTO supporterDTO) {
 
+		Window.scrollTo(0, 0);
+
 		createInvitation(supporterDTO);
 
 		closeButton.addDomHandler(new ClickHandler() {
