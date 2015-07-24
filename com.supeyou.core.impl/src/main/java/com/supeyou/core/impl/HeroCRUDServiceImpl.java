@@ -110,6 +110,7 @@ public class HeroCRUDServiceImpl extends AbstrCRUDServiceImpl<HeroDTO, HeroEntit
 
 	@Override
 	public UserDTO getUser(UserDTO actorDTO, final HeroDTO heroDTO) throws CRUDException {
+
 		return new TransactionTemplate<UserDTO>(actorDTO, STATICS.getEntityManager()) {
 
 			public void checkPermissions(UserEntity actor) throws CRUDException {
