@@ -8,6 +8,8 @@ import org.junit.Test;
 import com.supeyou.core.iface.dto.Hero2SupporterDTO;
 import com.supeyou.core.iface.dto.Hero2SupporterFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
+import com.supeyou.core.iface.dto.User2HeroDTO;
+import com.supeyou.core.iface.dto.User2HeroFetchQuery;
 import com.supeyou.core.iface.dto.User2SupporterDTO;
 import com.supeyou.core.iface.dto.User2SupporterFetchQuery;
 import com.supeyou.core.impl.initialdata.InitialCoreData;
@@ -51,6 +53,16 @@ public class InitialCoreDataTest {
 		UserDTO reloadedHugo = user2SupporterFetchList_byUser.iterator().next().getDtoA();
 
 		System.out.println(reloadedHugo.getLoginId());
+
+		// checking if a hero has an user or other way around
+
+		User2HeroFetchQuery user2HeroFetchQuery = new User2HeroFetchQuery();
+
+		user2HeroFetchQuery.setIdA(InitialCoreData.i().user_Tara.getId());
+
+		DTOFetchList<User2HeroDTO> user2heroFetchList = User2HeroCRUDServiceImpl.i().fetchList(InitialCoreData.i().admin, new Page(), user2HeroFetchQuery);
+
+		Assert.assertEquals(1, user2heroFetchList.size());
 
 	}
 

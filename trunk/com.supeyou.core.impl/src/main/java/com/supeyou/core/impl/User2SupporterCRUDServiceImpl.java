@@ -46,8 +46,11 @@ public class User2SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<User2Sup
 		if (entity.getA() != null) {
 			dto.setDtoA(aHelper.entity2DTO(entity.getA()));
 		}
+
 		if (entity.getB() != null) {
-			dto.setDtoB(bHelper.entity2DTO(entity.getB()));
+			SupporterDTO supporterDTO = bHelper.entity2DTO(entity.getB());
+			SupporterCRUDServiceImpl.i().postprocessEntity2DTO(em, entity.getB(), supporterDTO);
+			dto.setDtoB(supporterDTO);
 		}
 
 	}
