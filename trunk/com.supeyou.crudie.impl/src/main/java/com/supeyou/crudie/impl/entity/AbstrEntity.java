@@ -39,4 +39,30 @@ public abstract class AbstrEntity<T extends AbstrType<Long>> {
 		return lastModifiedTimestamp;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dbid == null) ? 0 : dbid.hashCode());
+		return result;
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AbstrEntity other = (AbstrEntity) obj;
+		if (dbid == null) {
+			if (other.dbid != null)
+				return false;
+		} else if (!dbid.equals(other.dbid))
+			return false;
+		return true;
+	}
+
 }
