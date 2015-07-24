@@ -133,6 +133,16 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 
 	}
 
+	protected UserEntity getUserEntity(EntityManager em, SupporterEntity supporterEntity) {
+
+		for (User2SupporterEntity user2SupporterEntity : supporterEntity.getUser2SupporterCollection()) {
+			// there is only one allowed:
+			return user2SupporterEntity.getA();
+		}
+
+		return null;
+	}
+
 	/**
 	 * This function is not part of core interface since it would make creation of multiple root supporter possible.
 	 */

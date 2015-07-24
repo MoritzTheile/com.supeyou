@@ -11,6 +11,8 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 
 	private static final long serialVersionUID = 824618946818L;
 
+	private int decendentCount = 0;
+
 	private UserDTO userDTO;
 
 	private HeroDTO heroDTO;
@@ -61,6 +63,14 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 
 	public void setInvitationDTOs(List<InvitationDTO> invitationDTOs) {
 		this.invitationDTOs = invitationDTOs;
+	}
+
+	public int getDecendentCount() {
+		return decendentCount;
+	}
+
+	public void setDecendentCount(int decendentCount) {
+		this.decendentCount = decendentCount;
 	}
 
 }

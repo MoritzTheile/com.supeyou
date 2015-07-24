@@ -12,6 +12,8 @@ import com.supeyou.crudie.impl.util.STATICS;
 @Table(name = "Invitation2SupporterAsso", uniqueConstraints = @UniqueConstraint(columnNames = { STATICS.A_DBID, STATICS.B_DBID }))
 public class Invitation2SupporterEntity extends AbstrManyToManyAsso<InvitationEntity, SupporterEntity, Invitation2SupporterIDType> {
 
+	private boolean createsCycle = false;
+
 	@Override
 	public Invitation2SupporterIDType getId() {
 		if (this.dbid != null) {
@@ -28,6 +30,14 @@ public class Invitation2SupporterEntity extends AbstrManyToManyAsso<InvitationEn
 		} else {
 			this.dbid = null;
 		}
+	}
+
+	public boolean isCreatesCycle() {
+		return createsCycle;
+	}
+
+	public void setCreatesCycle(boolean createsCycle) {
+		this.createsCycle = createsCycle;
 	}
 
 }

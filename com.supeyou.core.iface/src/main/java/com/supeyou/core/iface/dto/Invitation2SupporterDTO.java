@@ -6,6 +6,8 @@ public class Invitation2SupporterDTO extends AbstrAssoDTO<InvitationDTO, Support
 
 	private static final long serialVersionUID = 536835689L;
 
+	private boolean createsCycle = false;
+
 	public Invitation2SupporterDTO() {
 	}
 
@@ -45,5 +47,13 @@ public class Invitation2SupporterDTO extends AbstrAssoDTO<InvitationDTO, Support
 	@Override
 	public void setDtoB(SupporterDTO dtoB) {
 		super.setDtoB(dtoB);
+	}
+
+	public boolean isCreatesCycle() {
+		return createsCycle;
+	}
+
+	public void setCreatesCycle(boolean createsCycle) {
+		this.createsCycle = createsCycle;
 	}
 }

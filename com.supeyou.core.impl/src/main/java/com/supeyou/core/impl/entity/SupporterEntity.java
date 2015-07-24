@@ -16,6 +16,8 @@ import com.supeyou.crudie.impl.entity.AbstrEntity;
 @Table(name = "SupporterEntity")
 public class SupporterEntity extends AbstrEntity<SupporterIDType> {
 
+	private int decendentCount = 0;
+
 	@OneToMany(mappedBy = "a"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private Collection<Supporter2InvitationEntity> supporter2invitationCollection = new ArrayList<Supporter2InvitationEntity>();
 
@@ -76,6 +78,14 @@ public class SupporterEntity extends AbstrEntity<SupporterIDType> {
 
 	public void setInvitation2SupporterCollection(Collection<Invitation2SupporterEntity> invitation2SupporterCollection) {
 		this.invitation2SupporterCollection = invitation2SupporterCollection;
+	}
+
+	public int getDecendentCount() {
+		return decendentCount;
+	}
+
+	public void setDecendentCount(int decendentCount) {
+		this.decendentCount = decendentCount;
 	}
 
 }
