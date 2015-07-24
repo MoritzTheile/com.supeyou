@@ -46,8 +46,7 @@ public class Invitation2SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<In
 
 	private void handleAncestor(EntityManager em, SupporterEntity aSupporterEntity, Collection<SupporterEntity> collectedAncestorSupporters) {
 
-		// if (!collectedAncestorSupporters.contains(aSupporterEntity))
-		{// operation only if not already executed via alternative path to root
+		if (!collectedAncestorSupporters.contains(aSupporterEntity)) {// operation only if not already executed via alternative path to root
 
 			aSupporterEntity.setDecendentCount(aSupporterEntity.getDecendentCount() + 1);
 
