@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.view.heropage;
+package com.supeyou.core.web.client.view.heropage.donate;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -15,16 +15,10 @@ public class WidgetView extends Composite {
 	FlowPanel root;
 
 	@UiField
-	FlowPanel supporterCardSlot;
+	FlowPanel closeButton;
 
 	@UiField
-	FlowPanel donationButtonSlot;
-
-	@UiField
-	FlowPanel invitationButtonSlot;
-
-	@UiField
-	FlowPanel supporterTreeSlot;
+	FlowPanel paypalButtonSlot;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}

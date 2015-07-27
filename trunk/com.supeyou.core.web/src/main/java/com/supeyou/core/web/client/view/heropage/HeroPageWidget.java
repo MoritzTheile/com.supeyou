@@ -4,6 +4,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
+import com.supeyou.core.web.client.view.heropage.donate.DonateWidget;
 import com.supeyou.core.web.client.view.heropage.invite.InviteWidget;
 import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidget;
 import com.supeyou.core.web.client.view.supportercard.SupporterCardWidget;
@@ -25,20 +26,36 @@ public class HeroPageWidget extends WidgetView {
 
 		supporterCardSlot.add(new SupporterCardWidget(supporterDTO));
 
-		FlatButtonWidget flatButtonWidget = new FlatButtonWidget();
-		flatButtonWidget.setText(Text.i.BUTTON_Invite());
-		flatButtonWidget.addClickHandler(new ClickHandler() {
+		{
+			FlatButtonWidget flatButtonWidget = new FlatButtonWidget();
+			flatButtonWidget.setText(Text.i.BUTTON_Donate());
+			flatButtonWidget.addClickHandler(new ClickHandler() {
 
-			@Override
-			public void onClick(ClickEvent event) {
+				@Override
+				public void onClick(ClickEvent event) {
 
-				new PopupWidget(new InviteWidget(supporterDTO), true);
+					new PopupWidget(new DonateWidget(supporterDTO), true);
 
-			}
-		});
+				}
+			});
 
-		invitationButtonSlot.add(flatButtonWidget);
+			donationButtonSlot.add(flatButtonWidget);
+		}
+		{
+			FlatButtonWidget flatButtonWidget = new FlatButtonWidget();
+			flatButtonWidget.setText(Text.i.BUTTON_Invite());
+			flatButtonWidget.addClickHandler(new ClickHandler() {
 
+				@Override
+				public void onClick(ClickEvent event) {
+
+					new PopupWidget(new InviteWidget(supporterDTO), true);
+
+				}
+			});
+
+			invitationButtonSlot.add(flatButtonWidget);
+		}
 		supporterTreeSlot.add(new SupporterTreeWidget(supporterDTO));
 
 		// tmp hack:
