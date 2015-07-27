@@ -25,9 +25,15 @@ public interface Text extends Messages {
 
 	String HEROSPAGE_JoinAsHero();
 
+	String BUTTON_Donate();
+
 	String BUTTON_Invite();
 
+	String DONATE_HeaderLabel();
+
 	String INVITE_HeaderLabel();
+
+	String DONATE_Text_HTML();
 
 	String INVITE_Text_HTML();
 

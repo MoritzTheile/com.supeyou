@@ -25,6 +25,11 @@ public class AppEntryPoint implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
+		// RootPanel.get().clear();
+		// RootPanel.get().add(new DonationWidget("paypal.com@moritztheile.de", "Support Hero", "Hero_"));
+		// }
+		//
+		// public void onModuleLoadasdf() {
 
 		RootPanel.get("login").add(new LoginButtonWidget(LoginStateModel.i()));
 		RootPanel.get("title").addDomHandler(new ClickHandler() {

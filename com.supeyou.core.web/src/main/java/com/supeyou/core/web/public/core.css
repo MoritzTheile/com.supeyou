@@ -20,7 +20,7 @@
   	color: gray;
   	font-size: 12px;
 }
-.invite-root{
+.modal-widget{
 	
 	padding: 0;
 	margin-bottom: 24px;
@@ -30,19 +30,19 @@
 	
 }
 
-.invite-root .gwt-TextBox{
+.modal-widget .gwt-TextBox{
 	text-align: center;
 }
-.invite-root .text-html{
+.modal-widget .text-html{
 	margin: 48px 0 32px 0;
 }
-.invite-root .header-label{
+.modal-widget .header-label{
 	background-color: #EEEEEE;
   	text-align: left;
   	font-size: 16px;
   	padding: 12px 8px;
 }
-.invite-root .close-button{
+.modal-widget .close-button{
 	position: absolute;
 	top:0;
 	right:0;
@@ -58,22 +58,26 @@
 	cursor: pointer;
 }
 
+.modal-widget.donate{
+	padding-bottom: 400px;
+}
 
-.invite-root .link-row{
+
+.modal-widget.invite .link-row{
 	vertical-align:middle;
 	white-space: nowrap;
 	position: relative;
 }
 
-.invite-root .link-row > * {
+.modal-widget.invite .link-row > * {
 	display:inline-block;
 	vertical-align: middle;
 }
-.invite-root .link-label{
+.modal-widget.invite .link-label{
 	background-color: #C6D9F1;
 	padding-left: 40px;
 }
-.invite-root .link-row .reload-button{
+.modal-widget.invite .link-row .reload-button{
 	position: absolute;
 	padding:8px 8px 4px 8px;
   	height: 16px;
@@ -86,23 +90,23 @@
   	cursor: pointer;
 }
 
-.invite-root .share-buttons-slot{
+.modal-widget.invite .share-buttons-slot{
 	text-align:left;
 	display: inline-block;
 	margin-top: 16px;
 }
 
-.invite-root .share-button{
+.modal-widget.invite .share-button{
 	margin: 12px 0 12px 0;
 }
 
-.invite-root .share-button > *{
+.modal-widget.invite .share-button > *{
 	display: inline-block;
   	vertical-align: middle;
   	cursor:pointer;
 }
 
-.invite-root .link-row .share-button{
+.modal-widget.invite .link-row .share-button{
 	height: 16px;
 	width: 16px;
 	margin: 0px 12px;
@@ -113,12 +117,12 @@
   	cursor: pointer;
 }
 
-.invite-root .link-hint-label{
+.modal-widget.invite .link-hint-label{
 	font-size: 12px;
 	margin-top: 12px;
 }
 
-.invite-root .share-button .image.clipboard{
+.modal-widget.invite .share-button .image.clipboard{
 	
 	height: 32px;
 	width: 32px;
@@ -131,7 +135,7 @@
 }
 
 
-.invite-root .share-button .image.mail{
+.modal-widget.invite .share-button .image.mail{
 	
 	height: 32px;
 	width: 32px;
@@ -143,7 +147,7 @@
   	cursor: pointer;
 }
 
-.invite-root .share-button .image.whatsapp{
+.modal-widget.invite .share-button .image.whatsapp{
 	
 	height: 32px;
 	width: 32px;
@@ -155,7 +159,7 @@
   	cursor: pointer;
 }
 
-.invite-root .share-button .image.google{
+.modal-widget.invite .share-button .image.google{
 	
 	height: 32px;
 	width: 32px;
@@ -167,7 +171,7 @@
   	cursor: pointer;
 }
 
-.invite-root .share-button .image.facebook{
+.modal-widget.invite .share-button .image.facebook{
 	
 	height: 32px;
 	width: 32px;
@@ -179,7 +183,7 @@
   	cursor: pointer;
 }
 
-.invite-root .share-button .image.twitter{
+.modal-widget.invite .share-button .image.twitter{
 	
 	height: 32px;
 	width: 32px;
@@ -194,10 +198,10 @@
 
 
 
-.invite-root .link-name-textbox-slot{
+.modal-widget.invite .link-name-textbox-slot{
 	margin: 24px 0 0 0;
 }
-.invite-root .link-name-label{
+.modal-widget.invite .link-name-label{
 	font-size: 10px;
 	padding: 0px 24px 120px 24px;
 	width: 180px;
@@ -273,13 +277,30 @@
 	
 }
 
-
-.invitation-button-slot{
+.heropage-button-slot{
 	text-align: center;
 	padding: 8px 0 22px 0;
 }
 
-.invitation-button-slot .flat-button{
+.heropage-button-slot.donation{
+	margin-top: 12px;
+	text-align: center;
+	padding: 8px 0 22px 0;
+}
+.heropage-button-slot.donation .flat-button{
+    padding-bottom: 1px;
+    padding-top: 1px;
+}
+
+.heropage-button-slot.invitation{
+	text-align: center;
+	padding: 8px 0 22px 0;
+}
+
+.heropage-button-slot.invitation .flat-button{
+}
+
+.heropage-button-slot .flat-button{
 	display: inline-block;
 	width: 240px;
 }

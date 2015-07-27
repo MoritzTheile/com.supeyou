@@ -6,13 +6,17 @@
 	<ui:with field='text'
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
  
-	<g:FlowPanel styleName="heropage-root" ui:field="root">
+	<g:FlowPanel styleName="modal-widget donate" ui:field="root">
 	
-		<g:FlowPanel styleName="supporter-card-slot" ui:field="supporterCardSlot"></g:FlowPanel>
-		<g:FlowPanel styleName="heropage-button-slot donation" ui:field="donationButtonSlot"></g:FlowPanel>
-		<g:FlowPanel styleName="heropage-button-slot invitation" ui:field="invitationButtonSlot"></g:FlowPanel>
-		<g:FlowPanel styleName="supportertree-slot" ui:field="supporterTreeSlot"></g:FlowPanel>
-	
+		<g:FlowPanel styleName="header" >
+			<g:Label  styleName="header-label" text="{text.DONATE_HeaderLabel}"></g:Label>
+			<g:FlowPanel styleName="close-button" ui:field="closeButton"></g:FlowPanel>
+		</g:FlowPanel>
+		
+		<g:HTML styleName="text-html" HTML="{text.DONATE_Text_HTML}"></g:HTML>
+		
+		<g:FlowPanel  styleName="paypal-button-slot" ui:field="paypalButtonSlot"></g:FlowPanel>
+
 	</g:FlowPanel>
 
 </ui:UiBinder> 
