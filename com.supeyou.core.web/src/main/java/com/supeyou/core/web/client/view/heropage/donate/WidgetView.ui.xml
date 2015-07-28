@@ -17,6 +17,8 @@
 		
 		<g:FlowPanel  styleName="paypal-button-slot" ui:field="paypalButtonSlot"></g:FlowPanel>
 
+		<g:HTML styleName="text-html" HTML="{text.DONATE_Text2_HTML}"></g:HTML>
+
 	</g:FlowPanel>
 
 </ui:UiBinder> 

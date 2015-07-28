@@ -90,7 +90,8 @@ public class PaypalWidget extends WidgetView {
 			// "<br><br>" +
 			// "<!--  -->" +
 			"<input type=\"hidden\" name=\"bn\" value=\"PP-SubscriptionsBF:btn_donateCC_LG.gif:NonHosted\">" +
-			"<input type=\"image\" src=\"https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif\" border=\"0\" name=\"submit\" alt=\"PayPal - The safer, easier way to pay online!\">" +
+
+			"<div class=\"donate-button-slot\"><input type=\"image\" src=\"https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif\" border=\"0\" name=\"submit\" alt=\"PayPal - The safer, easier way to pay online!\"><div class=\"\">1\u20AC per month</div></div>" +
 			"<img alt=\"\" border=\"0\" src=\"https://www.paypal.com/en_US/i/scr/pixel.gif\" width=\"1\" height=\"1\">" +
 			"</form>";
 
