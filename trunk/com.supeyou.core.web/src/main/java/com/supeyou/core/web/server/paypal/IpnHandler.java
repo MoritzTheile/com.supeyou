@@ -106,7 +106,7 @@ public class IpnHandler {
 		donationDTO.setReceiverEmail(getParam(request, "receiver_email"));
 		donationDTO.setPayerEmail(getParam(request, "payer_email"));
 		donationDTO.setResponse(new SingleLineString256Type(res));
-		donationDTO.setRequestParams(new SingleLineString256Type(requestParams));
+		// donationDTO.setRequestParams(new SingleLineString256Type(requestParams));
 
 		// 6. Validate captured Paypal IPN Information
 		if (res.equals("VERIFIED")) {
