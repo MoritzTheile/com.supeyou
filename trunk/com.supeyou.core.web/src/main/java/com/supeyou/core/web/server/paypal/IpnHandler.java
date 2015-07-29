@@ -73,11 +73,15 @@ public class IpnHandler {
 		StringBuilder cmd = new StringBuilder("cmd=_notify-validate");
 		String paramName;
 		String paramValue;
+		String charset = request.getParameter("charset");
+		if (charset == null) {
+			charset = "UTF-8";
+		}
 		while (en.hasMoreElements()) {
 			paramName = (String) en.nextElement();
 			paramValue = request.getParameter(paramName);
 			cmd.append("&").append(paramName).append("=")
-					.append(URLEncoder.encode(paramValue, request.getParameter("charset")));
+					.append(URLEncoder.encode(paramValue, charset));
 		}
 
 		// 3. Post above command to Paypal IPN URL {@link IpnConfig#ipnUrl}
