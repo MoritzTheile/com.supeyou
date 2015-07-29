@@ -153,7 +153,7 @@ public class IpnHandler {
 	private SingleLineString256Type getParam(HttpServletRequest request, String paramName) {
 		String paramValue = request.getParameter(paramName);
 		if (paramValue == null) {
-			return null;
+			return new SingleLineString256Type("null");
 		}
 		return new SingleLineString256Type(paramValue);
 	}
