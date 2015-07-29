@@ -24,7 +24,13 @@ public class DonationCRUDServiceImpl extends AbstrCRUDServiceImpl<DonationDTO, D
 
 		DonationCRUDServiceImpl.i().updadd(actorDTO, donationDTO);
 
-		SupporterDTO supporterDTO = SupporterCRUDServiceImpl.i().get(actorDTO, new SupporterIDType(donationDTO.getItemNumber().value()));
+		SupporterDTO supporterDTO = null;
+		try {
+			supporterDTO = SupporterCRUDServiceImpl.i().get(actorDTO, new SupporterIDType(donationDTO.getItemNumber().value()));
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.log(Level.SEVERE, "exeption trying to find supporter (item_number=" + donationDTO.getItemNumber() + ")", e);
+		}
 
 		if (supporterDTO == null) {
 
