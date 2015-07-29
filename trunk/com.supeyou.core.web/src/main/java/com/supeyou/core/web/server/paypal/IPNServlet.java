@@ -16,16 +16,13 @@ public class IPNServlet extends HttpServlet {
 
 		try {
 
-			IpnHandler ipnHandler = new IpnHandler();
+			new IpnHandler().handleIpn(req);
 
-			IpnInfo ipnInfo = ipnHandler.handleIpn(req);
-
-			ipnInfo.getPaymentStatus();
-
-		} catch (IpnException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ServletException("paypal ipn caused error", e);
+			throw new ServletException("paypal ipn caused error:", e);
 		}
+
 		super.doPost(req, resp);
 
 	}
