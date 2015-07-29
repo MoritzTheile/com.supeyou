@@ -20,7 +20,6 @@ public class DonationDTO extends AbstrDTO<DonationIDType> implements Serializabl
 	private SingleLineString256Type response;
 	private SingleLineString256Type requestParams;
 	private SingleLineString256Type error;
-	private Long logTime;
 
 	public DonationDTO() {
 
@@ -120,14 +119,6 @@ public class DonationDTO extends AbstrDTO<DonationIDType> implements Serializabl
 
 	public void setError(SingleLineString256Type error) {
 		this.error = error;
-	}
-
-	public Long getLogTime() {
-		return logTime;
-	}
-
-	public void setLogTime(Long logTime) {
-		this.logTime = logTime;
 	}
 
 	@Override

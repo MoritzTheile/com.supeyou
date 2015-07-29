@@ -100,7 +100,6 @@ public class IpnHandler {
 		in.close();
 
 		// 5. Capture Paypal IPN information
-		donationDTO.setLogTime(System.currentTimeMillis());
 		donationDTO.setItemName(getParam(request, "item_name"));
 		donationDTO.setItemNumber(getParam(request, "item_number"));
 		donationDTO.setPaymentStatus(getParam(request, "payment_status"));
