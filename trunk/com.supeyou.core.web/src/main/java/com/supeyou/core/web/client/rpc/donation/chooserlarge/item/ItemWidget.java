@@ -1,11 +1,11 @@
 package com.supeyou.core.web.client.rpc.donation.chooserlarge.item;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.supeyou.core.iface.dto.DonationDTO;
 import com.supeyou.core.web.client.rpc.donation.RPCCRUDProxy;
+import com.supeyou.crudie.iface.datatype.types.AbstrType;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
 
 public class ItemWidget extends WidgetView {
@@ -22,24 +22,29 @@ public class ItemWidget extends WidgetView {
 
 		thisWidget = this;
 
-		websiteSlot.addDomHandler(new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-				event.stopPropagation();
-
-			}
-		}, ClickEvent.getType());
-
 	}
 
 	private void render() {
 
-		commentSlot.clear();
-		if (thisDTO.getTxnId() != null) {
-			commentSlot.add(new HTML(thisDTO.getTxnId().value()));
-		}
+		fillSlot(txnIdSlot, thisDTO.getTxnId());
+		fillSlot(itemNameSlot, thisDTO.getItemName());
+		fillSlot(itemNumberSlot, thisDTO.getItemNumber());
+		fillSlot(paymentStatusSlot, thisDTO.getPaymentStatus());
+		fillSlot(paymentAmountSlot, thisDTO.getPaymentAmount());
+		fillSlot(paymentCurrencySlot, thisDTO.getPaymentCurrency());
+		fillSlot(receiverEmailSlot, thisDTO.getReceiverEmail());
+		fillSlot(payerEmailSlot, thisDTO.getPayerEmail());
+		fillSlot(responseSlot, thisDTO.getResponse());
+		fillSlot(requstParamySlot, thisDTO.getRequestParams());
+		fillSlot(errorSlot, thisDTO.getError());
 
+	}
+
+	private void fillSlot(FlowPanel slot, AbstrType<?> data) {
+		slot.clear();
+		if (data != null) {
+			slot.add(new HTML(data.toString()));
+		}
 	}
 
 	private CRUDProxyListener<DonationDTO> listener = new CRUDProxyListener<DonationDTO>() {

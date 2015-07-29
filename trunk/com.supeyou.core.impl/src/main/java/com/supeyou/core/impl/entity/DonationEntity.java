@@ -22,7 +22,6 @@ public class DonationEntity extends AbstrEntity<DonationIDType> {
 	private String response;
 	private String requestParams;
 	private String error;
-	private Long logTime;
 
 	public void setItemName(SingleLineString256Type itemName) {
 		if (itemName != null) {
@@ -206,13 +205,4 @@ public class DonationEntity extends AbstrEntity<DonationIDType> {
 		}
 
 	}
-
-	public Long getLogTime() {
-		return logTime;
-	}
-
-	public void setLogTime(Long logTime) {
-		this.logTime = logTime;
-	}
-
 }

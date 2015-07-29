@@ -16,13 +16,27 @@ public class WidgetView extends Composite {
 	FlowPanel itemRoot;
 
 	@UiField
-	FlowPanel nameSlot;
+	FlowPanel itemNameSlot;
 	@UiField
-	FlowPanel imageSlot;
+	FlowPanel itemNumberSlot;
 	@UiField
-	FlowPanel websiteSlot;
+	FlowPanel paymentStatusSlot;
 	@UiField
-	FlowPanel commentSlot;
+	FlowPanel paymentAmountSlot;
+	@UiField
+	FlowPanel paymentCurrencySlot;
+	@UiField
+	FlowPanel txnIdSlot;
+	@UiField
+	FlowPanel receiverEmailSlot;
+	@UiField
+	FlowPanel payerEmailSlot;
+	@UiField
+	FlowPanel responseSlot;
+	@UiField
+	FlowPanel requstParamySlot;
+	@UiField
+	FlowPanel errorSlot;
 
 	interface ThisBinder extends UiBinder<Widget, WidgetView> {
 	}
