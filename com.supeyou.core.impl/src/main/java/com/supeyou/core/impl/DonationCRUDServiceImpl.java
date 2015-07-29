@@ -22,9 +22,9 @@ public class DonationCRUDServiceImpl extends AbstrCRUDServiceImpl<DonationDTO, D
 
 		log.log(Level.INFO, "donationDTO = " + donationDTO);
 
-		DonationCRUDServiceImpl.i().updadd(null, donationDTO);
+		DonationCRUDServiceImpl.i().updadd(actorDTO, donationDTO);
 
-		SupporterDTO supporterDTO = SupporterCRUDServiceImpl.i().get(null, new SupporterIDType(donationDTO.getItemNumber().value()));
+		SupporterDTO supporterDTO = SupporterCRUDServiceImpl.i().get(actorDTO, new SupporterIDType(donationDTO.getItemNumber().value()));
 
 		if (supporterDTO == null) {
 
@@ -37,7 +37,7 @@ public class DonationCRUDServiceImpl extends AbstrCRUDServiceImpl<DonationDTO, D
 		Supporter2DonationDTO supporter2DonationDTO = new Supporter2DonationDTO();
 		supporter2DonationDTO.setDtoA(supporterDTO);
 		supporter2DonationDTO.setDtoB(donationDTO);
-		Supporter2DonationCRUDServiceImpl.i().updadd(null, supporter2DonationDTO);
+		Supporter2DonationCRUDServiceImpl.i().updadd(actorDTO, supporter2DonationDTO);
 
 	}
 
