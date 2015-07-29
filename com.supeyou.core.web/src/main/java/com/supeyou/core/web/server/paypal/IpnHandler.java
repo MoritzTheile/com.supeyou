@@ -17,6 +17,10 @@ import java.util.logging.Logger;
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 
+import com.supeyou.core.iface.dto.DonationDTO;
+import com.supeyou.core.impl.DonationCRUDServiceImpl;
+import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
+
 /**
  * Paypal IPN Notification Handler Class
  * 
@@ -27,13 +31,10 @@ public class IpnHandler {
 	private Logger log = Logger.getLogger(IpnHandler.class.getName());
 
 	private static String IPN_URL;
-	private static IpnService ipnInfoService;
 
-	public IpnHandler() {
+	public IpnHandler(String ipnURL) {
 
-		IPN_URL = "https://www.sandbox.paypal.com/cgi-bin/webscr";
-
-		ipnInfoService = new IpnService();
+		IPN_URL = ipnURL;
 
 	}
 
@@ -56,12 +57,12 @@ public class IpnHandler {
 	 * 
 	 * @param request
 	 *            {@link HttpServletRequest}
-	 * @return {@link IpnInfo}
+	 * @return {@link DonationDTO}
 	 * @throws Exception
 	 */
-	public IpnInfo handleIpn(HttpServletRequest request) throws Exception {
+	public DonationDTO handleIpn(HttpServletRequest request) throws Exception {
 		log.info("inside ipn");
-		IpnInfo ipnInfo = new IpnInfo();
+		DonationDTO donationDTO = new DonationDTO();
 
 		// 1. Read all posted request parameters
 		String requestParams = this.getAllRequestParams(request);
@@ -95,29 +96,29 @@ public class IpnHandler {
 		in.close();
 
 		// 5. Capture Paypal IPN information
-		ipnInfo.setLogTime(System.currentTimeMillis());
-		ipnInfo.setItemName(request.getParameter("item_name"));
-		ipnInfo.setItemNumber(request.getParameter("item_number"));
-		ipnInfo.setPaymentStatus(request.getParameter("payment_status"));
-		ipnInfo.setPaymentAmount(request.getParameter("mc_gross"));
-		ipnInfo.setPaymentCurrency(request.getParameter("mc_currency"));
-		ipnInfo.setTxnId(request.getParameter("txn_id"));
-		ipnInfo.setReceiverEmail(request.getParameter("receiver_email"));
-		ipnInfo.setPayerEmail(request.getParameter("payer_email"));
-		ipnInfo.setResponse(res);
-		ipnInfo.setRequestParams(requestParams);
+		donationDTO.setLogTime(System.currentTimeMillis());
+		donationDTO.setItemName(getParam(request, "item_name"));
+		donationDTO.setItemNumber(getParam(request, "item_number"));
+		donationDTO.setPaymentStatus(getParam(request, "payment_status"));
+		donationDTO.setPaymentAmount(getParam(request, "mc_gross"));
+		donationDTO.setPaymentCurrency(getParam(request, "mc_currency"));
+		donationDTO.setTxnId(getParam(request, "txn_id"));
+		donationDTO.setReceiverEmail(getParam(request, "receiver_email"));
+		donationDTO.setPayerEmail(getParam(request, "payer_email"));
+		donationDTO.setResponse(new SingleLineString256Type(res));
+		donationDTO.setRequestParams(new SingleLineString256Type(requestParams));
 
 		// 6. Validate captured Paypal IPN Information
 		if (res.equals("VERIFIED")) {
 
 			// 6.1. Check that paymentStatus=Completed
-			if (ipnInfo.getPaymentStatus() == null || !ipnInfo.getPaymentStatus().equalsIgnoreCase("COMPLETED"))
-				ipnInfo.setError("payment_status IS NOT COMPLETED {" + ipnInfo.getPaymentStatus() + "}");
+			if (donationDTO.getPaymentStatus() == null || !donationDTO.getPaymentStatus().value().equalsIgnoreCase("COMPLETED"))
+				donationDTO.setError(new SingleLineString256Type("payment_status IS NOT COMPLETED {" + donationDTO.getPaymentStatus() + "}"));
 
 			// 6.2. Check that txnId has not been previously processed
-			IpnInfo oldIpnInfo = ipnInfoService.getIpnInfo(ipnInfo.getTxnId());
-			if (oldIpnInfo != null)
-				ipnInfo.setError("txn_id is already processed {old ipn_info " + oldIpnInfo);
+			// DonationDTO oldDonationDTO = ipnInfoService.getDonationDTO(donationDTO.getTxnId());
+			// if (oldDonationDTO != null)
+			// donationDTO.setError(new SingleLineString256Type("txn_id is already processed {old ipn_info " + oldDonationDTO));
 
 			// 6.3. Check that receiverEmail matches with configured {@link IpnConfig#receiverEmail}
 			// if (!ipnInfo.getReceiverEmail().equalsIgnoreCase(this.getIpnConfig().getReceiverEmail()))
@@ -134,19 +135,27 @@ public class IpnHandler {
 			// ipnInfo.setError("payment currency mc_currency " + ipnInfo.getPaymentCurrency()
 			// + " does not match with configured ipn currency " + this.getIpnConfig().getPaymentCurrency());
 		} else {
-			ipnInfo.setError("Invalid response {" + res + "} expecting {VERIFIED}");
+			donationDTO.setError(new SingleLineString256Type("Invalid response {" + res + "} expecting {VERIFIED}"));
 		}
 
-		log.info("ipnInfo = " + ipnInfo);
+		log.info("ipnInfo = " + donationDTO);
 
-		ipnInfoService.log(ipnInfo);
+		DonationCRUDServiceImpl.i().save(null, donationDTO);
 
 		// 7. In case of any failed validation checks, throw {@link Exception}
-		if (ipnInfo.getError() != null)
-			throw new Exception(ipnInfo.getError());
+		if (donationDTO.getError() != null)
+			throw new Exception(donationDTO.getError().value());
 
-		// 8. If all is well, return {@link IpnInfo} to the caller for further business logic execution
-		return ipnInfo;
+		// 8. If all is well, return {@link DonationDTO} to the caller for further business logic execution
+		return donationDTO;
+	}
+
+	private SingleLineString256Type getParam(HttpServletRequest request, String paramName) {
+		String paramValue = request.getParameter(paramName);
+		if (paramValue == null) {
+			return null;
+		}
+		return new SingleLineString256Type(paramValue);
 	}
 
 	/**

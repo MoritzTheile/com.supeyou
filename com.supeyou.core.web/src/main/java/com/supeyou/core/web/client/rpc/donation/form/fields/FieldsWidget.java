@@ -24,11 +24,11 @@ public class FieldsWidget extends WidgetView {
 
 				"Bemerkung",
 
-				new FieldForSingleLineString256Type(thisDto.getComment()) {
+				new FieldForSingleLineString256Type(thisDto.getTxnId()) {
 
 					@Override
 					public void onHasChanged(SingleLineString256Type value) {
-						thisDto.setComment(value);
+						thisDto.setTxnId(value);
 						hasChanged();
 					}
 
