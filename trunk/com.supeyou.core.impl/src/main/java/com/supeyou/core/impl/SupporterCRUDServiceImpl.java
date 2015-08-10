@@ -248,19 +248,4 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 		return service;
 	}
 
-	// @Override
-	// public AmountType calculateDonationAmount(UserDTO actorDTO, SupporterDTO supporterDTO) throws CRUDException {
-	//
-	// Supporter2DonationFetchQuery supporter2DonationFetchQuery = new Supporter2DonationFetchQuery();
-	// supporter2DonationFetchQuery.setIdA(supporterDTO.getId());
-	// DTOFetchList<Supporter2DonationDTO> supporter2DonationDTOs = Supporter2DonationCRUDServiceImpl.i().fetchList(actorDTO, new Page(), supporter2DonationFetchQuery);
-	//
-	// int amount = 0;
-	// for (Supporter2DonationDTO supporter2DonationDTO : supporter2DonationDTOs) {
-	// amount += supporter2DonationDTO.getDtoB().getPaymentAmount().value();
-	// }
-	//
-	// return new AmountType(amount);
-	//
-	// }
 }
