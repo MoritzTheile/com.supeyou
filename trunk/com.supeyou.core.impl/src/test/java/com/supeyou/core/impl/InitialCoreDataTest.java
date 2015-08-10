@@ -7,6 +7,8 @@ import org.junit.Test;
 
 import com.supeyou.core.iface.dto.Hero2SupporterDTO;
 import com.supeyou.core.iface.dto.Hero2SupporterFetchQuery;
+import com.supeyou.core.iface.dto.Supporter2DonationDTO;
+import com.supeyou.core.iface.dto.Supporter2DonationFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.iface.dto.User2HeroDTO;
 import com.supeyou.core.iface.dto.User2HeroFetchQuery;
@@ -69,6 +71,15 @@ public class InitialCoreDataTest {
 		Assert.assertEquals(3, SupporterCRUDServiceImpl.i().get(InitialCoreData.i().admin, InitialCoreData.i().supporter_Hermann.getId()).getDecendentCount());
 		Assert.assertEquals(2, SupporterCRUDServiceImpl.i().get(InitialCoreData.i().admin, InitialCoreData.i().supporter_Eugen.getId()).getDecendentCount());
 		Assert.assertEquals(0, SupporterCRUDServiceImpl.i().get(InitialCoreData.i().admin, InitialCoreData.i().supporter_Marion.getId()).getDecendentCount());
+
+		// Checking donations
+		Assert.assertNotNull(InitialCoreData.i().donationDTO_Andrea1Euro.getId());
+
+		Supporter2DonationFetchQuery dtoQuery = new Supporter2DonationFetchQuery();
+		dtoQuery.setIdA(InitialCoreData.i().supporter_Hermann.getId());
+		DTOFetchList<Supporter2DonationDTO> dtoFetchList = Supporter2DonationCRUDServiceImpl.i().fetchList(InitialCoreData.i().admin, new Page(), dtoQuery);
+
+		Assert.assertEquals(2, dtoFetchList.size());
 
 	}
 

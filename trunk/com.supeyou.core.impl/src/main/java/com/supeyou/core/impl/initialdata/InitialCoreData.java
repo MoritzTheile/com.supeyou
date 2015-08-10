@@ -1,12 +1,15 @@
 package com.supeyou.core.impl.initialdata;
 
+import com.supeyou.core.iface.dto.DonationDTO;
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
+import com.supeyou.core.impl.DonationCRUDServiceImpl;
 import com.supeyou.core.impl.HeroCRUDServiceImpl;
 import com.supeyou.core.impl.InvitationCRUDServiceImpl;
 import com.supeyou.core.impl.SupporterCRUDServiceImpl;
 import com.supeyou.crudie.iface.datatype.CRUDException;
+import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.impl.UserCRUDServiceImpl;
@@ -77,6 +80,13 @@ public class InitialCoreData {
 	public InvitationDTO invitation_0305_1948;
 	public InvitationDTO invitation_0405_0945;
 	public InvitationDTO invitation_0205_0734;
+
+	public DonationDTO donationDTO_Marion2Euro;
+	public DonationDTO donationDTO_Eugen1Euro;
+	public DonationDTO donationDTO_Hermann1Euro1;
+	public DonationDTO donationDTO_Hermann1Euro2;
+	public DonationDTO donationDTO_Emma1Euro;
+	public DonationDTO donationDTO_Andrea1Euro;
 
 	private void init() throws CRUDException {
 
@@ -154,6 +164,42 @@ public class InitialCoreData {
 		invitation_0205_0734 = createInvitation("0205_0734", supporter_Eugen);
 		supporter_Melanie = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Melanie, invitation_0205_0734.getToken());
 		supporter_Marion = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Marion, invitation_0205_0734.getToken());
+
+		{
+			DonationDTO donationDTO = new DonationDTO();
+			donationDTO.setPaymentAmount(new AmountType(200));
+			donationDTO_Marion2Euro = DonationCRUDServiceImpl.i().save(admin, supporter_Marion, donationDTO);
+
+		}
+		{
+			DonationDTO donationDTO = new DonationDTO();
+			donationDTO.setPaymentAmount(new AmountType(100));
+			donationDTO_Eugen1Euro = DonationCRUDServiceImpl.i().save(admin, supporter_Eugen, donationDTO);
+
+		}
+		{
+			DonationDTO donationDTO = new DonationDTO();
+			donationDTO.setPaymentAmount(new AmountType(100));
+			donationDTO_Hermann1Euro1 = DonationCRUDServiceImpl.i().save(admin, supporter_Hermann, donationDTO);
+
+		}
+		{
+			DonationDTO donationDTO = new DonationDTO();
+			donationDTO.setPaymentAmount(new AmountType(100));
+			donationDTO_Hermann1Euro2 = DonationCRUDServiceImpl.i().save(admin, supporter_Hermann, donationDTO);
+		}
+		{
+			DonationDTO donationDTO = new DonationDTO();
+			donationDTO.setPaymentAmount(new AmountType(100));
+			donationDTO_Emma1Euro = DonationCRUDServiceImpl.i().save(admin, supporter_Emma, donationDTO);
+
+		}
+		{
+			DonationDTO donationDTO = new DonationDTO();
+			donationDTO.setPaymentAmount(new AmountType(100));
+			donationDTO_Andrea1Euro = DonationCRUDServiceImpl.i().save(admin, supporter_Andrea, donationDTO);
+
+		}
 
 	}
 

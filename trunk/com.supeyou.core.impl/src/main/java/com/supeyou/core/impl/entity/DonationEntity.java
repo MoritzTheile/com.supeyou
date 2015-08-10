@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.supeyou.core.iface.dto.DonationIDType;
+import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.impl.entity.AbstrEntity;
 
@@ -14,7 +15,7 @@ public class DonationEntity extends AbstrEntity<DonationIDType> {
 	private String itemName;
 	private String itemNumber;
 	private String paymentStatus;
-	private String paymentAmount;
+	private Integer paymentAmount;
 	private String paymentCurrency;
 	private String txnId;
 	private String receiverEmail;
@@ -68,14 +69,15 @@ public class DonationEntity extends AbstrEntity<DonationIDType> {
 		}
 	}
 
-	public SingleLineString256Type getPaymentAmount() {
-		if (paymentAmount == null) {
+	public AmountType getPaymentAmount() {
+		if (paymentAmount != null) {
+			return new AmountType(paymentAmount);
+		} else {
 			return null;
 		}
-		return new SingleLineString256Type(paymentAmount);
 	}
 
-	public void setPaymentAmount(SingleLineString256Type paymentAmount) {
+	public void setPaymentAmount(AmountType paymentAmount) {
 		if (paymentAmount != null) {
 			this.paymentAmount = paymentAmount.value();
 		} else {
