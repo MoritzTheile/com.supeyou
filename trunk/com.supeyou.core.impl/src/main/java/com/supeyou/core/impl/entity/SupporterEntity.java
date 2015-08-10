@@ -24,6 +24,9 @@ public class SupporterEntity extends AbstrEntity<SupporterIDType> {
 	@OneToMany(mappedBy = "a"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private Collection<Supporter2InvitationEntity> supporter2invitationCollection = new ArrayList<Supporter2InvitationEntity>();
 
+	@OneToMany(mappedBy = "a"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+	private Collection<Supporter2DonationEntity> supporter2donationCollection = new ArrayList<Supporter2DonationEntity>();
+
 	@OneToMany(mappedBy = "b"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private Collection<User2SupporterEntity> user2SupporterCollection = new ArrayList<User2SupporterEntity>();
 
@@ -105,6 +108,14 @@ public class SupporterEntity extends AbstrEntity<SupporterIDType> {
 
 	public void setDecendentCount(int decendentCount) {
 		this.decendentCount = decendentCount;
+	}
+
+	public Collection<Supporter2DonationEntity> getSupporter2donationCollection() {
+		return supporter2donationCollection;
+	}
+
+	public void setSupporter2donationCollection(Collection<Supporter2DonationEntity> supporter2donationCollection) {
+		this.supporter2donationCollection = supporter2donationCollection;
 	}
 
 }

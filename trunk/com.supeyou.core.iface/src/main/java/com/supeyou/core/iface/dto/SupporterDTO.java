@@ -16,6 +16,16 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 
 	private AmountType decendantAmount;
 
+	private AmountType ownAmount;
+
+	public AmountType getOwnAmount() {
+		return ownAmount;
+	}
+
+	public void setOwnAmount(AmountType ownAmount) {
+		this.ownAmount = ownAmount;
+	}
+
 	private UserDTO userDTO;
 
 	private HeroDTO heroDTO;
