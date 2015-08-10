@@ -6,6 +6,8 @@ import com.supeyou.core.iface.SupporterCRUDService;
 import com.supeyou.core.iface.dto.Hero2SupporterDTO;
 import com.supeyou.core.iface.dto.Hero2SupporterFetchQuery;
 import com.supeyou.core.iface.dto.HeroDTO;
+import com.supeyou.core.iface.dto.Supporter2DonationDTO;
+import com.supeyou.core.iface.dto.Supporter2DonationFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.iface.dto.SupporterFetchQuery;
 import com.supeyou.core.iface.dto.User2SupporterDTO;
@@ -18,6 +20,7 @@ import com.supeyou.core.impl.entity.User2SupporterEntity;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.CRUDException.CODE;
 import com.supeyou.crudie.iface.datatype.Page;
+import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.impl.AbstrCRUDServiceImpl;
@@ -230,5 +233,21 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 			service = new SupporterCRUDServiceImpl();
 		}
 		return service;
+	}
+
+	@Override
+	public AmountType calculateDonationAmount(UserDTO actorDTO, SupporterDTO supporterDTO) throws CRUDException {
+
+		Supporter2DonationFetchQuery supporter2DonationFetchQuery = new Supporter2DonationFetchQuery();
+		supporter2DonationFetchQuery.setIdA(supporterDTO.getId());
+		DTOFetchList<Supporter2DonationDTO> supporter2DonationDTOs = Supporter2DonationCRUDServiceImpl.i().fetchList(actorDTO, new Page(), supporter2DonationFetchQuery);
+
+		int amount = 0;
+		for (Supporter2DonationDTO supporter2DonationDTO : supporter2DonationDTOs) {
+			amount += supporter2DonationDTO.getDtoB().getPaymentAmount().value();
+		}
+
+		return new AmountType(amount);
+
 	}
 }
