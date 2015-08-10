@@ -17,7 +17,6 @@ import com.supeyou.core.iface.dto.User2SupporterFetchQuery;
 import com.supeyou.core.impl.initialdata.InitialCoreData;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.Page;
-import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
 import com.supeyou.crudie.iface.dto.UserDTO;
 
@@ -82,9 +81,9 @@ public class InitialCoreDataTest {
 
 		Assert.assertEquals(2, dtoFetchList.size());
 
-		AmountType donationAmount = SupporterCRUDServiceImpl.i().calculateDonationAmount(InitialCoreData.i().admin, InitialCoreData.i().supporter_Hermann);
+		SupporterDTO supporterHermannDTO = SupporterCRUDServiceImpl.i().get(InitialCoreData.i().admin, InitialCoreData.i().supporter_Hermann.getId());
 
-		Assert.assertEquals(new Integer(200), donationAmount.value());
+		Assert.assertEquals(new Integer(200), supporterHermannDTO.getOwnAmount().value());
 
 	}
 
