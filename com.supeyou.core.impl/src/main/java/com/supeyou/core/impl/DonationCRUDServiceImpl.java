@@ -8,8 +8,8 @@ import com.supeyou.core.iface.dto.DonationDTO;
 import com.supeyou.core.iface.dto.DonationFetchQuery;
 import com.supeyou.core.iface.dto.Supporter2DonationDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
-import com.supeyou.core.iface.dto.SupporterIDType;
 import com.supeyou.core.impl.entity.DonationEntity;
+import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.impl.AbstrCRUDServiceImpl;
 
@@ -18,32 +18,26 @@ public class DonationCRUDServiceImpl extends AbstrCRUDServiceImpl<DonationDTO, D
 	private Logger log = Logger.getLogger(DonationCRUDServiceImpl.class.getName());
 
 	@Override
-	public void save(UserDTO actorDTO, final DonationDTO donationDTO) throws Exception {
+	public DonationDTO save(UserDTO actorDTO, SupporterDTO supporterDTO, DonationDTO donationDTO) throws CRUDException {
 
 		log.log(Level.INFO, "donationDTO = " + donationDTO);
 
-		DonationCRUDServiceImpl.i().updadd(actorDTO, donationDTO);
+		if (supporterDTO.getId() == null) {
 
-		SupporterDTO supporterDTO = null;
-		try {
-			supporterDTO = SupporterCRUDServiceImpl.i().get(actorDTO, new SupporterIDType(donationDTO.getItemNumber().value()));
-		} catch (Exception e) {
-			e.printStackTrace();
-			log.log(Level.SEVERE, "exeption trying to find supporter (item_number=" + donationDTO.getItemNumber() + ")", e);
-		}
+			log.log(Level.WARNING, "supporter has no id");
 
-		if (supporterDTO == null) {
-
-			log.log(Level.WARNING, "no supporter with id " + donationDTO.getItemNumber() + "found");
-
-			return;
+			return donationDTO;
 
 		}
+
+		donationDTO = DonationCRUDServiceImpl.i().updadd(actorDTO, donationDTO);
 
 		Supporter2DonationDTO supporter2DonationDTO = new Supporter2DonationDTO();
 		supporter2DonationDTO.setDtoA(supporterDTO);
 		supporter2DonationDTO.setDtoB(donationDTO);
 		Supporter2DonationCRUDServiceImpl.i().updadd(actorDTO, supporter2DonationDTO);
+
+		return donationDTO;
 
 	}
 

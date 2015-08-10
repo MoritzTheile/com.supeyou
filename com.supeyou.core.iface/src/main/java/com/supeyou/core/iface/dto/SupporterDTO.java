@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.dto.AbstrDTO;
 import com.supeyou.crudie.iface.dto.UserDTO;
 
@@ -12,6 +13,8 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 	private static final long serialVersionUID = 824618946818L;
 
 	private int decendentCount = 0;
+
+	private AmountType decendantAmount;
 
 	private UserDTO userDTO;
 
@@ -71,6 +74,14 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 
 	public void setDecendentCount(int decendentCount) {
 		this.decendentCount = decendentCount;
+	}
+
+	public AmountType getDecendantAmount() {
+		return decendantAmount;
+	}
+
+	public void setDecendantAmount(AmountType decendantAmount) {
+		this.decendantAmount = decendantAmount;
 	}
 
 }

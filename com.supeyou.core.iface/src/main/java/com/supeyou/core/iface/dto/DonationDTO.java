@@ -2,6 +2,7 @@ package com.supeyou.core.iface.dto;
 
 import java.io.Serializable;
 
+import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.AbstrDTO;
 
@@ -12,7 +13,7 @@ public class DonationDTO extends AbstrDTO<DonationIDType> implements Serializabl
 	private SingleLineString256Type itemName;
 	private SingleLineString256Type itemNumber;
 	private SingleLineString256Type paymentStatus;
-	private SingleLineString256Type paymentAmount;
+	private AmountType paymentAmount;
 	private SingleLineString256Type paymentCurrency;
 	private SingleLineString256Type txnId;
 	private SingleLineString256Type receiverEmail;
@@ -55,14 +56,6 @@ public class DonationDTO extends AbstrDTO<DonationIDType> implements Serializabl
 
 	public void setPaymentStatus(SingleLineString256Type paymentStatus) {
 		this.paymentStatus = paymentStatus;
-	}
-
-	public SingleLineString256Type getPaymentAmount() {
-		return paymentAmount;
-	}
-
-	public void setPaymentAmount(SingleLineString256Type paymentAmount) {
-		this.paymentAmount = paymentAmount;
 	}
 
 	public SingleLineString256Type getPaymentCurrency() {
@@ -129,6 +122,14 @@ public class DonationDTO extends AbstrDTO<DonationIDType> implements Serializabl
 	@Override
 	public DonationIDType getId() {
 		return super.getId();
+	}
+
+	public AmountType getPaymentAmount() {
+		return paymentAmount;
+	}
+
+	public void setPaymentAmount(AmountType paymentAmount) {
+		this.paymentAmount = paymentAmount;
 	}
 
 }

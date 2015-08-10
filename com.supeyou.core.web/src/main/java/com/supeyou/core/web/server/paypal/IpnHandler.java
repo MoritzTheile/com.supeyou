@@ -12,13 +12,18 @@ import java.net.URLEncoder;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 
 import com.supeyou.core.iface.dto.DonationDTO;
+import com.supeyou.core.iface.dto.SupporterDTO;
+import com.supeyou.core.iface.dto.SupporterIDType;
 import com.supeyou.core.impl.DonationCRUDServiceImpl;
+import com.supeyou.core.impl.SupporterCRUDServiceImpl;
+import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 
 /**
@@ -103,7 +108,7 @@ public class IpnHandler {
 		donationDTO.setItemName(getParam(request, "item_name"));
 		donationDTO.setItemNumber(getParam(request, "item_number"));
 		donationDTO.setPaymentStatus(getParam(request, "payment_status"));
-		donationDTO.setPaymentAmount(getParam(request, "mc_gross"));
+		donationDTO.setPaymentAmount(toAmount(getParam(request, "mc_gross")));
 		donationDTO.setPaymentCurrency(getParam(request, "mc_currency"));
 		donationDTO.setTxnId(getParam(request, "txn_id"));
 		donationDTO.setReceiverEmail(getParam(request, "receiver_email"));
@@ -143,7 +148,15 @@ public class IpnHandler {
 
 		log.info("ipnInfo = " + donationDTO);
 
-		DonationCRUDServiceImpl.i().save(null, donationDTO);
+		SupporterDTO supporterDTO = null;
+		try {
+			supporterDTO = SupporterCRUDServiceImpl.i().get(null, new SupporterIDType(donationDTO.getItemNumber().value()));
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.log(Level.SEVERE, "exeption trying to find supporter (item_number=" + donationDTO.getItemNumber() + ")", e);
+		}
+
+		DonationCRUDServiceImpl.i().save(null, supporterDTO, donationDTO);
 
 		// 7. In case of any failed validation checks, throw {@link Exception}
 		if (donationDTO.getError() != null)
@@ -151,6 +164,25 @@ public class IpnHandler {
 
 		// 8. If all is well, return {@link DonationDTO} to the caller for further business logic execution
 		return donationDTO;
+	}
+
+	private AmountType toAmount(SingleLineString256Type param) {
+
+		if (param == null) {
+			return null;
+		}
+
+		String amountString = param.value();
+		try {
+			Integer amountInteger = Integer.parseInt(amountString);
+
+			return new AmountType(amountInteger * 100);
+
+		} catch (Exception e) {
+			log.log(Level.WARNING, "Amount " + amountString + " could not be parsed", e);
+		}
+
+		return null;
 	}
 
 	private SingleLineString256Type getParam(HttpServletRequest request, String paramName) {

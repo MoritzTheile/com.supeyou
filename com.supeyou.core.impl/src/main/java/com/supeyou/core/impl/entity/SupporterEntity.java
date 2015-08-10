@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.supeyou.core.iface.dto.SupporterIDType;
+import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.impl.entity.AbstrEntity;
 
 @Entity
@@ -17,6 +18,8 @@ import com.supeyou.crudie.impl.entity.AbstrEntity;
 public class SupporterEntity extends AbstrEntity<SupporterIDType> {
 
 	private int decendentCount = 0;
+
+	private Integer decendantAmount;
 
 	@OneToMany(mappedBy = "a"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private Collection<Supporter2InvitationEntity> supporter2invitationCollection = new ArrayList<Supporter2InvitationEntity>();
@@ -54,6 +57,22 @@ public class SupporterEntity extends AbstrEntity<SupporterIDType> {
 			this.dbid = null;
 		}
 
+	}
+
+	public AmountType getDecendantAmount() {
+		if (decendantAmount != null) {
+			return new AmountType(decendantAmount);
+		} else {
+			return null;
+		}
+	}
+
+	public void setDecendantAmount(AmountType decendantAmount) {
+		if (decendantAmount != null) {
+			this.decendantAmount = decendantAmount.value();
+		} else {
+			this.decendantAmount = null;
+		}
 	}
 
 	public Collection<Supporter2InvitationEntity> getSupporter2invitationCollection() {
