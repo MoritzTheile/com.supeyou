@@ -10,10 +10,13 @@ import com.supeyou.core.iface.dto.Supporter2DonationDTO;
 import com.supeyou.core.iface.dto.Supporter2DonationFetchQuery;
 import com.supeyou.core.iface.dto.Supporter2DonationIDType;
 import com.supeyou.core.iface.dto.SupporterDTO;
+import com.supeyou.core.impl.SupporterCRUDServiceImpl.SupporterAction;
 import com.supeyou.core.impl.entity.DonationEntity;
 import com.supeyou.core.impl.entity.Supporter2DonationEntity;
 import com.supeyou.core.impl.entity.SupporterEntity;
 import com.supeyou.crudie.iface.CRUDAssoService;
+import com.supeyou.crudie.iface.datatype.CRUDException;
+import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.impl.AbstrCRUDServiceImpl;
 import com.supeyou.crudie.impl.dtohelper.AbstrDTOHelper;
 import com.supeyou.crudie.impl.entity.UserEntity;
@@ -24,6 +27,48 @@ public class Supporter2DonationCRUDServiceImpl extends AbstrCRUDServiceImpl<Supp
 
 	private AbstrDTOHelper<SupporterEntity, SupporterDTO> aHelper;
 	private AbstrDTOHelper<DonationEntity, DonationDTO> bHelper;
+
+	@Override
+	protected void afterUpdadd(EntityManager em, UserEntity actor, final Supporter2DonationDTO supporter2DonationDTO) {
+
+		SupporterEntity supporterEntityFrom = em.find(SupporterEntity.class, supporter2DonationDTO.getDtoA().getId().value());
+
+		SupporterCRUDServiceImpl.handleAncestors(em, supporterEntityFrom, new SupporterAction() {
+
+			@Override
+			public void execute(EntityManager em, SupporterEntity supporterEntity) {
+
+				try {
+					System.out.println("asdftt parent: " + SupporterCRUDServiceImpl.i().get(null, supporterEntity.getId()).getUserDTO().getLoginId().value());
+				} catch (CRUDException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				// flush is necessary so the just added donation is considered
+				em.flush();
+
+				Integer sum = 0;
+
+				for (SupporterEntity descendantSupporterEntity : SupporterCRUDServiceImpl.getDirectDecendants(em, supporterEntity)) {
+
+					Integer ownAmount = SupporterCRUDServiceImpl.calculateOwnAmount(descendantSupporterEntity).value();
+					sum += ownAmount;
+					AmountType decendantAmount = descendantSupporterEntity.getDecendantAmount();
+
+					if (decendantAmount == null) {
+						decendantAmount = new AmountType(0);
+					}
+					sum += decendantAmount.value();
+
+				}
+
+				supporterEntity.setDecendantAmount(new AmountType(sum));
+
+			}
+		});
+
+	}
 
 	@Override
 	protected void postprocessDTO2Entity(EntityManager em, Supporter2DonationDTO dto, Supporter2DonationEntity entity) {

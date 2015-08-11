@@ -19,7 +19,7 @@ public class SupporterEntity extends AbstrEntity<SupporterIDType> {
 
 	private int decendentCount = 0;
 
-	private Integer decendantAmount;
+	private Integer decendantAmount = 0;
 
 	@OneToMany(mappedBy = "a"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private Collection<Supporter2InvitationEntity> supporter2invitationCollection = new ArrayList<Supporter2InvitationEntity>();

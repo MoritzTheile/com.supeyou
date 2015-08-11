@@ -84,6 +84,14 @@ public class InitialCoreDataTest {
 		SupporterDTO supporterHermannDTO = SupporterCRUDServiceImpl.i().get(InitialCoreData.i().admin, InitialCoreData.i().supporter_Hermann.getId());
 
 		Assert.assertEquals(new Integer(200), supporterHermannDTO.getOwnAmount().value());
+		Assert.assertEquals(new Integer(300), supporterHermannDTO.getDecendantAmount().value());
+
+		SupporterDTO supporterAndreaDTO = SupporterCRUDServiceImpl.i().get(InitialCoreData.i().admin, InitialCoreData.i().supporter_Andrea.getId());
+		Assert.assertEquals(new Integer(100), supporterAndreaDTO.getOwnAmount().value());
+		Assert.assertEquals(new Integer(600), supporterAndreaDTO.getDecendantAmount().value());
+
+		SupporterDTO supporterHugoDTO = SupporterCRUDServiceImpl.i().get(InitialCoreData.i().admin, InitialCoreData.i().supporter_Hugo.getId());
+		Assert.assertEquals(new Integer(700), supporterHugoDTO.getDecendantAmount().value());
 
 	}
 
