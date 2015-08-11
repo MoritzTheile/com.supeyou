@@ -217,6 +217,8 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 
 				log.log(Level.FINE, "updadding dto id=" + entity.getId());
 
+				afterUpdadd(em, actor, dto);
+
 				D resultDTO = helper.entity2DTO(entity);
 				postprocessEntity2DTO(em, entity, resultDTO);
 				return resultDTO;
@@ -227,6 +229,12 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 	}
 
 	protected void beforeUpdadd(EntityManager em, UserEntity actor, D dto) {
+
+		// made for overriding
+
+	}
+
+	protected void afterUpdadd(EntityManager em, UserEntity actor, D dto) {
 
 		// made for overriding
 

@@ -1,5 +1,8 @@
 package com.supeyou.core.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.EntityManager;
 
 import com.supeyou.core.iface.SupporterCRUDService;
@@ -230,7 +233,88 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 			ownAmount += supporter2DonationEntity.getB().getPaymentAmount().value();
 
 		}
+
 		return new AmountType(ownAmount);
+
+	}
+
+	public static void handleAncestors(EntityManager em, SupporterEntity supporterEntityFrom, SupporterAction action) {
+
+		Collection<SupporterEntity> collectedAncestorSupporters = new ArrayList<>();
+
+		handleAncestor(em, supporterEntityFrom, collectedAncestorSupporters, action);
+
+	}
+
+	public interface SupporterAction {
+		void execute(EntityManager em, SupporterEntity supporterEntity);
+	}
+
+	private static void handleAncestor(EntityManager em, SupporterEntity aSupporterEntity, Collection<SupporterEntity> collectedAncestorSupporters, SupporterAction action) {
+
+		if (!collectedAncestorSupporters.contains(aSupporterEntity)) {// operation only if not already executed via alternative path to root
+
+			action.execute(em, aSupporterEntity);
+
+			// asdf3t4 System.out.println("    decendantCount of " + SupporterCRUDServiceImpl.i().getUserEntity(em, aSupporterEntity).getLoginId().value() + " Supporter was incremented to " + aSupporterEntity.getDecendentCount());
+			// em.persist(aSupporterEntity);
+
+		}
+
+		collectedAncestorSupporters.add(aSupporterEntity);
+
+		{// recursion
+
+			Collection<SupporterEntity> directAncestorSupporters = getDirectAncestors(em, aSupporterEntity);
+
+			for (SupporterEntity supporterEntity : directAncestorSupporters) {
+
+				handleAncestor(em, supporterEntity, collectedAncestorSupporters, action);
+
+			}
+
+		}
+
+	}
+
+	private static Collection<SupporterEntity> getDirectAncestors(EntityManager em, SupporterEntity supporterEntity) {
+
+		Collection<SupporterEntity> directAncestorSupporters = new ArrayList<>();
+
+		for (Invitation2SupporterEntity invitation2SupporterEntity : supporterEntity.getInvitation2SupporterCollection()) {
+
+			// asdf3t4 System.out.println("    found an invitation2SupporterEntities");
+
+			for (Supporter2InvitationEntity supporter2InvitationEntity : invitation2SupporterEntity.getA().getSupporter2InvitationCollection()) {
+
+				// asdf3t4 System.out.println("    found an supporter2InvitationEntity");
+
+				directAncestorSupporters.add(supporter2InvitationEntity.getA());
+
+			}
+
+		}
+
+		return directAncestorSupporters;
+
+	}
+
+	public static Collection<SupporterEntity> getDirectDecendants(EntityManager em, SupporterEntity supporterEntity) {
+
+		Collection<SupporterEntity> directDecendantSupporters = new ArrayList<>();
+
+		for (Supporter2InvitationEntity supporter2InvitationEntity : supporterEntity.getSupporter2invitationCollection()) {
+
+			for (Invitation2SupporterEntity invitation2SupporterEntity : supporter2InvitationEntity.getB().getInvitation2SupporterCollection()) {
+
+				directDecendantSupporters.add(invitation2SupporterEntity.getB());
+
+			}
+
+		}
+
+		return directDecendantSupporters;
+
 	}
 
 	// Singleton
