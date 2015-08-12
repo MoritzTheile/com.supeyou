@@ -85,7 +85,7 @@ public class SupporterTreeWidget extends WidgetView {
 		edgeSlot.clear();
 		childrenSlot.clear();
 
-		amountLabel.setText(HELPER.cent2euro((getAmountValueNullsave(supporterDTO.getOwnAmount()) + getAmountValueNullsave(supporterDTO.getDecendantAmount()))) + " " + Text.i.EUROSYMBOL());
+		amountLabel.setText(HELPER.cent2euro((getAmountValueNullsave(supporterDTO.getOwnAmount()) + getAmountValueNullsave(supporterDTO.getDecendantAmount()))) + " " + Text.i.EUROSYMBOL() + " (" + supporterDTO.getDecendentCount() + ")");
 
 		nameLabel.setHTML(getHtml(supporterDTO));
 
@@ -127,7 +127,7 @@ public class SupporterTreeWidget extends WidgetView {
 
 	}
 
-	private Integer getAmountValueNullsave(AmountType amountType) {
+	public static Integer getAmountValueNullsave(AmountType amountType) {
 		if (amountType == null) {
 			return 0;
 		}

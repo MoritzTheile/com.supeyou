@@ -32,7 +32,7 @@ public class Supporter2DonationCRUDServiceImpl extends AbstrCRUDServiceImpl<Supp
 
 		SupporterEntity supporterEntityFrom = em.find(SupporterEntity.class, supporter2DonationDTO.getDtoA().getId().value());
 
-		SupporterCRUDServiceImpl.handleAncestors(em, supporterEntityFrom, true, new SupporterAction() {
+		SupporterCRUDServiceImpl.executeActionAndRecurseOnAncestors(em, supporterEntityFrom, true, new SupporterAction() {
 
 			@Override
 			public void execute(EntityManager em, SupporterEntity supporterEntity) {

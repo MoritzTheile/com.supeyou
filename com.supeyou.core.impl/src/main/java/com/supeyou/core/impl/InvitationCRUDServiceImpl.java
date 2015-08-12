@@ -99,7 +99,7 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 
 	}
 
-	private void acceptInvitationasdf(UserDTO actorDTO, InvitationDTO invitationDTO, SupporterDTO supporterDTO) throws CRUDException {
+	private void acceptInvitation(UserDTO actorDTO, InvitationDTO invitationDTO, SupporterDTO supporterDTO) throws CRUDException {
 
 		Invitation2SupporterFetchQuery dtoQuery = new Invitation2SupporterFetchQuery();
 		dtoQuery.setIdA(invitationDTO.getId());
@@ -196,7 +196,7 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 
 		SupporterDTO supporterDTO = SupporterCRUDServiceImpl.i().getOrCreate(actorDTO, heroDTO, userDTO);
 
-		acceptInvitationasdf(actorDTO, invitationDTO, supporterDTO);
+		acceptInvitation(actorDTO, invitationDTO, supporterDTO);
 
 		return supporterDTO;
 	}
