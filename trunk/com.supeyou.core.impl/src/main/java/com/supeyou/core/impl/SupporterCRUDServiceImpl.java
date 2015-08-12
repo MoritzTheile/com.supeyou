@@ -238,11 +238,14 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 
 	}
 
-	public static void handleAncestors(EntityManager em, SupporterEntity supporterEntityFrom, boolean onlyTreeAncestor, SupporterAction action) {
+	public static void executeActionAndRecurseOnAncestors(EntityManager em, SupporterEntity supporterEntityFrom, boolean onlyTreeAncestor, SupporterAction action) {
+
+		System.out.println("\n\n---------------------------------------------------");
+		System.out.println("asdfuuu handling ancestors of " + getUserEntity(em, supporterEntityFrom).getLoginId());
 
 		Collection<SupporterEntity> collectedAncestorSupporters = new ArrayList<>();
 
-		handleAncestors(em, supporterEntityFrom, collectedAncestorSupporters, onlyTreeAncestor, action);
+		executeActionAndRecurseOnAncestors(em, supporterEntityFrom, collectedAncestorSupporters, onlyTreeAncestor, action);
 
 	}
 
@@ -250,25 +253,22 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 		void execute(EntityManager em, SupporterEntity supporterEntity);
 	}
 
-	private static void handleAncestors(EntityManager em, SupporterEntity aSupporterEntity, Collection<SupporterEntity> collectedAncestorSupporters, boolean onlyTreeAncestor, SupporterAction action) {
+	private static void executeActionAndRecurseOnAncestors(EntityManager em, SupporterEntity aSupporterEntity, Collection<SupporterEntity> collectedAncestorSupporters, boolean onlyTreeAncestor, SupporterAction action) {
 
 		Collection<SupporterEntity> directAncestorSupporters = getDirectAncestors(em, aSupporterEntity, onlyTreeAncestor);
+		if (!collectedAncestorSupporters.contains(aSupporterEntity)) {// operation only if not already executed via alternative path to root
+
+			action.execute(em, aSupporterEntity);
+
+		}
+
+		collectedAncestorSupporters.add(aSupporterEntity);
 
 		for (SupporterEntity supporterEntity : directAncestorSupporters) {
-
-			if (!collectedAncestorSupporters.contains(aSupporterEntity)) {// operation only if not already executed via alternative path to root
-
-				action.execute(em, aSupporterEntity);
-
-				// asdf3t4 System.out.println("    decendantCount of " + SupporterCRUDServiceImpl.i().getUserEntity(em, aSupporterEntity).getLoginId().value() + " Supporter was incremented to " + aSupporterEntity.getDecendentCount());
-				// em.persist(aSupporterEntity);
-
-			}
-
-			collectedAncestorSupporters.add(aSupporterEntity);
+			System.out.println("asdfuuu child:" + getUserEntity(em, aSupporterEntity).getLoginId() + " -> " + getUserEntity(em, supporterEntity).getLoginId());
 
 			// recursion
-			handleAncestors(em, supporterEntity, collectedAncestorSupporters, onlyTreeAncestor, action);
+			executeActionAndRecurseOnAncestors(em, supporterEntity, collectedAncestorSupporters, onlyTreeAncestor, action);
 
 		}
 

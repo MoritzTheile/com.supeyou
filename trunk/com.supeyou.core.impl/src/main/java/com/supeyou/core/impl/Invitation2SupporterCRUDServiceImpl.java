@@ -28,19 +28,15 @@ public class Invitation2SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<In
 
 	protected void afterUpdadd(EntityManager em, UserEntity actor, Invitation2SupporterDTO dto) {
 
-		if (dto.getTreeDestroying()) {
-			System.out.println("tree destroying edge is going to be created");
-		}
-
 		SupporterEntity supporterEntityEdited = InvitationCRUDServiceImpl.i().getSupporter(em, em.find(InvitationEntity.class, dto.getDtoA().getId().value()));
 
-		SupporterCRUDServiceImpl.handleAncestors(em, supporterEntityEdited, true, new SupporterAction() {
+		// flush is necessary so the just followed invitation is considered
+		em.flush();
+
+		SupporterCRUDServiceImpl.executeActionAndRecurseOnAncestors(em, supporterEntityEdited, true, new SupporterAction() {
 
 			@Override
 			public void execute(EntityManager em, SupporterEntity supporterEntity) {
-
-				// flush is necessary so the just followed invitation is considered
-				em.flush();
 
 				Integer sum = 0;
 
@@ -49,6 +45,7 @@ public class Invitation2SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<In
 					sum += descendantSupporterEntity.getDecendentCount() + 1;
 
 				}
+				System.out.println("asdfuuu setting sum of " + SupporterCRUDServiceImpl.getUserEntity(em, supporterEntity).getLoginId() + " too " + sum);
 
 				supporterEntity.setDecendentCount(sum);
 
