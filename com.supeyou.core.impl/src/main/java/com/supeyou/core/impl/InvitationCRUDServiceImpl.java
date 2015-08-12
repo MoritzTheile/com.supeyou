@@ -112,8 +112,16 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 		Invitation2SupporterDTO invitation2SupporterDTO = new Invitation2SupporterDTO();
 		invitation2SupporterDTO.setDtoA(invitationDTO);
 		invitation2SupporterDTO.setDtoB(supporterDTO);
+		invitation2SupporterDTO.setTreeDestroying(alreadySupporter(actorDTO, supporterDTO));
+
 		Invitation2SupporterCRUDServiceImpl.i().updadd(actorDTO, invitation2SupporterDTO);
 
+	}
+
+	private boolean alreadySupporter(UserDTO actorDTO, SupporterDTO supporterDTO) throws CRUDException {
+		Invitation2SupporterFetchQuery dtoQuery = new Invitation2SupporterFetchQuery();
+		dtoQuery.setIdB(supporterDTO.getId());
+		return Invitation2SupporterCRUDServiceImpl.i().fetchList(actorDTO, new Page(), dtoQuery).size() > 0;
 	}
 
 	private HeroDTO getHero(UserDTO actorDTO, final InvitationDTO invitationDTO) throws CRUDException {
