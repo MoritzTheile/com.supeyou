@@ -6,7 +6,7 @@ public class Invitation2SupporterDTO extends AbstrAssoDTO<InvitationDTO, Support
 
 	private static final long serialVersionUID = 536835689L;
 
-	private boolean createsCycle = false;
+	private boolean treeDestroying = true;
 
 	public Invitation2SupporterDTO() {
 	}
@@ -49,11 +49,12 @@ public class Invitation2SupporterDTO extends AbstrAssoDTO<InvitationDTO, Support
 		super.setDtoB(dtoB);
 	}
 
-	public boolean isCreatesCycle() {
-		return createsCycle;
+	public boolean getTreeDestroying() {
+		return treeDestroying;
 	}
 
-	public void setCreatesCycle(boolean createsCycle) {
-		this.createsCycle = createsCycle;
+	public void setTreeDestroying(boolean treeDestroying) {
+		this.treeDestroying = treeDestroying;
 	}
+
 }

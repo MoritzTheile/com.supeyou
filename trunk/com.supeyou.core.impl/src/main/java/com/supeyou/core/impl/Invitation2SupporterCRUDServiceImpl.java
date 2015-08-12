@@ -26,23 +26,35 @@ public class Invitation2SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<In
 	private AbstrDTOHelper<InvitationEntity, InvitationDTO> aHelper;
 	private AbstrDTOHelper<SupporterEntity, SupporterDTO> bHelper;
 
-	protected void beforeUpdadd(EntityManager em, UserEntity actor, Invitation2SupporterDTO dto) {
+	protected void afterUpdadd(EntityManager em, UserEntity actor, Invitation2SupporterDTO dto) {
 
-		if (dto.getId() == null) { // a new edge will be created so ancestors have to be updated
+		if (dto.getTreeDestroying()) {
+			System.out.println("tree destroying edge is going to be created");
+		}
 
-			SupporterEntity supporterEntityFrom = InvitationCRUDServiceImpl.i().getSupporter(em, em.find(InvitationEntity.class, dto.getDtoA().getId().value()));
+		SupporterEntity supporterEntityEdited = InvitationCRUDServiceImpl.i().getSupporter(em, em.find(InvitationEntity.class, dto.getDtoA().getId().value()));
 
-			SupporterCRUDServiceImpl.handleAncestors(em, supporterEntityFrom, new SupporterAction() {
+		SupporterCRUDServiceImpl.handleAncestors(em, supporterEntityEdited, true, new SupporterAction() {
 
-				@Override
-				public void execute(EntityManager em, SupporterEntity supporterEntity) {
+			@Override
+			public void execute(EntityManager em, SupporterEntity supporterEntity) {
 
-					supporterEntity.setDecendentCount(supporterEntity.getDecendentCount() + 1);
+				// flush is necessary so the just followed invitation is considered
+				em.flush();
+
+				Integer sum = 0;
+
+				for (SupporterEntity descendantSupporterEntity : SupporterCRUDServiceImpl.getDirectDecendants(em, supporterEntity, true)) {
+
+					sum += descendantSupporterEntity.getDecendentCount() + 1;
 
 				}
-			});
 
-		}
+				supporterEntity.setDecendentCount(sum);
+
+			}
+
+		});
 
 	}
 

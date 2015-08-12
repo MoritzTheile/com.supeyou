@@ -11,9 +11,12 @@ import com.google.gwt.user.client.ui.Label;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.iface.dto.SupporterFetchQuery;
+import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.view.heropage.supportertree.edges.Edge;
 import com.supeyou.core.web.client.view.heropage.supportertree.edges.EdgesWidget;
+import com.supeyou.crudie.iface.common.HELPER;
 import com.supeyou.crudie.iface.datatype.Page;
+import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
 
 public class SupporterTreeWidget extends WidgetView {
@@ -82,6 +85,8 @@ public class SupporterTreeWidget extends WidgetView {
 		edgeSlot.clear();
 		childrenSlot.clear();
 
+		amountLabel.setText(HELPER.cent2euro((getAmountValueNullsave(supporterDTO.getOwnAmount()) + getAmountValueNullsave(supporterDTO.getDecendantAmount()))) + " " + Text.i.EUROSYMBOL());
+
 		nameLabel.setHTML(getHtml(supporterDTO));
 
 		if (COLLAPSE_MODE.EXPANDED.equals(collapseMode)) {
@@ -120,6 +125,13 @@ public class SupporterTreeWidget extends WidgetView {
 
 		}
 
+	}
+
+	private Integer getAmountValueNullsave(AmountType amountType) {
+		if (amountType == null) {
+			return 0;
+		}
+		return amountType.value();
 	}
 
 	private String getHtml(SupporterDTO supporterDTO2) {

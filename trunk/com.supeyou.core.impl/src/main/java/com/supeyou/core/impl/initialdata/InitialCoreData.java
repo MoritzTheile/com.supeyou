@@ -64,6 +64,7 @@ public class InitialCoreData {
 	public SupporterDTO supporter_Christian;
 	public SupporterDTO supporter_Herbert;
 	public SupporterDTO supporter_Eugen;
+	public SupporterDTO supporter_Eugen2ndInvitation;
 	public SupporterDTO supporter_Thomas;
 	public SupporterDTO supporter_Melanie;
 	public SupporterDTO supporter_Marion;
@@ -79,6 +80,8 @@ public class InitialCoreData {
 	public InvitationDTO invitation_0105_2322;
 	public InvitationDTO invitation_0305_1948;
 	public InvitationDTO invitation_0405_0945;
+	public InvitationDTO invitation_0405_0955;
+
 	public InvitationDTO invitation_0205_0734;
 
 	public DonationDTO donationDTO_Marion2Euro;
@@ -161,9 +164,16 @@ public class InitialCoreData {
 
 		invitation_0405_0945 = createInvitation("0405_0945", supporter_Gunnar);
 
+		invitation_0405_0955 = createInvitation("0405_0945", supporter_Herbert);
+
 		invitation_0205_0734 = createInvitation("0205_0734", supporter_Eugen);
 		supporter_Melanie = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Melanie, invitation_0205_0734.getToken());
 		supporter_Marion = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Marion, invitation_0205_0734.getToken());
+
+		// tree destroying edges:
+		supporter_Eugen2ndInvitation = InvitationCRUDServiceImpl.i().followInvitation(admin, user_Eugen, invitation_0105_2232.getToken());
+		InvitationCRUDServiceImpl.i().followInvitation(admin, user_Marie, invitation_0105_2232.getToken());
+		InvitationCRUDServiceImpl.i().followInvitation(admin, user_Otto, invitation_0405_0955.getToken());
 
 		{
 			DonationDTO donationDTO = new DonationDTO();

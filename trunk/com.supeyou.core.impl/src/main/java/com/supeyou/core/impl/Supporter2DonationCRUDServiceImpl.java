@@ -15,7 +15,6 @@ import com.supeyou.core.impl.entity.DonationEntity;
 import com.supeyou.core.impl.entity.Supporter2DonationEntity;
 import com.supeyou.core.impl.entity.SupporterEntity;
 import com.supeyou.crudie.iface.CRUDAssoService;
-import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.impl.AbstrCRUDServiceImpl;
 import com.supeyou.crudie.impl.dtohelper.AbstrDTOHelper;
@@ -33,24 +32,17 @@ public class Supporter2DonationCRUDServiceImpl extends AbstrCRUDServiceImpl<Supp
 
 		SupporterEntity supporterEntityFrom = em.find(SupporterEntity.class, supporter2DonationDTO.getDtoA().getId().value());
 
-		SupporterCRUDServiceImpl.handleAncestors(em, supporterEntityFrom, new SupporterAction() {
+		SupporterCRUDServiceImpl.handleAncestors(em, supporterEntityFrom, true, new SupporterAction() {
 
 			@Override
 			public void execute(EntityManager em, SupporterEntity supporterEntity) {
-
-				try {
-					System.out.println("asdftt parent: " + SupporterCRUDServiceImpl.i().get(null, supporterEntity.getId()).getUserDTO().getLoginId().value());
-				} catch (CRUDException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 
 				// flush is necessary so the just added donation is considered
 				em.flush();
 
 				Integer sum = 0;
 
-				for (SupporterEntity descendantSupporterEntity : SupporterCRUDServiceImpl.getDirectDecendants(em, supporterEntity)) {
+				for (SupporterEntity descendantSupporterEntity : SupporterCRUDServiceImpl.getDirectDecendants(em, supporterEntity, true)) {
 
 					Integer ownAmount = SupporterCRUDServiceImpl.calculateOwnAmount(descendantSupporterEntity).value();
 					sum += ownAmount;
