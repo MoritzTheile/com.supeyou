@@ -39,6 +39,14 @@ public abstract class MenuAndDisplay {
 
 	}
 
+	public void clear() {
+		menuItems.clear();
+		menuSlot.clear();
+		displaySlot.clear();
+		menuSlot.clear();
+		selectedMenuItem = null;
+	}
+
 	public void selectMenuItem(Widget menuItem) {
 		if (menuItem == null) {
 			return;
@@ -55,6 +63,10 @@ public abstract class MenuAndDisplay {
 		displaySlot.clear();
 		displaySlot.add(getWidgetFor(menuItem));
 
+	}
+
+	public Widget getSelectedMenuItem() {
+		return selectedMenuItem;
 	}
 
 	public abstract Widget getWidgetFor(Widget menuItem);
