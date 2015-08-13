@@ -47,7 +47,8 @@ public class UserCRUDServiceImpl extends AbstrCRUDServiceImpl<UserDTO, UserEntit
 					entity = new UserEntity();
 
 					entity.setId(initialAdminId);
-					entity.setLoginId(new SingleLineString256Type("MT"));
+					entity.setLoginId(new SingleLineString256Type("theile@mtheile.com"));
+					entity.setAuthToken(new SingleLineString256Type("theile"));
 					entity.getRoles().add(ROLE.ADMIN);
 
 					em.merge(entity);
