@@ -174,9 +174,9 @@ public class IpnHandler {
 
 		String amountString = param.value();
 		try {
-			Integer amountInteger = Integer.parseInt(amountString);
+			Double amountInteger = Double.parseDouble(amountString);
 
-			return new AmountType(amountInteger * 100);
+			return new AmountType(new Double(amountInteger * 100).intValue());
 
 		} catch (Exception e) {
 			log.log(Level.WARNING, "Amount " + amountString + " could not be parsed", e);
