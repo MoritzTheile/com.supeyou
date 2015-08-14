@@ -156,7 +156,9 @@ public class IpnHandler {
 			log.log(Level.SEVERE, "exeption trying to find supporter (item_number=" + donationDTO.getItemNumber() + ")", e);
 		}
 
-		DonationCRUDServiceImpl.i().save(null, supporterDTO, donationDTO);
+		if (supporterDTO != null) {
+			DonationCRUDServiceImpl.i().save(null, supporterDTO, donationDTO);
+		}
 
 		// 7. In case of any failed validation checks, throw {@link Exception}
 		if (donationDTO.getError() != null)
