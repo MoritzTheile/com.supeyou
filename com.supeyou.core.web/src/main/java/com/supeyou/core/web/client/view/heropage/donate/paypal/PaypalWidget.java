@@ -13,9 +13,10 @@ public class PaypalWidget extends WidgetView {
 	}
 
 	private final String htmlTemplate = "" +
-			"<form target=\"paypal\" action=\"https://www.paypal.com/cgi-bin/webscr\" method=\"post\">" +
-			"<input type=\"hidden\" name=\"cmd\" value=\"_xclick-subscriptions\">" +
-			"<!-- <input type=\"hidden\" name=\"redirect_cmd\" value=\"_xclick-subscriptions\"> -->" +
+			"<form target=\"paypal\" action=\"https://www.sandbox.paypal.com/cgi-bin/webscr\" method=\"post\">" +
+			"<input type=\"hidden\" name=\"cmd\" value=\"_donations\">" +
+			// "<input type=\"hidden\" name=\"cmd\" value=\"_xclick-subscriptions\">" +
+			// "<!-- <input type=\"hidden\" name=\"redirect_cmd\" value=\"_xclick-subscriptions\"> -->" +
 			"<input type=\"hidden\" name=\"business\" value=\"business_TOKEN\">" +
 			"<input type=\"hidden\" name=\"item_name\" value=\"item_name_TOKEN\">" +
 			"<input type=\"hidden\" name=\"item_number\" value=\"item_number_TOKEN\">" +
