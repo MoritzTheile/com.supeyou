@@ -23,7 +23,7 @@ public class DonateWidget extends WidgetView {
 			}
 		}, ClickEvent.getType());
 
-		paypalButtonSlot.add(new PaypalWidget("paypal.com-facilitator@moritztheile.de", "Hero Support", "hero_" + supporterDTO.getHeroDTO().getId().value()));
+		paypalButtonSlot.add(new PaypalWidget("paypal.com-facilitator@moritztheile.de", "Hero Support", "" + supporterDTO.getHeroDTO().getId().value()));
 
 		render(supporterDTO);
 	}
