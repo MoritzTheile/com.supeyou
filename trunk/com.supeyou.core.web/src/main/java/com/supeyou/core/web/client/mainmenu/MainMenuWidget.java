@@ -1,9 +1,9 @@
 package com.supeyou.core.web.client.mainmenu;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.supeyou.core.web.client.mainmenu.addhero.AddHeroWidget;
+import com.supeyou.core.web.client.mainmenu.adminmenu.AdminMenuWidget;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.rpc.hero.chooserlarge.ChooserLargeWidget;
 import com.supeyou.crudie.web.client.model.AbstrObservable.Observer;
@@ -34,14 +34,17 @@ public class MainMenuWidget extends WidgetView {
 
 			@Override
 			public Widget getWidgetFor(Widget menuItem) {
+
 				if (menuItem1 == menuItem) {
 					return new ChooserLargeWidget();
 				}
+
 				if (menuItem2 == menuItem) {
 					return new AddHeroWidget();
 				}
+
 				if (menuItem3 == menuItem) {
-					Window.alert("TODO gagll");
+					return new AdminMenuWidget();
 				}
 
 				return null;
