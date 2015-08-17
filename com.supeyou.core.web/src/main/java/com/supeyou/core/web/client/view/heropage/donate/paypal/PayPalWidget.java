@@ -2,9 +2,9 @@ package com.supeyou.core.web.client.view.heropage.donate.paypal;
 
 import com.google.gwt.user.client.ui.HTML;
 
-public class PaypalWidget extends WidgetView {
+public class PayPalWidget extends WidgetView {
 
-	public PaypalWidget(String business_TOKEN, String item_name_TOKEN, String item_number_TOKEN) {
+	public PayPalWidget(String business_TOKEN, String item_name_TOKEN, String item_number_TOKEN) {
 		String html = htmlTemplate;
 		html = html.replaceAll("business_TOKEN", business_TOKEN);
 		html = html.replaceAll("item_name_TOKEN", item_name_TOKEN);
