@@ -8,12 +8,12 @@ public class FieldForURLType extends AbstrTextBoxField<URLType> {
 		super(null, false);
 	}
 
-	public FieldForURLType(URLType emailAddress) {
-		super(emailAddress, false);
+	public FieldForURLType(URLType urlType) {
+		super(urlType, false);
 	}
 
-	public FieldForURLType(URLType emailAddress, boolean focused) {
-		super(emailAddress, focused);
+	public FieldForURLType(URLType urlType, boolean focused) {
+		super(urlType, focused);
 	}
 
 	@Override
