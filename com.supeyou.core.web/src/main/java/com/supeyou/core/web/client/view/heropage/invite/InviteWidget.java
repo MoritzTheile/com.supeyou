@@ -3,7 +3,6 @@ package com.supeyou.core.web.client.view.heropage.invite;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.supeyou.core.iface.dto.InvitationDTO;
@@ -22,19 +21,7 @@ public class InviteWidget extends WidgetView {
 
 	public InviteWidget(final SupporterDTO supporterDTO) {
 
-		Window.scrollTo(0, 0);
-
 		createInvitation(supporterDTO);
-
-		closeButton.addDomHandler(new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-
-				History.back();
-
-			}
-		}, ClickEvent.getType());
 
 		reloadButton.addDomHandler(new ClickHandler() {
 

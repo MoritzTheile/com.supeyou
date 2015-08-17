@@ -4,15 +4,17 @@
 	xmlns:m="urn:import:com.supeyou.crudie.web.client.fields.types"
 	xmlns:m2="urn:import:com.supeyou.crudie.web.client.uiorga.flatbutton">
 	<ui:with field='text'
-		type='com.supeyou.core.web.client.resources.i18n.Text' />
+		type='com.supeyou.crudie.web.client.resources.i18n.Text' />
  
-	<g:FlowPanel styleName="donate" ui:field="root">
+	<g:FlowPanel styleName="modal-widget" ui:field="root">
 	
-		<g:HTML styleName="text-html" HTML="{text.DONATE_Text_HTML}"></g:HTML>
+		<g:FlowPanel styleName="header" >
+			<g:Label  styleName="header-label" ui:field="headerLabel"></g:Label>
+			<g:FlowPanel styleName="close-button" ui:field="closeButton"></g:FlowPanel>
+		</g:FlowPanel>
 		
-		<g:FlowPanel  styleName="paypal-button-slot" ui:field="paypalButtonSlot"></g:FlowPanel>
-
-		<g:HTML styleName="text-html" HTML="{text.DONATE_Text2_HTML}"></g:HTML>
+		<g:FlowPanel styleName="widget-slot" ui:field="widgetSlot">
+		</g:FlowPanel>
 		
 	</g:FlowPanel>
 

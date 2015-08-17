@@ -15,9 +15,6 @@ public class WidgetView extends Composite {
 	FlowPanel root;
 
 	@UiField
-	FlowPanel closeButton;
-
-	@UiField
 	FlowPanel paypalButtonSlot;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {

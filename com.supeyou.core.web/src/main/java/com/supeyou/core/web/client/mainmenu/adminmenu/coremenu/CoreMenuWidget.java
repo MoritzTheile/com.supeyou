@@ -34,17 +34,12 @@ public class CoreMenuWidget extends WidgetView {
 
 							if (selection.size() == 1) {
 
-								final PopupWidget formPopup = new PopupWidget(false);
-								formPopup.setPosition(100, 700);
-								formPopup.init(
-										new FormWidget(dataProvider, selection.iterator().next()) {
-											@Override
-											protected void close() {
-												widgetList.getSelectionModel().clearSelection();
-												formPopup.closePopup();
-											}
-										}
-										);
+								new PopupWidget(new FormWidget(dataProvider, selection.iterator().next()) {
+									@Override
+									protected void close() {
+										widgetList.getSelectionModel().clearSelection();
+									}
+								}, false);
 
 							} else {
 								Window.alert("selection size has to be equal one (codemarker=asorg0)");
