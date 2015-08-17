@@ -10,6 +10,7 @@ import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidg
 import com.supeyou.core.web.client.view.supportercard.SupporterCardWidget;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
+import com.supeyou.crudie.web.client.uiorga.popup.contentwrapper.ContentWrapperWidget;
 
 public class HeroPageWidget extends WidgetView {
 
@@ -34,7 +35,7 @@ public class HeroPageWidget extends WidgetView {
 				@Override
 				public void onClick(ClickEvent event) {
 
-					new PopupWidget(new DonateWidget(supporterDTO), true);
+					new PopupWidget(new ContentWrapperWidget(Text.i.DONATE_HeaderLabel(), new DonateWidget(supporterDTO)), true);
 
 				}
 			});
@@ -49,7 +50,7 @@ public class HeroPageWidget extends WidgetView {
 				@Override
 				public void onClick(ClickEvent event) {
 
-					new PopupWidget(new InviteWidget(supporterDTO), true);
+					new PopupWidget(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), new InviteWidget(supporterDTO)), true);
 
 				}
 			});

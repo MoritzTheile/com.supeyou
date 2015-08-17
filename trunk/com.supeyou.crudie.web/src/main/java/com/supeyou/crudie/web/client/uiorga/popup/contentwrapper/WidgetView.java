@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.view.heropage.invite;
+package com.supeyou.crudie.web.client.uiorga.popup.contentwrapper;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -16,31 +16,13 @@ public class WidgetView extends Composite {
 	FlowPanel root;
 
 	@UiField
-	FlowPanel reloadButton;
+	Label headerLabel;
 
 	@UiField
-	Label linkLabel;
-
-	// @UiField
-	// FlowPanel shareButton;
+	FlowPanel closeButton;
 
 	@UiField
-	FlowPanel linkNameTextBoxSlot;
-
-	@UiField
-	FlowPanel shareButtonMail;
-
-	@UiField
-	FlowPanel shareButtonWhatsapp;
-
-	@UiField
-	FlowPanel shareButtonGoogle;
-
-	@UiField
-	FlowPanel shareButtonFacebook;
-
-	@UiField
-	FlowPanel shareButtonTwitter;
+	FlowPanel widgetSlot;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}

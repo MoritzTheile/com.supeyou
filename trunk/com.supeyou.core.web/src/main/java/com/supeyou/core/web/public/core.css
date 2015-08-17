@@ -58,26 +58,26 @@
 	cursor: pointer;
 }
 
-.modal-widget.donate{
+.modal-widget .donate{
 	padding-bottom: 400px;
 }
 
 
-.modal-widget.invite .link-row{
+.modal-widget .invite .link-row{
 	vertical-align:middle;
 	white-space: nowrap;
 	position: relative;
 }
 
-.modal-widget.invite .link-row > * {
+.modal-widget .invite .link-row > * {
 	display:inline-block;
 	vertical-align: middle;
 }
-.modal-widget.invite .link-label{
+.modal-widget .invite .link-label{
 	background-color: #C6D9F1;
 	padding-left: 40px;
 }
-.modal-widget.invite .link-row .reload-button{
+.modal-widget .invite .link-row .reload-button{
 	position: absolute;
 	padding:8px 8px 4px 8px;
   	height: 16px;
@@ -90,23 +90,23 @@
   	cursor: pointer;
 }
 
-.modal-widget.invite .share-buttons-slot{
+.modal-widget .invite .share-buttons-slot{
 	text-align:left;
 	display: inline-block;
 	margin-top: 16px;
 }
 
-.modal-widget.invite .share-button{
+.modal-widget .invite .share-button{
 	margin: 12px 0 12px 0;
 }
 
-.modal-widget.invite .share-button > *{
+.modal-widget .invite .share-button > *{
 	display: inline-block;
   	vertical-align: middle;
   	cursor:pointer;
 }
 
-.modal-widget.invite .link-row .share-button{
+.modal-widget .invite .link-row .share-button{
 	height: 16px;
 	width: 16px;
 	margin: 0px 12px;
@@ -117,12 +117,12 @@
   	cursor: pointer;
 }
 
-.modal-widget.invite .link-hint-label{
+.modal-widget .invite .link-hint-label{
 	font-size: 12px;
 	margin-top: 12px;
 }
 
-.modal-widget.invite .share-button .image.clipboard{
+.modal-widget .invite .share-button .image.clipboard{
 	
 	height: 32px;
 	width: 32px;
@@ -135,7 +135,7 @@
 }
 
 
-.modal-widget.invite .share-button .image.mail{
+.modal-widget .invite .share-button .image.mail{
 	
 	height: 32px;
 	width: 32px;
@@ -147,7 +147,7 @@
   	cursor: pointer;
 }
 
-.modal-widget.invite .share-button .image.whatsapp{
+.modal-widget .invite .share-button .image.whatsapp{
 	
 	height: 32px;
 	width: 32px;
@@ -159,7 +159,7 @@
   	cursor: pointer;
 }
 
-.modal-widget.invite .share-button .image.google{
+.modal-widget .invite .share-button .image.google{
 	
 	height: 32px;
 	width: 32px;
@@ -171,7 +171,7 @@
   	cursor: pointer;
 }
 
-.modal-widget.invite .share-button .image.facebook{
+.modal-widget .invite .share-button .image.facebook{
 	
 	height: 32px;
 	width: 32px;
@@ -183,7 +183,7 @@
   	cursor: pointer;
 }
 
-.modal-widget.invite .share-button .image.twitter{
+.modal-widget .invite .share-button .image.twitter{
 	
 	height: 32px;
 	width: 32px;
@@ -198,10 +198,10 @@
 
 
 
-.modal-widget.invite .link-name-textbox-slot{
+.modal-widget .invite .link-name-textbox-slot{
 	margin: 24px 0 0 0;
 }
-.modal-widget.invite .link-name-label{
+.modal-widget .invite .link-name-label{
 	font-size: 10px;
 	padding: 0px 24px 120px 24px;
 	width: 180px;

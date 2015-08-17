@@ -6,13 +6,8 @@
 	<ui:with field='text'
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
  
-	<g:FlowPanel styleName="modal-widget invite" ui:field="root">
+	<g:FlowPanel styleName="invite" ui:field="root">
 	
-		<g:FlowPanel styleName="header" >
-			<g:Label  styleName="header-label" text="{text.INVITE_HeaderLabel}"></g:Label>
-			<g:FlowPanel styleName="close-button" ui:field="closeButton"></g:FlowPanel>
-		</g:FlowPanel>
-		
 		<g:HTML styleName="text-html" HTML="{text.INVITE_Text_HTML}"></g:HTML>
 		
 		<g:FlowPanel styleName="link-row" >
