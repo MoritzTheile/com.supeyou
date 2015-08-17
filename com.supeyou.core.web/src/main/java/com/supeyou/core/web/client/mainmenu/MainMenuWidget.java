@@ -1,11 +1,16 @@
 package com.supeyou.core.web.client.mainmenu;
 
+import java.util.List;
+
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
+import com.supeyou.core.iface.dto.HeroDTO;
+import com.supeyou.core.web.client.HistoryController;
 import com.supeyou.core.web.client.mainmenu.addhero.AddHeroWidget;
 import com.supeyou.core.web.client.mainmenu.adminmenu.AdminMenuWidget;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.rpc.hero.chooserlarge.ChooserLargeWidget;
+import com.supeyou.core.web.client.rpc.hero.chooserlarge.item.ItemWidget;
 import com.supeyou.crudie.web.client.model.AbstrObservable.Observer;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.uiorga.menuanddisplay.MenuAndDisplay;
@@ -36,7 +41,25 @@ public class MainMenuWidget extends WidgetView {
 			public Widget getWidgetFor(Widget menuItem) {
 
 				if (menuItem1 == menuItem) {
-					return new ChooserLargeWidget();
+					return new ChooserLargeWidget() {
+
+						@Override
+						public void onSelectionChange(List<HeroDTO> selection) {
+
+							if (selection.size() == 1) {
+
+								HistoryController.i().showHeroPage(selection.iterator().next());
+
+							} else {
+								// nothing
+							}
+						}
+
+						public ItemWidget getHeroWidget(final HeroDTO data) {
+
+							return new ItemWidget(data);
+						}
+					};
 				}
 
 				if (menuItem2 == menuItem) {
