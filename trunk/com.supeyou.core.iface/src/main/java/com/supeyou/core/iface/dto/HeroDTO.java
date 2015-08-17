@@ -3,6 +3,7 @@ package com.supeyou.core.iface.dto;
 import java.io.Serializable;
 
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
+import com.supeyou.crudie.iface.datatype.types.URLType;
 import com.supeyou.crudie.iface.dto.AbstrDTO;
 
 public class HeroDTO extends AbstrDTO<HeroIDType> implements Serializable {
@@ -10,8 +11,10 @@ public class HeroDTO extends AbstrDTO<HeroIDType> implements Serializable {
 	private static final long serialVersionUID = 824618946818L;
 
 	private SingleLineString256Type imageURL;
-	private SingleLineString256Type websiteURL;
+	private URLType websiteURL;
+	private URLType videoURL;
 	private SingleLineString256Type comment;
+	private SingleLineString256Type name;
 
 	public HeroDTO() {
 
@@ -51,12 +54,28 @@ public class HeroDTO extends AbstrDTO<HeroIDType> implements Serializable {
 		this.imageURL = imageURL;
 	}
 
-	public SingleLineString256Type getWebsiteURL() {
+	public URLType getWebsiteURL() {
 		return websiteURL;
 	}
 
-	public void setWebsiteURL(SingleLineString256Type websiteURL) {
+	public void setWebsiteURL(URLType websiteURL) {
 		this.websiteURL = websiteURL;
+	}
+
+	public URLType getVideoURL() {
+		return videoURL;
+	}
+
+	public void setVideoURL(URLType videoURL) {
+		this.videoURL = videoURL;
+	}
+
+	public SingleLineString256Type getName() {
+		return name;
+	}
+
+	public void setName(SingleLineString256Type name) {
+		this.name = name;
 	}
 
 }
