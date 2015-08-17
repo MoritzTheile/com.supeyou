@@ -4,10 +4,6 @@ public final class URLType extends AbstrType<String> {
 
 	private static final long serialVersionUID = -99415265221348L;
 
-	// from http://snipplr.com/view/6889/regular-expressions-for-uri-validationparsing/
-	// modification a-z -> a-zA-Z
-	public static final String REGEX = "^([a-zA-Z][a-zA-Z0-9+.-]*):(?:\\/\\/((?:(?=((?:[a-zA-Z0-9-._~!$&'()*+,;=:]|%[0-9A-F]{2})*))(\\3)@)?(?=(\\[[0-9A-F:.]{2,}\\]|(?:[a-zA-Z0-9-._~!$&'()*+,;=]|%[0-9A-F]{2})*))\\5(?::(?=(\\d*))\\6)?)(\\/(?=((?:[a-zA-Z0-9-._~!$&'()*+,;=:@\\/]|%[0-9A-F]{2})*))\\8)?|(\\/?(?!\\/)(?=((?:[a-zA-Z0-9-._~!$&'()*+,;=:@\\/]|%[0-9A-F]{2})*))\\10)?)(?:\\?(?=((?:[a-zA-Z0-9-._~!$&'()*+,;=:@\\/?]|%[0-9A-F]{2})*))\\11)?(?:#(?=((?:[a-zA-Z0-9-._~!$&'()*+,;=:@\\/?]|%[0-9A-F]{2})*))\\12)?$";
-
 	public URLType() {
 	}
 
@@ -20,13 +16,17 @@ public final class URLType extends AbstrType<String> {
 		if (value == null) {
 			throw new TypeException("value is null");
 		}
-		if (!value.matches(REGEX)) {
+		if (!value.matches("^([a-zA-Z][a-zA-Z0-9+.-]*):\\/.*")) {
 			throw new TypeException("'" + value + "' is not an URI");
 		}
+		if (value.matches("(.*)?(\\s)(.*)")) {
+			throw new TypeException("'" + value + "' is not an URI because it contains whitespace");
+		}
+
 	}
 
 	public static void main(String[] args) {
-		System.out.println(new URLType("http://www.youtube.com/embed/2P"));
+		System.out.println(new URLType("http://unitedforhope.orga"));
 	}
 
 }
