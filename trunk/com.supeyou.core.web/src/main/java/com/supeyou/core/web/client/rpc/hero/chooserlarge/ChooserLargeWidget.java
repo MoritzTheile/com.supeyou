@@ -7,7 +7,6 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.HeroFetchQuery;
-import com.supeyou.core.web.client.HistoryController;
 import com.supeyou.core.web.client.rpc.hero.ListDataProvider;
 import com.supeyou.core.web.client.rpc.hero.chooserlarge.item.ItemWidget;
 import com.supeyou.core.web.client.rpc.hero.form.FormWidget;
@@ -17,26 +16,17 @@ import com.supeyou.crudie.web.client.rpc.abstr.list.AbstrListWidgetList;
 import com.supeyou.crudie.web.client.rpc.abstr.list.ListSelectionModel.SelectionListener;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 
-public class ChooserLargeWidget extends WidgetView {
+public abstract class ChooserLargeWidget extends WidgetView {
 
-	private final AbstrListDataProvider<HeroDTO, HeroFetchQuery> dataProvider;
+	protected final AbstrListDataProvider<HeroDTO, HeroFetchQuery> dataProvider;
+	public final AbstrListWidgetList<HeroDTO, HeroFetchQuery> widgetList;
 
 	public ChooserLargeWidget() {
-
-		// if (LoginStateModel.i().userIsAdmin()) {// UI visibility
-		// pagerSlot.removeStyleName(GWTSTATICS.HIDESTYLE_CSS);
-		// createLink.removeStyleName(GWTSTATICS.HIDESTYLE_CSS);
-		// footer.removeStyleName(GWTSTATICS.HIDESTYLE_CSS);
-		// } else {
-		// pagerSlot.addStyleName(GWTSTATICS.HIDESTYLE_CSS);
-		// createLink.addStyleName(GWTSTATICS.HIDESTYLE_CSS);
-		// footer.addStyleName(GWTSTATICS.HIDESTYLE_CSS);
-		// }
 
 		dataProvider = new ListDataProvider(new HeroFetchQuery());
 		dataProvider.setPageSize(5);
 
-		final AbstrListWidgetList<HeroDTO, HeroFetchQuery> widgetList = new AbstrListWidgetList<HeroDTO, HeroFetchQuery>(dataProvider) {
+		widgetList = new AbstrListWidgetList<HeroDTO, HeroFetchQuery>(dataProvider) {
 
 			@Override
 			public Widget getWidget(final HeroDTO data) {
@@ -52,12 +42,7 @@ public class ChooserLargeWidget extends WidgetView {
 			@Override
 			public void onHasChanged(List<HeroDTO> selection) {
 
-				if (selection.size() == 1) {
-
-					HistoryController.i().showHeroPage(selection.iterator().next());
-				} else {
-					// nothing
-				}
+				onSelectionChange(selection);
 
 			}
 
@@ -105,9 +90,7 @@ public class ChooserLargeWidget extends WidgetView {
 
 	}
 
-	public ItemWidget getHeroWidget(final HeroDTO data) {
+	public abstract void onSelectionChange(List<HeroDTO> selection);
 
-		return new ItemWidget(data);
-	}
-
+	public abstract ItemWidget getHeroWidget(final HeroDTO data);
 }
