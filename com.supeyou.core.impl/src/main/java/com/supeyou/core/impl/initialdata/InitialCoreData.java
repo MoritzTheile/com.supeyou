@@ -11,6 +11,7 @@ import com.supeyou.core.impl.SupporterCRUDServiceImpl;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
+import com.supeyou.crudie.iface.datatype.types.URLType;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.impl.UserCRUDServiceImpl;
 
@@ -239,7 +240,8 @@ public class InitialCoreData {
 
 		HeroDTO dto = HeroCRUDServiceImpl.i().getOrCreate(admin, user);
 		dto.setImageURL(new SingleLineString256Type(imageURL));
-		dto.setWebsiteURL(new SingleLineString256Type(websiteURL));
+		dto.setWebsiteURL(new URLType(websiteURL));
+		dto.setVideoURL(new URLType("https://www.youtube.com/embed/2P87NS63K94"));
 		dto.setComment(new SingleLineString256Type(comment));
 		return HeroCRUDServiceImpl.i().updadd(admin, dto);
 

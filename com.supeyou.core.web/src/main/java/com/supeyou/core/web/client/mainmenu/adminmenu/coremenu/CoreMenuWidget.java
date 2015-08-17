@@ -10,6 +10,7 @@ import com.supeyou.core.web.client.rpc.hero.chooserlarge.item.ItemWidget;
 import com.supeyou.core.web.client.rpc.hero.form.FormWidget;
 import com.supeyou.crudie.web.client.uiorga.menuanddisplay.MenuAndDisplay;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
+import com.supeyou.crudie.web.client.uiorga.popup.contentwrapper.ContentWrapperWidget;
 
 public class CoreMenuWidget extends WidgetView {
 
@@ -26,7 +27,9 @@ public class CoreMenuWidget extends WidgetView {
 				if (menuItem0 == menuItem) {
 					return new com.supeyou.core.web.client.rpc.donation.chooserlarge.ChooserLargeWidget();
 				}
+
 				if (menuItem1 == menuItem) {
+
 					return new com.supeyou.core.web.client.rpc.hero.chooserlarge.ChooserLargeWidget() {
 
 						@Override
@@ -34,12 +37,12 @@ public class CoreMenuWidget extends WidgetView {
 
 							if (selection.size() == 1) {
 
-								new PopupWidget(new FormWidget(dataProvider, selection.iterator().next()) {
+								new PopupWidget(new ContentWrapperWidget("Hero-Form", new FormWidget(dataProvider, selection.iterator().next()) {
 									@Override
 									protected void close() {
 										widgetList.getSelectionModel().clearSelection();
 									}
-								}, false);
+								}), false);
 
 							} else {
 								Window.alert("selection size has to be equal one (codemarker=asorg0)");

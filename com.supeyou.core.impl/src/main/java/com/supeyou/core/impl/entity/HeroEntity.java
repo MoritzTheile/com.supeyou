@@ -11,15 +11,20 @@ import javax.persistence.Table;
 
 import com.supeyou.core.iface.dto.HeroIDType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
+import com.supeyou.crudie.iface.datatype.types.URLType;
 import com.supeyou.crudie.impl.entity.AbstrEntity;
 
 @Entity
 @Table(name = "HeroEntity")
 public class HeroEntity extends AbstrEntity<HeroIDType> {
 
+	private String name;
+
 	private String imageURL;
 
 	private String websiteURL;
+
+	private String videoURL;
 
 	private String comment;
 
@@ -41,6 +46,21 @@ public class HeroEntity extends AbstrEntity<HeroIDType> {
 		}
 	}
 
+	public SingleLineString256Type getName() {
+		if (name == null) {
+			return null;
+		}
+		return new SingleLineString256Type(name);
+	}
+
+	public void setName(SingleLineString256Type name) {
+		if (name != null) {
+			this.name = name.value();
+		} else {
+			this.name = null;
+		}
+	}
+
 	public void setImageURL(SingleLineString256Type imageURL) {
 		if (imageURL != null) {
 			this.imageURL = imageURL.value();
@@ -56,7 +76,7 @@ public class HeroEntity extends AbstrEntity<HeroIDType> {
 		return new SingleLineString256Type(imageURL);
 	}
 
-	public void setWebsiteURL(SingleLineString256Type websiteURL) {
+	public void setWebsiteURL(URLType websiteURL) {
 		if (websiteURL != null) {
 			this.websiteURL = websiteURL.value();
 		} else {
@@ -64,11 +84,26 @@ public class HeroEntity extends AbstrEntity<HeroIDType> {
 		}
 	}
 
-	public SingleLineString256Type getWebsiteURL() {
+	public URLType getWebsiteURL() {
 		if (websiteURL == null) {
 			return null;
 		}
-		return new SingleLineString256Type(websiteURL);
+		return new URLType(websiteURL);
+	}
+
+	public void setVideoURL(URLType videoURL) {
+		if (videoURL != null) {
+			this.videoURL = videoURL.value();
+		} else {
+			this.videoURL = null;
+		}
+	}
+
+	public URLType getVideoURL() {
+		if (videoURL == null) {
+			return null;
+		}
+		return new URLType(videoURL);
 	}
 
 	@Override
