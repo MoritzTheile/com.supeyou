@@ -562,3 +562,28 @@
     display: inline-block;
     vertical-align: top;
 }
+
+.howitworks-root{
+	position:relative;
+	margin-top: 16px;
+}
+
+.howitworks-root .text{
+	position:absolute;
+	left: 180px;
+	top: -10px;
+	text-align: left;
+}
+
+.howitworks-root .button-pointer-image{
+	position:absolute;
+	left: 80px;
+	top:-40px;
+	bottom:0px;
+	right:0px;
+	background-repeat: no-repeat;
+  	background-image: url("core/images/bezierArrow.png");
+  	background-size: 56px;
+  	background-position: 25px 0 ;;
+
+}
