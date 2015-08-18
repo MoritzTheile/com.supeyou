@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.rpc.hero.chooserlarge.item.hero;
+package com.supeyou.core.web.client.view.herocard.hero;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;

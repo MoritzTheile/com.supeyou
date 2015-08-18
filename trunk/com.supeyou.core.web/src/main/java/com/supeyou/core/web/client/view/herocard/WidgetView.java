@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.rpc.hero.chooserlarge.item;
+package com.supeyou.core.web.client.view.herocard;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

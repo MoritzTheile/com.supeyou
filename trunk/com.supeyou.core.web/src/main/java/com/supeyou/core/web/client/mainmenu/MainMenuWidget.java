@@ -10,7 +10,7 @@ import com.supeyou.core.web.client.mainmenu.addhero.AddHeroWidget;
 import com.supeyou.core.web.client.mainmenu.adminmenu.AdminMenuWidget;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.rpc.hero.chooserlarge.ChooserLargeWidget;
-import com.supeyou.core.web.client.rpc.hero.chooserlarge.item.ItemWidget;
+import com.supeyou.core.web.client.view.herocard.HeroCardWidget;
 import com.supeyou.crudie.web.client.model.AbstrObservable.Observer;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.uiorga.menuanddisplay.MenuAndDisplay;
@@ -55,9 +55,9 @@ public class MainMenuWidget extends WidgetView {
 							}
 						}
 
-						public ItemWidget getHeroWidget(final HeroDTO data) {
+						public HeroCardWidget getHeroWidget(final HeroDTO data) {
 
-							return new ItemWidget(data);
+							return new HeroCardWidget(data);
 						}
 					};
 				}

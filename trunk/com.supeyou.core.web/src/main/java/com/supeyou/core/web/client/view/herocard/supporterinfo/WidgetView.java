@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.rpc.hero.chooserlarge.item.rootinfo;
+package com.supeyou.core.web.client.view.herocard.supporterinfo;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -16,7 +16,28 @@ public class WidgetView extends Composite {
 	FlowPanel root;
 
 	@UiField
-	Label generatedResultLabel;
+	FlowPanel leftColumn;
+
+	@UiField
+	FlowPanel youImage;
+
+	@UiField
+	Label youLabel;
+
+	@UiField
+	FlowPanel rightColumn;
+
+	@UiField
+	Label yourGeneratedResult;
+
+	@UiField
+	Label yourGeneratedResultLabel;
+
+	@UiField
+	Label yourResult;
+
+	@UiField
+	Label yourResultLabel;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}

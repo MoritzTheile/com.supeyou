@@ -8,9 +8,9 @@ import com.google.gwt.user.client.ui.Widget;
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.HeroFetchQuery;
 import com.supeyou.core.web.client.rpc.hero.ListDataProvider;
-import com.supeyou.core.web.client.rpc.hero.chooserlarge.item.ItemWidget;
 import com.supeyou.core.web.client.rpc.hero.form.FormWidget;
 import com.supeyou.core.web.client.rpc.hero.query.QueryWidget;
+import com.supeyou.core.web.client.view.herocard.HeroCardWidget;
 import com.supeyou.crudie.web.client.rpc.abstr.list.AbstrListDataProvider;
 import com.supeyou.crudie.web.client.rpc.abstr.list.AbstrListWidgetList;
 import com.supeyou.crudie.web.client.rpc.abstr.list.ListSelectionModel.SelectionListener;
@@ -92,5 +92,5 @@ public abstract class ChooserLargeWidget extends WidgetView {
 
 	public abstract void onSelectionChange(List<HeroDTO> selection);
 
-	public abstract ItemWidget getHeroWidget(final HeroDTO data);
+	public abstract HeroCardWidget getHeroWidget(final HeroDTO data);
 }
