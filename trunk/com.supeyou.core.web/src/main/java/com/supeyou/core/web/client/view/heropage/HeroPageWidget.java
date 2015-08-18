@@ -55,6 +55,7 @@ public class HeroPageWidget extends WidgetView {
 					new PopupWidget(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), new InviteWidget(supporterDTO)), true);
 
 				}
+
 			});
 
 			invitationButtonSlot.add(flatButtonWidget);
