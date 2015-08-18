@@ -576,15 +576,13 @@
 }
 
 .howitworks-root .text2{
-	position:absolute;
-	margin: 12px 80px 12px 80px;
-	top: 20px;
+	position:relative;
+	padding: 20px 80px 12px 80px;
 }
 
 .howitworks-root .howitworks-image{
 	position:relative;
-	
-	margin-top: 200px;
+	margin-top: 0px;
 	text-align: left;
 	zoom: 66%;;
 }
