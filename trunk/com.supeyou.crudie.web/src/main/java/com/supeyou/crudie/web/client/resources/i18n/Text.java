@@ -77,4 +77,6 @@ public interface Text extends Messages {
 
 	String LINK_Import();
 
+	String IMPRESSUM_HTML();
+
 }

@@ -19,7 +19,8 @@ import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.web.client.model.AppInfoModel;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
-import com.supeyou.crudie.web.client.ui.version.VersionPresenter;
+import com.supeyou.crudie.web.client.ui.impressum.ImpressumWidget;
+import com.supeyou.crudie.web.client.ui.version.VersionWidget;
 
 public class AppEntryPoint implements EntryPoint {
 
@@ -44,7 +45,9 @@ public class AppEntryPoint implements EntryPoint {
 		HistoryController.i();
 
 		AppInfoModel appInfoModel = new AppInfoModel();
-		RootPanel.get("footer").add(new VersionPresenter(appInfoModel));
+		RootPanel.get("footer").add(new ImpressumWidget());
+
+		RootPanel.get("footer").add(new VersionWidget(appInfoModel));
 		appInfoModel.updateFromServer();
 
 		if (LoginStateModel.i().getLoggedInUser() == null) {// trying to login with authToken
