@@ -8,8 +8,8 @@
 	<g:FlowPanel  styleName="hero"  ui:field="itemRoot">
 		<g:FlowPanel styleName="name-slot" ui:field="nameSlot"></g:FlowPanel>
 		<g:FlowPanel styleName="image-slot" ui:field="imageSlot"></g:FlowPanel>
-		<g:FlowPanel styleName="website-slot" ui:field="websiteSlot"></g:FlowPanel>
 		<g:FlowPanel styleName="comment-slot" ui:field="commentSlot"></g:FlowPanel>
+		<g:FlowPanel styleName="website-slot" ui:field="websiteSlot"></g:FlowPanel>
 	</g:FlowPanel>
 
 </ui:UiBinder> 

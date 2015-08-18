@@ -7,6 +7,7 @@ import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.view.herocard.HeroCardWidget;
 import com.supeyou.core.web.client.view.herocard.HeroCardWidget.VIEW;
 import com.supeyou.core.web.client.view.heropage.donate.DonateWidget;
+import com.supeyou.core.web.client.view.heropage.howitworks.HowItWorksWidget;
 import com.supeyou.core.web.client.view.heropage.invite.InviteWidget;
 import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidget;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
@@ -58,7 +59,12 @@ public class HeroPageWidget extends WidgetView {
 
 			invitationButtonSlot.add(flatButtonWidget);
 		}
-		supporterTreeSlot.add(new SupporterTreeWidget(supporterDTO));
+
+		if (supporterDTO.getDecendentCount() > 0) {
+			supporterTreeSlot.add(new SupporterTreeWidget(supporterDTO));
+		} else {
+			supporterTreeSlot.add(new HowItWorksWidget());
+		}
 
 	}
 }

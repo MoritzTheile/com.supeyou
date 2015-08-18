@@ -7,6 +7,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Label;
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.web.client.rpc.hero.RPCCRUDProxy;
 import com.supeyou.core.web.client.view.herocard.HeroCardWidget.VIEW;
@@ -45,6 +46,11 @@ public class HeroWidget extends WidgetView {
 	}
 
 	private void render() {
+
+		nameSlot.clear();
+		if (thisDTO.getName() != null) {
+			nameSlot.add(new Label(thisDTO.getName().value()));
+		}
 
 		imageSlot.clear();
 		if (thisDTO.getImageURL() != null) {

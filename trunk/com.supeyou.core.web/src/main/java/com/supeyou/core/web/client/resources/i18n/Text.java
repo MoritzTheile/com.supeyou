@@ -65,4 +65,6 @@ public interface Text extends Messages {
 
 	String YOUR_RESULT();
 
+	String HOWITWORKS_Text_HTML();
+
 }
