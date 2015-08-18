@@ -9,6 +9,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.supeyou.core.iface.dto.HeroDTO;
+import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.rpc.hero.RPCCRUDProxy;
 import com.supeyou.core.web.client.view.herocard.HeroCardWidget.VIEW;
 import com.supeyou.core.web.client.view.heropage.video.VideoWidget;
@@ -64,11 +65,20 @@ public class HeroWidget extends WidgetView {
 				public void onClick(ClickEvent event) {
 					event.stopPropagation();
 					if (thisDTO.getVideoURL() != null) {
-						new PopupWidget(new ContentWrapperWidget("'s video", new VideoWidget(thisDTO.getVideoURL().value())), true);
+						new PopupWidget(new ContentWrapperWidget(createPopupHeader(), new VideoWidget(thisDTO.getVideoURL().value())), true);
 					} else {
 						Window.alert("Hero has no video");
 					}
 
+				}
+
+				private String createPopupHeader() {
+					String header = "";
+					if (thisDTO.getName() != null) {
+						header += thisDTO.getName().value();
+					}
+					header += Text.i.HEROVIDEO_Header();
+					return header;
 				}
 
 			}, ClickEvent.getType());
