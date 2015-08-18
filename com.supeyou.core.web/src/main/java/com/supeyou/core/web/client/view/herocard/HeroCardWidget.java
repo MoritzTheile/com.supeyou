@@ -5,6 +5,7 @@ import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.view.herocard.hero.HeroWidget;
+import com.supeyou.core.web.client.view.herocard.rootsupporterinfo.RootSupporterWidget;
 import com.supeyou.core.web.client.view.herocard.supporterinfo.SupporterWidget;
 
 public class HeroCardWidget extends WidgetView {
@@ -42,7 +43,11 @@ public class HeroCardWidget extends WidgetView {
 
 	private void render(SupporterDTO supporterDTO, VIEW view) {
 		heroSlot.add(new HeroWidget(supporterDTO.getHeroDTO(), view));
-		supporterSlot.add(new SupporterWidget(supporterDTO));
+		if (VIEW.ROOTVIEW.equals(view)) {
+			supporterSlot.add(new RootSupporterWidget(supporterDTO));
+		} else {
+			supporterSlot.add(new SupporterWidget(supporterDTO));
+		}
 
 	}
 
