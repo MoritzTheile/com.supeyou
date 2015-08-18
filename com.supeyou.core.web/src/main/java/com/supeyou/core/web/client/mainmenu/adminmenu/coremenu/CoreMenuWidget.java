@@ -6,8 +6,8 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.supeyou.core.iface.dto.HeroDTO;
-import com.supeyou.core.web.client.rpc.hero.chooserlarge.item.ItemWidget;
 import com.supeyou.core.web.client.rpc.hero.form.FormWidget;
+import com.supeyou.core.web.client.view.herocard.HeroCardWidget;
 import com.supeyou.crudie.web.client.uiorga.menuanddisplay.MenuAndDisplay;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.contentwrapper.ContentWrapperWidget;
@@ -44,14 +44,18 @@ public class CoreMenuWidget extends WidgetView {
 									}
 								}), false);
 
+							} else if (selection.size() == 0) {
+
+								// nothing
+
 							} else {
 								Window.alert("selection size has to be equal one (codemarker=asorg0)");
 							}
 						}
 
-						public ItemWidget getHeroWidget(final HeroDTO data) {
+						public HeroCardWidget getHeroWidget(final HeroDTO data) {
 
-							return new ItemWidget(data);
+							return new HeroCardWidget(data);
 						}
 					};
 				}

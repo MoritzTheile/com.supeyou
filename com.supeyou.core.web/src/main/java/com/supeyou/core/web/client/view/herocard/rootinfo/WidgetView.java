@@ -1,10 +1,11 @@
-package com.supeyou.core.web.client.view.supportercard;
+package com.supeyou.core.web.client.view.herocard.rootinfo;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 public class WidgetView extends Composite {
@@ -15,10 +16,7 @@ public class WidgetView extends Composite {
 	FlowPanel root;
 
 	@UiField
-	FlowPanel heroSlot;
-
-	@UiField
-	FlowPanel supporterSlot;
+	Label generatedResultLabel;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}

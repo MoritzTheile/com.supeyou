@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.view.supportercard.supporter;
+package com.supeyou.core.web.client.view.herocard.supporterinfo;
 
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
