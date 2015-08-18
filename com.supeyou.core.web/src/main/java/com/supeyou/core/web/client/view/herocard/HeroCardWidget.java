@@ -16,6 +16,7 @@ public class HeroCardWidget extends WidgetView {
 	public HeroCardWidget(SupporterDTO supporterDTO, VIEW view) {
 
 		render(supporterDTO, view);
+
 	}
 
 	public HeroCardWidget(HeroDTO data) {
@@ -31,7 +32,7 @@ public class HeroCardWidget extends WidgetView {
 			@Override
 			public void onSuccess(SupporterDTO result) {
 
-				render(result, VIEW.NODEVIEW);
+				render(result, VIEW.ROOTVIEW);
 
 			}
 
@@ -40,7 +41,7 @@ public class HeroCardWidget extends WidgetView {
 	}
 
 	private void render(SupporterDTO supporterDTO, VIEW view) {
-		heroSlot.add(new HeroWidget(supporterDTO.getHeroDTO()));
+		heroSlot.add(new HeroWidget(supporterDTO.getHeroDTO(), view));
 		supporterSlot.add(new SupporterWidget(supporterDTO));
 
 	}
