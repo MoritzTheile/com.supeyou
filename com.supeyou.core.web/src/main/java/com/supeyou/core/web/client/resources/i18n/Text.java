@@ -65,10 +65,6 @@ public interface Text extends Messages {
 
 	String YOUR_RESULT();
 
-	String HOWITWORKS_Text_HTML();
-
-	String HOWITWORKS_Text2_HTML();
-
 	String HEROVIDEO_Header();
 
 }

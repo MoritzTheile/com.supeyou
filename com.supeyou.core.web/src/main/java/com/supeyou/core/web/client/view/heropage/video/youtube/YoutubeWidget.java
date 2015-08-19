@@ -13,7 +13,7 @@ public class YoutubeWidget extends WidgetView {
 	private final String htmlTemplate = ""
 			+ ""
 
-			+ "<iframe width=\"100%\"  src=\"youtubeURL_TOKEN\" frameborder=\"0\" allowfullscreen></iframe>"
+			+ "<iframe width=\"100%\" height=\"360px\"  src=\"youtubeURL_TOKEN\" frameborder=\"0\" allowfullscreen></iframe>"
 
 			+ "";
 
