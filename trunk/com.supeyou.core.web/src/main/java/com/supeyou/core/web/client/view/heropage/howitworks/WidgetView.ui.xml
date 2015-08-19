@@ -7,10 +7,8 @@
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
  
 	<g:FlowPanel styleName="howitworks-root" ui:field="root">
-		<g:HTML styleName="text" HTML="{text.HOWITWORKS_Text_HTML}"></g:HTML>
-		<g:HTML styleName="text2" HTML="{text.HOWITWORKS_Text2_HTML}"></g:HTML>
-		<g:FlowPanel styleName="button-pointer-image"></g:FlowPanel>
-		<g:Image styleName="howitworks-image" ui:field="image" url="./com.supeyou.app.GWT/core/images/howitworks.png"></g:Image>
+		<g:Image styleName="howitworks-image" url="./com.supeyou.app.GWT/core/images/howitworks.png"></g:Image>
+		<g:Image styleName="button-pointer-image" url="./com.supeyou.app.GWT/core/images/specialButton.postit.en.png"></g:Image>
 	</g:FlowPanel>
 
 </ui:UiBinder> 
