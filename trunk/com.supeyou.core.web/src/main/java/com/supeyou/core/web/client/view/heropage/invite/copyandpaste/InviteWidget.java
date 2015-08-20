@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.view.heropage.invite;
+package com.supeyou.core.web.client.view.heropage.invite.copyandpaste;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -15,7 +15,7 @@ import com.supeyou.crudie.web.client.fields.types.FieldForSingleLineString256Typ
 import com.supeyou.crudie.web.client.resources.URLHelper;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
 
-public class InviteWidget extends WidgetView {
+public abstract class InviteWidget extends WidgetView {
 
 	private InvitationDTO invitationDTO;
 
@@ -186,4 +186,7 @@ public class InviteWidget extends WidgetView {
 		String url = URLHelper.getCurrentURL() + "?" + CoreStatics.INVITTOKEN_KEY + "=" + invitationDTO.getToken();
 		return url;
 	}
+
+	protected abstract void onDismiss();
+
 }

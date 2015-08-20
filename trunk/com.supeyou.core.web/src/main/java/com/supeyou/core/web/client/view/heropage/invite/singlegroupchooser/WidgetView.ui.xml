@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.cellview.client"
+	xmlns:m="urn:import:com.supeyou.crudie.web.client.fields.types"
+	xmlns:m2="urn:import:com.supeyou.crudie.web.client.uiorga.flatbutton">
+	<ui:with field='text'
+		type='com.supeyou.core.web.client.resources.i18n.Text' />
+ 
+	<g:FlowPanel styleName="root chooser single-group" ui:field="root">
+	
+		<g:FlowPanel styleName="header">
+			<g:HTML HTML="{text.INVITE_SINGLEGROUPCHOOSER_Header_HTML}"></g:HTML>
+		</g:FlowPanel>
+		<g:FlowPanel styleName="option user" ui:field="singleButton">
+			<g:HTML HTML="{text.INVITE_SINGLEGROUPCHOOSER_Single_HTML}"></g:HTML>
+		</g:FlowPanel>
+		<g:FlowPanel styleName="option users" ui:field="groupButton">
+			<g:HTML HTML="{text.INVITE_SINGLEGROUPCHOOSER_Group_HTML}"></g:HTML>
+		</g:FlowPanel>
+		
+	</g:FlowPanel>
+
+</ui:UiBinder> 

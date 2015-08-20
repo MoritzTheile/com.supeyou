@@ -67,4 +67,32 @@ public interface Text extends Messages {
 
 	String HEROVIDEO_Header();
 
+	String INVITE_SINGLEGROUPCHOOSER_Header_HTML();
+
+	String INVITE_SINGLEGROUPCHOOSER_Single_HTML();
+
+	String INVITE_SINGLEGROUPCHOOSER_Group_HTML();
+
+	String INVITE_SINGLE_NameQuestion();
+
+	String INVITE_SINGLE_CallToChoose();
+
+	String INVITE_SINGLE_Email();
+
+	String INVITE_SINGLE_WhatsApp();
+
+	String INVITE_SINGLE_CutAndPaste();
+
+	String INVITE_GROUP_NameQuestion();
+
+	String INVITE_GROUP_CallToChoose();
+
+	String INVITE_GROUP_Facebook();
+
+	String INVITE_GROUP_GooglePlus();
+
+	String INVITE_GROUP_Twitter();
+
+	String INVITE_GROUP_CutAndPaste();
+
 }
