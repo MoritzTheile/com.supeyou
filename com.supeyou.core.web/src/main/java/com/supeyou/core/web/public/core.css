@@ -601,3 +601,64 @@
 	top:-42px;
 	width: 200px
 }
+
+.root.chooser {
+	padding-bottom: 800px;
+}
+
+.root.chooser .header{
+	border-bottom: 1px solid #d4d4d4;
+}
+
+.root.chooser .option{
+	border-bottom: 1px solid #d4d4d4;
+	text-align:left;
+	padding-left: 160px;
+	padding-top: 10px;
+	height: 50px;
+	cursor: pointer;
+}
+
+.root.chooser .option.email{
+	background-repeat: no-repeat;
+  	background-image: url("core/images/email-icon.png");
+  	background-size:32px;
+  	background-position: 56px 12px;
+  
+}
+.root.chooser .option.whatsapp{
+	background-repeat: no-repeat;
+  	background-image: url("core/images/whatsapp_logo.jpg");
+  	background-size:32px;
+  	background-position: 56px 12px;
+  
+}
+.root.chooser .option.cutandpaste{
+	background-repeat: no-repeat;
+  	background-image: url("core/images/clipboard.jpg");
+  	background-size:32px;
+  	background-position: 56px 12px;
+  
+}
+.root.chooser .option.user{
+	background-repeat: no-repeat;
+  	background-image: url("core/images/fontawesome/user_2d90ec_32.png");
+  	background-size:32px;
+  	background-position: 56px 12px;
+  
+}
+.root.chooser .option.users{
+	background-repeat: no-repeat;
+  	background-image: url("core/images/fontawesome/users_2d90ec_32.png");
+  	background-size:32px;
+  	background-position: 56px 12px;
+  
+}
+.root.chooser .option:hover{
+	background-color:#F7F7F7;
+
+}
+
+.root.chooser .option > *{
+	
+}

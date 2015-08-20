@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.cellview.client"
+	xmlns:m="urn:import:com.supeyou.crudie.web.client.fields.types"
+	xmlns:m2="urn:import:com.supeyou.crudie.web.client.uiorga.flatbutton">
+	<ui:with field='text'
+		type='com.supeyou.core.web.client.resources.i18n.Text' />
+ 
+	<g:FlowPanel styleName="root chooser group-invitor" ui:field="root">
+		<g:FlowPanel styleName="name-question">
+			<g:HTML HTML="{text.INVITE_GROUP_NameQuestion}"></g:HTML>
+		</g:FlowPanel>
+		<g:FlowPanel  styleName="slot name"  ui:field="nameFieldSlot"></g:FlowPanel>
+		<g:FlowPanel styleName="call-to-choose">
+			<g:HTML HTML="{text.INVITE_GROUP_CallToChoose}"></g:HTML>
+		</g:FlowPanel>
+		
+		<g:FlowPanel styleName="option email" ui:field="emailButton">
+			<g:HTML HTML="{text.INVITE_GROUP_Facebook}"></g:HTML>
+		</g:FlowPanel>
+		<g:FlowPanel styleName="option whatsapp" ui:field="whatsAppButton">
+			<g:HTML HTML="{text.INVITE_GROUP_GooglePlus}"></g:HTML>
+		</g:FlowPanel>
+		<g:FlowPanel styleName="option cutandpaste" ui:field="cutAndPasteButton">
+			<g:HTML HTML="{text.INVITE_GROUP_CutAndPaste}"></g:HTML>
+		</g:FlowPanel>
+		<g:FlowPanel styleName="option twitter" ui:field="twitterButton">
+			<g:HTML HTML="{text.INVITE_GROUP_Twitter}"></g:HTML>
+		</g:FlowPanel>
+	
+	
+	
+	</g:FlowPanel>
+
+</ui:UiBinder> 

@@ -8,7 +8,7 @@ import com.supeyou.core.web.client.view.herocard.HeroCardWidget;
 import com.supeyou.core.web.client.view.herocard.HeroCardWidget.VIEW;
 import com.supeyou.core.web.client.view.heropage.donate.DonateWidget;
 import com.supeyou.core.web.client.view.heropage.howitworks.HowItWorksWidget;
-import com.supeyou.core.web.client.view.heropage.invite.InviteWidget;
+import com.supeyou.core.web.client.view.heropage.invite.singlegroupchooser.SingleGroupChooserWidget;
 import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidget;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
@@ -52,7 +52,20 @@ public class HeroPageWidget extends WidgetView {
 				@Override
 				public void onClick(ClickEvent event) {
 
-					new PopupWidget(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), new InviteWidget(supporterDTO)), true);
+					final PopupWidget popupWidget = new PopupWidget();
+
+					SingleGroupChooserWidget content = new SingleGroupChooserWidget(supporterDTO) {
+
+						@Override
+						protected void onDismiss() {
+
+							popupWidget.closePopup();
+
+						}
+
+					};
+
+					popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), content));
 
 				}
 

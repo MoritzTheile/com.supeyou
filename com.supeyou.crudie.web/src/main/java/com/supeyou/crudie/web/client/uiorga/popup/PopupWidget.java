@@ -36,16 +36,23 @@ public class PopupWidget extends WidgetView {
 
 	public PopupWidget(Widget content, boolean glassPaneClickCloses) {
 
+		init(content, glassPaneClickCloses);
+
+	}
+
+	public void init(Widget content, boolean glassPaneClickCloses) {
 		this.glassPaneClickCloses = glassPaneClickCloses;
 
 		init(content);
-
 	}
 
 	public PopupWidget(boolean glassPaneClickCloses) {
 
 		this.glassPaneClickCloses = glassPaneClickCloses;
 
+	}
+
+	public PopupWidget() {
 	}
 
 	public void init(Widget content) {
