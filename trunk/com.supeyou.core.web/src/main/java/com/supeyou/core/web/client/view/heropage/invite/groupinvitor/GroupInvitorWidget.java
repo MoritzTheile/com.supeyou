@@ -11,6 +11,7 @@ import com.supeyou.core.web.client.rpc.invitation.RPCCRUDProxy;
 import com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.view.heropage.invite.copyandpaste.CopyAndPasteWidget;
 import com.supeyou.core.web.client.view.heropage.invite.singleinvitor.SingleInvitorWidget;
+import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.contentwrapper.ContentWrapperWidget;
@@ -34,6 +35,9 @@ public abstract class GroupInvitorWidget extends WidgetView {
 
 				Window.open("https://plus.google.com/share?url==" + CopyAndPasteWidget.getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
 
+				invitationDTO.setComment(new SingleLineString256Type("google+"));
+				RPCCRUDProxy.i().updadd(invitationDTO);
+
 				onDismiss();
 
 			}
@@ -47,6 +51,9 @@ public abstract class GroupInvitorWidget extends WidgetView {
 
 				Window.open("http://www.facebook.com/share.php?u=" + CopyAndPasteWidget.getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
 
+				invitationDTO.setComment(new SingleLineString256Type("facebook"));
+				RPCCRUDProxy.i().updadd(invitationDTO);
+
 				onDismiss();
 
 			}
@@ -59,6 +66,9 @@ public abstract class GroupInvitorWidget extends WidgetView {
 			public void onClick(ClickEvent event) {
 
 				Window.open("https://twitter.com/intent/tweet?text=" + getText(), "_blank", "status=0,toolbar=0,menubar=0,location=0");
+
+				invitationDTO.setComment(new SingleLineString256Type("twitter"));
+				RPCCRUDProxy.i().updadd(invitationDTO);
 
 				onDismiss();
 

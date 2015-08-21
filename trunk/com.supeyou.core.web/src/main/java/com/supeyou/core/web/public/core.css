@@ -671,10 +671,11 @@
   	background-size:32px;
   
 }
+
 .root.chooser .option.users{
   	background-image: url("core/images/emoticon.users2.png");
   	background-size:38px;
-  		background-position: 96px 20px;
+  	background-position: 96px 20px;
 
   
 }
