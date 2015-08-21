@@ -1,7 +1,7 @@
 .landingpage-root .flat-button{
 	margin: 64px 50px 32px 50px;
 }
-	
+
 .field-style{
 	padding: 6px 8px 6px 8px;
   	border-radius: 5px;
@@ -62,7 +62,9 @@
 	padding-bottom: 400px;
 }
 
-
+.invite.copy-and-paste{
+	padding: 100px 0;
+}
 .modal-widget .invite .link-row{
 	vertical-align:middle;
 	white-space: nowrap;
@@ -196,7 +198,7 @@
 }
 
 .modal-widget .invite .link-name-textbox-slot{
-	margin: 24px 0 0 0;
+	margin: 100px 0 0 0;
 }
 .modal-widget .invite .link-name-label{
 	font-size: 10px;
@@ -607,77 +609,73 @@
 }
 
 .root.chooser .header{
+	padding: 32px 88px 32px 88px;
 	border-bottom: 1px solid #d4d4d4;
+	font-size: 16px;
+}
+.root.chooser .link-name-textbox-slot{
+	padding: 24px 0;
+
 }
 
 .root.chooser .option{
 	border-bottom: 1px solid #d4d4d4;
 	text-align:left;
 	padding-left: 160px;
-	padding-top: 10px;
+	padding-top: 25px;
 	height: 50px;
 	cursor: pointer;
+	background-repeat: no-repeat;
+	background-position: 100px 18px;
+	font-size: 14px;
+
 }
 
 .root.chooser .option.email{
-	background-repeat: no-repeat;
   	background-image: url("core/images/email-icon.png");
   	background-size:32px;
-  	background-position: 56px 12px;
   
 }
 .root.chooser .option.whatsapp{
-	background-repeat: no-repeat;
   	background-image: url("core/images/whatsapp_logo.jpg");
   	background-size:32px;
-  	background-position: 56px 12px;
   
 }
 
 .root.chooser .option.cutandpaste{
-	background-repeat: no-repeat;
   	background-image: url("core/images/clipboard.jpg");
   	background-size:32px;
-  	background-position: 56px 12px;
   
 }
 
 .root.chooser .option.facebook{
-	background-repeat: no-repeat;
   	background-image: url("core/images/facebook-icon.jpg");
   	background-size:32px;
-  	background-position: 56px 12px;
   
 }
 
 .root.chooser .option.googleplus{
-	background-repeat: no-repeat;
   	background-image: url("core/images/gplus-icon.png");
   	background-size:32px;
-  	background-position: 56px 12px;
   
 }
 
 .root.chooser .option.twitter{
-	background-repeat: no-repeat;
   	background-image: url("core/images/twitter-icon.jpg");
   	background-size:32px;
-  	background-position: 56px 12px;
   
 }
 
 .root.chooser .option.user{
-	background-repeat: no-repeat;
-  	background-image: url("core/images/fontawesome/user_2d90ec_32.png");
+  	background-image: url("core/images/emoticon.user.png");
   	background-size:32px;
-  	background-position: 56px 12px;
   
 }
 .root.chooser .option.users{
-	background-repeat: no-repeat;
-  	background-image: url("core/images/fontawesome/users_2d90ec_32.png");
-  	background-size:32px;
-  	background-position: 56px 12px;
+  	background-image: url("core/images/emoticon.users2.png");
+  	background-size:38px;
+  		background-position: 96px 20px;
+
   
 }
 .root.chooser .option:hover{

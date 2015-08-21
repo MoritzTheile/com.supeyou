@@ -10,14 +10,15 @@
 		ui:field="root">
 
 		<g:FlowPanel styleName="header">
-			<g:FlowPanel styleName="name-question">
+			<!-- <g:FlowPanel styleName="name-question">
 				<g:HTML HTML="{text.INVITE_GROUP_NameQuestion}"></g:HTML>
 			</g:FlowPanel>
-			<g:FlowPanel styleName="slot name" ui:field="nameFieldSlot"></g:FlowPanel>
+			<g:FlowPanel styleName="slot name" ui:field="nameFieldSlot"></g:FlowPanel> -->
 			<g:FlowPanel styleName="call-to-choose">
-				<g:HTML HTML="{text.INVITE_GROUP_CallToChoose}"></g:HTML>
-			</g:FlowPanel>
+			<g:HTML HTML="{text.INVITE_GROUP_CallToChoose}"></g:HTML>
 		</g:FlowPanel>
+		</g:FlowPanel>
+		
 		<g:FlowPanel styleName="option facebook" ui:field="facebookButton">
 			<g:HTML HTML="{text.INVITE_GROUP_Facebook}"></g:HTML>
 		</g:FlowPanel>

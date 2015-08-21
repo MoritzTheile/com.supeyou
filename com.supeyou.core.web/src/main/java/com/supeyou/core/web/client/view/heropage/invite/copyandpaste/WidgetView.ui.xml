@@ -6,7 +6,7 @@
 	<ui:with field='text'
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
  
-	<g:FlowPanel styleName="invite" ui:field="root">
+	<g:FlowPanel styleName="invite copy-and-paste" ui:field="root">
 	
 		<g:FlowPanel styleName="link-row" >
 			<!-- <g:FlowPanel styleName="share-button" ui:field="shareButton"></g:FlowPanel> -->
