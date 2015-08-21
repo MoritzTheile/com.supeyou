@@ -6,13 +6,19 @@
 	<ui:with field='text'
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
  
-	<g:FlowPanel styleName="donate" ui:field="root">
+	<g:FlowPanel styleName="root chooser donate" ui:field="root">
 	
 		<g:HTML styleName="text-html" HTML="{text.DONATE_Text_HTML}"></g:HTML>
 		
 		<g:FlowPanel  styleName="paypal-button-slot" ui:field="paypalButtonSlot"></g:FlowPanel>
 
 		<g:HTML styleName="text-html" HTML="{text.DONATE_Text2_HTML}"></g:HTML>
+					
+		<g:HTML styleName="header more-options text-html" HTML="{text.DONATE_MoreOptions}"></g:HTML>		
+		
+		<g:FlowPanel styleName="option donate" ui:field="singleButton">
+			<g:HTML HTML="{text.DONATE_OPTION_DonateOnce}" ui:field="donateOnceButton"></g:HTML>
+		</g:FlowPanel>
 		
 	</g:FlowPanel>
 

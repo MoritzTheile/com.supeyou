@@ -39,6 +39,10 @@ public interface Text extends Messages {
 
 	String DONATE_Text2_HTML();
 
+	String DONATE_MoreOptions();
+
+	String DONATE_OPTION_DonateOnce();
+
 	String INVITE_LinkHintLabel();
 
 	String INVITE_LinkNameLabel();
