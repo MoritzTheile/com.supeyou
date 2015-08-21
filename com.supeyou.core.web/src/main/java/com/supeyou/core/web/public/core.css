@@ -63,7 +63,7 @@
 }
 
 .invite.copy-and-paste{
-	padding: 100px 0;
+	padding: 80px 0;
 }
 .modal-widget .invite .link-row{
 	vertical-align:middle;
@@ -121,7 +121,7 @@
 
 .modal-widget .invite .link-hint-label{
 	font-size: 12px;
-	margin-top: 12px;
+	margin-top: 24px;
 }
 
 .modal-widget .invite .share-button .image.clipboard{

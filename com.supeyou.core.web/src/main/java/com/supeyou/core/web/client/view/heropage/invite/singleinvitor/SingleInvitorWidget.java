@@ -44,6 +44,8 @@ public abstract class SingleInvitorWidget extends WidgetView {
 
 						);
 
+				onDismiss();
+
 			}
 
 		}, ClickEvent.getType());
@@ -78,7 +80,7 @@ public abstract class SingleInvitorWidget extends WidgetView {
 				};
 
 				popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), contentWidget));
-
+				onDismiss();
 			}
 
 		}, ClickEvent.getType());
