@@ -34,6 +34,8 @@ public abstract class GroupInvitorWidget extends WidgetView {
 
 				Window.open("https://plus.google.com/share?url==" + CopyAndPasteWidget.getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
 
+				onDismiss();
+
 			}
 
 		}, ClickEvent.getType());
@@ -45,6 +47,8 @@ public abstract class GroupInvitorWidget extends WidgetView {
 
 				Window.open("http://www.facebook.com/share.php?u=" + CopyAndPasteWidget.getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
 
+				onDismiss();
+
 			}
 
 		}, ClickEvent.getType());
@@ -55,6 +59,8 @@ public abstract class GroupInvitorWidget extends WidgetView {
 			public void onClick(ClickEvent event) {
 
 				Window.open("https://twitter.com/intent/tweet?text=" + getText(), "_blank", "status=0,toolbar=0,menubar=0,location=0");
+
+				onDismiss();
 
 			}
 
