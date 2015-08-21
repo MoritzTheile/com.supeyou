@@ -3,7 +3,6 @@ package com.supeyou.core.web.client.view.heropage.invite.copyandpaste;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
@@ -15,13 +14,15 @@ import com.supeyou.crudie.web.client.fields.types.FieldForSingleLineString256Typ
 import com.supeyou.crudie.web.client.resources.URLHelper;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
 
-public abstract class InviteWidget extends WidgetView {
+public abstract class CopyAndPasteWidget extends WidgetView {
 
 	private InvitationDTO invitationDTO;
 
-	public InviteWidget(final SupporterDTO supporterDTO) {
+	public CopyAndPasteWidget(final SupporterDTO supporterDTO, InvitationDTO invitationDTO) {
 
-		createInvitation(supporterDTO);
+		this.invitationDTO = invitationDTO;
+
+		render();
 
 		reloadButton.addDomHandler(new ClickHandler() {
 
@@ -30,6 +31,7 @@ public abstract class InviteWidget extends WidgetView {
 				createInvitation(supporterDTO);
 
 			}
+
 		}, ClickEvent.getType());
 
 		linkLabel.addClickHandler(new ClickHandler() {
@@ -41,61 +43,6 @@ public abstract class InviteWidget extends WidgetView {
 
 			}
 		});
-
-		shareButtonMail.addDomHandler(new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-
-				Window.open("mailto:?subject=Hi&body=Please go to: " + getInvitURL(invitationDTO), "_self", "status=0,toolbar=0,menubar=0,location=0");
-
-			}
-
-		}, ClickEvent.getType());
-
-		shareButtonWhatsapp.addDomHandler(new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-
-				Window.open("whatsapp://send?text=Please go to: " + getInvitURL(invitationDTO), "_self", "status=0,toolbar=0,menubar=0,location=0");
-
-			}
-
-		}, ClickEvent.getType());
-
-		shareButtonGoogle.addDomHandler(new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-
-				Window.open("https://plus.google.com/share?url==" + getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
-
-			}
-
-		}, ClickEvent.getType());
-
-		shareButtonFacebook.addDomHandler(new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-
-				Window.open("http://www.facebook.com/share.php?u=" + getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
-
-			}
-
-		}, ClickEvent.getType());
-
-		shareButtonTwitter.addDomHandler(new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-
-				Window.open("https://twitter.com/intent/tweet?text=Please go to: " + getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
-
-			}
-
-		}, ClickEvent.getType());
 
 	}
 
@@ -114,18 +61,19 @@ public abstract class InviteWidget extends WidgetView {
 	}-*/;
 
 	private void createInvitation(SupporterDTO supporterDTO) {
+
 		RPCCRUDServiceAsync.i.create(supporterDTO, new AsyncCallback<InvitationDTO>() {
 
 			@Override
 			public void onSuccess(InvitationDTO result) {
 
-				render(result);
+				invitationDTO = result;
 
 				RPCCRUDProxy.i().addListenersForSpecifiDTO(new CRUDProxyListener<InvitationDTO>() {
 
 					@Override
 					public void wasUpdated(InvitationDTO dto) {
-						render(dto);
+						invitationDTO = dto;
 
 					}
 
@@ -154,9 +102,7 @@ public abstract class InviteWidget extends WidgetView {
 		});
 	}
 
-	private void render(final InvitationDTO invitationDTO) {
-
-		this.invitationDTO = invitationDTO;
+	private void render() {
 
 		String url = getInvitURL(invitationDTO);
 		linkLabel.setText(url);
@@ -182,7 +128,7 @@ public abstract class InviteWidget extends WidgetView {
 
 	}
 
-	private String getInvitURL(final InvitationDTO invitationDTO) {
+	public static String getInvitURL(final InvitationDTO invitationDTO) {
 		String url = URLHelper.getCurrentURL() + "?" + CoreStatics.INVITTOKEN_KEY + "=" + invitationDTO.getToken();
 		return url;
 	}

@@ -27,7 +27,7 @@
 		<g:FlowPanel styleName="option twitter" ui:field="twitterButton">
 			<g:HTML HTML="{text.INVITE_GROUP_Twitter}"></g:HTML>
 		</g:FlowPanel>
-		<g:FlowPanel styleName="option cutandpaste" ui:field="cutAndPasteButton">
+		<g:FlowPanel styleName="option cutandpaste" ui:field="copyAndPasteButton">
 			<g:HTML HTML="{text.INVITE_GROUP_CutAndPaste}"></g:HTML>
 		</g:FlowPanel>
 

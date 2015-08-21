@@ -8,8 +8,6 @@
  
 	<g:FlowPanel styleName="invite" ui:field="root">
 	
-		<g:HTML styleName="text-html" HTML="{text.INVITE_Text_HTML}"></g:HTML>
-		
 		<g:FlowPanel styleName="link-row" >
 			<!-- <g:FlowPanel styleName="share-button" ui:field="shareButton"></g:FlowPanel> -->
 			<g:FlowPanel styleName="reload-button" ui:field="reloadButton"></g:FlowPanel>
@@ -18,14 +16,13 @@
 		
 		<g:HTML  styleName="link-hint-label" HTML="{text.INVITE_LinkHintLabel}"></g:HTML>
 		
-		<g:FlowPanel styleName="share-buttons-slot" >
 		
 			<!-- <g:FlowPanel styleName="share-button clipboard" ui:field="shareButtonClipboard">
 				<g:FlowPanel styleName="image clipboard"></g:FlowPanel>
 				<g:Label styleName="label clipboard" text="Copy to clipboard and use messenger of your choice"></g:Label>
 			</g:FlowPanel> -->
 	
-			<g:FlowPanel styleName="share-button mail" ui:field="shareButtonMail">
+<!-- 			<g:FlowPanel styleName="share-button mail" ui:field="shareButtonMail">
 				<g:FlowPanel styleName="image mail"></g:FlowPanel>
 				<g:Label styleName="label mail" text="{text.INVITE_ShareWithMail}"></g:Label>
 			</g:FlowPanel>
@@ -49,8 +46,7 @@
 				<g:FlowPanel styleName="image twitter"></g:FlowPanel>
 				<g:Label styleName="label whatsapp" text="{text.INVITE_ShareWithTwitter}"></g:Label>
 			</g:FlowPanel>
-			
-		</g:FlowPanel>
+ -->			
 		
 		<g:FlowPanel  styleName="link-name-textbox-slot"  ui:field="linkNameTextBoxSlot"></g:FlowPanel>
 		<g:Label styleName="link-name-label"  text="{text.INVITE_LinkNameLabel}"></g:Label>

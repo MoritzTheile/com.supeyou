@@ -11,7 +11,7 @@
 			<g:FlowPanel styleName="name-question">
 				<g:HTML HTML="{text.INVITE_SINGLE_NameQuestion}"></g:HTML>
 			</g:FlowPanel>
-			<g:FlowPanel  styleName="slot name"  ui:field="nameFieldSlot"></g:FlowPanel>
+			<g:FlowPanel  styleName="link-name-textbox-slot"  ui:field="linkNameTextBoxSlot"></g:FlowPanel>
 			<g:FlowPanel styleName="call-to-choose">
 				<g:HTML HTML="{text.INVITE_SINGLE_CallToChoose}"></g:HTML>
 			</g:FlowPanel>
@@ -22,7 +22,7 @@
 		<g:FlowPanel styleName="option whatsapp" ui:field="whatsAppButton">
 			<g:HTML HTML="{text.INVITE_SINGLE_WhatsApp}"></g:HTML>
 		</g:FlowPanel>
-		<g:FlowPanel styleName="option cutandpaste" ui:field="cutAndPasteButton">
+		<g:FlowPanel styleName="option cutandpaste" ui:field="copyAndPasteButton">
 			<g:HTML HTML="{text.INVITE_SINGLE_CutAndPaste}"></g:HTML>
 		</g:FlowPanel>
 		
