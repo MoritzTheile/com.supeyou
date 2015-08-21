@@ -14,6 +14,18 @@ public class WidgetView extends Composite {
 	@UiField
 	FlowPanel root;
 
+	@UiField
+	FlowPanel linkNameTextBoxSlot;
+
+	@UiField
+	FlowPanel emailButton;
+
+	@UiField
+	FlowPanel whatsAppButton;
+
+	@UiField
+	FlowPanel copyAndPasteButton;
+
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}
 

@@ -1,8 +1,5 @@
 package com.supeyou.core.impl;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.persistence.EntityManager;
 
 import com.supeyou.core.iface.InvitationCRUDService;
@@ -83,7 +80,7 @@ public class InvitationCRUDServiceImpl extends AbstrCRUDServiceImpl<InvitationDT
 			protected InvitationDTO transactionBody() throws Exception {
 				InvitationDTO invitationDTO = new InvitationDTO();
 				// dd.MM.yyyy
-				invitationDTO.setComment(new SingleLineString256Type(new SimpleDateFormat("HH:mm:ss").format(new Date())));
+				// invitationDTO.setComment(new SingleLineString256Type(new SimpleDateFormat("HH:mm:ss").format(new Date())));
 				invitationDTO = privateUpdadd(actorDTO, invitationDTO);
 
 				// all supporter need this association

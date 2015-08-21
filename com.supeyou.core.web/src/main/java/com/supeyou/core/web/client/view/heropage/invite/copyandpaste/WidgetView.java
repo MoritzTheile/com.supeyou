@@ -27,21 +27,6 @@ public class WidgetView extends Composite {
 	@UiField
 	FlowPanel linkNameTextBoxSlot;
 
-	@UiField
-	FlowPanel shareButtonMail;
-
-	@UiField
-	FlowPanel shareButtonWhatsapp;
-
-	@UiField
-	FlowPanel shareButtonGoogle;
-
-	@UiField
-	FlowPanel shareButtonFacebook;
-
-	@UiField
-	FlowPanel shareButtonTwitter;
-
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}
 
