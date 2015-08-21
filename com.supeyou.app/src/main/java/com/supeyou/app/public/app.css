@@ -8,7 +8,15 @@ body {
   	position:relative !important;
 }
 
+.chooser .option.whatsapp{
+	display:block;
+}
+
 @media only screen and (min-width: 580px) {
+
+	.chooser .option.whatsapp{
+		display:none;
+	}
 	
 	html{
 	
