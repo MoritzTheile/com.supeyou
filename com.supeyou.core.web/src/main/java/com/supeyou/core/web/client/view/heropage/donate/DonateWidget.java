@@ -12,7 +12,7 @@ public class DonateWidget extends WidgetView {
 
 		paypalButtonSlot.add(new PayPalWidget("paypal.com-facilitator@moritztheile.de", "Hero Support", "" + supporterDTO.getId().value()));
 
-		donateOnceButton.addDomHandler(new ClickHandler() {
+		donate5OnceButton.addDomHandler(new ClickHandler() {
 
 			@Override
 			public void onClick(ClickEvent event) {

@@ -5,21 +5,41 @@
 	xmlns:m2="urn:import:com.supeyou.crudie.web.client.uiorga.flatbutton">
 	<ui:with field='text'
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
- 
+
 	<g:FlowPanel styleName="root chooser donate" ui:field="root">
-	
+
 		<g:HTML styleName="text-html" HTML="{text.DONATE_Text_HTML}"></g:HTML>
-		
-		<g:FlowPanel  styleName="paypal-button-slot" ui:field="paypalButtonSlot"></g:FlowPanel>
+
+		<g:FlowPanel styleName="paypal-button-slot" ui:field="paypalButtonSlot"></g:FlowPanel>
 
 		<g:HTML styleName="text-html" HTML="{text.DONATE_Text2_HTML}"></g:HTML>
-					
-		<g:HTML styleName="header more-options text-html" HTML="{text.DONATE_MoreOptions}"></g:HTML>		
-		
-		<g:FlowPanel styleName="option donate" ui:field="singleButton">
-			<g:HTML HTML="{text.DONATE_OPTION_DonateOnce}" ui:field="donateOnceButton"></g:HTML>
+
+		<g:HTML styleName="header more-options text-html" HTML="{text.DONATE_MoreOptions}"></g:HTML>
+
+		<g:FlowPanel styleName="option donate" ui:field="donate5OnceButton">
+			<g:HTML HTML="{text.DONATE_OPTION_Donate5Once}"></g:HTML>
 		</g:FlowPanel>
-		
+		<g:FlowPanel styleName="option donate" ui:field="donate25OnceButton">
+			<g:HTML HTML="{text.DONATE_OPTION_Donate25Once}" ></g:HTML>
+		</g:FlowPanel>
+
+		<g:FlowPanel styleName="option donate" ui:field="donate50OnceButton">
+			<g:HTML HTML="{text.DONATE_OPTION_Donate50Once}" ></g:HTML>
+		</g:FlowPanel>
+		<g:FlowPanel styleName="option donate" ui:field="donate100OnceButton">
+			<g:HTML HTML="{text.DONATE_OPTION_Donate100Once}" ></g:HTML>
+		</g:FlowPanel>
+		<g:FlowPanel styleName="option donate" ui:field="donate5MonthlyButton">
+			<g:HTML HTML="{text.DONATE_OPTION_Donate5Monthly}" ></g:HTML>
+		</g:FlowPanel>
+		<g:FlowPanel styleName="option donate" ui:field="donate25MonthlyButton">
+			<g:HTML HTML="{text.DONATE_OPTION_Donate25Monthly}" ></g:HTML>
+		</g:FlowPanel>
+		<g:FlowPanel styleName="option donate" ui:field="donate100MonthlyButton">
+			<g:HTML HTML="{text.DONATE_OPTION_Donate50Monthly}" ></g:HTML>
+		</g:FlowPanel>
+
+
 	</g:FlowPanel>
 
 </ui:UiBinder> 
