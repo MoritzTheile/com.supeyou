@@ -13,11 +13,19 @@ import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.impl.SupporterCRUDServiceImpl.SupporterAction;
 import com.supeyou.core.impl.entity.Invitation2SupporterEntity;
 import com.supeyou.core.impl.entity.InvitationEntity;
+import com.supeyou.core.impl.entity.Supporter2InvitationEntity;
 import com.supeyou.core.impl.entity.SupporterEntity;
 import com.supeyou.crudie.iface.CRUDAssoService;
+import com.supeyou.crudie.iface.datatype.CRUDException;
+import com.supeyou.crudie.iface.datatype.CRUDException.CODE;
+import com.supeyou.crudie.iface.datatype.Page;
+import com.supeyou.crudie.iface.dto.DTOFetchList;
+import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.impl.AbstrCRUDServiceImpl;
 import com.supeyou.crudie.impl.dtohelper.AbstrDTOHelper;
 import com.supeyou.crudie.impl.entity.UserEntity;
+import com.supeyou.crudie.impl.util.STATICS;
+import com.supeyou.crudie.impl.util.TransactionTemplate;
 
 public class Invitation2SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<Invitation2SupporterDTO, Invitation2SupporterEntity, Invitation2SupporterFetchQuery> implements CRUDAssoService<InvitationDTO, SupporterDTO, Invitation2SupporterIDType, Invitation2SupporterDTO, Invitation2SupporterFetchQuery> {
 
@@ -25,6 +33,60 @@ public class Invitation2SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<In
 
 	private AbstrDTOHelper<InvitationEntity, InvitationDTO> aHelper;
 	private AbstrDTOHelper<SupporterEntity, SupporterDTO> bHelper;
+
+	@Override
+	public DTOFetchList<Invitation2SupporterDTO> fetchList(UserDTO actorDTO, Page page, final Invitation2SupporterFetchQuery dtoQuery) throws CRUDException {
+
+		if (dtoQuery.getInvitor() == null) {
+
+			return super.fetchList(actorDTO, page, dtoQuery);
+
+		} else {
+
+			if (page.getPageSize() < Integer.MAX_VALUE) {
+
+				throw new CRUDException(CODE.INVALID_PAGESIZE, "Paging is not supported when fetching children.");
+
+			}
+
+			return new TransactionTemplate<DTOFetchList<Invitation2SupporterDTO>>(actorDTO, STATICS.getEntityManager()) {
+
+				public void checkPermissions(UserEntity actor) throws CRUDException {
+
+					// STATICS.checkActorNotNull(actor);
+					// STATICS.checkActorIsAdmin(actor);
+
+				}
+
+				protected DTOFetchList<Invitation2SupporterDTO> transactionBody() throws Exception {
+
+					DTOFetchList<Invitation2SupporterDTO> fetchList = new DTOFetchList<Invitation2SupporterDTO>();
+
+					SupporterEntity parent = em.find(SupporterEntity.class, dtoQuery.getInvitor().getId().value());
+
+					for (Supporter2InvitationEntity entity : parent.getSupporter2invitationCollection()) {
+
+						for (Invitation2SupporterEntity invitation2SupporterEntity : entity.getB().getInvitation2SupporterCollection()) {
+
+							Invitation2SupporterDTO dto = helper.entity2DTO(invitation2SupporterEntity);
+
+							postprocessEntity2DTO(em, invitation2SupporterEntity, dto);
+
+							SupporterCRUDServiceImpl.i().postprocessEntity2DTO(em, invitation2SupporterEntity.getB(), dto.getDtoB());
+
+							fetchList.add(dto);
+
+						}
+
+					}
+
+					return fetchList;
+				}
+			}.execute();
+
+		}
+
+	}
 
 	protected void afterUpdadd(EntityManager em, UserEntity actor, Invitation2SupporterDTO dto) {
 

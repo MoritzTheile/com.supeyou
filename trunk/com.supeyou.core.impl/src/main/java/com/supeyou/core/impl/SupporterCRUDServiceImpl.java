@@ -23,7 +23,6 @@ import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.CRUDException.CODE;
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.datatype.types.AmountType;
-import com.supeyou.crudie.iface.dto.DTOFetchList;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.impl.AbstrCRUDServiceImpl;
 import com.supeyou.crudie.impl.UserCRUDServiceImpl;
@@ -32,59 +31,6 @@ import com.supeyou.crudie.impl.util.STATICS;
 import com.supeyou.crudie.impl.util.TransactionTemplate;
 
 public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO, SupporterEntity, SupporterFetchQuery> implements SupporterCRUDService {
-
-	@Override
-	public DTOFetchList<SupporterDTO> fetchList(UserDTO actorDTO, final Page page, final SupporterFetchQuery dtoQuery) throws CRUDException {
-
-		if (dtoQuery.getInvitor() == null) {
-
-			return super.fetchList(actorDTO, page, dtoQuery);
-
-		} else {
-
-			if (page.getPageSize() < Integer.MAX_VALUE) {
-
-				throw new CRUDException(CODE.INVALID_PAGESIZE, "Paging is not supported when fetching children.");
-
-			}
-
-			return new TransactionTemplate<DTOFetchList<SupporterDTO>>(actorDTO, STATICS.getEntityManager()) {
-
-				public void checkPermissions(UserEntity actor) throws CRUDException {
-
-					// STATICS.checkActorNotNull(actor);
-					// STATICS.checkActorIsAdmin(actor);
-
-				}
-
-				protected DTOFetchList<SupporterDTO> transactionBody() throws Exception {
-
-					DTOFetchList<SupporterDTO> fetchList = new DTOFetchList<SupporterDTO>();
-
-					SupporterEntity parent = em.find(SupporterEntity.class, dtoQuery.getInvitor().getId().value());
-
-					for (Supporter2InvitationEntity entity : parent.getSupporter2invitationCollection()) {
-
-						for (Invitation2SupporterEntity invitation2SupporterEntity : entity.getB().getInvitation2SupporterCollection()) {
-
-							SupporterDTO dto = helper.entity2DTO(invitation2SupporterEntity.getB());
-
-							if (!fetchList.contains(dto)) {
-								postprocessEntity2DTO(em, invitation2SupporterEntity.getB(), dto);
-								fetchList.add(dto);
-							}
-
-						}
-
-					}
-
-					return fetchList;
-				}
-			}.execute();
-
-		}
-
-	}
 
 	@Override
 	public SupporterDTO updadd(UserDTO actorDTO, SupporterDTO dto) throws CRUDException {

@@ -5,8 +5,8 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.supeyou.core.iface.dto.SupporterDTO;
-import com.supeyou.core.iface.dto.SupporterFetchQuery;
+import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
+import com.supeyou.core.iface.dto.Invitation2SupporterFetchQuery;
 import com.supeyou.core.impl.initialdata.InitialCoreData;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.Page;
@@ -19,15 +19,15 @@ public class SupporterTest {
 
 		assertNotNull(InitialCoreData.i().admin);
 
-		SupporterFetchQuery dtoQuery = new SupporterFetchQuery();
+		Invitation2SupporterFetchQuery dtoQuery = new Invitation2SupporterFetchQuery();
 
 		dtoQuery.setInvitor(InitialCoreData.i().supporter_Hugo);
 
-		DTOFetchList<SupporterDTO> fetchList = SupporterCRUDServiceImpl.i().fetchList(InitialCoreData.i().admin, new Page(), dtoQuery);
+		DTOFetchList<Invitation2SupporterDTO> fetchList = Invitation2SupporterCRUDServiceImpl.i().fetchList(InitialCoreData.i().admin, new Page(), dtoQuery);
 
-		for (SupporterDTO supporterDTO : fetchList) {
+		for (Invitation2SupporterDTO dto : fetchList) {
 
-			System.out.println(supporterDTO
+			System.out.println(dto.getDtoB()
 
 					.getUserDTO()
 
@@ -38,5 +38,4 @@ public class SupporterTest {
 		Assert.assertEquals(3, fetchList.size());
 
 	}
-
 }

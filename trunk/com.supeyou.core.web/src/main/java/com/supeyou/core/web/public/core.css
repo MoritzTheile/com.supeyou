@@ -277,6 +277,10 @@
   	background-position:50% 0px ;
 }
 
+.supportertree-root.gray{
+    opacity: 0.5;
+}
+
 .supportertree-root.gray .image-slot{
 	background-image: url("core/images/emoticon.smile.bw.png");  
 }
