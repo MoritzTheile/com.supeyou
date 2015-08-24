@@ -15,6 +15,8 @@ public class HeroDTO extends AbstrDTO<HeroIDType> implements Serializable {
 	private URLType videoURL;
 	private SingleLineString256Type comment;
 	private SingleLineString256Type name;
+	private SingleLineString256Type paypalAccount;
+	private boolean active = true;
 
 	public HeroDTO() {
 
@@ -76,6 +78,22 @@ public class HeroDTO extends AbstrDTO<HeroIDType> implements Serializable {
 
 	public void setName(SingleLineString256Type name) {
 		this.name = name;
+	}
+
+	public boolean getActive() {
+		return active;
+	}
+
+	public void setActive(boolean hidden) {
+		this.active = hidden;
+	}
+
+	public SingleLineString256Type getPaypalAccount() {
+		return paypalAccount;
+	}
+
+	public void setPaypalAccount(SingleLineString256Type paypalAccount) {
+		this.paypalAccount = paypalAccount;
 	}
 
 }

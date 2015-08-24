@@ -28,8 +28,18 @@ public class HeroCRUDServiceImpl extends AbstrCRUDServiceImpl<HeroDTO, HeroEntit
 
 		if (query.getSearchString() != null && !query.getSearchString().isEmpty()) {
 
-			whereClause += " " + "lower(name)" + " like '%" + query.getSearchString().toLowerCase() + "%' ";
+			whereClause += " " + "lower(name)" + " like '%" + query.getSearchString().toLowerCase() + "%' AND ";
 
+		}
+
+		if (query.showActiveOnly()) {
+
+			whereClause += " " + "active='true' AND ";
+
+		}
+
+		if (whereClause.endsWith("AND ")) {
+			whereClause = whereClause.substring(0, whereClause.length() - 4);
 		}
 
 		if (!"".equals(whereClause)) {
@@ -37,6 +47,7 @@ public class HeroCRUDServiceImpl extends AbstrCRUDServiceImpl<HeroDTO, HeroEntit
 		}
 
 		return whereClause;
+
 	}
 
 	@Override

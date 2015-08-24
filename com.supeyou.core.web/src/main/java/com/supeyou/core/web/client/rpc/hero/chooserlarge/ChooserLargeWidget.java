@@ -21,9 +21,12 @@ public abstract class ChooserLargeWidget extends WidgetView {
 	protected final AbstrListDataProvider<HeroDTO, HeroFetchQuery> dataProvider;
 	public final AbstrListWidgetList<HeroDTO, HeroFetchQuery> widgetList;
 
-	public ChooserLargeWidget() {
+	public ChooserLargeWidget(HeroFetchQuery query) {
 
 		dataProvider = new ListDataProvider(new HeroFetchQuery());
+		if (query != null) {
+			dataProvider.setFetchQuery(query);
+		}
 		dataProvider.setPageSize(5);
 
 		widgetList = new AbstrListWidgetList<HeroDTO, HeroFetchQuery>(dataProvider) {
@@ -88,6 +91,10 @@ public abstract class ChooserLargeWidget extends WidgetView {
 		// }
 		// });
 
+	}
+
+	public ChooserLargeWidget() {
+		this(null);
 	}
 
 	public abstract void onSelectionChange(List<HeroDTO> selection);
