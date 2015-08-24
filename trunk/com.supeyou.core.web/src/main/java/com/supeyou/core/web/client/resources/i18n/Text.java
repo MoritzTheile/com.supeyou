@@ -41,7 +41,23 @@ public interface Text extends Messages {
 
 	String DONATE_MoreOptions();
 
-	String DONATE_OPTION_DonateOnce();
+	String DONATE_OPTION_Donate5Once();
+
+	String DONATE_OPTION_Donate10Once();
+
+	String DONATE_OPTION_Donate25Once();
+
+	String DONATE_OPTION_Donate50Once();
+
+	String DONATE_OPTION_Donate100Once();
+
+	String DONATE_OPTION_Donate5Monthly();
+
+	String DONATE_OPTION_Donate10Monthly();
+
+	String DONATE_OPTION_Donate25Monthly();
+
+	String DONATE_OPTION_Donate50Monthly();
 
 	String INVITE_LinkHintLabel();
 

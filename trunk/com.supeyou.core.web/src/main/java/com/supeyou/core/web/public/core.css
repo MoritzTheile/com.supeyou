@@ -679,6 +679,21 @@
 
   
 }
+
+.root.chooser.donate .option.donate{
+  	background-image: url("core/images/donate.paypal.jpg");
+  	background-size:120px;
+  	padding: 0 0 0 200px
+  	vertical-align:middle;
+  	background-position: 24px 50%;
+  
+}
+
+.root.chooser.donate .header{
+  margin: 0;
+  
+}
+
 .root.chooser .option:hover{
 	background-color:#F7F7F7;
 
