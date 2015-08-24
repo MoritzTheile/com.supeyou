@@ -28,6 +28,10 @@ public class HeroEntity extends AbstrEntity<HeroIDType> {
 
 	private String comment;
 
+	private String paypalAccount;
+
+	private boolean active = false;
+
 	@OneToMany(mappedBy = "b"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private Collection<User2HeroEntity> user2HeroCollection = new ArrayList<>();
 
@@ -43,6 +47,21 @@ public class HeroEntity extends AbstrEntity<HeroIDType> {
 			this.comment = comment.value();
 		} else {
 			this.comment = null;
+		}
+	}
+
+	public SingleLineString256Type getPaypalAccount() {
+		if (paypalAccount == null) {
+			return null;
+		}
+		return new SingleLineString256Type(paypalAccount);
+	}
+
+	public void setPaypalAccount(SingleLineString256Type paypalAccount) {
+		if (paypalAccount != null) {
+			this.paypalAccount = paypalAccount.value();
+		} else {
+			this.paypalAccount = null;
 		}
 	}
 
@@ -130,6 +149,14 @@ public class HeroEntity extends AbstrEntity<HeroIDType> {
 
 	public void setUser2HeroCollection(Collection<User2HeroEntity> user2HeroCollection) {
 		this.user2HeroCollection = user2HeroCollection;
+	}
+
+	public boolean getActive() {
+		return active;
+	}
+
+	public void setActive(boolean hidden) {
+		this.active = hidden;
 	}
 
 }

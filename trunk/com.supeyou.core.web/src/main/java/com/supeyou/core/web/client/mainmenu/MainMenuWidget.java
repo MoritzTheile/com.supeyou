@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.supeyou.core.iface.dto.HeroDTO;
+import com.supeyou.core.iface.dto.HeroFetchQuery;
 import com.supeyou.core.web.client.HistoryController;
 import com.supeyou.core.web.client.mainmenu.addhero.AddHeroWidget;
 import com.supeyou.core.web.client.mainmenu.adminmenu.AdminMenuWidget;
@@ -41,7 +42,9 @@ public class MainMenuWidget extends WidgetView {
 			public Widget getWidgetFor(Widget menuItem) {
 
 				if (menuItem1 == menuItem) {
-					return new ChooserLargeWidget() {
+					HeroFetchQuery heroFetchQuery = new HeroFetchQuery();
+					heroFetchQuery.setShowActiveOnly(true);
+					return new ChooserLargeWidget(heroFetchQuery) {
 
 						@Override
 						public void onSelectionChange(List<HeroDTO> selection) {

@@ -9,6 +9,7 @@ import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.datatype.types.URLType;
 import com.supeyou.crudie.web.client.fields.base.AbstrCompositeField;
 import com.supeyou.crudie.web.client.fields.base.Field;
+import com.supeyou.crudie.web.client.fields.types.FieldForBoolean;
 import com.supeyou.crudie.web.client.fields.types.FieldForSingleLineString256Type;
 import com.supeyou.crudie.web.client.fields.types.FieldForURLType;
 
@@ -24,6 +25,22 @@ public class FieldsWidget extends WidgetView {
 
 		put(
 
+				"Hide hero",
+
+				new FieldForBoolean(thisDto.getActive()) {
+
+					@Override
+					public void onHasChanged(Boolean value) {
+						thisDto.setActive(value);
+						hasChanged();
+					}
+
+				}
+
+		);
+
+		put(
+
 				"Name",
 
 				new FieldForSingleLineString256Type(thisDto.getName()) {
@@ -31,6 +48,22 @@ public class FieldsWidget extends WidgetView {
 					@Override
 					public void onHasChanged(SingleLineString256Type value) {
 						thisDto.setName(value);
+						hasChanged();
+					}
+
+				}
+
+		);
+
+		put(
+
+				"PaypalAccount",
+
+				new FieldForSingleLineString256Type(thisDto.getPaypalAccount()) {
+
+					@Override
+					public void onHasChanged(SingleLineString256Type value) {
+						thisDto.setPaypalAccount(value);
 						hasChanged();
 					}
 
