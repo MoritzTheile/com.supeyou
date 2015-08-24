@@ -9,9 +9,10 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Label;
+import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
+import com.supeyou.core.iface.dto.Invitation2SupporterFetchQuery;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
-import com.supeyou.core.iface.dto.SupporterFetchQuery;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.view.heropage.supportertree.edges.Edge;
 import com.supeyou.core.web.client.view.heropage.supportertree.edges.EdgesWidget;
@@ -24,10 +25,12 @@ public class SupporterTreeWidget extends WidgetView {
 
 	private final SupporterDTO supporterDTO;
 
-	private List<SupporterDTO> childrenSupporterDTO;
+	private List<Invitation2SupporterDTO> childrenSupporterDTO;
 
 	private final SupporterTreeWidget thisWidget;
 	private final SupporterTreeWidget parentWidget;
+
+	private final boolean treeDestroying;
 
 	private final Integer level;
 
@@ -38,12 +41,13 @@ public class SupporterTreeWidget extends WidgetView {
 	private COLLAPSE_MODE collapseMode = COLLAPSE_MODE.COLLAPSED;
 
 	public SupporterTreeWidget(final SupporterDTO supporterDTO) {
-		this(supporterDTO, null, 1);
+		this(supporterDTO, false, null, 1);
 	}
 
-	private SupporterTreeWidget(final SupporterDTO supporterDTO, final SupporterTreeWidget parentWidget, Integer level) {
+	private SupporterTreeWidget(final SupporterDTO supporterDTO, boolean treeDestroying, final SupporterTreeWidget parentWidget, Integer level) {
+		this.treeDestroying = treeDestroying;
 
-		if (5 + 5 == 10) {
+		if (treeDestroying) {
 			root.addStyleName("gray");
 		}
 
@@ -59,11 +63,11 @@ public class SupporterTreeWidget extends WidgetView {
 			collapseMode = COLLAPSE_MODE.EXPANDED;
 		}
 
-		SupporterFetchQuery supporterFetchQuery = new SupporterFetchQuery();
+		Invitation2SupporterFetchQuery supporterFetchQuery = new Invitation2SupporterFetchQuery();
 
 		supporterFetchQuery.setInvitor(supporterDTO);
 
-		com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.fetchList(new Page(), supporterFetchQuery, new AsyncCallback<DTOFetchList<SupporterDTO>>() {
+		com.supeyou.core.web.client.rpc.invitation2supporter.RPCCRUDServiceAsync.i.fetchList(new Page(), supporterFetchQuery, new AsyncCallback<DTOFetchList<Invitation2SupporterDTO>>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -73,7 +77,7 @@ public class SupporterTreeWidget extends WidgetView {
 			}
 
 			@Override
-			public void onSuccess(DTOFetchList<SupporterDTO> childrenDTO) {
+			public void onSuccess(DTOFetchList<Invitation2SupporterDTO> childrenDTO) {
 
 				childrenSupporterDTO = childrenDTO;
 
@@ -103,15 +107,15 @@ public class SupporterTreeWidget extends WidgetView {
 
 		if (COLLAPSE_MODE.EXPANDED.equals(collapseMode)) {
 
-			for (SupporterDTO childSupporterDTO : childrenSupporterDTO) {
+			for (Invitation2SupporterDTO childSupporterDTO : childrenSupporterDTO) {
 
-				childrenSlot.add(new SupporterTreeWidget(childSupporterDTO, thisWidget, new Integer(level + 1)));
+				childrenSlot.add(new SupporterTreeWidget(childSupporterDTO.getDtoB(), childSupporterDTO.getTreeDestroying(), thisWidget, new Integer(level + 1)));
 
 			}
 
 		} else {
 
-			if (!childrenSupporterDTO.isEmpty()) {
+			if (!childrenSupporterDTO.isEmpty() && !treeDestroying) {
 
 				Label expandButton = new Label("+ " + childrenSupporterDTO.size());
 
@@ -149,6 +153,12 @@ public class SupporterTreeWidget extends WidgetView {
 	private String getHtml(SupporterDTO supporterDTO2) {
 
 		String html = "";
+
+		if (treeDestroying) {
+
+			html += Text.i.TREE_WasSupportingAlready() + "<br>";
+
+		}
 
 		if (supporterDTO2 != null && supporterDTO2.getUserDTO().getLoginId() != null) {
 

@@ -113,4 +113,6 @@ public interface Text extends Messages {
 
 	String INVITE_GROUP_CutAndPaste();
 
+	String TREE_WasSupportingAlready();
+
 }
