@@ -131,7 +131,7 @@ public class SupporterTreeWidget extends WidgetView {
 					}
 				});
 
-				childrenSlot.add(expandButton);
+				edgeSlot.add(expandButton);
 
 			}
 
@@ -172,7 +172,9 @@ public class SupporterTreeWidget extends WidgetView {
 
 			}
 
-			html += getClickedLinks(supporterDTO2);
+			if (level <= 2) {
+				html += getClickedLinks(supporterDTO2);
+			}
 
 		} else {
 
