@@ -19,10 +19,13 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 
 import com.supeyou.core.iface.dto.DonationDTO;
+import com.supeyou.core.iface.dto.DonationFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.iface.dto.SupporterIDType;
 import com.supeyou.core.impl.DonationCRUDServiceImpl;
 import com.supeyou.core.impl.SupporterCRUDServiceImpl;
+import com.supeyou.crudie.iface.datatype.CRUDException;
+import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 
@@ -124,9 +127,13 @@ public class IpnHandler {
 				donationDTO.setError(new SingleLineString256Type("payment_status IS NOT COMPLETED {" + donationDTO.getPaymentStatus() + "}"));
 
 			// 6.2. Check that txnId has not been previously processed
-			// DonationDTO oldDonationDTO = ipnInfoService.getDonationDTO(donationDTO.getTxnId());
-			// if (oldDonationDTO != null)
-			// donationDTO.setError(new SingleLineString256Type("txn_id is already processed {old ipn_info " + oldDonationDTO));
+			DonationDTO oldDonationDTO = getDonationDTO(donationDTO.getTxnId());
+			if (oldDonationDTO != null) {
+
+				String message = "txn_id is already processed {old ipn_info " + oldDonationDTO;
+				log.log(Level.INFO, message);
+				donationDTO.setError(new SingleLineString256Type(message));
+			}
 
 			// 6.3. Check that receiverEmail matches with configured {@link IpnConfig#receiverEmail}
 			// if (!ipnInfo.getReceiverEmail().equalsIgnoreCase(this.getIpnConfig().getReceiverEmail()))
@@ -166,6 +173,22 @@ public class IpnHandler {
 
 		// 8. If all is well, return {@link DonationDTO} to the caller for further business logic execution
 		return donationDTO;
+	}
+
+	private DonationDTO getDonationDTO(SingleLineString256Type txnId) throws CRUDException {
+
+		DonationFetchQuery dtoQuery = new DonationFetchQuery();
+
+		dtoQuery.setTxnId(txnId);
+
+		for (DonationDTO donationDTO : DonationCRUDServiceImpl.i().fetchList(null, new Page(), dtoQuery)) {
+
+			return donationDTO;
+
+		}
+
+		return null;
+
 	}
 
 	private AmountType toAmount(SingleLineString256Type param) {
