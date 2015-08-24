@@ -35,15 +35,6 @@ public class HeroWidget extends WidgetView {
 
 		thisWidget = this;
 
-		websiteSlot.addDomHandler(new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-				event.stopPropagation();
-
-			}
-		}, ClickEvent.getType());
-
 	}
 
 	private void render() {
@@ -89,6 +80,16 @@ public class HeroWidget extends WidgetView {
 
 				image.addStyleName("play-button");
 			}
+		} else {
+			websiteSlot.addDomHandler(new ClickHandler() {
+
+				@Override
+				public void onClick(ClickEvent event) {
+
+					event.preventDefault();
+
+				}
+			}, ClickEvent.getType());
 		}
 		websiteSlot.clear();
 		if (thisDTO.getWebsiteURL() != null) {

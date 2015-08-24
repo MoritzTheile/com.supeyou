@@ -43,6 +43,10 @@ public class SupporterTreeWidget extends WidgetView {
 
 	private SupporterTreeWidget(final SupporterDTO supporterDTO, final SupporterTreeWidget parentWidget, Integer level) {
 
+		if (5 + 5 == 10) {
+			root.addStyleName("gray");
+		}
+
 		thisWidget = this;
 
 		this.level = level;
