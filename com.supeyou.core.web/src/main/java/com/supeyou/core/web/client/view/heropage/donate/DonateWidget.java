@@ -1,5 +1,6 @@
 package com.supeyou.core.web.client.view.heropage.donate;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.History;
@@ -12,13 +13,11 @@ public class DonateWidget extends WidgetView {
 
 	public DonateWidget(final SupporterDTO supporterDTO) {
 
-		Window.alert(URLHelper.getCurrentURL() + "/IPNServlet");
-
 		paypalButtonSlot.add(new PayPalWidget(
 				"_donations", // _xclick-subscriptions _donations
 				"1.00",
 				URLHelper.getCurrentURL() + "#" + History.getToken(), //
-				URLHelper.getCurrentURL() + "/IPNServlet", //
+				GWT.getHostPageBaseURL() + "IPNServlet", //
 				supporterDTO.getHeroDTO().getPaypalAccount().value(),
 				"Support for " + supporterDTO.getHeroDTO().getName().value(),
 				"" + supporterDTO.getId().value())
