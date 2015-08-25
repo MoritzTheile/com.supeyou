@@ -13,7 +13,7 @@ public class DonateWidget extends WidgetView {
 	public DonateWidget(final SupporterDTO supporterDTO) {
 
 		paypalButtonSlot.add(new PayPalWidget(
-				"_xclick-subscriptions", // _xclick-subscriptions _donate
+				"_donate", // _xclick-subscriptions _donate
 				"1",
 				URLHelper.getCurrentURL() + "#" + History.getToken(), //
 				URLHelper.getCurrentURL() + "/IPNServlet", //
