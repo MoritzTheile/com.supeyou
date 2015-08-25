@@ -20,7 +20,7 @@ public class DonationEntity extends AbstrEntity<DonationIDType> {
 	@Column(nullable = false)
 	private Integer paymentAmount;
 	private String paymentCurrency;
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String txnId;
 	private String receiverEmail;
 	private String payerEmail;
