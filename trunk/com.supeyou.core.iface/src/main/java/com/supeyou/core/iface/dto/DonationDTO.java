@@ -20,7 +20,6 @@ public class DonationDTO extends AbstrDTO<DonationIDType> implements Serializabl
 	private SingleLineString256Type payerEmail;
 	private SingleLineString256Type response;
 	private SingleLineString256Type requestParams;
-	private SingleLineString256Type error;
 
 	public DonationDTO() {
 
@@ -104,14 +103,6 @@ public class DonationDTO extends AbstrDTO<DonationIDType> implements Serializabl
 
 	public void setRequestParams(SingleLineString256Type requestParams) {
 		this.requestParams = requestParams;
-	}
-
-	public SingleLineString256Type getError() {
-		return error;
-	}
-
-	public void setError(SingleLineString256Type error) {
-		this.error = error;
 	}
 
 	@Override

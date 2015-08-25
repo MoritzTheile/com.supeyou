@@ -26,7 +26,6 @@ public class DonationEntity extends AbstrEntity<DonationIDType> {
 	private String payerEmail;
 	private String response;
 	private String requestParams;
-	private String error;
 
 	public void setItemName(SingleLineString256Type itemName) {
 		if (itemName != null) {
@@ -176,21 +175,6 @@ public class DonationEntity extends AbstrEntity<DonationIDType> {
 			this.requestParams = requestParams.value();
 		} else {
 			this.requestParams = null;
-		}
-	}
-
-	public SingleLineString256Type getError() {
-		if (error == null) {
-			return null;
-		}
-		return new SingleLineString256Type(error);
-	}
-
-	public void setError(SingleLineString256Type error) {
-		if (error != null) {
-			this.error = error.value();
-		} else {
-			this.error = null;
 		}
 	}
 
