@@ -92,6 +92,8 @@ public class InitialCoreData {
 	public DonationDTO donationDTO_Emma1Euro;
 	public DonationDTO donationDTO_Andrea1Euro;
 
+	private int donationCounter = 0;
+
 	private void init() throws CRUDException {
 
 		admin = UserCRUDServiceImpl.i().getInitialAdmin();
@@ -177,41 +179,49 @@ public class InitialCoreData {
 		InvitationCRUDServiceImpl.i().followInvitation(admin, user_Otto, invitation_0405_0955.getToken());
 
 		{
-			DonationDTO donationDTO = new DonationDTO();
+			DonationDTO donationDTO = getNewDonation();
+
 			donationDTO.setPaymentAmount(new AmountType(200));
 			donationDTO_Marion2Euro = DonationCRUDServiceImpl.i().save(admin, supporter_Marion, donationDTO);
 
 		}
 		{
-			DonationDTO donationDTO = new DonationDTO();
+			DonationDTO donationDTO = getNewDonation();
 			donationDTO.setPaymentAmount(new AmountType(100));
 			donationDTO_Eugen1Euro = DonationCRUDServiceImpl.i().save(admin, supporter_Eugen, donationDTO);
 
 		}
 		{
-			DonationDTO donationDTO = new DonationDTO();
+			DonationDTO donationDTO = getNewDonation();
 			donationDTO.setPaymentAmount(new AmountType(100));
 			donationDTO_Hermann1Euro1 = DonationCRUDServiceImpl.i().save(admin, supporter_Hermann, donationDTO);
 
 		}
 		{
-			DonationDTO donationDTO = new DonationDTO();
+			DonationDTO donationDTO = getNewDonation();
 			donationDTO.setPaymentAmount(new AmountType(100));
 			donationDTO_Hermann1Euro2 = DonationCRUDServiceImpl.i().save(admin, supporter_Hermann, donationDTO);
 		}
 		{
-			DonationDTO donationDTO = new DonationDTO();
+			DonationDTO donationDTO = getNewDonation();
 			donationDTO.setPaymentAmount(new AmountType(100));
 			donationDTO_Emma1Euro = DonationCRUDServiceImpl.i().save(admin, supporter_Emma, donationDTO);
 
 		}
 		{
-			DonationDTO donationDTO = new DonationDTO();
+			DonationDTO donationDTO = getNewDonation();
 			donationDTO.setPaymentAmount(new AmountType(100));
 			donationDTO_Andrea1Euro = DonationCRUDServiceImpl.i().save(admin, supporter_Andrea, donationDTO);
 
 		}
 
+	}
+
+	private DonationDTO getNewDonation() {
+		DonationDTO donationDTO = new DonationDTO();
+		donationDTO.setTxnId(new SingleLineString256Type("InitialCoreDataDummyId" + donationCounter++));
+		donationDTO.setItemNumber(new SingleLineString256Type("InitialCoreDataDummyItemNumber" + donationCounter++));
+		return donationDTO;
 	}
 
 	private UserDTO createUser(String name) throws CRUDException {
