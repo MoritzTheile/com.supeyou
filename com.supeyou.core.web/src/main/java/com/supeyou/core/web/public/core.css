@@ -254,6 +254,7 @@
 	border-radius: 112px;
 	
 
+	cursor: pointer;
 }
 
 
@@ -618,7 +619,7 @@
 .howitworks-root .button-pointer-image{
 	position:absolute;
 	left: 110px;
-	top:-42px;
+	top:-48px;
 	width: 200px
 }
 
