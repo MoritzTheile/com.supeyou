@@ -15,10 +15,28 @@ public class WidgetView extends Composite {
 	FlowPanel root;
 
 	@UiField
-	FlowPanel paypalButtonSlot;
+	FlowPanel donate1MonthlyButton;
 
 	@UiField
 	FlowPanel donate5OnceButton;
+
+	@UiField
+	FlowPanel donate25OnceButton;
+
+	@UiField
+	FlowPanel donate50OnceButton;
+
+	@UiField
+	FlowPanel donate100OnceButton;
+
+	@UiField
+	FlowPanel donate5MonthlyButton;
+
+	@UiField
+	FlowPanel donate25MonthlyButton;
+
+	@UiField
+	FlowPanel donate100MonthlyButton;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}
