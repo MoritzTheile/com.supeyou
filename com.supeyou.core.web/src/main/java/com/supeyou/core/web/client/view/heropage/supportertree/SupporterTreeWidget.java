@@ -117,7 +117,7 @@ public class SupporterTreeWidget extends WidgetView {
 
 			if (!childrenSupporterDTO.isEmpty() && !treeDestroying) {
 
-				Label expandButton = new Label("+ " + childrenSupporterDTO.size());
+				Label expandButton = new Label("+ " + supporterDTO.getDecendentCount());
 
 				expandButton.addClickHandler(new ClickHandler() {
 
@@ -175,10 +175,6 @@ public class SupporterTreeWidget extends WidgetView {
 			if (level <= 2) {
 				html += getClickedLinks(supporterDTO2);
 			}
-
-		} else {
-
-			nameLabel.setText("null");
 
 		}
 		return html;
