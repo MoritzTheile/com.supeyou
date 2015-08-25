@@ -15,7 +15,7 @@ public class DonateWidget extends WidgetView {
 
 		paypalButtonSlot.add(new PayPalWidget(
 				"_donations", // _xclick-subscriptions _donations
-				"1.00",
+				"1",
 				URLHelper.getCurrentURL() + "#" + History.getToken(), //
 				GWT.getHostPageBaseURL() + "IPNServlet", //
 				supporterDTO.getHeroDTO().getPaypalAccount().value(),

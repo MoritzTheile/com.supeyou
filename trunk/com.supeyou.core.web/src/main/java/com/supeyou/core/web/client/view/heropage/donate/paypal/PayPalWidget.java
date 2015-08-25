@@ -42,7 +42,7 @@ public class PayPalWidget extends WidgetView {
 			"<input type=\"hidden\" name=\"return\" value=\"return_TOKEN\">" +
 			"<input type=\"hidden\" name=\"notify_url\" value=\"notify_url_TOKEN\">" +
 			// "Enter the amount you would like to donate:&nbsp;" +
-			"<input type=\"hidden\" name=\"a3\" value=\"1\" >" +
+			"<input type=\"hidden\" name=\"a3\" value=\"amount_TOKEN\" >" +
 			// "<br><br>" +
 			// "<!-- src, Optional, Recurring Payments, 0 no recur, 1 payments recur -->" +
 			"<input type=\"hidden\" name=\"src\" value=\"1\">" +
