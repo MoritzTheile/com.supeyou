@@ -12,9 +12,11 @@ public class DonateWidget extends WidgetView {
 
 	public DonateWidget(final SupporterDTO supporterDTO) {
 
+		Window.alert(URLHelper.getCurrentURL() + "/IPNServlet");
+
 		paypalButtonSlot.add(new PayPalWidget(
-				"_donate", // _xclick-subscriptions _donate
-				"1",
+				"_donations", // _xclick-subscriptions _donations
+				"1.00",
 				URLHelper.getCurrentURL() + "#" + History.getToken(), //
 				URLHelper.getCurrentURL() + "/IPNServlet", //
 				supporterDTO.getHeroDTO().getPaypalAccount().value(),
