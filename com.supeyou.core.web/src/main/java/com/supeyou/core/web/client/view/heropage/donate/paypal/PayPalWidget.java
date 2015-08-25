@@ -21,12 +21,21 @@ public class PayPalWidget extends WidgetView {
 		html = html.replaceAll("business_TOKEN", business_TOKEN);
 		html = html.replaceAll("item_name_TOKEN", item_name_TOKEN);
 		html = html.replaceAll("item_number_TOKEN", item_number_TOKEN);
+
+		// { // TODO: improve me
+		// if (GWT.getHostPageBaseURL().toLowerCase().contains("supeyou.com")) {
+		// html = html.replaceAll("endpoint_TOKEN", "https://www.paypal.com/cgi-bin/webscr");
+		// } else {
+		html = html.replaceAll("endpoint_TOKEN", "https://www.sandbox.paypal.com/cgi-bin/webscr");
+		// }
+		// }
+
 		root.add(new HTML(html));
 	}
 
 	// https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/Appx_websitestandard_htmlvariables/
 	private final String htmlTemplate = "" +
-			"<form target=\"paypal\" action=\"https://www.sandbox.paypal.com/cgi-bin/webscr\" method=\"post\">" +
+			"<form target=\"paypal\" action=\"endpoint_TOKEN\" method=\"post\">" +
 			"<input type=\"hidden\" name=\"cmd\" value=\"cmd_TOKEN\">" +
 			// "<input type=\"hidden\" name=\"cmd\" value=\"_xclick-subscriptions\">" +
 			// "<!-- <input type=\"hidden\" name=\"redirect_cmd\" value=\"_xclick-subscriptions\"> -->" +

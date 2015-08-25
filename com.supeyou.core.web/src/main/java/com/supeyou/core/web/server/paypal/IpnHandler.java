@@ -32,7 +32,6 @@ import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 /**
  * Paypal IPN Notification Handler Class
  * 
- * User: smhumayun Date: 7/6/13 Time: 5:48 PM
  */
 public class IpnHandler {
 
@@ -68,13 +67,51 @@ public class IpnHandler {
 	 * @return {@link DonationDTO}
 	 * @throws Exception
 	 */
-	public DonationDTO handleIpn(HttpServletRequest request) throws Exception {
-		log.info("inside ipn");
-		DonationDTO donationDTO = new DonationDTO();
+	public void handleIpn(HttpServletRequest request) throws Exception {
 
-		// 1. Read all posted request parameters
-		String requestParams = this.getAllRequestParams(request);
-		log.info(requestParams);
+		log.info(this.getAllRequestParams(request));
+
+		if (verifyPaypalRequest(request)) {
+
+			DonationDTO donationDTO = createDonationDTOFromRequest(request);
+
+			if (donationDTO.getPaymentStatus() == null || !donationDTO.getPaymentStatus().value().equalsIgnoreCase("COMPLETED")) {
+
+				log.log(Level.INFO, "payment_status IS NOT COMPLETED {" + donationDTO.getPaymentStatus() + "}");
+
+				return;
+
+			}
+
+			if (getDonationDTO(donationDTO.getTxnId()) != null) {
+
+				log.log(Level.INFO, "txn_id=" + donationDTO.getTxnId() + "  is already processed ");
+
+				return;
+
+			}
+
+			SupporterDTO supporterDTO = getSupporterFromDonationDTO(donationDTO);
+
+			if (supporterDTO == null) {
+
+				log.log(Level.WARNING, "exeption trying to find supporter (item_number=" + donationDTO.getItemNumber() + ")");
+
+				return;
+
+			}
+
+			DonationCRUDServiceImpl.i().save(null, supporterDTO, donationDTO);
+
+		} else {
+
+			log.log(Level.WARNING, "request could not be verified");
+
+		}
+
+	}
+
+	private boolean verifyPaypalRequest(HttpServletRequest request) throws Exception {
 
 		// 2. Prepare 'notify-validate' command with exactly the same parameters
 		Enumeration<String> en = request.getParameterNames();
@@ -85,6 +122,7 @@ public class IpnHandler {
 		if (charset == null) {
 			charset = "UTF-8";
 		}
+
 		while (en.hasMoreElements()) {
 			paramName = (String) en.nextElement();
 			paramValue = request.getParameter(paramName);
@@ -107,6 +145,28 @@ public class IpnHandler {
 		String res = in.readLine();
 		in.close();
 
+		// 6. Validate captured Paypal IPN Information
+		if (res.equals("VERIFIED")) {
+
+			return true;
+
+		} else {
+
+			return false;
+
+		}
+	}
+
+	private SupporterDTO getSupporterFromDonationDTO(DonationDTO donationDTO) throws CRUDException {
+
+		return SupporterCRUDServiceImpl.i().get(null, new SupporterIDType(donationDTO.getItemNumber().value()));
+
+	}
+
+	private DonationDTO createDonationDTOFromRequest(HttpServletRequest request) throws Exception {
+
+		DonationDTO donationDTO = new DonationDTO();
+
 		// 5. Capture Paypal IPN information
 		donationDTO.setItemName(getParam(request, "item_name"));
 		donationDTO.setItemNumber(getParam(request, "item_number"));
@@ -116,63 +176,9 @@ public class IpnHandler {
 		donationDTO.setTxnId(getParam(request, "txn_id"));
 		donationDTO.setReceiverEmail(getParam(request, "receiver_email"));
 		donationDTO.setPayerEmail(getParam(request, "payer_email"));
-		donationDTO.setResponse(new SingleLineString256Type(res));
-		// donationDTO.setRequestParams(new SingleLineString256Type(requestParams));
 
-		// 6. Validate captured Paypal IPN Information
-		if (res.equals("VERIFIED")) {
-
-			// 6.1. Check that paymentStatus=Completed
-			if (donationDTO.getPaymentStatus() == null || !donationDTO.getPaymentStatus().value().equalsIgnoreCase("COMPLETED"))
-				donationDTO.setError(new SingleLineString256Type("payment_status IS NOT COMPLETED {" + donationDTO.getPaymentStatus() + "}"));
-
-			// 6.2. Check that txnId has not been previously processed
-			DonationDTO oldDonationDTO = getDonationDTO(donationDTO.getTxnId());
-			if (oldDonationDTO != null) {
-
-				String message = "txn_id is already processed {old ipn_info " + oldDonationDTO;
-				log.log(Level.INFO, message);
-				donationDTO.setError(new SingleLineString256Type(message));
-			}
-
-			// 6.3. Check that receiverEmail matches with configured {@link IpnConfig#receiverEmail}
-			// if (!ipnInfo.getReceiverEmail().equalsIgnoreCase(this.getIpnConfig().getReceiverEmail()))
-			// ipnInfo.setError("receiver_email " + ipnInfo.getReceiverEmail()
-			// + " does not match with configured ipn email " + this.getIpnConfig().getReceiverEmail());
-
-			// 6.4. Check that paymentAmount matches with configured {@link IpnConfig#paymentAmount}
-			// if (Double.parseDouble(ipnInfo.getPaymentAmount()) != Double.parseDouble(this.getIpnConfig().getPaymentAmount()))
-			// ipnInfo.setError("payment amount mc_gross " + ipnInfo.getPaymentAmount()
-			// + " does not match with configured ipn amount " + this.getIpnConfig().getPaymentAmount());
-
-			// 6.5. Check that paymentCurrency matches with configured {@link IpnConfig#paymentCurrency}
-			// if (!ipnInfo.getPaymentCurrency().equalsIgnoreCase(this.getIpnConfig().getPaymentCurrency()))
-			// ipnInfo.setError("payment currency mc_currency " + ipnInfo.getPaymentCurrency()
-			// + " does not match with configured ipn currency " + this.getIpnConfig().getPaymentCurrency());
-		} else {
-			donationDTO.setError(new SingleLineString256Type("Invalid response {" + res + "} expecting {VERIFIED}"));
-		}
-
-		log.info("ipnInfo = " + donationDTO);
-
-		SupporterDTO supporterDTO = null;
-		try {
-			supporterDTO = SupporterCRUDServiceImpl.i().get(null, new SupporterIDType(donationDTO.getItemNumber().value()));
-		} catch (Exception e) {
-			e.printStackTrace();
-			log.log(Level.SEVERE, "exeption trying to find supporter (item_number=" + donationDTO.getItemNumber() + ")", e);
-		}
-
-		if (supporterDTO != null) {
-			DonationCRUDServiceImpl.i().save(null, supporterDTO, donationDTO);
-		}
-
-		// 7. In case of any failed validation checks, throw {@link Exception}
-		if (donationDTO.getError() != null)
-			throw new Exception(donationDTO.getError().value());
-
-		// 8. If all is well, return {@link DonationDTO} to the caller for further business logic execution
 		return donationDTO;
+
 	}
 
 	private DonationDTO getDonationDTO(SingleLineString256Type txnId) throws CRUDException {

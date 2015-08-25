@@ -36,7 +36,6 @@ public class ItemWidget extends WidgetView {
 		fillSlot(payerEmailSlot, thisDTO.getPayerEmail());
 		fillSlot(responseSlot, thisDTO.getResponse());
 		fillSlot(requstParamySlot, thisDTO.getRequestParams());
-		fillSlot(errorSlot, thisDTO.getError());
 
 	}
 
