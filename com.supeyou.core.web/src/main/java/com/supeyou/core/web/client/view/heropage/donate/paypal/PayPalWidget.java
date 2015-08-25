@@ -11,8 +11,12 @@ public class PayPalWidget extends WidgetView {
 			String notify_url_TOKEN, //
 			String business_TOKEN,
 			String item_name_TOKEN,
-			String item_number_TOKEN)
+			String item_number_TOKEN,
+			String labelText)
 	{
+
+		label.setText(labelText);
+
 		String html = htmlTemplate;
 		html = html.replaceAll("cmd_TOKEN", cmd_TOKEN);
 		html = html.replaceAll("amount_TOKEN", amount_TOKEN);
@@ -29,8 +33,9 @@ public class PayPalWidget extends WidgetView {
 		html = html.replaceAll("endpoint_TOKEN", "https://www.sandbox.paypal.com/cgi-bin/webscr");
 		// }
 		// }
-
-		root.add(new HTML(html));
+		HTML htmlWidget = new HTML(html);
+		htmlWidget.addStyleName("buttonform");
+		root.add(htmlWidget);
 	}
 
 	// https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/Appx_websitestandard_htmlvariables/
@@ -75,7 +80,7 @@ public class PayPalWidget extends WidgetView {
 
 			// "<input type=\"hidden\" name=\"bn\" value=\"PP-SubscriptionsBF:btn_donateCC_LG.gif:NonHosted\">" +
 
-			"<div class=\"donate-button-slot\"><input type=\"image\" src=\"https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif\" border=\"0\" name=\"submit\" alt=\"PayPal - The safer, easier way to pay online!\"><div class=\"\">1\u20AC per month</div></div>" +
+			"<div class=\"donate-button-slot\"><input type=\"image\" src=\"https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif\" border=\"0\" name=\"submit\" alt=\"PayPal - The safer, easier way to pay online!\"></div>" +
 			"<img alt=\"\" border=\"0\" src=\"https://www.paypal.com/en_US/i/scr/pixel.gif\" width=\"1\" height=\"1\">" +
 			"</form>";
 

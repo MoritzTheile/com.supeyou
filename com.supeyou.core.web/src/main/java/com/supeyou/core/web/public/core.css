@@ -610,6 +610,7 @@
 }
 
 .howitworks-root .howitworks-image{
+	
 	position:relative;
 	margin-top: 190px;
 	text-align: left;
@@ -651,69 +652,81 @@
 }
 
 .root.chooser .option.email{
+	
   	background-image: url("core/images/email-icon.png");
   	background-size:32px;
   
 }
 .root.chooser .option.whatsapp{
+	
   	background-image: url("core/images/whatsapp_logo.jpg");
   	background-size:32px;
   
 }
 
 .root.chooser .option.cutandpaste{
+	
   	background-image: url("core/images/clipboard.jpg");
   	background-size:32px;
   
 }
 
 .root.chooser .option.facebook{
+	
   	background-image: url("core/images/facebook-icon.jpg");
   	background-size:32px;
   
 }
 
 .root.chooser .option.googleplus{
+	
   	background-image: url("core/images/gplus-icon.png");
   	background-size:32px;
   
 }
 
 .root.chooser .option.twitter{
+	
   	background-image: url("core/images/twitter-icon.jpg");
   	background-size:32px;
   
 }
 
 .root.chooser .option.user{
+	
   	background-image: url("core/images/emoticon.user.png");
   	background-size:32px;
   
 }
 
 .root.chooser .option.users{
-  	background-image: url("core/images/emoticon.users2.png");
+
+	background-image: url("core/images/emoticon.users2.png");
   	background-size:38px;
   	background-position: 96px 20px;
-
-  
+ 
 }
 
 .root.chooser.donate .option.donate{
-  	background-image: url("core/images/donate.paypal.jpg");
-  	background-size:120px;
-  	padding: 0 0 0 200px
+	
+  	padding:18px 0 60px 0;
+  	text-align: center;
   	vertical-align:middle;
-  	background-position: 24px 50%;
-  
+
 }
 
 .root.chooser.donate .header{
+	
   margin: 0;
   
 }
+.donation-root .label{
+	margin-bottom:12px;
+	font-size: 14px;
+}
 
 .root.chooser .option:hover{
+	
 	background-color:#F7F7F7;
 
 }

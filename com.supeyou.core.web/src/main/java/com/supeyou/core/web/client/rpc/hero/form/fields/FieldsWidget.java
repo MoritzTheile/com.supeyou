@@ -25,7 +25,7 @@ public class FieldsWidget extends WidgetView {
 
 		put(
 
-				"Hide hero",
+				"Hero active",
 
 				new FieldForBoolean(thisDto.getActive()) {
 

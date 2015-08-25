@@ -51,6 +51,8 @@ public interface Text extends Messages {
 
 	String DONATE_OPTION_Donate100Once();
 
+	String DONATE_OPTION_Donate1Monthly();
+
 	String DONATE_OPTION_Donate5Monthly();
 
 	String DONATE_OPTION_Donate10Monthly();

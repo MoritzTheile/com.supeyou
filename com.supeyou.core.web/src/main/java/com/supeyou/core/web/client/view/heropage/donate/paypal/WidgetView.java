@@ -5,6 +5,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 public class WidgetView extends Composite {
@@ -13,6 +14,9 @@ public class WidgetView extends Composite {
 
 	@UiField
 	FlowPanel root;
+
+	@UiField
+	Label label;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}
