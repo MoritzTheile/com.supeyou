@@ -1,5 +1,6 @@
 package com.supeyou.core.impl.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -13,10 +14,13 @@ import com.supeyou.crudie.impl.entity.AbstrEntity;
 public class DonationEntity extends AbstrEntity<DonationIDType> {
 
 	private String itemName;
+	@Column(nullable = false)
 	private String itemNumber;
 	private String paymentStatus;
+	@Column(nullable = false)
 	private Integer paymentAmount;
 	private String paymentCurrency;
+	@Column(nullable = false)
 	private String txnId;
 	private String receiverEmail;
 	private String payerEmail;
