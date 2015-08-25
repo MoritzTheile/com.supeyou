@@ -2,6 +2,9 @@ package com.supeyou.core.web.client.view.heropage;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
+import com.supeyou.core.iface.dto.Invitation2SupporterFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.view.herocard.HeroCardWidget;
@@ -10,6 +13,8 @@ import com.supeyou.core.web.client.view.heropage.donate.DonateWidget;
 import com.supeyou.core.web.client.view.heropage.howitworks.HowItWorksWidget;
 import com.supeyou.core.web.client.view.heropage.invite.singlegroupchooser.SingleGroupChooserWidget;
 import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidget;
+import com.supeyou.crudie.iface.datatype.Page;
+import com.supeyou.crudie.iface.dto.DTOFetchList;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.contentwrapper.ContentWrapperWidget;
@@ -73,12 +78,31 @@ public class HeroPageWidget extends WidgetView {
 
 			invitationButtonSlot.add(flatButtonWidget);
 		}
+		Invitation2SupporterFetchQuery supporterFetchQuery = new Invitation2SupporterFetchQuery();
 
-		if (supporterDTO.getDecendentCount() > 0) {
-			supporterTreeSlot.add(new SupporterTreeWidget(supporterDTO));
-		} else {
-			supporterTreeSlot.add(new HowItWorksWidget());
-		}
+		supporterFetchQuery.setInvitor(supporterDTO);
+
+		com.supeyou.core.web.client.rpc.invitation2supporter.RPCCRUDServiceAsync.i.fetchList(new Page(), supporterFetchQuery, new AsyncCallback<DTOFetchList<Invitation2SupporterDTO>>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+
+				caught.printStackTrace();
+
+			}
+
+			@Override
+			public void onSuccess(DTOFetchList<Invitation2SupporterDTO> childrenDTO) {
+
+				if (childrenDTO.size() > 0) {
+					supporterTreeSlot.add(new SupporterTreeWidget(supporterDTO));
+				} else {
+					supporterTreeSlot.add(new HowItWorksWidget());
+				}
+
+			}
+
+		});
 
 	}
 }
