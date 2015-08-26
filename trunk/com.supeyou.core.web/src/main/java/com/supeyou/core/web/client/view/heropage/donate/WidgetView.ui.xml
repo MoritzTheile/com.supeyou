@@ -16,13 +16,7 @@
 
 		<g:HTML styleName="header more-options text-html" HTML="{text.DONATE_MoreOptions}"></g:HTML>
 
-		<g:FlowPanel styleName="option donate" ui:field="donate5OnceButton">
-		</g:FlowPanel>
-		<g:FlowPanel styleName="option donate" ui:field="donate25OnceButton">
-		</g:FlowPanel>
-		<g:FlowPanel styleName="option donate" ui:field="donate50OnceButton">
-		</g:FlowPanel>
-		<g:FlowPanel styleName="option donate" ui:field="donate100OnceButton">
+		<g:FlowPanel styleName="option donate" ui:field="donateOnceButton">
 		</g:FlowPanel>
 		<g:FlowPanel styleName="option donate" ui:field="donate5MonthlyButton">
 		</g:FlowPanel>
