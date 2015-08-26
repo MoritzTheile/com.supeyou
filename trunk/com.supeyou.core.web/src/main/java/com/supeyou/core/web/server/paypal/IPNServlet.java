@@ -16,7 +16,7 @@ public class IPNServlet extends HttpServlet {
 
 		try {
 
-			new IpnHandler("https://www.sandbox.paypal.com/cgi-bin/webscr").handleIpn(req);
+			new IpnHandler("https://www.paypal.com/cgi-bin/webscr").handleIpn(req);
 
 		} catch (Exception e) {
 			e.printStackTrace();

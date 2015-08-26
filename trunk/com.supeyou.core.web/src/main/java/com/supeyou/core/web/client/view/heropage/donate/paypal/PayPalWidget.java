@@ -30,7 +30,7 @@ public class PayPalWidget extends WidgetView {
 		// if (GWT.getHostPageBaseURL().toLowerCase().contains("supeyou.com")) {
 		// html = html.replaceAll("endpoint_TOKEN", "https://www.paypal.com/cgi-bin/webscr");
 		// } else {
-		html = html.replaceAll("endpoint_TOKEN", "https://www.sandbox.paypal.com/cgi-bin/webscr");
+		html = html.replaceAll("endpoint_TOKEN", "https://www.paypal.com/cgi-bin/webscr");
 		// }
 		// }
 		HTML htmlWidget = new HTML(html);
