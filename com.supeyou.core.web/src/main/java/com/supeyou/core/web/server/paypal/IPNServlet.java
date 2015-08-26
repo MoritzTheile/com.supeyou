@@ -14,6 +14,11 @@ public class IPNServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		handleRequest(req, resp);
+
+	}
+
+	private void handleRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
 		try {
 
 			new IpnHandler("https://www.paypal.com/cgi-bin/webscr").handleIpn(req);
@@ -23,13 +28,15 @@ public class IPNServlet extends HttpServlet {
 			throw new ServletException("paypal ipn caused error:", e);
 		}
 
-		super.doPost(req, resp);
+		resp.setStatus(200);
 
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req, resp);
+
+		handleRequest(req, resp);
+
 	}
 
 }
