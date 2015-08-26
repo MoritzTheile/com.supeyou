@@ -18,16 +18,7 @@ public class WidgetView extends Composite {
 	FlowPanel donate1MonthlyButton;
 
 	@UiField
-	FlowPanel donate5OnceButton;
-
-	@UiField
-	FlowPanel donate25OnceButton;
-
-	@UiField
-	FlowPanel donate50OnceButton;
-
-	@UiField
-	FlowPanel donate100OnceButton;
+	FlowPanel donateOnceButton;
 
 	@UiField
 	FlowPanel donate5MonthlyButton;

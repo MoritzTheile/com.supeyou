@@ -11,7 +11,7 @@ public class DonateWidget extends WidgetView {
 
 	public DonateWidget(final SupporterDTO supporterDTO) {
 
-		donate5OnceButton.add(new PayPalWidget(
+		donateOnceButton.add(new PayPalWidget(
 				"_donations", // _xclick-subscriptions _donations
 				"5",
 				URLHelper.getCurrentURL() + "#" + History.getToken(), //
@@ -19,39 +19,7 @@ public class DonateWidget extends WidgetView {
 				supporterDTO.getHeroDTO().getPaypalAccount().value(),
 				"Support for " + supporterDTO.getHeroDTO().getName().value(),
 				"" + supporterDTO.getId().value(),
-				Text.i.DONATE_OPTION_Donate5Once())
-				);
-		donate25OnceButton.add(new PayPalWidget(
-				"_donations", // _xclick-subscriptions _donations
-				"25",
-				URLHelper.getCurrentURL() + "#" + History.getToken(), //
-				GWT.getHostPageBaseURL() + "IPNServlet", //
-				supporterDTO.getHeroDTO().getPaypalAccount().value(),
-				"Support for " + supporterDTO.getHeroDTO().getName().value(),
-				"" + supporterDTO.getId().value(),
-				Text.i.DONATE_OPTION_Donate25Once())
-				);
-
-		donate50OnceButton.add(new PayPalWidget(
-				"_donations", // _xclick-subscriptions _donations
-				"50",
-				URLHelper.getCurrentURL() + "#" + History.getToken(), //
-				GWT.getHostPageBaseURL() + "IPNServlet", //
-				supporterDTO.getHeroDTO().getPaypalAccount().value(),
-				"Support for " + supporterDTO.getHeroDTO().getName().value(),
-				"" + supporterDTO.getId().value(),
-				Text.i.DONATE_OPTION_Donate50Once())
-				);
-
-		donate100OnceButton.add(new PayPalWidget(
-				"_donations", // _xclick-subscriptions _donations
-				"100",
-				URLHelper.getCurrentURL() + "#" + History.getToken(), //
-				GWT.getHostPageBaseURL() + "IPNServlet", //
-				supporterDTO.getHeroDTO().getPaypalAccount().value(),
-				"Support for " + supporterDTO.getHeroDTO().getName().value(),
-				"" + supporterDTO.getId().value(),
-				Text.i.DONATE_OPTION_Donate100Once())
+				Text.i.DONATE_OPTION_DonateOnce())
 				);
 
 		donate1MonthlyButton.add(new PayPalWidget(
