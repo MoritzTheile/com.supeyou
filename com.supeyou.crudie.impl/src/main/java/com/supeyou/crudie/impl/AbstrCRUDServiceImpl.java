@@ -3,6 +3,9 @@ package com.supeyou.crudie.impl;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,6 +13,7 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import com.supeyou.crudie.iface.CRUDObserver;
 import com.supeyou.crudie.iface.CRUDService;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.CRUDException.CODE;
@@ -107,6 +111,8 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 
 				}
 
+				wasRead(fetchList);
+
 				return fetchList;
 
 			}
@@ -140,10 +146,13 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 			}
 
 			protected D transactionBody() throws Exception {
+
 				E entity = em.find(entityClass, dtoId.value());
 				D resultDTO = helper.entity2DTO(entity);
 				postprocessEntity2DTO(em, entity, resultDTO);
+				wasRead(resultDTO);
 				return resultDTO;
+
 			}
 		}.execute();
 
@@ -221,6 +230,13 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 
 				D resultDTO = helper.entity2DTO(entity);
 				postprocessEntity2DTO(em, entity, resultDTO);
+
+				if (toBePersisted) {
+					wasCreated(dto);
+				} else {
+					wasUpdated(dto);
+				}
+
 				return resultDTO;
 
 			}
@@ -260,6 +276,7 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 
 				E entity = em.find(entityClass, dtoId.value());
 				em.remove(entity);
+				wasDeleted(dtoId);
 				return null;
 
 			}
@@ -380,5 +397,75 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 
 		return em.createQuery(queryString);
 	}
+
+	private List<CRUDObserver<D>> observers = new ArrayList<CRUDObserver<D>>();
+
+	@Override
+	public void addCRUDObserver(CRUDObserver<D> crudObserver) {
+
+		observers.add(crudObserver);
+
+	}
+
+	protected Iterator<CRUDObserver<D>> getObserverIterator() {
+		return observers.iterator();
+	}
+
+	private void wasCreated(D dto) {
+
+		for (CRUDObserver<D> crudObserver : observers)
+			try {
+				crudObserver.wasCreated(dto);
+			} catch (Exception e) {
+				log.log(Level.WARNING, "Exception on informing observer", e);
+			}
+
+	};
+
+	private void wasRead(Collection<D> dtos) {
+
+		for (D dto : dtos)
+			try {
+				wasRead(dto);
+			} catch (Exception e) {
+				log.log(Level.WARNING, "Exception on informing observer", e);
+			}
+
+	};
+
+	private void wasRead(D dto) {
+
+		for (CRUDObserver<D> crudObserver : observers)
+			try {
+				crudObserver.wasRead(dto);
+			} catch (Exception e) {
+				log.log(Level.WARNING, "Exception on informing observer", e);
+			}
+
+	};
+
+	private void wasUpdated(D dto) {
+
+		for (CRUDObserver<D> crudObserver : observers)
+			try {
+				crudObserver.wasUpdated(dto);
+			} catch (Exception e) {
+				log.log(Level.WARNING, "Exception on informing observer", e);
+			}
+
+	};
+
+	private void wasDeleted(final AbstrType<Long> dtoId) {
+
+		for (CRUDObserver<D> crudObserver : observers)
+			try {
+
+				crudObserver.wasDeleted(dtoId);
+
+			} catch (Exception e) {
+				log.log(Level.WARNING, "Exception on informing observer", e);
+			}
+
+	};
 
 }

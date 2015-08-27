@@ -8,7 +8,7 @@ import com.supeyou.crudie.iface.datatype.types.FileIDType;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
 import com.supeyou.crudie.iface.dto.UserDTO;
 
-public interface CRUDService<D, F extends FetchQuery> {
+public interface CRUDService<D, F extends FetchQuery> extends CRUDObservable<D> {
 
 	/**
 	 * 

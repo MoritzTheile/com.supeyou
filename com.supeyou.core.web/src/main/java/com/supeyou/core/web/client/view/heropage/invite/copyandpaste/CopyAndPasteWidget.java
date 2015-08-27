@@ -71,7 +71,7 @@ public abstract class CopyAndPasteWidget extends WidgetView {
 
 				render();
 
-				RPCCRUDProxy.i().addListenersForSpecifiDTO(new CRUDProxyListener<InvitationDTO>() {
+				RPCCRUDProxy.i().addListenersForSpecificDTO(new CRUDProxyListener<InvitationDTO>() {
 
 					@Override
 					public void wasUpdated(InvitationDTO dto) {
