@@ -52,29 +52,7 @@ public class HeroPageWidget extends WidgetView {
 		{
 			FlatButtonWidget flatButtonWidget = new FlatButtonWidget();
 			flatButtonWidget.setText(Text.i.BUTTON_Invite());
-			flatButtonWidget.addClickHandler(new ClickHandler() {
-
-				@Override
-				public void onClick(ClickEvent event) {
-
-					final PopupWidget popupWidget = new PopupWidget();
-
-					SingleGroupChooserWidget content = new SingleGroupChooserWidget(supporterDTO) {
-
-						@Override
-						protected void onDismiss() {
-
-							popupWidget.closePopup();
-
-						}
-
-					};
-
-					popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), content));
-
-				}
-
-			});
+			flatButtonWidget.addClickHandler(inviteClickHandler);
 
 			invitationButtonSlot.add(flatButtonWidget);
 		}
@@ -95,9 +73,15 @@ public class HeroPageWidget extends WidgetView {
 			public void onSuccess(DTOFetchList<Invitation2SupporterDTO> childrenDTO) {
 
 				if (childrenDTO.size() > 0) {
+
 					supporterTreeSlot.add(new SupporterTreeWidget(supporterDTO));
+
 				} else {
-					supporterTreeSlot.add(new HowItWorksWidget());
+
+					HowItWorksWidget howItWorksWidget = new HowItWorksWidget();
+					howItWorksWidget.addDomHandler(inviteClickHandler, ClickEvent.getType());
+					supporterTreeSlot.add(howItWorksWidget);
+
 				}
 
 			}
@@ -105,4 +89,28 @@ public class HeroPageWidget extends WidgetView {
 		});
 
 	}
+
+	private ClickHandler inviteClickHandler = new ClickHandler() {
+
+		@Override
+		public void onClick(ClickEvent event) {
+
+			final PopupWidget popupWidget = new PopupWidget();
+
+			SingleGroupChooserWidget content = new SingleGroupChooserWidget(supporterDTO) {
+
+				@Override
+				protected void onDismiss() {
+
+					popupWidget.closePopup();
+
+				}
+
+			};
+
+			popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), content));
+
+		}
+
+	};
 }
