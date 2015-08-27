@@ -114,9 +114,10 @@ public abstract class RPCAbstractCRUDProxy<T extends AbstrDTO<?>, F extends Fetc
 			}
 
 		};
+
 	}
 
-	public void addListenersForSpecifiDTO(CRUDProxyListener<T> listener, T dto) {
+	public void addListenersForSpecificDTO(CRUDProxyListener<T> listener, T dto) {
 		getListenersForDTO(dto).add(listener);
 	}
 

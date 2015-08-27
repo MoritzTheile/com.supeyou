@@ -121,7 +121,7 @@ public abstract class GroupInvitorWidget extends WidgetView {
 				invitationDTO = result;
 				render();
 
-				RPCCRUDProxy.i().addListenersForSpecifiDTO(new CRUDProxyListener<InvitationDTO>() {
+				RPCCRUDProxy.i().addListenersForSpecificDTO(new CRUDProxyListener<InvitationDTO>() {
 
 					@Override
 					public void wasUpdated(InvitationDTO dto) {
