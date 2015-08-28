@@ -1,10 +1,12 @@
-package com.supeyou.core.web.client.view.heropage.invite.groupinvitor;
+package com.supeyou.core.web.client.view.heropage.invite.manually;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 public class WidgetView extends Composite {
@@ -15,16 +17,22 @@ public class WidgetView extends Composite {
 	FlowPanel root;
 
 	@UiField
-	FlowPanel googlePlusButton;
+	FlowPanel reloadButton;
 
 	@UiField
-	FlowPanel facebookButton;
+	Label linkLabel;
 
 	@UiField
-	FlowPanel twitterButton;
+	FlowPanel linkNameTextBoxSlot;
 
 	@UiField
-	FlowPanel copyAndPasteButton;
+	HTML text1;
+
+	@UiField
+	HTML text2;
+
+	@UiField
+	HTML text3;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}

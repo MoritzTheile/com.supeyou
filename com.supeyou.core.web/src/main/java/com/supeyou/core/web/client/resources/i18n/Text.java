@@ -79,6 +79,8 @@ public interface Text extends Messages {
 
 	String HEROVIDEO_Header();
 
+	String INVITE_HOWTOINVITE_Header_HTML();
+
 	String INVITE_SINGLEGROUPCHOOSER_Header_HTML();
 
 	String INVITE_SINGLEGROUPCHOOSER_Single_HTML();
@@ -108,5 +110,29 @@ public interface Text extends Messages {
 	String INVITE_GROUP_CutAndPaste();
 
 	String TREE_WasSupportingAlready();
+
+	String INVITE_MANUALLY_COPYANDPASTE_Text1_HTML();
+
+	String INVITE_MANUALLY_COPYANDPASTE_Text2_HTML();
+
+	String INVITE_MANUALLY_COPYANDPASTE_Text3_HTML();
+
+	String INVITE_MANUALLY_EMAIL_Text1_HTML();
+
+	String INVITE_MANUALLY_EMAIL_Text2_HTML();
+
+	String INVITE_MANUALLY_EMAIL_Text3_HTML();
+
+	String INVITE_MANUALLY_WHATSAPP_Text1_HTML();
+
+	String INVITE_MANUALLY_WHATSAPP_Text2_HTML();
+
+	String INVITE_MANUALLY_WHATSAPP_Text3_HTML();
+
+	String INVITE_MANUALLY_SMS_Text1_HTML();
+
+	String INVITE_MANUALLY_SMS_Text2_HTML();
+
+	String INVITE_MANUALLY_SMS_Text3_HTML();
 
 }

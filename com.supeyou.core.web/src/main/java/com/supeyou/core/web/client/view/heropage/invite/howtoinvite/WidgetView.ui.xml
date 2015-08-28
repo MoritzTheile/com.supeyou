@@ -5,20 +5,18 @@
 	xmlns:m2="urn:import:com.supeyou.crudie.web.client.uiorga.flatbutton">
 	<ui:with field='text'
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
-
-	<g:FlowPanel styleName="root chooser group-invitor"
-		ui:field="root">
-
+ 
+	<g:FlowPanel styleName="root chooser single-group" ui:field="root">
+	
 		<g:FlowPanel styleName="header">
-			<!-- <g:FlowPanel styleName="name-question">
-				<g:HTML HTML="{text.INVITE_GROUP_NameQuestion}"></g:HTML>
-			</g:FlowPanel>
-			<g:FlowPanel styleName="slot name" ui:field="nameFieldSlot"></g:FlowPanel> -->
-			<g:FlowPanel styleName="call-to-choose">
-			<g:HTML HTML="{text.INVITE_GROUP_CallToChoose}"></g:HTML>
+			<g:HTML HTML="{text.INVITE_HOWTOINVITE_Header_HTML}"></g:HTML>
 		</g:FlowPanel>
+		<g:FlowPanel styleName="option email" ui:field="emailButton">
+			<g:HTML HTML="{text.INVITE_SINGLE_Email}"></g:HTML>
 		</g:FlowPanel>
-		
+		<g:FlowPanel styleName="option whatsapp" ui:field="whatsAppButton">
+			<g:HTML HTML="{text.INVITE_SINGLE_WhatsApp}"></g:HTML>
+		</g:FlowPanel>
 		<g:FlowPanel styleName="option facebook" ui:field="facebookButton">
 			<g:HTML HTML="{text.INVITE_GROUP_Facebook}"></g:HTML>
 		</g:FlowPanel>
@@ -29,12 +27,9 @@
 			<g:HTML HTML="{text.INVITE_GROUP_Twitter}"></g:HTML>
 		</g:FlowPanel>
 		<g:FlowPanel styleName="option cutandpaste" ui:field="copyAndPasteButton">
-			<g:HTML HTML="{text.INVITE_GROUP_CutAndPaste}"></g:HTML>
+			<g:HTML HTML="{text.INVITE_SINGLE_CutAndPaste}"></g:HTML>
 		</g:FlowPanel>
-
-
-
-
+				
 	</g:FlowPanel>
 
 </ui:UiBinder> 
