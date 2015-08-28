@@ -15,6 +15,7 @@ import com.supeyou.core.web.client.rpc.hero.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.view.heropage.HeroPageWidget;
 import com.supeyou.core.web.client.view.landingpage.LandingPageWidget;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
+import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 
 public class HistoryController {
 
@@ -32,9 +33,13 @@ public class HistoryController {
 				String anchor = event.getValue();
 
 				show(anchor);
+
+				GoogleAnalytics.i.sendEvent("history", "changed", anchor);
+
 			}
 
 		});
+
 	}
 
 	public void show(String anchor) {
