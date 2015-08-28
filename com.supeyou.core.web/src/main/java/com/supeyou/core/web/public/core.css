@@ -659,7 +659,20 @@
 	top:-48px;
 	width: 200px
 }
+.recommendation-root .howitworks-image{
+	
+	position:relative;
+	margin-top: 190px;
+	text-align: left;
+	zoom: 66%;;
+}
 
+.recommendation-root .button-pointer-image{
+	position:absolute;
+	left: 110px;
+	top:48px;
+	width: 200px
+}
 .root.chooser {
 	padding-bottom: 800px;
 }
@@ -689,6 +702,7 @@
 
 .root.chooser .option.email{
 	
+  	position: relative;
   	background-image: url("core/images/email-icon.png");
   	background-size:32px;
   
