@@ -11,6 +11,7 @@ import com.supeyou.core.web.client.rpc.invitation.RPCCRUDProxy;
 import com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.view.heropage.invite.manually.ManuallyWidget;
 import com.supeyou.core.web.client.view.heropage.invite.manually.ManuallyWidget.RENDERMODE;
+import com.supeyou.core.web.client.view.heropage.invite.recommendation.RecommendationWidget;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
@@ -197,6 +198,8 @@ public abstract class HowToInviteWidget extends WidgetView {
 			}
 
 		}, ClickEvent.getType());
+
+		emailButton.add(new RecommendationWidget());
 
 	}
 
