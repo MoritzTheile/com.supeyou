@@ -15,6 +15,7 @@ import com.supeyou.core.web.client.view.heropage.invite.singlegroupchooser.Singl
 import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidget;
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
+import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.contentwrapper.ContentWrapperWidget;
@@ -26,11 +27,14 @@ public class HeroPageWidget extends WidgetView {
 	public HeroPageWidget(SupporterDTO supporterDTO) {
 
 		this.supporterDTO = supporterDTO;
+
 		render();
 
 	}
 
 	private void render() {
+
+		GoogleAnalytics.i.sendEvent("view", "heroPage");
 
 		supporterCardSlot.add(new HeroCardWidget(supporterDTO, VIEW.NODEVIEW));
 
