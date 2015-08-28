@@ -3,7 +3,7 @@
 }
 
 .field-style{
-	padding: 6px 8px 6px 8px;
+	padding: 12px 8px 12px 8px;
   	border-radius: 5px;
   	transition: all 0.40s ease-in-out;
   	outline: none;
@@ -62,8 +62,36 @@
 	/* padding-bottom: 400px; */
 }
 
-.invite.copy-and-paste{
-	padding: 80px 0;
+.invite.manually{
+	padding: 0 32px 320px 32px;
+}
+
+.invite.manually .text{
+	font-size: 14px;
+	margin-left: 32px;
+	margin-right: 32px;
+}
+.invite.manually .text.one{
+	margin-top: 48px;
+	margin-bottom: 48px;
+	  
+}
+.invite.manually .text.two{
+	margin-top: 48px;
+	margin-bottom: 48px;
+}
+.invite.manually .text.three{
+	margin-top: 48px;
+	margin-bottom: 48px;
+}
+.invite.manually.simple .text.three{
+	display: none;
+}
+.invite.manually .link-name-textbox-slot{
+	margin: 0;
+}
+.invite.manually.simple .link-name-textbox-slot{
+	display: none;
 }
 .modal-widget .invite .link-row{
 	vertical-align:middle;
@@ -75,21 +103,32 @@
 	display:inline-block;
 	vertical-align: middle;
 }
+
 .modal-widget .invite .link-label{
 	background-color: #C6D9F1;
-	padding-left: 40px;
+	font-size: 16px;
+	padding-left: 48px;
+}
+.modal-widget .invite.simple .link-label{
+	padding: 12px
 }
 .modal-widget .invite .link-row .reload-button{
 	position: absolute;
-	padding:8px 8px 4px 8px;
-  	height: 16px;
-	width: 16px;
+	padding: 12px 8px 4px 8px;
+  	
+	height: 26px;
+	width: 20px;
 	border-right: 1px solid #BDBDBD;
 	background-repeat: no-repeat;
   	background-image: url("core/images/fontawesome/refresh_808080_32.png");
   	background-size:16px;
-  	background-position: 50% 8px;
+  	
+	background-position: 50% 14px;
   	cursor: pointer;
+}
+
+.modal-widget .invite.simple .link-row .reload-button{
+	display:none;
 }
 
 .modal-widget .invite .share-buttons-slot{
@@ -197,9 +236,6 @@
   	cursor: pointer;
 }
 
-.modal-widget .invite .link-name-textbox-slot{
-	margin: 100px 0 0 0;
-}
 .modal-widget .invite .link-name-label{
 	font-size: 10px;
 	padding: 0px 24px 120px 24px;

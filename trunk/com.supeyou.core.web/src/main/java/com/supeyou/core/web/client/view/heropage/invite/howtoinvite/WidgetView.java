@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.view.heropage.invite.singleinvitor;
+package com.supeyou.core.web.client.view.heropage.invite.howtoinvite;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -15,13 +15,19 @@ public class WidgetView extends Composite {
 	FlowPanel root;
 
 	@UiField
-	FlowPanel linkNameTextBoxSlot;
-
-	@UiField
 	FlowPanel emailButton;
 
 	@UiField
 	FlowPanel whatsAppButton;
+
+	@UiField
+	FlowPanel googlePlusButton;
+
+	@UiField
+	FlowPanel facebookButton;
+
+	@UiField
+	FlowPanel twitterButton;
 
 	@UiField
 	FlowPanel copyAndPasteButton;

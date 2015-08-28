@@ -11,7 +11,7 @@ import com.supeyou.core.web.client.view.herocard.HeroCardWidget;
 import com.supeyou.core.web.client.view.herocard.HeroCardWidget.VIEW;
 import com.supeyou.core.web.client.view.heropage.donate.DonateWidget;
 import com.supeyou.core.web.client.view.heropage.howitworks.HowItWorksWidget;
-import com.supeyou.core.web.client.view.heropage.invite.singlegroupchooser.SingleGroupChooserWidget;
+import com.supeyou.core.web.client.view.heropage.invite.howtoinvite.HowToInviteWidget;
 import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidget;
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
@@ -101,7 +101,7 @@ public class HeroPageWidget extends WidgetView {
 
 			final PopupWidget popupWidget = new PopupWidget();
 
-			SingleGroupChooserWidget content = new SingleGroupChooserWidget(supporterDTO) {
+			HowToInviteWidget content = new HowToInviteWidget(supporterDTO) {
 
 				@Override
 				protected void onDismiss() {

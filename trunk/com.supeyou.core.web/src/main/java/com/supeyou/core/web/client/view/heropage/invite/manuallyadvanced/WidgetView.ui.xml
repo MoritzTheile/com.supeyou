@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.cellview.client"
+	xmlns:m="urn:import:com.supeyou.crudie.web.client.fields.types"
+	xmlns:m2="urn:import:com.supeyou.crudie.web.client.uiorga.flatbutton">
+	<ui:with field='text'
+		type='com.supeyou.core.web.client.resources.i18n.Text' />
+ 
+	<g:FlowPanel styleName="invite manually" ui:field="root">
+	
+		<g:HTML  styleName="text one" ui:field="text1"></g:HTML>
+		
+		<g:FlowPanel styleName="link-row" >
+			<g:FlowPanel styleName="reload-button" ui:field="reloadButton"></g:FlowPanel>
+			<g:Label styleName="link-label field-style" ui:field="linkLabel"></g:Label>
+		</g:FlowPanel>
+		
+		<g:HTML  styleName="text two" ui:field="text2"></g:HTML>
+		
+		<g:FlowPanel  styleName="link-name-textbox-slot"  ui:field="linkNameTextBoxSlot"></g:FlowPanel>
+		
+		<g:HTML  styleName="text three" ui:field="text3"></g:HTML>
+		
+	</g:FlowPanel>
+
+</ui:UiBinder> 

@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.view.heropage.invite.copyandpaste;
+package com.supeyou.core.web.client.view.heropage.invite.manually;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -7,22 +7,63 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.CoreStatics;
+import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.rpc.invitation.RPCCRUDProxy;
 import com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync;
+import com.supeyou.core.web.client.view.heropage.invite.howtoinvite.HowToInviteWidget;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.web.client.fields.types.FieldForSingleLineString256Type;
 import com.supeyou.crudie.web.client.resources.URLHelper;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
 
-public abstract class CopyAndPasteWidget extends WidgetView {
+public abstract class ManuallyWidget extends WidgetView {
 
-	private InvitationDTO invitationDTO;
+	private InvitationDTO thisInvitationDTO;
 
-	public CopyAndPasteWidget(final SupporterDTO supporterDTO, InvitationDTO invitationDTO) {
+	public enum RENDERMODE {
+		COPYANDPASTE, EMAIL, WHATSAPP, SMS
+	}
 
-		this.invitationDTO = invitationDTO;
+	public ManuallyWidget(final SupporterDTO supporterDTO, RENDERMODE rendermode) {
 
-		render();
+		String defaultLinkName = "";
+
+		if (RENDERMODE.COPYANDPASTE.equals(rendermode)) {
+			defaultLinkName = "CopyAndPaste-Link";
+			text1.setHTML(Text.i.INVITE_MANUALLY_COPYANDPASTE_Text1_HTML());
+			text2.setHTML(Text.i.INVITE_MANUALLY_COPYANDPASTE_Text2_HTML());
+			text3.setHTML(Text.i.INVITE_MANUALLY_COPYANDPASTE_Text3_HTML());
+		} else if (RENDERMODE.EMAIL.equals(rendermode)) {
+			root.addStyleName("simple");
+			defaultLinkName = "Email-Link";
+			text1.setHTML(Text.i.INVITE_MANUALLY_EMAIL_Text1_HTML());
+			text2.setHTML(Text.i.INVITE_MANUALLY_EMAIL_Text2_HTML());
+			text3.setHTML(Text.i.INVITE_MANUALLY_EMAIL_Text3_HTML());
+		} else if (RENDERMODE.WHATSAPP.equals(rendermode)) {
+			root.addStyleName("simple");
+			defaultLinkName = "WhatsApp-Link";
+			text1.setHTML(Text.i.INVITE_MANUALLY_WHATSAPP_Text1_HTML());
+			text2.setHTML(Text.i.INVITE_MANUALLY_WHATSAPP_Text2_HTML());
+			text3.setHTML(Text.i.INVITE_MANUALLY_WHATSAPP_Text3_HTML());
+		} else if (RENDERMODE.SMS.equals(rendermode)) {
+			root.addStyleName("simple");
+			defaultLinkName = "SMS-Link";
+			text1.setHTML(Text.i.INVITE_MANUALLY_SMS_Text1_HTML());
+			text2.setHTML(Text.i.INVITE_MANUALLY_SMS_Text2_HTML());
+			text3.setHTML(Text.i.INVITE_MANUALLY_SMS_Text3_HTML());
+		}
+
+		HowToInviteWidget.createInvitation(defaultLinkName, supporterDTO, new HowToInviteWidget.InvitationCallback() {
+
+			@Override
+			public void invitationCreated(InvitationDTO invitationDTO) {
+
+				thisInvitationDTO = invitationDTO;
+				render();
+
+			}
+
+		});
 
 		reloadButton.addDomHandler(new ClickHandler() {
 
@@ -67,7 +108,7 @@ public abstract class CopyAndPasteWidget extends WidgetView {
 			@Override
 			public void onSuccess(InvitationDTO result) {
 
-				invitationDTO = result;
+				thisInvitationDTO = result;
 
 				render();
 
@@ -75,7 +116,7 @@ public abstract class CopyAndPasteWidget extends WidgetView {
 
 					@Override
 					public void wasUpdated(InvitationDTO dto) {
-						invitationDTO = dto;
+						thisInvitationDTO = dto;
 
 					}
 
@@ -106,14 +147,14 @@ public abstract class CopyAndPasteWidget extends WidgetView {
 
 	private void render() {
 
-		String url = getInvitURL(invitationDTO);
+		String url = getInvitURL(thisInvitationDTO);
 		linkLabel.setText(url);
 
 		linkNameTextBoxSlot.clear();
-		final FieldForSingleLineString256Type name = new FieldForSingleLineString256Type(invitationDTO.getComment()) {
+		final FieldForSingleLineString256Type name = new FieldForSingleLineString256Type(thisInvitationDTO.getComment()) {
 			public void onHasChanged(com.supeyou.crudie.iface.datatype.types.SingleLineString256Type value) {
-				invitationDTO.setComment(value);
-				RPCCRUDProxy.i().updadd(invitationDTO);
+				thisInvitationDTO.setComment(value);
+				RPCCRUDProxy.i().updadd(thisInvitationDTO);
 			}
 		};
 

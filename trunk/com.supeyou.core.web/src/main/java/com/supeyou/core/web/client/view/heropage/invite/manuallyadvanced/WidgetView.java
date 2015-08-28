@@ -1,10 +1,12 @@
-package com.supeyou.core.web.client.view.heropage.invite.singlegroupchooser;
+package com.supeyou.core.web.client.view.heropage.invite.manuallyadvanced;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 public class WidgetView extends Composite {
@@ -15,10 +17,22 @@ public class WidgetView extends Composite {
 	FlowPanel root;
 
 	@UiField
-	FlowPanel singleButton;
+	FlowPanel reloadButton;
 
 	@UiField
-	FlowPanel groupButton;
+	Label linkLabel;
+
+	@UiField
+	FlowPanel linkNameTextBoxSlot;
+
+	@UiField
+	HTML text1;
+
+	@UiField
+	HTML text2;
+
+	@UiField
+	HTML text3;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}
