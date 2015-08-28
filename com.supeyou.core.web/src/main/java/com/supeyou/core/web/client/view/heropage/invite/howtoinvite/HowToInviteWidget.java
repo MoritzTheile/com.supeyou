@@ -12,6 +12,7 @@ import com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.view.heropage.invite.manually.ManuallyWidget;
 import com.supeyou.core.web.client.view.heropage.invite.manually.ManuallyWidget.RENDERMODE;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
+import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.contentwrapper.ContentWrapperWidget;
 
@@ -27,6 +28,8 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 			@Override
 			public void onClick(ClickEvent event) {
+
+				GoogleAnalytics.i.sendEvent("click", "emailInvitation");
 
 				final PopupWidget popupWidget = new PopupWidget();
 
@@ -61,6 +64,8 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
+				GoogleAnalytics.i.sendEvent("click", "whatsappInvitation");
+
 				final PopupWidget popupWidget = new PopupWidget();
 
 				createInvitation("WhatsApp-Link", thisSupporterDTO, new InvitationCallback() {
@@ -94,6 +99,8 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
+				GoogleAnalytics.i.sendEvent("click", "googleplusInvitation");
+
 				createInvitation("GooglePlus-Link", thisSupporterDTO, new InvitationCallback() {
 
 					@Override
@@ -114,6 +121,8 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 			@Override
 			public void onClick(ClickEvent event) {
+
+				GoogleAnalytics.i.sendEvent("click", "facebookInvitation");
 
 				createInvitation("Facebook-Link", thisSupporterDTO, new InvitationCallback() {
 
@@ -136,6 +145,8 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
+				GoogleAnalytics.i.sendEvent("click", "twitterInvitation");
+
 				createInvitation("Twitter-Link", thisSupporterDTO, new InvitationCallback() {
 
 					@Override
@@ -156,6 +167,8 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 			@Override
 			public void onClick(ClickEvent event) {
+
+				GoogleAnalytics.i.sendEvent("click", "copyandpasteInvitation");
 
 				final PopupWidget popupWidget = new PopupWidget();
 
