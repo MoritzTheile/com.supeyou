@@ -12,7 +12,7 @@ public class HeroDTO extends AbstrDTO<HeroIDType> implements Serializable {
 
 	private SingleLineString256Type imageURL;
 	private URLType websiteURL;
-	private URLType videoURL;
+	private SingleLineString256Type videoURL;
 	private SingleLineString256Type comment;
 	private SingleLineString256Type name;
 	private SingleLineString256Type paypalAccount;
@@ -64,11 +64,11 @@ public class HeroDTO extends AbstrDTO<HeroIDType> implements Serializable {
 		this.websiteURL = websiteURL;
 	}
 
-	public URLType getVideoURL() {
+	public SingleLineString256Type getVideoURL() {
 		return videoURL;
 	}
 
-	public void setVideoURL(URLType videoURL) {
+	public void setVideoURL(SingleLineString256Type videoURL) {
 		this.videoURL = videoURL;
 	}
 

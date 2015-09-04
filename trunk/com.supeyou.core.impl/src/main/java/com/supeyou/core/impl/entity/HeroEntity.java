@@ -110,7 +110,7 @@ public class HeroEntity extends AbstrEntity<HeroIDType> {
 		return new URLType(websiteURL);
 	}
 
-	public void setVideoURL(URLType videoURL) {
+	public void setVideoURL(SingleLineString256Type videoURL) {
 		if (videoURL != null) {
 			this.videoURL = videoURL.value();
 		} else {
@@ -118,11 +118,11 @@ public class HeroEntity extends AbstrEntity<HeroIDType> {
 		}
 	}
 
-	public URLType getVideoURL() {
+	public SingleLineString256Type getVideoURL() {
 		if (videoURL == null) {
 			return null;
 		}
-		return new URLType(videoURL);
+		return new SingleLineString256Type(videoURL);
 	}
 
 	@Override
