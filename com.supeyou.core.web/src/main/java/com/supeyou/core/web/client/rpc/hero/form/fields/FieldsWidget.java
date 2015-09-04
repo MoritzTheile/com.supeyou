@@ -123,10 +123,10 @@ public class FieldsWidget extends WidgetView {
 
 				"VideoURL",
 
-				new FieldForURLType(thisDto.getVideoURL()) {
+				new FieldForSingleLineString256Type(thisDto.getVideoURL()) {
 
 					@Override
-					public void onHasChanged(URLType value) {
+					public void onHasChanged(SingleLineString256Type value) {
 						thisDto.setVideoURL(value);
 						hasChanged();
 					}
