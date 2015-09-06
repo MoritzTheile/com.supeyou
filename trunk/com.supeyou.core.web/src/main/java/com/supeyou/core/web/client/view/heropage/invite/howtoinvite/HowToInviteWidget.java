@@ -52,10 +52,10 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 						popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), contentWidget));
 
+						onDismiss();
 					}
 				});
 
-				onDismiss();
 			}
 
 		}, ClickEvent.getType());
@@ -87,10 +87,10 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 						popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), contentWidget));
 
+						onDismiss();
 					}
 				});
 
-				onDismiss();
 			}
 
 		}, ClickEvent.getType());
@@ -109,10 +109,9 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 						Window.open("https://plus.google.com/share?url==" + ManuallyWidget.getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
 
+						onDismiss();
 					}
 				});
-
-				onDismiss();
 
 			}
 
@@ -132,10 +131,9 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 						Window.open("http://www.facebook.com/share.php?u=" + ManuallyWidget.getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
 
+						onDismiss();
 					}
 				});
-
-				onDismiss();
 
 			}
 
@@ -155,10 +153,9 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 						Window.open("https://twitter.com/intent/tweet?text=" + ManuallyWidget.getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
 
+						onDismiss();
 					}
 				});
-
-				onDismiss();
 
 			}
 
@@ -191,10 +188,10 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 						popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), contentWidget));
 
+						onDismiss();
 					}
 				});
 
-				onDismiss();
 			}
 
 		}, ClickEvent.getType());
