@@ -26,38 +26,28 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 		this.thisSupporterDTO = supporterDTO;
 
+		final RecommendationWidget recommendationWidget = new RecommendationWidget();
+
 		emailButton.addDomHandler(new ClickHandler() {
 
 			@Override
 			public void onClick(ClickEvent event) {
 
-				copyAndPasteButton.add(new HintManualWidget());
+				GoogleAnalytics.i.sendEvent("click", "emailInvitation");
 
-				// GoogleAnalytics.i.sendEvent("click", "emailInvitation");
-				//
-				// final PopupWidget popupWidget = new PopupWidget();
-				//
-				// createInvitation("Email-Link", thisSupporterDTO, new InvitationCallback() {
-				//
-				// @Override
-				// public void invitationCreated(InvitationDTO invitationDTO) {
-				//
-				// ManuallyWidget contentWidget = new ManuallyWidget(thisSupporterDTO, RENDERMODE.EMAIL) {
-				//
-				// @Override
-				// protected void onDismiss() {
-				//
-				// popupWidget.closePopup();
-				//
-				// }
-				//
-				// };
-				//
-				// popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), contentWidget));
-				//
-				// onDismiss();
-				// }
-				// });
+				recommendationWidget.removePostItFromParent();
+
+				createInvitation("Email-Link", thisSupporterDTO, new InvitationCallback() {
+
+					@Override
+					public void invitationCreated(InvitationDTO invitationDTO) {
+
+						Window.open("mailto:?subject=SupeYou invitation&body=%0A%0A%20%20%20%20" + ManuallyWidget.getInvitURL(invitationDTO) + "%0A%0A", "_self", "status=0,toolbar=0,menubar=0,location=0");
+
+						copyAndPasteButton.add(new HintManualWidget());
+
+					}
+				});
 
 			}
 
@@ -68,31 +58,19 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				copyAndPasteButton.add(new HintManualWidget());
-
 				GoogleAnalytics.i.sendEvent("click", "whatsappInvitation");
 
-				final PopupWidget popupWidget = new PopupWidget();
+				recommendationWidget.removePostItFromParent();
 
 				createInvitation("WhatsApp-Link", thisSupporterDTO, new InvitationCallback() {
 
 					@Override
 					public void invitationCreated(InvitationDTO invitationDTO) {
 
-						ManuallyWidget contentWidget = new ManuallyWidget(thisSupporterDTO, RENDERMODE.WHATSAPP) {
+						Window.open("whatsapp://send?text=" + ManuallyWidget.getInvitURL(invitationDTO), "_self", "status=0,toolbar=0,menubar=0,location=0");
 
-							@Override
-							protected void onDismiss() {
+						copyAndPasteButton.add(new HintManualWidget());
 
-								popupWidget.closePopup();
-
-							}
-
-						};
-
-						popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), contentWidget));
-
-						onDismiss();
 					}
 				});
 
@@ -115,6 +93,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 						Window.open("https://plus.google.com/share?url==" + ManuallyWidget.getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
 
 						onDismiss();
+
 					}
 				});
 
@@ -180,7 +159,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 					@Override
 					public void invitationCreated(InvitationDTO invitationDTO) {
 
-						ManuallyWidget contentWidget = new ManuallyWidget(thisSupporterDTO, RENDERMODE.COPYANDPASTE) {
+						ManuallyWidget contentWidget = new ManuallyWidget(thisSupporterDTO, RENDERMODE.SIMPLE) {
 
 							@Override
 							protected void onDismiss() {
@@ -194,6 +173,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 						popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), contentWidget));
 
 						onDismiss();
+
 					}
 				});
 
@@ -201,7 +181,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 		}, ClickEvent.getType());
 
-		emailButton.add(new RecommendationWidget());
+		emailButton.add(recommendationWidget);
 
 	}
 
