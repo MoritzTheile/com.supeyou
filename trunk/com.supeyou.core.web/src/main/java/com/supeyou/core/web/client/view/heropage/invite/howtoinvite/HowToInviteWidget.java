@@ -9,6 +9,7 @@ import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.rpc.invitation.RPCCRUDProxy;
 import com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync;
+import com.supeyou.core.web.client.view.heropage.invite.hintmanual.HintManualWidget;
 import com.supeyou.core.web.client.view.heropage.invite.manually.ManuallyWidget;
 import com.supeyou.core.web.client.view.heropage.invite.manually.ManuallyWidget.RENDERMODE;
 import com.supeyou.core.web.client.view.heropage.invite.recommendation.RecommendationWidget;
@@ -30,31 +31,33 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "emailInvitation");
+				copyAndPasteButton.add(new HintManualWidget());
 
-				final PopupWidget popupWidget = new PopupWidget();
-
-				createInvitation("Email-Link", thisSupporterDTO, new InvitationCallback() {
-
-					@Override
-					public void invitationCreated(InvitationDTO invitationDTO) {
-
-						ManuallyWidget contentWidget = new ManuallyWidget(thisSupporterDTO, RENDERMODE.EMAIL) {
-
-							@Override
-							protected void onDismiss() {
-
-								popupWidget.closePopup();
-
-							}
-
-						};
-
-						popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), contentWidget));
-
-						onDismiss();
-					}
-				});
+				// GoogleAnalytics.i.sendEvent("click", "emailInvitation");
+				//
+				// final PopupWidget popupWidget = new PopupWidget();
+				//
+				// createInvitation("Email-Link", thisSupporterDTO, new InvitationCallback() {
+				//
+				// @Override
+				// public void invitationCreated(InvitationDTO invitationDTO) {
+				//
+				// ManuallyWidget contentWidget = new ManuallyWidget(thisSupporterDTO, RENDERMODE.EMAIL) {
+				//
+				// @Override
+				// protected void onDismiss() {
+				//
+				// popupWidget.closePopup();
+				//
+				// }
+				//
+				// };
+				//
+				// popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), contentWidget));
+				//
+				// onDismiss();
+				// }
+				// });
 
 			}
 
@@ -64,6 +67,8 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 			@Override
 			public void onClick(ClickEvent event) {
+
+				copyAndPasteButton.add(new HintManualWidget());
 
 				GoogleAnalytics.i.sendEvent("click", "whatsappInvitation");
 
