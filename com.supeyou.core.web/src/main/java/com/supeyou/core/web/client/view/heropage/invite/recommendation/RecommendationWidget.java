@@ -35,7 +35,7 @@ public class RecommendationWidget extends WidgetView {
 
 	}
 
-	private void removePostItFromParent() {
+	public void removePostItFromParent() {
 
 		removeFromParent();
 

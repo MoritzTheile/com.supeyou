@@ -22,37 +22,20 @@ public abstract class ManuallyWidget extends WidgetView {
 	private InvitationDTO thisInvitationDTO;
 
 	public enum RENDERMODE {
-		COPYANDPASTE, EMAIL, WHATSAPP, SMS
+		ADVANCED, SIMPLE
 	}
+
+	private RENDERMODE rendermode;
 
 	public ManuallyWidget(final SupporterDTO supporterDTO, RENDERMODE rendermode) {
 
+		this.rendermode = rendermode;
+
 		String defaultLinkName = "";
 
-		if (RENDERMODE.COPYANDPASTE.equals(rendermode)) {
-			defaultLinkName = "CopyAndPaste-Link";
-			text1.setHTML(Text.i.INVITE_MANUALLY_COPYANDPASTE_Text1_HTML());
-			text2.setHTML(Text.i.INVITE_MANUALLY_COPYANDPASTE_Text2_HTML());
-			text3.setHTML(Text.i.INVITE_MANUALLY_COPYANDPASTE_Text3_HTML());
-		} else if (RENDERMODE.EMAIL.equals(rendermode)) {
-			root.addStyleName("simple");
-			defaultLinkName = "Email-Link";
-			text1.setHTML(Text.i.INVITE_MANUALLY_EMAIL_Text1_HTML());
-			text2.setHTML(Text.i.INVITE_MANUALLY_EMAIL_Text2_HTML());
-			text3.setHTML(Text.i.INVITE_MANUALLY_EMAIL_Text3_HTML());
-		} else if (RENDERMODE.WHATSAPP.equals(rendermode)) {
-			root.addStyleName("simple");
-			defaultLinkName = "WhatsApp-Link";
-			text1.setHTML(Text.i.INVITE_MANUALLY_WHATSAPP_Text1_HTML());
-			text2.setHTML(Text.i.INVITE_MANUALLY_WHATSAPP_Text2_HTML());
-			text3.setHTML(Text.i.INVITE_MANUALLY_WHATSAPP_Text3_HTML());
-		} else if (RENDERMODE.SMS.equals(rendermode)) {
-			root.addStyleName("simple");
-			defaultLinkName = "SMS-Link";
-			text1.setHTML(Text.i.INVITE_MANUALLY_SMS_Text1_HTML());
-			text2.setHTML(Text.i.INVITE_MANUALLY_SMS_Text2_HTML());
-			text3.setHTML(Text.i.INVITE_MANUALLY_SMS_Text3_HTML());
-		}
+		text1.setHTML(Text.i.INVITE_MANUALLY_COPYANDPASTE_Text1_HTML());
+		text2.setHTML(Text.i.INVITE_MANUALLY_COPYANDPASTE_Text2_HTML());
+		text3.setHTML(Text.i.INVITE_MANUALLY_COPYANDPASTE_Text3_HTML());
 
 		HowToInviteWidget.createInvitation(defaultLinkName, supporterDTO, new HowToInviteWidget.InvitationCallback() {
 
@@ -152,10 +135,16 @@ public abstract class ManuallyWidget extends WidgetView {
 
 	private void render() {
 
-		String url = getInvitURL(thisInvitationDTO);
-		linkLabel.setText(url);
+		if (RENDERMODE.SIMPLE.equals(rendermode)) {
+
+			root.addStyleName("simple");
+
+		}
+
+		linkLabel.setText(getInvitURL(thisInvitationDTO));
 
 		linkNameTextBoxSlot.clear();
+
 		final FieldForSingleLineString256Type name = new FieldForSingleLineString256Type(thisInvitationDTO.getComment()) {
 			public void onHasChanged(com.supeyou.crudie.iface.datatype.types.SingleLineString256Type value) {
 				thisInvitationDTO.setComment(value);
@@ -177,8 +166,9 @@ public abstract class ManuallyWidget extends WidgetView {
 	}
 
 	public static String getInvitURL(final InvitationDTO invitationDTO) {
-		String url = URLHelper.getCurrentURL() + "?" + CoreStatics.INVITTOKEN_KEY + "=" + invitationDTO.getToken();
-		return url;
+
+		return URLHelper.getCurrentURL() + "?" + CoreStatics.INVITTOKEN_KEY + "=" + invitationDTO.getToken();
+
 	}
 
 	protected abstract void onDismiss();
