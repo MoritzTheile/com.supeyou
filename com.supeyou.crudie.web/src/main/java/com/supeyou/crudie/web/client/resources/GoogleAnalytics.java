@@ -7,10 +7,8 @@ public class GoogleAnalytics {
 	// see https://developers.google.com/analytics/devguides/collection/analyticsjs/events
 	public static final GoogleAnalytics i = new GoogleAnalytics();
 
-	public static final boolean isProductive = GWT.getHostPageBaseURL().toLowerCase().contains("supeyou.com");
-
 	private GoogleAnalytics() {
-		if (isProductive) {
+		if (isProductive()) {
 			initNative();
 		}
 	}
@@ -21,21 +19,25 @@ public class GoogleAnalytics {
 	}-*/;
 
 	public void sendEvent(String category, String action, String label, String value) {
-		if (isProductive) {
+		if (isProductive()) {
 			gaNative(category, action, label, value);
 		}
 	}
 
 	public void sendEvent(String category, String action, String label) {
-		if (isProductive) {
+		if (isProductive()) {
 			gaNative(category, action, label);
 		}
 	}
 
 	public void sendEvent(String category, String action) {
-		if (isProductive) {
+		if (isProductive()) {
 			gaNative(category, action);
 		}
+	}
+
+	private boolean isProductive() {
+		return GWT.getHostPageBaseURL().toLowerCase().contains("supeyou.com");
 	}
 
 	private native void gaNative(String category, String action, String label, String value) /*-{

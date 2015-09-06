@@ -2,6 +2,7 @@ package com.supeyou.core.web.client.view.herocard.supporterinfo;
 
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Widget;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync;
@@ -10,7 +11,11 @@ import com.supeyou.crudie.iface.common.HELPER;
 
 public class SupporterWidget extends WidgetView {
 
+	private final Widget thisWidget;
+
 	public SupporterWidget(SupporterDTO supporterDTO) {
+
+		thisWidget = this;
 
 		pollingRender(supporterDTO);
 
@@ -31,7 +36,9 @@ public class SupporterWidget extends WidgetView {
 					@Override
 					public void onSuccess(SupporterDTO result) {
 
-						pollingRender(result);
+						if (thisWidget.isAttached()) {
+							pollingRender(result);
+						}
 
 					}
 
