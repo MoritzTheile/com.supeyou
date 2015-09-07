@@ -9,6 +9,8 @@ public interface Text extends Messages {
 
 	String MULTIUSE_Version();
 
+	String MULTIUSE_Save();
+
 	String FIELD_WRONG_FORMAT_EmailAddress();
 
 	String FIELD_WRONG_FORMAT_Double();
@@ -116,5 +118,9 @@ public interface Text extends Messages {
 	String INVITE_MANUALLY_COPYANDPASTE_Text2_HTML();
 
 	String INVITE_MANUALLY_COPYANDPASTE_Text3_HTML();
+
+	String ASK_FOR_EMAIL_Header();
+
+	String ASK_FOR_EMAIL_Text_HTML();
 
 }
