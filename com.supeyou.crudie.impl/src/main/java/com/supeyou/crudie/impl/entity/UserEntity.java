@@ -32,7 +32,7 @@ public class UserEntity extends AbstrEntity<UserIDType> {
 	@Column(name = UserFetchQuery.COLUMN_LOGINID, nullable = true, length = 256, unique = true)
 	private String loginId;
 
-	@Column(name = UserFetchQuery.COLUMN_NICKNAME, nullable = true, length = 256, unique = true)
+	@Column(name = UserFetchQuery.COLUMN_NICKNAME, nullable = true, length = 256, unique = false)
 	private String name;
 
 	@Column(name = UserFetchQuery.COLUMN_AUTHTOKEN, nullable = true, length = 256, unique = true)
