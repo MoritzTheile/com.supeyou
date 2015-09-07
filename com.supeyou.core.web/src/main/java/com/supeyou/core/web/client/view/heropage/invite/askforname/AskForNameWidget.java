@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.view.heropage.invite.askforemail;
+package com.supeyou.core.web.client.view.heropage.invite.askforname;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -7,32 +7,22 @@ import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
-import com.supeyou.crudie.iface.datatype.types.EmailAddressType;
-import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.UserDTO;
-import com.supeyou.crudie.web.client.fields.types.FieldForEmailAddressType;
+import com.supeyou.crudie.web.client.fields.types.FieldForSingleLineString256Type;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 import com.supeyou.crudie.web.client.rpc.user.RPCCRUDProxy;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 
-public abstract class AskForEmailWidget extends WidgetView {
+public abstract class AskForNameWidget extends WidgetView {
 
-	private final FieldForEmailAddressType field;
+	private final FieldForSingleLineString256Type field = new FieldForSingleLineString256Type();
 
-	public AskForEmailWidget(final SupporterDTO supporterDTO) {
+	public AskForNameWidget(final SupporterDTO supporterDTO) {
 
-		field = new FieldForEmailAddressType() {
-			@Override
-			public void onHasChanged(EmailAddressType value) {
+		text1.setHTML(Text.i.ASK_FOR_EMAIL_Name_HTML());
 
-				super.onHasChanged(value);
-			}
-		};
-
-		text1.setHTML(Text.i.ASK_FOR_EMAIL_Text_HTML());
-
-		emailInputSlot.add(field);
+		inputSlot.add(field);
 
 		FlatButtonWidget flatButtonWidget = new FlatButtonWidget();
 		flatButtonWidget.setText(Text.i.MULTIUSE_Save());
@@ -60,22 +50,20 @@ public abstract class AskForEmailWidget extends WidgetView {
 
 			}
 		}, KeyUpEvent.getType());
-
 		saveButtonSlot.add(flatButtonWidget);
 
 	}
 
 	private void save() {
-
-		GoogleAnalytics.i.sendEvent("click", "saveEmailButton");
+		GoogleAnalytics.i.sendEvent("click", "saveNameButton");
 
 		UserDTO userDTO = LoginStateModel.i().getLoggedInUser();
-
-		userDTO.setLoginId(new SingleLineString256Type(field.getValue().value()));
+		userDTO.setName(field.getValue());
 
 		RPCCRUDProxy.i().updadd(userDTO);
 
 		onDismiss();
+
 	}
 
 	protected abstract void onDismiss();

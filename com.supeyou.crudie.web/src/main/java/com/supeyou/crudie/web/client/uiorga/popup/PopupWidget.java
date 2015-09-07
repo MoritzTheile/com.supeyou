@@ -111,7 +111,16 @@ public class PopupWidget extends WidgetView {
 
 		}, ClickEvent.getType());
 
-		History.newItem("POPUP", false);
+		// changing the history to fast results in not picking up history changes:
+		new Timer() {
+
+			@Override
+			public void run() {
+				History.newItem("POPUP", false);
+
+			}
+
+		}.schedule(200);
 
 		handlerRegistration = History.addValueChangeHandler(new ValueChangeHandler<String>() {
 
@@ -132,6 +141,12 @@ public class PopupWidget extends WidgetView {
 
 		removeFromParent();
 
+		onClose();
+
+	}
+
+	public void onClose() {
+		// nothing, can be overridden
 	}
 
 	private void removeHistoryListener() {

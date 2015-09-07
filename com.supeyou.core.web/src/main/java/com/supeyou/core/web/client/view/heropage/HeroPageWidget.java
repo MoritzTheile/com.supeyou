@@ -11,10 +11,13 @@ import com.supeyou.core.web.client.view.herocard.HeroCardWidget;
 import com.supeyou.core.web.client.view.herocard.HeroCardWidget.VIEW;
 import com.supeyou.core.web.client.view.heropage.donate.DonateWidget;
 import com.supeyou.core.web.client.view.heropage.howitworks.HowItWorksWidget;
+import com.supeyou.core.web.client.view.heropage.invite.askforemail.AskForEmailWidget;
+import com.supeyou.core.web.client.view.heropage.invite.askforname.AskForNameWidget;
 import com.supeyou.core.web.client.view.heropage.invite.howtoinvite.HowToInviteWidget;
 import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidget;
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
+import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
@@ -99,7 +102,13 @@ public class HeroPageWidget extends WidgetView {
 		@Override
 		public void onClick(ClickEvent event) {
 
-			final PopupWidget popupWidget = new PopupWidget();
+			final PopupWidget popupWidget = new PopupWidget() {
+
+				public void onClose() {
+					askForEmail();
+				};
+
+			};
 
 			HowToInviteWidget content = new HowToInviteWidget(supporterDTO) {
 
@@ -117,4 +126,59 @@ public class HeroPageWidget extends WidgetView {
 		}
 
 	};
+
+	private void askForName() {
+
+		if (LoginStateModel.i().getLoggedInUser().getName() == null || LoginStateModel.i().getLoggedInUser().getName().equals("")) {
+
+			final PopupWidget popupWidget = new PopupWidget();
+
+			AskForNameWidget contentWidget = new AskForNameWidget(supporterDTO) {
+
+				@Override
+				protected void onDismiss() {
+
+					popupWidget.closePopup();
+
+				}
+
+			};
+
+			popupWidget.init(new ContentWrapperWidget(Text.i.ASK_FOR_NAME_Header(), contentWidget));
+
+		}
+
+	}
+
+	private void askForEmail() {
+
+		if (LoginStateModel.isAnonymous(LoginStateModel.i().getLoggedInUser())) {
+
+			final PopupWidget popupWidget = new PopupWidget() {
+				@Override
+				public void onClose() {
+					askForName();
+				}
+			};
+
+			AskForEmailWidget contentWidget = new AskForEmailWidget(supporterDTO) {
+
+				@Override
+				protected void onDismiss() {
+
+					popupWidget.closePopup();
+
+				}
+
+			};
+
+			popupWidget.init(new ContentWrapperWidget(Text.i.ASK_FOR_EMAIL_Header(), contentWidget));
+
+		} else {
+
+			askForName();
+
+		}
+
+	}
 }

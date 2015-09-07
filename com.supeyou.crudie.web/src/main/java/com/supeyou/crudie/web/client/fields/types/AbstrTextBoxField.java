@@ -97,4 +97,8 @@ public abstract class AbstrTextBoxField<T> extends AbstrCompositeField<T> {
 
 	}
 
+	public void setFocus(boolean hasFocus) {
+		textBox.setFocus(hasFocus);
+	}
+
 }

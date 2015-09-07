@@ -228,7 +228,6 @@ public class InitialCoreData {
 		UserDTO userDTO = new UserDTO();
 		userDTO.setLoginId(new SingleLineString256Type(name));
 		userDTO.setAuthToken(new SingleLineString256Type((name.toLowerCase().replaceAll("[^a-zA-Z0-9]", "") + "adfasdfasdf").substring(0, 6)));
-		System.out.println("UserId=" + userDTO.getLoginId() + " AuthToken=" + userDTO.getAuthToken());
 		return UserCRUDServiceImpl.i().updadd(admin, userDTO);
 	}
 
