@@ -62,35 +62,35 @@
 	/* padding-bottom: 400px; */
 }
 
-.invite.manually{
-	padding: 0 32px 320px 32px;
+.popupcontent{
+	padding: 0 32px 600px 32px;
 }
 
-.invite.manually .text{
+.popupcontent .text{
 	font-size: 14px;
 	margin-left: 32px;
 	margin-right: 32px;
 }
-.invite.manually .text.one{
+.popupcontent .text.one{
 	margin-top: 48px;
 	margin-bottom: 48px;
 	  
 }
-.invite.manually .text.two{
+.popupcontent .text.two{
 	margin-top: 48px;
 	margin-bottom: 48px;
 }
-.invite.manually .text.three{
+.popupcontent .text.three{
 	margin-top: 48px;
 	margin-bottom: 48px;
 }
-.invite.manually.simple .text.three{
+.popupcontent.simple .text.three{
 	display: none;
 }
-.invite.manually .link-name-textbox-slot{
+.popupcontent .link-name-textbox-slot{
 	margin: 0;
 }
-.invite.manually.simple .link-name-textbox-slot{
+.popupcontent.simple .link-name-textbox-slot{
 	display: none;
 }
 .modal-widget .invite .link-row{
@@ -783,5 +783,19 @@
 }
 
 .root.chooser .option > *{
+	
+}
+
+.ask-for-email .save-button-slot{
+	margin-top: 68px;
+}
+
+.ask-for-email .email-textbox-slot{
+	padding:0px;
+
+}
+
+.ask-for-email .email-textbox-slot .gwt-TextBox:focus{
+	background-color:white;
 	
 }

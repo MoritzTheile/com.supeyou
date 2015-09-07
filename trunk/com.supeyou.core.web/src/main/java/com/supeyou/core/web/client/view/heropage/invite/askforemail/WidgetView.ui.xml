@@ -6,20 +6,14 @@
 	<ui:with field='text'
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
  
-	<g:FlowPanel styleName="popupcontent invite manually" ui:field="root">
+	<g:FlowPanel styleName="popupcontent ask-for-email" ui:field="root">
 	
 		<g:HTML  styleName="text one" ui:field="text1"></g:HTML>
 		
-		<g:FlowPanel styleName="link-row" >
-			<g:FlowPanel styleName="reload-button" ui:field="reloadButton"></g:FlowPanel>
-			<g:Label styleName="link-label field-style" ui:field="linkLabel"></g:Label>
-		</g:FlowPanel>
+		<g:FlowPanel  styleName="email-textbox-slot"  ui:field="emailInputSlot"></g:FlowPanel>
 		
-		<g:HTML  styleName="text two" ui:field="text2"></g:HTML>
+		<g:FlowPanel styleName="save-button-slot" ui:field="saveButtonSlot"></g:FlowPanel>
 		
-		<g:FlowPanel  styleName="link-name-textbox-slot"  ui:field="linkNameTextBoxSlot"></g:FlowPanel>
-		
-		<g:HTML  styleName="text three" ui:field="text3"></g:HTML>
 		
 	</g:FlowPanel>
 

@@ -9,6 +9,7 @@ import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.rpc.invitation.RPCCRUDProxy;
 import com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync;
+import com.supeyou.core.web.client.view.heropage.invite.askforemail.AskForEmailWidget;
 import com.supeyou.core.web.client.view.heropage.invite.hintmanual.HintManualWidget;
 import com.supeyou.core.web.client.view.heropage.invite.manually.ManuallyWidget;
 import com.supeyou.core.web.client.view.heropage.invite.manually.ManuallyWidget.RENDERMODE;
@@ -73,6 +74,8 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 					}
 				});
+
+				askForEmail();
 
 			}
 
@@ -214,6 +217,25 @@ public abstract class HowToInviteWidget extends WidgetView {
 	public interface InvitationCallback {
 
 		void invitationCreated(InvitationDTO invitationDTO);
+
+	}
+
+	private void askForEmail() {
+
+		final PopupWidget popupWidget = new PopupWidget();
+
+		AskForEmailWidget contentWidget = new AskForEmailWidget(thisSupporterDTO) {
+
+			@Override
+			protected void onDismiss() {
+
+				popupWidget.closePopup();
+
+			}
+
+		};
+
+		popupWidget.init(new ContentWrapperWidget(Text.i.ASK_FOR_EMAIL_Header(), contentWidget));
 
 	}
 
