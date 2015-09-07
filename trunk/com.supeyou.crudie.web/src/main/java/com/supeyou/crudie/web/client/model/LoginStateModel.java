@@ -22,6 +22,10 @@ public class LoginStateModel extends AbstrObservable<Void> {
 
 	}
 
+	public static boolean isAnonymous(UserDTO userDTO) {
+		return userDTO.getLoginId().value().startsWith("anonymous") && userDTO.getName() == null;
+	}
+
 	// SINGLETON
 
 	private LoginStateModel() {

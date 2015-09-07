@@ -17,6 +17,8 @@ public class UserFetchQuery extends FetchQuery {
 
 	public static final String COLUMN_LOGINID = "LOGINID";
 
+	public static final String COLUMN_NICKNAME = "NICKNAME";
+
 	public static final String COLUMN_AUTHTOKEN = "AUTHTOKEN";
 
 	public static final String COLUMN_LOCALE = "LOCALE";

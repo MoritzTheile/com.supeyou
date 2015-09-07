@@ -162,13 +162,13 @@ public class SupporterTreeWidget extends WidgetView {
 
 		if (supporterDTO2 != null && supporterDTO2.getUserDTO().getLoginId() != null) {
 
-			if (!supporterDTO2.getUserDTO().getLoginId().value().startsWith("anonymous")) {
+			if (supporterDTO2.getUserDTO().getName() != null) {
 
-				html += supporterDTO2.getUserDTO().getLoginId().value();
+				html += supporterDTO2.getUserDTO().getName().value();
 
 			} else {
 
-				html += "anonym";
+				html += "";
 
 			}
 

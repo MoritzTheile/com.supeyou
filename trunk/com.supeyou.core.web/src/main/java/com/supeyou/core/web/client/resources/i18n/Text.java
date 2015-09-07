@@ -123,4 +123,8 @@ public interface Text extends Messages {
 
 	String ASK_FOR_EMAIL_Text_HTML();
 
+	String ASK_FOR_NAME_Header();
+
+	String ASK_FOR_EMAIL_Name_HTML();
+
 }
