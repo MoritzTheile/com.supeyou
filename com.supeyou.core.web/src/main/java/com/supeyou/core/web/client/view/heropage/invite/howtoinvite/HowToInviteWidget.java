@@ -90,7 +90,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 					@Override
 					public void invitationCreated(InvitationDTO invitationDTO) {
 
-						Window.open("https://plus.google.com/share?url==" + ManuallyWidget.getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
+						Window.open("https://plus.google.com/share?url==" + ManuallyWidget.getInvitURL(invitationDTO), "_tab", "status=0,toolbar=0,menubar=0,location=0");
 
 						onDismiss();
 
@@ -113,7 +113,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 					@Override
 					public void invitationCreated(InvitationDTO invitationDTO) {
 
-						Window.open("http://www.facebook.com/share.php?u=" + ManuallyWidget.getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
+						Window.open("http://www.facebook.com/share.php?u=" + ManuallyWidget.getInvitURL(invitationDTO), "_tab", "status=0,toolbar=0,menubar=0,location=0");
 
 						onDismiss();
 					}
@@ -135,7 +135,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 					@Override
 					public void invitationCreated(InvitationDTO invitationDTO) {
 
-						Window.open("https://twitter.com/intent/tweet?text=" + ManuallyWidget.getInvitURL(invitationDTO), "_blank", "status=0,toolbar=0,menubar=0,location=0");
+						Window.open("https://twitter.com/intent/tweet?text=" + ManuallyWidget.getInvitURL(invitationDTO), "_tab", "status=0,toolbar=0,menubar=0,location=0");
 
 						onDismiss();
 					}
@@ -152,7 +152,12 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 				GoogleAnalytics.i.sendEvent("click", "copyandpasteInvitation");
 
-				final PopupWidget popupWidget = new PopupWidget();
+				final PopupWidget popupWidget = new PopupWidget() {
+					@Override
+					public void onClose() {
+
+					}
+				};
 
 				createInvitation("CopyAndPaste-Link", thisSupporterDTO, new InvitationCallback() {
 
@@ -172,9 +177,8 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 						popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), contentWidget));
 
-						onDismiss();
-
 					}
+
 				});
 
 			}
