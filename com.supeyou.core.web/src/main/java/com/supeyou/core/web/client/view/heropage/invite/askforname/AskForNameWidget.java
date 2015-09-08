@@ -31,7 +31,11 @@ public abstract class AskForNameWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				save();
+				if (field.getValue() != null && !field.getValue().value().equals("")) {
+
+					save();
+
+				}
 
 			}
 
