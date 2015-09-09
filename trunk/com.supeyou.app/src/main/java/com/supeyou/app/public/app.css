@@ -20,10 +20,11 @@ body {
 	
 	html{
 	
-		height: 100%;
-	  	background-repeat: repeat;
-	  	background-image: url("core/images/nature2_background.jpg");
-
+height: 100%;
+	
+background-repeat: repeat;
+	
+/* background-image: url("core/images/nature2_background.jpg"); */
 	}
 	
 	body {
@@ -175,10 +176,12 @@ body {
 	
 	html{
 	
-		height: 100%;
-	  	background-repeat: repeat;
-	  	background-image: url("core/images/nature2_background.jpg");
+	height: 100%;
 
+	background-color: #D5E2F8;
+	
+/*	background-repeat: repeat;
+	 background-image: url("core/images/nature2_background.jpg"); */
 	}
 	
 	body {
