@@ -174,6 +174,8 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 
 				E entity = null;
 
+				D oldDTO = null;
+
 				boolean toBePersisted = false;
 
 				if (dto.getId() == null) {
@@ -191,6 +193,12 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 						entity = entityClass.newInstance();
 
 						toBePersisted = true;
+
+					} else {
+
+						oldDTO = helper.entity2DTO(entity);
+						postprocessEntity2DTO(em, entity, oldDTO);
+
 					}
 
 				}
@@ -234,7 +242,7 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 				if (toBePersisted) {
 					wasCreated(dto);
 				} else {
-					wasUpdated(dto);
+					wasUpdated(dto, oldDTO);
 				}
 
 				return resultDTO;
@@ -444,11 +452,11 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 
 	};
 
-	private void wasUpdated(D dto) {
+	private void wasUpdated(D dto, D oldDTO) {
 
 		for (CRUDObserver<D> crudObserver : observers)
 			try {
-				crudObserver.wasUpdated(dto);
+				crudObserver.wasUpdated(dto, oldDTO);
 			} catch (Exception e) {
 				log.log(Level.WARNING, "Exception on informing observer", e);
 			}

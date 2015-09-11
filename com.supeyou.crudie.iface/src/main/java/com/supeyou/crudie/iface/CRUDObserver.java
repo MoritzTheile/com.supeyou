@@ -8,7 +8,7 @@ public interface CRUDObserver<D> {
 
 	void wasRead(D dto);
 
-	void wasUpdated(D dto);
+	void wasUpdated(D dto, D oldDTO);
 
 	void wasDeleted(AbstrType<Long> dtoId);
 }
