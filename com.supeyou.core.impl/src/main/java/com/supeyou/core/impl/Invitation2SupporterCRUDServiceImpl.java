@@ -107,9 +107,32 @@ public class Invitation2SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<In
 					sum += descendantSupporterEntity.getDecendentCount() + 1;
 
 				}
+
 				System.out.println("asdfuuu setting sum of " + SupporterCRUDServiceImpl.getUserEntity(em, supporterEntity).getLoginId() + " too " + sum);
 
+				SupporterDTO oldSupporterDTO = getDTOFromEntity(em, supporterEntity);
+
 				supporterEntity.setDecendentCount(sum);
+
+				em.flush();
+
+				SupporterDTO newSupporterDTO = getDTOFromEntity(em, em.find(SupporterEntity.class, supporterEntity.getId().value()));
+
+				SupporterCRUDServiceImpl.i().wasUpdated(newSupporterDTO, oldSupporterDTO);
+
+			}
+
+			private SupporterDTO getDTOFromEntity(EntityManager em, SupporterEntity supporterEntity) {
+
+				try {
+					SupporterDTO supporterDTO = SupporterCRUDServiceImpl.i().helper.entity2DTO(supporterEntity);
+					SupporterCRUDServiceImpl.i().postprocessEntity2DTO(em, supporterEntity, supporterDTO);
+					return supporterDTO;
+				} catch (Exception e) {
+					log.log(Level.WARNING, "Exception during dto mapping:", e);
+				}
+
+				return null;
 
 			}
 
