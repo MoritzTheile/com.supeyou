@@ -42,7 +42,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 					@Override
 					public void invitationCreated(InvitationDTO invitationDTO) {
 
-						Window.open("mailto:?subject=SupeYou invitation&body=%0A%0A%20%20%20%20" + ManuallyWidget.getInvitURL(invitationDTO) + "%0A%0A", "_self", "status=0,toolbar=0,menubar=0,location=0");
+						Window.open("mailto:?subject=SupeYou invitation&body=%0A%0A%20%20%20%20" + ManuallyWidget.getInvitURL(invitationDTO) + "%0A%0A", "_self", "");// "status=0,toolbar=0,menubar=0,location=0");
 
 						copyAndPasteButton.add(new HintManualWidget());
 
@@ -67,7 +67,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 					@Override
 					public void invitationCreated(InvitationDTO invitationDTO) {
 
-						Window.open("whatsapp://send?text=" + ManuallyWidget.getInvitURL(invitationDTO), "_self", "status=0,toolbar=0,menubar=0,location=0");
+						Window.open("whatsapp://send?text=" + ManuallyWidget.getInvitURL(invitationDTO), "_self", "");// "status=0,toolbar=0,menubar=0,location=0");
 
 						copyAndPasteButton.add(new HintManualWidget());
 
@@ -90,7 +90,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 					@Override
 					public void invitationCreated(InvitationDTO invitationDTO) {
 
-						Window.open("https://plus.google.com/share?url==" + ManuallyWidget.getInvitURL(invitationDTO), "_tab", "status=0,toolbar=0,menubar=0,location=0");
+						Window.open("https://plus.google.com/share?url=" + ManuallyWidget.getInvitURL(invitationDTO), "_tab", "");// "status=0,toolbar=0,menubar=0,location=0");
 
 						onDismiss();
 
@@ -113,7 +113,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 					@Override
 					public void invitationCreated(InvitationDTO invitationDTO) {
 
-						Window.open("http://www.facebook.com/share.php?u=" + ManuallyWidget.getInvitURL(invitationDTO), "_tab", "status=0,toolbar=0,menubar=0,location=0");
+						Window.open("http://www.facebook.com/share.php?u=" + ManuallyWidget.getInvitURL(invitationDTO), "_tab", "");// "status=0,toolbar=0,menubar=0,location=0");
 
 						onDismiss();
 					}
@@ -135,7 +135,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 					@Override
 					public void invitationCreated(InvitationDTO invitationDTO) {
 
-						Window.open("https://twitter.com/intent/tweet?text=" + ManuallyWidget.getInvitURL(invitationDTO), "_tab", "status=0,toolbar=0,menubar=0,location=0");
+						Window.open("https://twitter.com/intent/tweet?text=" + ManuallyWidget.getInvitURL(invitationDTO), "_tab", "");// "status=0,toolbar=0,menubar=0,location=0");
 
 						onDismiss();
 					}
