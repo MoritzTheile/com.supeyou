@@ -8,9 +8,13 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import com.supeyou.core.iface.SupporterCRUDService;
+import com.supeyou.core.iface.dto.SupporterDTO;
+import com.supeyou.core.impl.SupporterCRUDServiceImpl;
 import com.supeyou.core.impl.initialdata.InitialCoreData;
-import com.supeyou.crudie.iface.datatype.CRUDException;
+import com.supeyou.crudie.iface.CRUDObserver;
 import com.supeyou.crudie.iface.datatype.Page;
+import com.supeyou.crudie.iface.datatype.types.AbstrType;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.iface.dto.UserFetchQuery;
@@ -32,9 +36,52 @@ public class ServletContextListenerImpl implements ServletContextListener {
 			} else {
 				log.info("found more than one user (" + fetchList.size() + "), that means db is not fresh");
 			}
-		} catch (CRUDException e) {
+		} catch (Exception e) {
 			log.log(Level.SEVERE, "ERROR during data initializing", e);
 		}
+
+		try {
+			registerMailNotificator();
+		} catch (Exception e) {
+			log.log(Level.SEVERE, "ERROR during registering mail notificator", e);
+		}
+	}
+
+	private void registerMailNotificator() {
+
+		SupporterCRUDService supporterCRUDService = SupporterCRUDServiceImpl.i();
+
+		supporterCRUDService.addCRUDObserver(new CRUDObserver<SupporterDTO>() {
+
+			@Override
+			public void wasUpdated(SupporterDTO dto, SupporterDTO oldDTO) {
+
+				if (oldDTO != null) {
+					if (dto.getDecendentCount() != oldDTO.getDecendentCount()) {
+						SendEmail.sendEmail("theile@mtheile.com", "You generated one more Supporter", "Thank you " + dto.getUserDTO().getLoginId());
+					}
+				}
+
+			}
+
+			@Override
+			public void wasRead(SupporterDTO dto) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void wasDeleted(AbstrType<Long> dtoId) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void wasCreated(SupporterDTO dto) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 	}
 
 	@Override
