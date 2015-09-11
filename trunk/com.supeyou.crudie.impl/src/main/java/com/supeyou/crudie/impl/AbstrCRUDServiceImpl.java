@@ -419,7 +419,7 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 		return observers.iterator();
 	}
 
-	private void wasCreated(D dto) {
+	public void wasCreated(D dto) {
 
 		for (CRUDObserver<D> crudObserver : observers)
 			try {
@@ -430,7 +430,7 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 
 	};
 
-	private void wasRead(Collection<D> dtos) {
+	public void wasRead(Collection<D> dtos) {
 
 		for (D dto : dtos)
 			try {
@@ -441,7 +441,7 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 
 	};
 
-	private void wasRead(D dto) {
+	public void wasRead(D dto) {
 
 		for (CRUDObserver<D> crudObserver : observers)
 			try {
@@ -452,7 +452,7 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 
 	};
 
-	private void wasUpdated(D dto, D oldDTO) {
+	public void wasUpdated(D dto, D oldDTO) {
 
 		for (CRUDObserver<D> crudObserver : observers)
 			try {
@@ -463,7 +463,7 @@ public class AbstrCRUDServiceImpl<D extends AbstrDTO<?>, E extends AbstrEntity<?
 
 	};
 
-	private void wasDeleted(final AbstrType<Long> dtoId) {
+	public void wasDeleted(final AbstrType<Long> dtoId) {
 
 		for (CRUDObserver<D> crudObserver : observers)
 			try {

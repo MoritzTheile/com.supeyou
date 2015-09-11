@@ -57,8 +57,11 @@ public class ServletContextListenerImpl implements ServletContextListener {
 			public void wasUpdated(SupporterDTO dto, SupporterDTO oldDTO) {
 
 				if (oldDTO != null) {
+
 					if (dto.getDecendentCount() != oldDTO.getDecendentCount()) {
-						SendEmail.sendEmail("theile@mtheile.com", "You generated one more Supporter", "Thank you " + dto.getUserDTO().getLoginId());
+
+						SendEmail.sendEmail("theile@mtheile.com", "You generated one more Supporter", "Thank you " + dto.getUserDTO().getId().value() + ". You have now " + dto.getDecendentCount() + " supporter invited.");
+
 					}
 				}
 
