@@ -33,4 +33,6 @@ public class HELPER {
 		return splittedDate[2] + "." + splittedDate[1] + "." + splittedDate[0];
 	}
 
+	public static final String ANONYMMARKER = "anonymousActor_";
+
 }

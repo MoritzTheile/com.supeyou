@@ -17,6 +17,7 @@ import com.supeyou.actor.iface.dto.Session2UserFetchQuery;
 import com.supeyou.actor.iface.dto.SessionDTO;
 import com.supeyou.actor.impl.Session2UserCRUDServiceImpl;
 import com.supeyou.actor.impl.SessionCRUDServiceImpl;
+import com.supeyou.crudie.iface.common.HELPER;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
@@ -121,7 +122,7 @@ public class ActorFilter implements Filter {
 	private UserDTO createNewActor() throws CRUDException {
 		UserDTO actor;
 		actor = new UserDTO();
-		actor.setLoginId(new SingleLineString256Type("anonymousActor_" + System.currentTimeMillis()));
+		actor.setLoginId(new SingleLineString256Type(HELPER.ANONYMMARKER + System.currentTimeMillis()));
 		actor = UserCRUDServiceImpl.i().updadd(null, actor);
 		return actor;
 	}
