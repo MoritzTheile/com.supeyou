@@ -13,6 +13,7 @@ import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.impl.SupporterCRUDServiceImpl;
 import com.supeyou.core.impl.initialdata.InitialCoreData;
 import com.supeyou.crudie.iface.CRUDObserver;
+import com.supeyou.crudie.iface.common.HELPER;
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.datatype.types.AbstrType;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
@@ -72,9 +73,10 @@ public class ServletContextListenerImpl implements ServletContextListener {
 										+ "\n", false);
 
 					}
-					if (dto.getDecendantAmount() != oldDTO.getDecendantAmount()) {
 
-						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "bcc@supeyou.com", "You raised " + dto.getDecendantAmount().value() + " Euro for  " + dto.getHeroDTO().getName().value() + " on SupeYou",
+					if (dto.getDecendantAmount().value() > oldDTO.getDecendantAmount().value()) {
+
+						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "bcc@supeyou.com", "You raised " + HELPER.amount2eurostring(dto.getDecendantAmount()) + " Euro for  " + dto.getHeroDTO().getName().value() + " on SupeYou",
 								"Thanks so much! If everybody raises as much money as you did we would have very powerful heroes!  \n"
 										+ "\n"
 										+ "Have a look at http://supeyou.com/?auth=" + dto.getUserDTO().getAuthToken().value() + "#HERO_" + dto.getHeroDTO().getId().value() + " \n"
