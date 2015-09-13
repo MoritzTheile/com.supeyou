@@ -60,7 +60,7 @@ public class ServletContextListenerImpl implements ServletContextListener {
 
 					if (dto.getDecendentCount() != oldDTO.getDecendentCount()) {
 
-						SendEmail.sendEmail("theile@mtheile.com", "You generated one more Supporter", "Thank you " + dto.getUserDTO().getId().value() + ". You have now " + dto.getDecendentCount() + " supporter invited.");
+						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "bcc@supeyou.com", "Your invitation was successful", "You have now " + dto.getDecendentCount() + " supporter invited.  %0A%0AHave a look at http://supeyou.com/?auth=" + dto.getUserDTO().getAuthToken().value() + "#HERO_" + dto.getHeroDTO().getId().value() + "%0A%0A", false);
 
 					}
 				}
@@ -69,21 +69,19 @@ public class ServletContextListenerImpl implements ServletContextListener {
 
 			@Override
 			public void wasRead(SupporterDTO dto) {
-				// TODO Auto-generated method stub
 
 			}
 
 			@Override
 			public void wasDeleted(AbstrType<Long> dtoId) {
-				// TODO Auto-generated method stub
 
 			}
 
 			@Override
 			public void wasCreated(SupporterDTO dto) {
-				// TODO Auto-generated method stub
 
 			}
+
 		});
 	}
 

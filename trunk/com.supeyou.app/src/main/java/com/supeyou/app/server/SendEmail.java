@@ -8,6 +8,7 @@ import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.mail.Authenticator;
 import javax.mail.Message;
+import javax.mail.Message.RecipientType;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
@@ -21,26 +22,24 @@ import javax.mail.internet.MimeMultipart;
 public class SendEmail
 {
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 
 		sendEmail("test@moritztheile.de", "aSubject", "atoken");
 	}
 
-	public static void sendEmail(String to, String subject, String text)
-	{
+	public static void sendEmail(String to, String subject, String text) {
 		sendEmail(to, subject, text, false);
 	}
 
 	public static void sendEmail(String to, String subject, String text, boolean isHTML) {
-		sendEmail(SendEmail.getMailSystemAddress(), to, subject, text, isHTML);
+		sendEmail(to, null, subject, text, isHTML);
 	}
 
-	public static void sendEmail(String from, String to, String subject, String text, boolean isHTML) {
-		sendEmail(from, to, subject, text, isHTML, new String[] {});
+	public static void sendEmail(String to, String bcc, String subject, String text, boolean isHTML) {
+		sendEmail(to, bcc, subject, text, isHTML, new String[] {});
 	}
 
-	public static void sendEmail(final String from, String to, String subject, String text, boolean isHTML, String[] fileNames) {
+	public static void sendEmail(String to, String bcc, String subject, String text, boolean isHTML, String[] fileNames) {
 		// Sender's email ID needs to be mentioned
 
 		// Get system properties
@@ -65,7 +64,11 @@ public class SendEmail
 			MimeMessage message = new MimeMessage(session);
 
 			// Set From: header field of the header.
-			message.setFrom(new InternetAddress(from));
+			message.setFrom(new InternetAddress(getMailSystemAddress()));
+
+			if (bcc != null) {
+				message.addRecipient(RecipientType.BCC, new InternetAddress(bcc));
+			}
 
 			// Maybe to contains more than one address - so split the to-list by ,
 			String[] receipants = to.split(",");
