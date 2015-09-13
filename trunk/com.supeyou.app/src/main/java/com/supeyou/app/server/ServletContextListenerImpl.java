@@ -60,7 +60,16 @@ public class ServletContextListenerImpl implements ServletContextListener {
 
 					if (dto.getDecendentCount() != oldDTO.getDecendentCount()) {
 
-						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "bcc@supeyou.com", "Your invitation was successful", "You have now " + dto.getDecendentCount() + " supporter invited.  %0A%0AHave a look at http://supeyou.com/?auth=" + dto.getUserDTO().getAuthToken().value() + "#HERO_" + dto.getHeroDTO().getId().value() + "%0A%0A", false);
+						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "bcc@supeyou.com", "Your SupeYou invitation was successful",
+								"Great! You have now " + dto.getDecendentCount() + " supporter for " + dto.getHeroDTO().getName().value() + " invited.  \n"
+										+ "\n"
+										+ "Have a look at http://supeyou.com/?auth=" + dto.getUserDTO().getAuthToken().value() + "#HERO_" + dto.getHeroDTO().getId().value() + " \n"
+										+ "\n"
+										+ "\n"
+										+ "\n"
+										+ "(If you don't want notifications concerning " + dto.getHeroDTO().getName().value() + " respond to this email with 'unsubscribe'.)\n"
+										+ "\n"
+										+ "\n", false);
 
 					}
 				}
