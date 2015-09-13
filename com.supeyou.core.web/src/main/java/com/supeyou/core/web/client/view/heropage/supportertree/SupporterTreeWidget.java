@@ -189,14 +189,16 @@ public class SupporterTreeWidget extends WidgetView {
 		String clickedLinks = "";
 
 		for (InvitationDTO invitationDTO : supporterDTO2.getInvitationDTOs()) {
-			clickedLinks += "<br>" + invitationDTO.getComment();
+			if (invitationDTO.getComment() != null) {
+				clickedLinks += "<br>" + invitationDTO.getComment();
+			}
 		}
 
 		if (clickedLinks.startsWith("<br>")) {
 			clickedLinks = clickedLinks.substring(4, clickedLinks.length());
 		}
 
-		return "<br>clicked link:<br>" + clickedLinks;
+		return "<br>" + clickedLinks;
 
 	}
 
