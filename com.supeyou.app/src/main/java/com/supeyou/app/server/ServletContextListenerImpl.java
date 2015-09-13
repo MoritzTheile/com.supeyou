@@ -72,6 +72,20 @@ public class ServletContextListenerImpl implements ServletContextListener {
 										+ "\n", false);
 
 					}
+					if (dto.getDecendantAmount() != oldDTO.getDecendantAmount()) {
+
+						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "bcc@supeyou.com", "You raised " + dto.getDecendantAmount().value() + " Euro for  " + dto.getHeroDTO().getName().value() + " on SupeYou",
+								"Thanks so much! If everybody raises as much money as you did we would have very powerful heroes!  \n"
+										+ "\n"
+										+ "Have a look at http://supeyou.com/?auth=" + dto.getUserDTO().getAuthToken().value() + "#HERO_" + dto.getHeroDTO().getId().value() + " \n"
+										+ "\n"
+										+ "\n"
+										+ "\n"
+										+ "(If you don't want notifications concerning " + dto.getHeroDTO().getName().value() + " respond to this email with 'unsubscribe'.)\n"
+										+ "\n"
+										+ "\n", false);
+
+					}
 				}
 
 			}
