@@ -55,7 +55,15 @@ public class Supporter2DonationCRUDServiceImpl extends AbstrCRUDServiceImpl<Supp
 
 				}
 
+				SupporterDTO oldSupporterDTO = SupporterCRUDServiceImpl.getDTOFromEntity(em, supporterEntity);
+
 				supporterEntity.setDecendantAmount(new AmountType(sum));
+
+				em.flush();
+
+				SupporterDTO newSupporterDTO = SupporterCRUDServiceImpl.getDTOFromEntity(em, em.find(SupporterEntity.class, supporterEntity.getId().value()));
+
+				SupporterCRUDServiceImpl.i().wasUpdated(newSupporterDTO, oldSupporterDTO);
 
 			}
 		});

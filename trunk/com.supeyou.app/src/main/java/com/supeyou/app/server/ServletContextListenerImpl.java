@@ -59,33 +59,38 @@ public class ServletContextListenerImpl implements ServletContextListener {
 
 				if (oldDTO != null) {
 
-					if (dto.getDecendentCount() != oldDTO.getDecendentCount()) {
+					String link = "http://supeyou.com/?auth=" + dto.getUserDTO().getAuthToken().value() + "#HERO_" + dto.getHeroDTO().getId().value();
 
+					if (dto.getDecendentCount() != oldDTO.getDecendentCount()) {
 						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "bcc@supeyou.com", "Your SupeYou invitation was successful",
-								"Great! You have now " + dto.getDecendentCount() + " supporter for " + dto.getHeroDTO().getName().value() + " invited.  \n"
-										+ "\n"
-										+ "Have a look at http://supeyou.com/?auth=" + dto.getUserDTO().getAuthToken().value() + "#HERO_" + dto.getHeroDTO().getId().value() + " \n"
-										+ "\n"
-										+ "\n"
-										+ "\n"
-										+ "(If you don't want notifications concerning " + dto.getHeroDTO().getName().value() + " respond to this email with 'unsubscribe'.)\n"
-										+ "\n"
-										+ "\n", false);
+								""
+										+ "Great! <br>"
+										+ "<br>"
+										+ " You have now " + dto.getDecendentCount() + " supporter for " + dto.getHeroDTO().getName().value() + " invited.  <br>"
+										+ "<br>"
+										+ "You find your updated hero card here: <a href=\"" + link + "\">" + link + "</a>  <br>"
+										+ "<br>"
+										+ "<br>"
+										+ "<br>"
+										+ "(If you don't want notifications concerning " + dto.getHeroDTO().getName().value() + " respond to this email with 'unsubscribe'.)<br>"
+										+ "<br>"
+										+ "<br>", true);
 
 					}
 
 					if (dto.getDecendantAmount().value() > oldDTO.getDecendantAmount().value()) {
 
 						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "bcc@supeyou.com", "You raised " + HELPER.amount2eurostring(dto.getDecendantAmount()) + " Euro for  " + dto.getHeroDTO().getName().value() + " on SupeYou",
-								"Thanks so much! If everybody raises as much money as you did we would have very powerful heroes!  \n"
-										+ "\n"
-										+ "Have a look at http://supeyou.com/?auth=" + dto.getUserDTO().getAuthToken().value() + "#HERO_" + dto.getHeroDTO().getId().value() + " \n"
-										+ "\n"
-										+ "\n"
-										+ "\n"
-										+ "(If you don't want notifications concerning " + dto.getHeroDTO().getName().value() + " respond to this email with 'unsubscribe'.)\n"
-										+ "\n"
-										+ "\n", false);
+								""
+										+ "Thanks so much! If everybody raises as much money as you did we would have very powerful heroes!  <br>"
+										+ "<br>"
+										+ "You find your updated hero card here:  <a href=\"" + link + "\">" + link + "</a> <br>"
+										+ "<br>"
+										+ "<br>"
+										+ "<br>"
+										+ "(If you don't want notifications concerning " + dto.getHeroDTO().getName().value() + " respond to this email with 'unsubscribe'.)<br>"
+										+ "<br>"
+										+ "<br>", true);
 
 					}
 				}
