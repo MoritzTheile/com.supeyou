@@ -24,7 +24,15 @@ public class SendEmail
 
 	public static void main(String[] args) {
 
-		sendEmail("test@moritztheile.de", "aSubject", "atoken");
+		sendEmail("test@moritztheile.de", "bcc@supeyou.com", "(html)Your SupeYou invitation was successful",
+				"Great! You have now 4 supporter for 4 invited.  <br>"
+						+ "<br>"
+						+ "Have a look at <a href=\"http://supeyou.com/?auth=asdf#HERO_asdf\">http://supeyou.com/?auth=asdf#HERO_asdf</a> <br>"
+						+ "<br>"
+						+ "<br>"
+						+ "<font size=\"-2\">(If you don't want notifications concerning asdf respond to this email with 'unsubscribe'.)</font><br>"
+						+ "<br>"
+						+ "<br>", true);
 	}
 
 	public static void sendEmail(String to, String subject, String text) {

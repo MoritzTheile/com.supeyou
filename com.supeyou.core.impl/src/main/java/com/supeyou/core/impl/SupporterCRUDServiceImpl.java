@@ -2,6 +2,8 @@ package com.supeyou.core.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
 
@@ -31,6 +33,8 @@ import com.supeyou.crudie.impl.util.STATICS;
 import com.supeyou.crudie.impl.util.TransactionTemplate;
 
 public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO, SupporterEntity, SupporterFetchQuery> implements SupporterCRUDService {
+
+	private static final Logger log = Logger.getLogger(SupporterCRUDServiceImpl.class.getName());
 
 	@Override
 	public SupporterDTO updadd(UserDTO actorDTO, SupporterDTO dto) throws CRUDException {
@@ -267,6 +271,20 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 		}
 
 		return directDecendantSupporters;
+
+	}
+
+	public static SupporterDTO getDTOFromEntity(EntityManager em, SupporterEntity supporterEntity) {
+
+		try {
+			SupporterDTO supporterDTO = SupporterCRUDServiceImpl.i().helper.entity2DTO(supporterEntity);
+			SupporterCRUDServiceImpl.i().postprocessEntity2DTO(em, supporterEntity, supporterDTO);
+			return supporterDTO;
+		} catch (Exception e) {
+			log.log(Level.WARNING, "Exception during dto mapping:", e);
+		}
+
+		return null;
 
 	}
 
