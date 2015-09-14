@@ -67,7 +67,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 					@Override
 					public void invitationCreated(InvitationDTO invitationDTO) {
 
-						Window.open("whatsapp://send?text=" + ManuallyWidget.getInvitURL(invitationDTO), "_self", "");// "status=0,toolbar=0,menubar=0,location=0");
+						Window.open("whatsapp://send?text=" + ManuallyWidget.getInvitURL(invitationDTO), "", "");// "status=0,toolbar=0,menubar=0,location=0");
 
 						copyAndPasteButton.add(new HintManualWidget());
 
