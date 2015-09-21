@@ -4,10 +4,10 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.History;
+import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.view.heropage.donate.paypal.PayPalWidget;
-import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 import com.supeyou.crudie.web.client.resources.URLHelper;
 
 public class DonateWidget extends WidgetView {
@@ -30,7 +30,7 @@ public class DonateWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "donateOnceButton");
+				ActorStatics.fireActorEvent("click", "donateOnceButton");
 
 			}
 		}, ClickEvent.getType());
@@ -50,7 +50,7 @@ public class DonateWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "donate1MonthlyButton");
+				ActorStatics.fireActorEvent("click", "donate1MonthlyButton");
 
 			}
 		}, ClickEvent.getType());
@@ -71,7 +71,7 @@ public class DonateWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "donate5MonthlyButton");
+				ActorStatics.fireActorEvent("click", "donate5MonthlyButton");
 
 			}
 		}, ClickEvent.getType());
@@ -92,7 +92,7 @@ public class DonateWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "donate25MonthlyButton");
+				ActorStatics.fireActorEvent("click", "donate25MonthlyButton");
 
 			}
 		}, ClickEvent.getType());
@@ -113,7 +113,7 @@ public class DonateWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "donate100MonthlyButton");
+				ActorStatics.fireActorEvent("click", "donate100MonthlyButton");
 
 			}
 		}, ClickEvent.getType());

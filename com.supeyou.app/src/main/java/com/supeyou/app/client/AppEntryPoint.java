@@ -19,7 +19,6 @@ import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.web.client.model.AppInfoModel;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
-import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 import com.supeyou.crudie.web.client.ui.impressum.ImpressumWidget;
 import com.supeyou.crudie.web.client.ui.version.VersionWidget;
 
@@ -38,7 +37,7 @@ public class AppEntryPoint implements EntryPoint {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "SupeYouHome");
+				ActorStatics.fireActorEvent("click", "SupeYouHome");
 
 				History.newItem(ANCHOR.LP.name());
 

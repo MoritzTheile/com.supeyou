@@ -6,6 +6,7 @@ import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.HeroIDType;
 import com.supeyou.core.iface.dto.InvitationDTO;
@@ -15,7 +16,6 @@ import com.supeyou.core.web.client.rpc.hero.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.view.heropage.HeroPageWidget;
 import com.supeyou.core.web.client.view.landingpage.LandingPageWidget;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
-import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 
 public class HistoryController {
 
@@ -34,7 +34,7 @@ public class HistoryController {
 
 				show(anchor);
 
-				GoogleAnalytics.i.sendEvent("history", "changed", anchor);
+				ActorStatics.fireActorEvent("history", "changed", anchor);
 
 			}
 

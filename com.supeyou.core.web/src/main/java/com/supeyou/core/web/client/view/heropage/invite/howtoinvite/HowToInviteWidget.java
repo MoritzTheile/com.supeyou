@@ -4,6 +4,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
@@ -14,7 +15,6 @@ import com.supeyou.core.web.client.view.heropage.invite.manually.ManuallyWidget;
 import com.supeyou.core.web.client.view.heropage.invite.manually.ManuallyWidget.RENDERMODE;
 import com.supeyou.core.web.client.view.heropage.invite.recommendation.RecommendationWidget;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
-import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.contentwrapper.ContentWrapperWidget;
 
@@ -33,7 +33,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "emailInvitation");
+				ActorStatics.fireActorEvent("click", "emailInvitation");
 
 				recommendationWidget.removePostItFromParent();
 
@@ -58,7 +58,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "whatsappInvitation");
+				ActorStatics.fireActorEvent("click", "whatsappInvitation");
 
 				recommendationWidget.removePostItFromParent();
 
@@ -83,7 +83,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "googleplusInvitation");
+				ActorStatics.fireActorEvent("click", "googleplusInvitation");
 
 				createInvitation("GooglePlus-Link", thisSupporterDTO, new InvitationCallback() {
 
@@ -106,7 +106,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "facebookInvitation");
+				ActorStatics.fireActorEvent("click", "facebookInvitation");
 
 				createInvitation("Facebook-Link", thisSupporterDTO, new InvitationCallback() {
 
@@ -128,7 +128,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "twitterInvitation");
+				ActorStatics.fireActorEvent("click", "twitterInvitation");
 
 				createInvitation("Twitter-Link", thisSupporterDTO, new InvitationCallback() {
 
@@ -150,7 +150,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "copyandpasteInvitation");
+				ActorStatics.fireActorEvent("click", "copyandpasteInvitation");
 
 				final PopupWidget popupWidget = new PopupWidget() {
 					@Override

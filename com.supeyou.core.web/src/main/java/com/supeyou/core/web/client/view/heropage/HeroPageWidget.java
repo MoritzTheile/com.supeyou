@@ -3,6 +3,7 @@ package com.supeyou.core.web.client.view.heropage;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
 import com.supeyou.core.iface.dto.Invitation2SupporterFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
@@ -18,7 +19,6 @@ import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidg
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
-import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.contentwrapper.ContentWrapperWidget;
@@ -37,7 +37,7 @@ public class HeroPageWidget extends WidgetView {
 
 	private void render() {
 
-		GoogleAnalytics.i.sendEvent("view", "heroPage");
+		ActorStatics.fireActorEvent("view", "heroPage");
 
 		supporterCardSlot.add(new HeroCardWidget(supporterDTO, VIEW.NODEVIEW));
 

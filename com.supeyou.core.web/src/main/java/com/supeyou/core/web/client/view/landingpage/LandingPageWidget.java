@@ -3,9 +3,9 @@ package com.supeyou.core.web.client.view.landingpage;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.History;
+import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.core.web.client.HistoryController.ANCHOR;
 import com.supeyou.core.web.client.resources.i18n.Text;
-import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 
 public class LandingPageWidget extends WidgetView {
@@ -19,7 +19,7 @@ public class LandingPageWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "buttonChooseHero");
+				ActorStatics.fireActorEvent("click", "buttonChooseHero");
 
 				History.newItem(ANCHOR.HEROS.name());
 
