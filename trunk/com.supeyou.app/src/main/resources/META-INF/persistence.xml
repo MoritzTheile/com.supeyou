@@ -23,6 +23,8 @@
 		<class>com.supeyou.core.impl.entity.DonationEntity</class>
 		<class>com.supeyou.actor.impl.entity.Session2UserEntity</class>	
 		<class>com.supeyou.actor.impl.entity.SessionEntity</class>	
+		<class>com.supeyou.actor.impl.entity.Session2EventEntity</class>	
+		<class>com.supeyou.actor.impl.entity.EventEntity</class>	
 		
 
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
