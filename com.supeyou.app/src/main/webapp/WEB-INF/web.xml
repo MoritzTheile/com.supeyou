@@ -191,6 +191,22 @@
 		<url-pattern>/RPCSession2UserCRUDServiceImpl</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>RPCEventCRUDServiceImpl</servlet-name>
+		<servlet-class>com.supeyou.actor.web.server.RPCEventCRUDServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RPCEventCRUDServiceImpl</servlet-name>
+		<url-pattern>/RPCEventCRUDServiceImpl</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RPCSession2EventCRUDServiceImpl</servlet-name>
+		<servlet-class>com.supeyou.actor.web.server.RPCSession2EventCRUDServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RPCSession2EventCRUDServiceImpl</servlet-name>
+		<url-pattern>/RPCSession2EventCRUDServiceImpl</url-pattern>
+	</servlet-mapping>
 	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
