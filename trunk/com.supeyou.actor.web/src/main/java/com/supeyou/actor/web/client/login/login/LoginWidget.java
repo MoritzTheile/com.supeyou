@@ -6,11 +6,11 @@ import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.actor.web.client.resources.i18n.Text;
 import com.supeyou.actor.web.client.rpc.RPCAuthServiceAsync;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
-import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 
 public abstract class LoginWidget extends WidgetView {
 
@@ -79,7 +79,7 @@ public abstract class LoginWidget extends WidgetView {
 
 	private void login() {
 
-		GoogleAnalytics.i.sendEvent("click", "login_9eth0");
+		ActorStatics.fireActorEvent("click", "login_9eth0");
 
 		String user = nameInput.getValue().value();
 		String pass = passwordInput.getValue().value();
@@ -92,10 +92,10 @@ public abstract class LoginWidget extends WidgetView {
 				userLoggedIn(result);
 
 				if (result != null) {
-					GoogleAnalytics.i.sendEvent("click", "loginSuccess_09t2", result.getLoginId().value());
+					ActorStatics.fireActorEvent("click", "loginSuccess_09t2", result.getLoginId().value());
 					loginStateModel.setLoggedInUser(result);
 				} else {
-					GoogleAnalytics.i.sendEvent("click", "loginFailed_09t2");
+					ActorStatics.fireActorEvent("click", "loginFailed_09t2");
 					messageLabel.setText(Text.i.LOGIN_WrongCredentials());
 				}
 

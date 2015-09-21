@@ -4,6 +4,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.CoreStatics;
@@ -13,7 +14,6 @@ import com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.view.heropage.invite.howtoinvite.HowToInviteWidget;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.web.client.fields.types.FieldForSingleLineString256Type;
-import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 import com.supeyou.crudie.web.client.resources.URLHelper;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
 
@@ -53,7 +53,7 @@ public abstract class ManuallyWidget extends WidgetView {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				GoogleAnalytics.i.sendEvent("click", "createNewInvitationButton");
+				ActorStatics.fireActorEvent("click", "createNewInvitationButton");
 
 				createInvitation(supporterDTO);
 
@@ -66,7 +66,7 @@ public abstract class ManuallyWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				GoogleAnalytics.i.sendEvent("click", "markInvitationLink");
+				ActorStatics.fireActorEvent("click", "markInvitationLink");
 
 				markText(linkLabel.getElement());
 

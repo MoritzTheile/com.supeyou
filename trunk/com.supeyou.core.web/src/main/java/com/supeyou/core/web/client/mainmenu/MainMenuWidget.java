@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
+import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.HeroFetchQuery;
 import com.supeyou.core.web.client.HistoryController;
@@ -14,7 +15,6 @@ import com.supeyou.core.web.client.rpc.hero.chooserlarge.ChooserLargeWidget;
 import com.supeyou.core.web.client.view.herocard.HeroCardWidget;
 import com.supeyou.crudie.web.client.model.AbstrObservable.Observer;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
-import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 import com.supeyou.crudie.web.client.uiorga.menuanddisplay.MenuAndDisplay;
 
 public class MainMenuWidget extends WidgetView {
@@ -44,7 +44,7 @@ public class MainMenuWidget extends WidgetView {
 
 				if (menuItem1 == menuItem) {
 
-					GoogleAnalytics.i.sendEvent("click", "menuChooseHero");
+					ActorStatics.fireActorEvent("click", "menuChooseHero");
 
 					HeroFetchQuery heroFetchQuery = new HeroFetchQuery();
 					heroFetchQuery.setShowActiveOnly(true);
@@ -57,7 +57,7 @@ public class MainMenuWidget extends WidgetView {
 
 								HeroDTO hero = selection.iterator().next();
 
-								GoogleAnalytics.i.sendEvent("selection", "hero", hero.getName() + " " + hero.getId());
+								ActorStatics.fireActorEvent("selection", "hero", hero.getName() + " " + hero.getId());
 
 								HistoryController.i().showHeroPage(hero);
 
@@ -74,12 +74,12 @@ public class MainMenuWidget extends WidgetView {
 				}
 
 				if (menuItem2 == menuItem) {
-					GoogleAnalytics.i.sendEvent("click", "menuJoinAsHero");
+					ActorStatics.fireActorEvent("click", "menuJoinAsHero");
 					return new AddHeroWidget();
 				}
 
 				if (menuItem3 == menuItem) {
-					GoogleAnalytics.i.sendEvent("click", "menuAdmin");
+					ActorStatics.fireActorEvent("click", "menuAdmin");
 					return new AdminMenuWidget();
 				}
 

@@ -39,6 +39,15 @@ public class ItemWidget extends WidgetView {
 		if (thisDTO.getId() != null) {
 			infos += thisDTO.getId().value();
 		}
+		if (thisDTO.getCategory() != null) {
+			infos += thisDTO.getCategory().value();
+		}
+		if (thisDTO.getAction() != null) {
+			infos += thisDTO.getAction().value();
+		}
+		if (thisDTO.getValue() != null) {
+			infos += thisDTO.getValue().value();
+		}
 
 		return infos;
 	}

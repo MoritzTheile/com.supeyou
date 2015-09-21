@@ -5,6 +5,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.crudie.iface.datatype.types.EmailAddressType;
@@ -12,7 +13,6 @@ import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.web.client.fields.types.FieldForEmailAddressType;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
-import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 import com.supeyou.crudie.web.client.rpc.user.RPCCRUDProxy;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 
@@ -70,7 +70,7 @@ public abstract class AskForEmailWidget extends WidgetView {
 
 	private void save() {
 
-		GoogleAnalytics.i.sendEvent("click", "saveEmailButton");
+		ActorStatics.fireActorEvent("click", "saveEmailButton");
 
 		UserDTO userDTO = LoginStateModel.i().getLoggedInUser();
 
