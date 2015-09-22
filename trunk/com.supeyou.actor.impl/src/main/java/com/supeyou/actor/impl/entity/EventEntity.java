@@ -10,6 +10,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.supeyou.actor.iface.dto.EventIDType;
+import com.supeyou.crudie.iface.datatype.types.FormattedTimeType;
+import com.supeyou.crudie.iface.datatype.types.PositivIntegerType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.impl.entity.AbstrEntity;
 
@@ -18,7 +20,7 @@ import com.supeyou.crudie.impl.entity.AbstrEntity;
 public class EventEntity extends AbstrEntity<EventIDType> {
 
 	private String formattedTimestamp;
-	private String pageAgeSeconds;
+	private Integer pageAgeSeconds;
 	private String category;
 	private String action;
 	private String value;
@@ -35,7 +37,7 @@ public class EventEntity extends AbstrEntity<EventIDType> {
 	@OneToMany(mappedBy = "b"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private Collection<Session2EventEntity> actingUser2sessionCollection = new ArrayList<Session2EventEntity>();
 
-	public void setFormattedTimestamp(SingleLineString256Type value) {
+	public void setFormattedTimestamp(FormattedTimeType value) {
 		if (value != null) {
 			this.formattedTimestamp = value.value();
 		} else {
@@ -43,14 +45,14 @@ public class EventEntity extends AbstrEntity<EventIDType> {
 		}
 	}
 
-	public SingleLineString256Type getFormattedTimestamp() {
+	public FormattedTimeType getFormattedTimestamp() {
 		if (formattedTimestamp == null) {
 			return null;
 		}
-		return new SingleLineString256Type(formattedTimestamp);
+		return new FormattedTimeType(formattedTimestamp);
 	}
 
-	public void setPageAgeSeconds(SingleLineString256Type value) {
+	public void setPageAgeSeconds(PositivIntegerType value) {
 		if (value != null) {
 			this.pageAgeSeconds = value.value();
 		} else {
@@ -58,11 +60,11 @@ public class EventEntity extends AbstrEntity<EventIDType> {
 		}
 	}
 
-	public SingleLineString256Type getPageAgeSeconds() {
+	public PositivIntegerType getPageAgeSeconds() {
 		if (pageAgeSeconds == null) {
 			return null;
 		}
-		return new SingleLineString256Type(pageAgeSeconds);
+		return new PositivIntegerType(pageAgeSeconds);
 	}
 
 	public void setCategory(SingleLineString256Type value) {

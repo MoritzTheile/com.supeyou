@@ -17,13 +17,11 @@ public class EventTest {
 
 		EventDTO eventDTO = new EventDTO();
 
-		String testValue = "testValue";
-
-		String testUserName = "asdf";
-
 		eventDTO.setAction(new SingleLineString256Type("testAction"));
 		eventDTO.setCategory(new SingleLineString256Type("testCategory"));
+		String testValue = "testValue";
 		eventDTO.setValue(new SingleLineString256Type(testValue));
+		String testUserName = "asdf";
 		eventDTO.setUserName(new SingleLineString256Type(testUserName));
 
 		Session2EventDTO session2EventDTO = Session2EventCRUDServiceImpl.i().addEventToSession(InitialData.i().initialAdmin, InitialActorData.i().session1.getId(), eventDTO);
