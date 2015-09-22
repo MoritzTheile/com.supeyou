@@ -17,6 +17,11 @@ public class EventDTO extends AbstrDTO<EventIDType> implements Serializable {
 	private SingleLineString256Type action;
 	private SingleLineString256Type value;
 
+	private SingleLineString256Type userLoginId;
+	private SingleLineString256Type userId;
+	private SingleLineString256Type userName;
+	private SingleLineString256Type sessionId;
+
 	public EventDTO() {
 
 	}
@@ -77,6 +82,38 @@ public class EventDTO extends AbstrDTO<EventIDType> implements Serializable {
 
 	public void setPageAgeSeconds(PositivIntegerType pageAgeSeconds) {
 		this.pageAgeSeconds = pageAgeSeconds;
+	}
+
+	public SingleLineString256Type getUserLoginId() {
+		return userLoginId;
+	}
+
+	public void setUserLoginId(SingleLineString256Type userLoginId) {
+		this.userLoginId = userLoginId;
+	}
+
+	public SingleLineString256Type getUserId() {
+		return userId;
+	}
+
+	public void setUserId(SingleLineString256Type userId) {
+		this.userId = userId;
+	}
+
+	public SingleLineString256Type getUserName() {
+		return userName;
+	}
+
+	public void setUserName(SingleLineString256Type userName) {
+		this.userName = userName;
+	}
+
+	public SingleLineString256Type getSessionId() {
+		return sessionId;
+	}
+
+	public void setSessionId(SingleLineString256Type sessionId) {
+		this.sessionId = sessionId;
 	}
 
 }
