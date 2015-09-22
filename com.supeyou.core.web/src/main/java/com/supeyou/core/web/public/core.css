@@ -803,3 +803,23 @@
 	background-color:white;
 	
 }
+.listitems.event{
+
+}
+.listitems.event>div {
+	display: table;
+	background-color:white;
+	
+
+}
+.listitems.event>div>* {
+	display: table-row;
+}
+.listitems.event>div>*>* {
+	display: table-cell;
+	border-style:solid;
+	border-color:gray;
+	border-width:1px;
+	padding: 5px;
+	font-size:9px;
+}

@@ -25,7 +25,7 @@ public class ChooserLargeWidget extends WidgetView {
 	public ChooserLargeWidget() {
 
 		dataProvider = new ListDataProvider(new EventFetchQuery());
-		dataProvider.setPageSize(5);
+		dataProvider.setPageSize(50);
 
 		final AbstrListWidgetList<EventDTO, EventFetchQuery> widgetList = new AbstrListWidgetList<EventDTO, EventFetchQuery>(dataProvider) {
 
