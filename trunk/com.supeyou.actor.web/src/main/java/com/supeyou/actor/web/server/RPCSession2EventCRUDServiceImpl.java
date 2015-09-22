@@ -1,6 +1,8 @@
 package com.supeyou.actor.web.server;
 
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -13,7 +15,10 @@ import com.supeyou.actor.impl.SessionCRUDServiceImpl;
 import com.supeyou.actor.web.client.rpc.session2event.RPCCRUDService;
 import com.supeyou.crudie.iface.CRUDService;
 import com.supeyou.crudie.iface.datatype.CRUDException;
+import com.supeyou.crudie.iface.datatype.types.FormattedTimeType;
+import com.supeyou.crudie.iface.datatype.types.PositivIntegerType;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
+import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.web.server.RPCAbstrCRUDServiceImpl;
 
 @WebServlet("/RPCSession2EventCRUDServiceImpl")
@@ -40,16 +45,25 @@ public class RPCSession2EventCRUDServiceImpl extends RPCAbstrCRUDServiceImpl<Ses
 	}
 
 	@Override
-	public void addEventToSession(String category, String action, String value) throws CRUDException {
-
-		EventDTO eventDTO = new EventDTO();
-		eventDTO.setCategory(new SingleLineString256Type(category));
-		eventDTO.setAction(new SingleLineString256Type(action));
-		eventDTO.setValue(new SingleLineString256Type(value));
+	public void addEventToSession(SingleLineString256Type category, SingleLineString256Type action, SingleLineString256Type value, PositivIntegerType pageAgeSeconds) throws CRUDException {
+		UserDTO actorDTO = getActor();
 
 		SessionDTO sessionDTO = SessionCRUDServiceImpl.i().getBySessionId(null, this.getThreadLocalRequest().getSession().getId());
 
-		Session2EventCRUDServiceImpl.i().addEventToSession(getActor(), sessionDTO.getId(), eventDTO);
+		EventDTO eventDTO = new EventDTO();
+
+		eventDTO.setCategory(category);
+		eventDTO.setAction(action);
+		eventDTO.setValue(value);
+		eventDTO.setPageAgeSeconds(pageAgeSeconds);
+		eventDTO.setFormattedTimestamp(new FormattedTimeType(new SimpleDateFormat(FormattedTimeType.dateFormat).format(new Date())));
+
+		eventDTO.setUserId(new SingleLineString256Type(actorDTO.getId() + ""));
+		eventDTO.setUserLoginId(new SingleLineString256Type(actorDTO.getLoginId() + ""));
+		eventDTO.setUserName(new SingleLineString256Type(actorDTO.getName() + ""));
+		eventDTO.setSessionId(new SingleLineString256Type(sessionDTO.getId() + ""));
+
+		Session2EventCRUDServiceImpl.i().addEventToSession(actorDTO, sessionDTO.getId(), eventDTO);
 
 	}
 }

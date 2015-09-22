@@ -1,9 +1,13 @@
 package com.supeyou.actor.web.client.login;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.supeyou.crudie.iface.datatype.types.PositivIntegerType;
+import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.web.client.resources.GoogleAnalytics;
 
 public class ActorStatics {
+
+	private static long loadingTimeStamp = System.currentTimeMillis();
 
 	public static final String AUTHTOKEN_KEY = "auth";
 
@@ -16,7 +20,7 @@ public class ActorStatics {
 	}
 
 	public static void fireActorEvent(String category, String action, String value) {
-		com.supeyou.actor.web.client.rpc.session2event.RPCCRUDServiceAsync.i.addEventToSession(category, action, value, new AsyncCallback<Void>() {
+		com.supeyou.actor.web.client.rpc.session2event.RPCCRUDServiceAsync.i.addEventToSession(new SingleLineString256Type(category), new SingleLineString256Type(action), new SingleLineString256Type(value), new PositivIntegerType((System.currentTimeMillis() - loadingTimeStamp) / 1000 + ""), new AsyncCallback<Void>() {
 
 			@Override
 			public void onSuccess(Void result) {

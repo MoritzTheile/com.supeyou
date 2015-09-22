@@ -23,6 +23,15 @@ public class EventEntity extends AbstrEntity<EventIDType> {
 	private String action;
 	private String value;
 
+	// redundant info, just for having it "in place"
+	private String userLoginId;
+	// redundant info, just for having it "in place"
+	private String userId;
+	// redundant info, just for having it "in place"
+	private String userName;
+	// redundant info, just for having it "in place"
+	private String sessionId;
+
 	@OneToMany(mappedBy = "b"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private Collection<Session2EventEntity> actingUser2sessionCollection = new ArrayList<Session2EventEntity>();
 
@@ -99,6 +108,66 @@ public class EventEntity extends AbstrEntity<EventIDType> {
 			return null;
 		}
 		return new SingleLineString256Type(value);
+	}
+
+	public void setUserLoginId(SingleLineString256Type value) {
+		if (userLoginId != null) {
+			this.userLoginId = value.value();
+		} else {
+			this.userLoginId = null;
+		}
+	}
+
+	public SingleLineString256Type getUserLoginId() {
+		if (userLoginId == null) {
+			return null;
+		}
+		return new SingleLineString256Type(userLoginId);
+	}
+
+	public void setUserId(SingleLineString256Type value) {
+		if (userId != null) {
+			this.userId = value.value();
+		} else {
+			this.userId = null;
+		}
+	}
+
+	public SingleLineString256Type getUserId() {
+		if (userId == null) {
+			return null;
+		}
+		return new SingleLineString256Type(userId);
+	}
+
+	public void setUserName(SingleLineString256Type value) {
+		if (userName != null) {
+			this.userName = value.value();
+		} else {
+			this.userName = null;
+		}
+	}
+
+	public SingleLineString256Type getUserName() {
+		if (userName == null) {
+			return null;
+		}
+		return new SingleLineString256Type(userName);
+	}
+
+	public void setSessionId(SingleLineString256Type value) {
+		if (sessionId != null) {
+			this.sessionId = value.value();
+		} else {
+			this.sessionId = null;
+		}
+	}
+
+	public SingleLineString256Type getSessionId() {
+		if (sessionId == null) {
+			return null;
+		}
+		return new SingleLineString256Type(sessionId);
 	}
 
 	@Override
