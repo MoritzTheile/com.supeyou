@@ -64,18 +64,21 @@ public class ServletContextListenerImpl implements ServletContextListener {
 					if (dto.getDecendentCount() != oldDTO.getDecendentCount()) {
 						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "bcc@supeyou.com", "Your SupeYou invitation was successful",
 								""
+										+ "<html>"
+										+ "<head></head>"
+										+ "<body>"
 										+ "Great! <br>"
 										+ "<br>"
 										+ " You have now " + dto.getDecendentCount() + " supporter for " + dto.getHeroDTO().getName().value() + " invited.  <br>"
 										+ "<br>"
 										+ "You find your updated hero card here: <a href=\"" + link + "\">" + link + "</a>  <br>"
 										+ "<br>"
-										+ link
-										+ "<br>"
 										+ "<br>"
 										+ "(If you don't want notifications concerning " + dto.getHeroDTO().getName().value() + " respond to this email with 'unsubscribe'.)<br>"
 										+ "<br>"
-										+ "<br>", true);
+										+ "<br>"
+										+ "</body>"
+										+ "</html>", true);
 
 					}
 
@@ -83,6 +86,9 @@ public class ServletContextListenerImpl implements ServletContextListener {
 
 						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "bcc@supeyou.com", "You raised " + HELPER.amount2eurostring(dto.getDecendantAmount()) + " Euro for  " + dto.getHeroDTO().getName().value() + " on SupeYou",
 								""
+										+ "<html>"
+										+ "<head></head>"
+										+ "<body>"
 										+ "Thanks so much! If everybody raises as much money as you did we would have very powerful heroes!  <br>"
 										+ "<br>"
 										+ "You find your updated hero card here:  <a href=\"" + link + "\">" + link + "</a> <br>"
@@ -91,7 +97,9 @@ public class ServletContextListenerImpl implements ServletContextListener {
 										+ "<br>"
 										+ "(If you don't want notifications concerning " + dto.getHeroDTO().getName().value() + " respond to this email with 'unsubscribe'.)<br>"
 										+ "<br>"
-										+ "<br>", true);
+										+ "<br>"
+										+ "</body>"
+										+ "</html>", true);
 
 					}
 				}
