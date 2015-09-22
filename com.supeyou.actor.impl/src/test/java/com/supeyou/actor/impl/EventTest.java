@@ -19,16 +19,21 @@ public class EventTest {
 
 		String testValue = "testValue";
 
+		String testUserName = "asdf";
+
 		eventDTO.setAction(new SingleLineString256Type("testAction"));
 		eventDTO.setCategory(new SingleLineString256Type("testCategory"));
 		eventDTO.setValue(new SingleLineString256Type(testValue));
+		eventDTO.setUserName(new SingleLineString256Type(testUserName));
 
 		Session2EventDTO session2EventDTO = Session2EventCRUDServiceImpl.i().addEventToSession(InitialData.i().initialAdmin, InitialActorData.i().session1.getId(), eventDTO);
 
+		Assert.assertNotNull(session2EventDTO);
 		Assert.assertNotNull(session2EventDTO.getId());
 		Assert.assertNotNull(session2EventDTO.getDtoA());
 		Assert.assertNotNull(session2EventDTO.getDtoB());
 		Assert.assertEquals(testValue, session2EventDTO.getDtoB().getValue().value());
+		Assert.assertEquals(testUserName, session2EventDTO.getDtoB().getUserName().value());
 
 	}
 }

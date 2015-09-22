@@ -101,11 +101,19 @@ public class Session2EventCRUDServiceImpl extends AbstrCRUDServiceImpl<Session2E
 
 		SessionDTO sessionDTO = SessionCRUDServiceImpl.i().get(actorDTO, sessionID);
 
-		Session2EventDTO session2EventDTO = new Session2EventDTO();
-		session2EventDTO.setDtoA(sessionDTO);
-		session2EventDTO.setDtoB(eventDTO);
+		if (sessionDTO != null) {
 
-		return Session2EventCRUDServiceImpl.i().updadd(actorDTO, session2EventDTO);
+			Session2EventDTO session2EventDTO = new Session2EventDTO();
+			session2EventDTO.setDtoA(sessionDTO);
+			session2EventDTO.setDtoB(eventDTO);
+
+			return Session2EventCRUDServiceImpl.i().updadd(actorDTO, session2EventDTO);
+
+		} else {
+
+			return null;
+
+		}
 
 	}
 
