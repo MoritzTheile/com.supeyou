@@ -21,7 +21,7 @@ public class LandingPageWidget extends WidgetView {
 
 				ActorStatics.fireActorEvent("click", "buttonChooseHero");
 
-				History.newItem(ANCHOR.HEROS.name());
+				History.newItem(ANCHOR.HEROES.name());
 
 			}
 		});

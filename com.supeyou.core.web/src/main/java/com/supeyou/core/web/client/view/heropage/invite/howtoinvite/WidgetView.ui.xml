@@ -14,40 +14,16 @@
 		<g:FlowPanel styleName="option email" ui:field="emailButton">
 			<g:HTML HTML="{text.INVITE_SINGLE_Email}"></g:HTML>
 		</g:FlowPanel>
-		<g:FlowPanel styleName="option email" ui:field="emailButton1">
-			<g:HTML HTML="{text.INVITE_SINGLE_Email}"></g:HTML>
-		</g:FlowPanel>
-		<g:FlowPanel styleName="option email" ui:field="emailButton2">
-			<g:HTML HTML="{text.INVITE_SINGLE_Email}"></g:HTML>
-		</g:FlowPanel>
 		<g:FlowPanel styleName="option whatsapp" ui:field="whatsAppButton">
 			<g:HTML HTML="{text.INVITE_SINGLE_WhatsApp}"></g:HTML>
 		</g:FlowPanel>
 		<g:FlowPanel styleName="option facebook" ui:field="facebookButton">
 			<g:HTML HTML="{text.INVITE_GROUP_Facebook}"></g:HTML>
 		</g:FlowPanel>
-		<g:FlowPanel styleName="option facebook" ui:field="facebookButton1">
-			<g:HTML HTML="{text.INVITE_GROUP_Facebook}"></g:HTML>
-		</g:FlowPanel>
-		<g:FlowPanel styleName="option facebook" ui:field="facebookButton2">
-			<g:HTML HTML="{text.INVITE_GROUP_Facebook}"></g:HTML>
-		</g:FlowPanel>
-		<g:FlowPanel styleName="option googleplus" ui:field="googlePlusButton">
-			<g:HTML HTML="{text.INVITE_GROUP_GooglePlus}"></g:HTML>
-		</g:FlowPanel>
-		<g:FlowPanel styleName="option googleplus" ui:field="googlePlusButton1">
-			<g:HTML HTML="{text.INVITE_GROUP_GooglePlus}"></g:HTML>
-		</g:FlowPanel>
-		<g:FlowPanel styleName="option googleplus" ui:field="googlePlusButton2">
+			<g:FlowPanel styleName="option googleplus" ui:field="googlePlusButton">
 			<g:HTML HTML="{text.INVITE_GROUP_GooglePlus}"></g:HTML>
 		</g:FlowPanel>
 		<g:FlowPanel styleName="option twitter" ui:field="twitterButton">
-			<g:HTML HTML="{text.INVITE_GROUP_Twitter}"></g:HTML>
-		</g:FlowPanel>
-		<g:FlowPanel styleName="option twitter" ui:field="twitterButton1">
-			<g:HTML HTML="{text.INVITE_GROUP_Twitter}"></g:HTML>
-		</g:FlowPanel>
-		<g:FlowPanel styleName="option twitter" ui:field="twitterButton2">
 			<g:HTML HTML="{text.INVITE_GROUP_Twitter}"></g:HTML>
 		</g:FlowPanel>
 		<g:FlowPanel styleName="option cutandpaste" ui:field="copyAndPasteButton">

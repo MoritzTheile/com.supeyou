@@ -70,6 +70,7 @@ public class ServletContextListenerImpl implements ServletContextListener {
 										+ "<br>"
 										+ "You find your updated hero card here: <a href=\"" + link + "\">" + link + "</a>  <br>"
 										+ "<br>"
+										+ link
 										+ "<br>"
 										+ "<br>"
 										+ "(If you don't want notifications concerning " + dto.getHeroDTO().getName().value() + " respond to this email with 'unsubscribe'.)<br>"

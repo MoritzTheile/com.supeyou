@@ -20,7 +20,7 @@ import com.supeyou.crudie.web.client.model.LoginStateModel;
 public class HistoryController {
 
 	public enum ANCHOR {
-		LP, HEROS, HERO
+		LP, HEROES, HERO
 	}
 
 	private HistoryController() {
@@ -50,7 +50,7 @@ public class HistoryController {
 			showLandingPage();
 		} else if (ANCHOR.HERO.name().equals(anchorParts[0])) {
 			showHeroPage(anchorParts);
-		} else if (ANCHOR.HEROS.name().equals(anchorParts[0])) {
+		} else if (ANCHOR.HEROES.name().equals(anchorParts[0])) {
 			showHerosPage();
 		} else {
 			showLandingPage();
