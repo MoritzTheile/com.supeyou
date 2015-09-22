@@ -3,6 +3,8 @@ package com.supeyou.app.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.logical.shared.CloseEvent;
+import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -19,6 +21,7 @@ import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.web.client.model.AppInfoModel;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
+import com.supeyou.crudie.web.client.resources.URLHelper;
 import com.supeyou.crudie.web.client.ui.impressum.ImpressumWidget;
 import com.supeyou.crudie.web.client.ui.version.VersionWidget;
 
@@ -26,10 +29,18 @@ public class AppEntryPoint implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
-		// RootPanel.get().clear();
-		// RootPanel.get().add(new DonationWidget("paypal.com@moritztheile.de", "Support Hero", "Hero_"));
-		// }
-		//
+
+		ActorStatics.fireActorEvent("window", "loading", URLHelper.getCurrentQueryString(null));
+
+		Window.addCloseHandler(new CloseHandler<Window>() {
+
+			@Override
+			public void onClose(CloseEvent<Window> event) {
+
+				ActorStatics.fireActorEvent("window", "close");
+
+			}
+		});
 
 		RootPanel.get("login").add(new LoginButtonWidget(LoginStateModel.i()));
 		RootPanel.get("title").addDomHandler(new ClickHandler() {

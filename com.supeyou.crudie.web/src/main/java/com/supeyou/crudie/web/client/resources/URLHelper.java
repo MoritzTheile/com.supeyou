@@ -34,7 +34,7 @@ public class URLHelper {
 	 * Returns an empty String if no queries are given.
 	 * 
 	 */
-	private static String getCurrentQueryString(Map<String, String> additionalQueries) {
+	public static String getCurrentQueryString(Map<String, String> additionalQueries) {
 
 		Map<String, String> queryMap = queryStringToMap(Window.Location.getQueryString());
 

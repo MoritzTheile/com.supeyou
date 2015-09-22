@@ -59,7 +59,7 @@ public abstract class AskForNameWidget extends WidgetView {
 	}
 
 	private void save() {
-		ActorStatics.fireActorEvent("click", "saveNameButton");
+		ActorStatics.fireActorEvent("click", "saveNameButton", field.getValue() + "");
 
 		UserDTO userDTO = LoginStateModel.i().getLoggedInUser();
 		userDTO.setName(field.getValue());

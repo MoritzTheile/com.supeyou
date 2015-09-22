@@ -8,6 +8,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
+import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.rpc.hero.RPCCRUDProxy;
@@ -55,6 +56,9 @@ public class HeroWidget extends WidgetView {
 				@Override
 				public void onClick(ClickEvent event) {
 					event.stopPropagation();
+
+					ActorStatics.fireActorEvent("click", "video", thisDTO.getVideoURL() + "");
+
 					if (thisDTO.getVideoURL() != null) {
 						new PopupWidget(new ContentWrapperWidget(createPopupHeader(), new VideoWidget(thisDTO.getVideoURL().value())), true);
 					} else {
@@ -80,6 +84,17 @@ public class HeroWidget extends WidgetView {
 
 				image.addStyleName("play-button");
 			}
+
+			websiteSlot.addDomHandler(new ClickHandler() {
+
+				@Override
+				public void onClick(ClickEvent event) {
+
+					ActorStatics.fireActorEvent("click", "externalHeroPage", thisDTO.getWebsiteURL().value());
+
+				}
+			}, ClickEvent.getType());
+
 		} else {
 			websiteSlot.addDomHandler(new ClickHandler() {
 
