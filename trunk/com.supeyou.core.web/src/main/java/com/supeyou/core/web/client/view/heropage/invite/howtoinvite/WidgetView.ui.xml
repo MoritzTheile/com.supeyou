@@ -23,12 +23,6 @@
 		<g:FlowPanel styleName="option whatsapp" ui:field="whatsAppButton">
 			<g:HTML HTML="{text.INVITE_SINGLE_WhatsApp}"></g:HTML>
 		</g:FlowPanel>
-		<g:FlowPanel styleName="option whatsapp" ui:field="whatsAppButton1">
-			<g:HTML HTML="{text.INVITE_SINGLE_WhatsApp}"></g:HTML>
-		</g:FlowPanel>
-		<g:FlowPanel styleName="option whatsapp" ui:field="whatsAppButton2">
-			<g:HTML HTML="{text.INVITE_SINGLE_WhatsApp}"></g:HTML>
-		</g:FlowPanel>
 		<g:FlowPanel styleName="option facebook" ui:field="facebookButton">
 			<g:HTML HTML="{text.INVITE_GROUP_Facebook}"></g:HTML>
 		</g:FlowPanel>
