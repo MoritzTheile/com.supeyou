@@ -56,14 +56,18 @@ public class RPCSession2EventCRUDServiceImpl extends RPCAbstrCRUDServiceImpl<Ses
 		eventDTO.setAction(action);
 		eventDTO.setValue(value);
 		eventDTO.setPageAgeSeconds(pageAgeSeconds);
-		eventDTO.setFormattedTimestamp(new FormattedTimeType(new SimpleDateFormat(FormattedTimeType.dateFormat).format(new Date())));
-
 		eventDTO.setUserId(new SingleLineString256Type(actorDTO.getId() + ""));
 		eventDTO.setUserLoginId(new SingleLineString256Type(actorDTO.getLoginId() + ""));
 		eventDTO.setUserName(new SingleLineString256Type(actorDTO.getName() + ""));
 		eventDTO.setSessionId(new SingleLineString256Type(sessionDTO.getId() + ""));
 
+		eventDTO.setFormattedTimestamp(new FormattedTimeType(new SimpleDateFormat(FormattedTimeType.dateFormat).format(new Date())));
+
 		Session2EventCRUDServiceImpl.i().addEventToSession(actorDTO, sessionDTO.getId(), eventDTO);
 
+	}
+
+	public static void main(String[] args) {
+		System.out.println(new FormattedTimeType(new SimpleDateFormat(FormattedTimeType.dateFormat).format(new Date())).value());
 	}
 }

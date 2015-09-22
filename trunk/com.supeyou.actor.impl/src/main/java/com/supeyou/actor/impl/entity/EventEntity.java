@@ -111,7 +111,7 @@ public class EventEntity extends AbstrEntity<EventIDType> {
 	}
 
 	public void setUserLoginId(SingleLineString256Type value) {
-		if (userLoginId != null) {
+		if (value != null) {
 			this.userLoginId = value.value();
 		} else {
 			this.userLoginId = null;
@@ -126,7 +126,7 @@ public class EventEntity extends AbstrEntity<EventIDType> {
 	}
 
 	public void setUserId(SingleLineString256Type value) {
-		if (userId != null) {
+		if (value != null) {
 			this.userId = value.value();
 		} else {
 			this.userId = null;
@@ -141,7 +141,7 @@ public class EventEntity extends AbstrEntity<EventIDType> {
 	}
 
 	public void setUserName(SingleLineString256Type value) {
-		if (userName != null) {
+		if (value != null) {
 			this.userName = value.value();
 		} else {
 			this.userName = null;
@@ -156,7 +156,7 @@ public class EventEntity extends AbstrEntity<EventIDType> {
 	}
 
 	public void setSessionId(SingleLineString256Type value) {
-		if (sessionId != null) {
+		if (value != null) {
 			this.sessionId = value.value();
 		} else {
 			this.sessionId = null;
