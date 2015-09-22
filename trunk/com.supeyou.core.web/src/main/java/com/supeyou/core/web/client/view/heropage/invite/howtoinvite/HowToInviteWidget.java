@@ -23,9 +23,24 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 	private final SupporterDTO thisSupporterDTO;
 
+	/*
+	 * Attention: invitationDTO can't be created lazy. It takes to much time so that the browsers popup blocker will kick in: http://theandystratton.com/2012/how-to-bypass-google-chromes-javascript-popup-blocker
+	 */
+	private InvitationDTO invitationDTO;
+
 	public HowToInviteWidget(SupporterDTO supporterDTO) {
 
 		this.thisSupporterDTO = supporterDTO;
+
+		createInvitation("Email-Link", thisSupporterDTO, new InvitationCallback() {
+
+			@Override
+			public void invitationCreated(InvitationDTO result) {
+
+				invitationDTO = result;
+
+			}
+		});
 
 		final RecommendationWidget recommendationWidget = new RecommendationWidget();
 
@@ -34,21 +49,13 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
+				Window.open("mailto:?subject=SupeYou invitation&body=%0A%0A%20%20%20%20" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)) + "%0A%0A", "_self", "");// "status=0,toolbar=0,menubar=0,location=0");
+
 				ActorStatics.fireActorEvent("click", "emailInvitation");
 
 				recommendationWidget.removePostItFromParent();
 
-				createInvitation("Email-Link", thisSupporterDTO, new InvitationCallback() {
-
-					@Override
-					public void invitationCreated(InvitationDTO invitationDTO) {
-
-						Window.open("mailto:?subject=SupeYou invitation&body=%0A%0A%20%20%20%20" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)) + "%0A%0A", "_self", "");// "status=0,toolbar=0,menubar=0,location=0");
-
-						copyAndPasteButton.add(new HintManualWidget());
-
-					}
-				});
+				copyAndPasteButton.add(new HintManualWidget());
 
 			}
 
@@ -58,22 +65,13 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 			@Override
 			public void onClick(ClickEvent event) {
+				Window.open("whatsapp://send?text=" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)), "_self", "");// "status=0,toolbar=0,menubar=0,location=0");
+
+				copyAndPasteButton.add(new HintManualWidget());
 
 				ActorStatics.fireActorEvent("click", "whatsappInvitation");
 
 				recommendationWidget.removePostItFromParent();
-
-				createInvitation("WhatsApp-Link", thisSupporterDTO, new InvitationCallback() {
-
-					@Override
-					public void invitationCreated(InvitationDTO invitationDTO) {
-
-						Window.open("whatsapp://send?text=" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)), "_self", "");// "status=0,toolbar=0,menubar=0,location=0");
-
-						copyAndPasteButton.add(new HintManualWidget());
-
-					}
-				});
 
 			}
 
@@ -83,19 +81,10 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
+				Window.open("https://plus.google.com/share?url=" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)), "_blank", "");// "status=0,toolbar=0,menubar=0,location=0");
+
+				onDismiss();
 				ActorStatics.fireActorEvent("click", "googleplusInvitation");
-
-				createInvitation("GooglePlus-Link", thisSupporterDTO, new InvitationCallback() {
-
-					@Override
-					public void invitationCreated(InvitationDTO invitationDTO) {
-
-						Window.open("https://plus.google.com/share?url=" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)), "_blank", "menubar=no");// "status=0,toolbar=0,menubar=0,location=0");
-
-						onDismiss();
-
-					}
-				});
 
 			}
 
@@ -105,19 +94,11 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 			@Override
 			public void onClick(ClickEvent event) {
+				Window.open("http://www.facebook.com/share.php?u=" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)), "_blank", "");// "status=0,toolbar=0,menubar=0,location=0");
+
+				onDismiss();
 
 				ActorStatics.fireActorEvent("click", "facebookInvitation");
-
-				createInvitation("Facebook-Link", thisSupporterDTO, new InvitationCallback() {
-
-					@Override
-					public void invitationCreated(InvitationDTO invitationDTO) {
-
-						Window.open("http://www.facebook.com/share.php?u=" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)), "_blank", "menubar=no");// "status=0,toolbar=0,menubar=0,location=0");
-
-						onDismiss();
-					}
-				});
 
 			}
 
@@ -128,18 +109,10 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
+				Window.open("https://twitter.com/intent/tweet?text=" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)), "_blank", "");// "status=0,toolbar=0,menubar=0,location=0");
+
+				onDismiss();
 				ActorStatics.fireActorEvent("click", "twitterInvitation");
-
-				createInvitation("Twitter-Link", thisSupporterDTO, new InvitationCallback() {
-
-					@Override
-					public void invitationCreated(InvitationDTO invitationDTO) {
-
-						Window.open("https://twitter.com/intent/tweet?text=" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)), "_blank", "menubar=no");// "status=0,toolbar=0,menubar=0,location=0");
-
-						onDismiss();
-					}
-				});
 
 			}
 
@@ -159,27 +132,18 @@ public abstract class HowToInviteWidget extends WidgetView {
 					}
 				};
 
-				createInvitation("CopyAndPaste-Link", thisSupporterDTO, new InvitationCallback() {
+				ManuallyWidget contentWidget = new ManuallyWidget(thisSupporterDTO, RENDERMODE.SIMPLE) {
 
 					@Override
-					public void invitationCreated(InvitationDTO invitationDTO) {
+					protected void onDismiss() {
 
-						ManuallyWidget contentWidget = new ManuallyWidget(thisSupporterDTO, RENDERMODE.SIMPLE) {
-
-							@Override
-							protected void onDismiss() {
-
-								popupWidget.closePopup();
-
-							}
-
-						};
-
-						popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), contentWidget));
+						popupWidget.closePopup();
 
 					}
 
-				});
+				};
+
+				popupWidget.init(new ContentWrapperWidget(Text.i.INVITE_HeaderLabel(), contentWidget));
 
 			}
 
