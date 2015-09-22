@@ -10,6 +10,12 @@
 		<g:FlowPanel styleName="column two" ui:field="columnTwo"></g:FlowPanel>
 		<g:FlowPanel styleName="column three" ui:field="columnThree"></g:FlowPanel>
 		<g:FlowPanel styleName="column four" ui:field="columnFour"></g:FlowPanel>
+		<g:FlowPanel styleName="column five" ui:field="columnFive"></g:FlowPanel>
+		<g:FlowPanel styleName="column six" ui:field="columnSix"></g:FlowPanel>
+		<g:FlowPanel styleName="column seven" ui:field="columnSeven"></g:FlowPanel>
+		<g:FlowPanel styleName="column eight" ui:field="columnEight"></g:FlowPanel>
+		<g:FlowPanel styleName="column nine" ui:field="columnNine"></g:FlowPanel>
+		<g:FlowPanel styleName="column ten" ui:field="columnTen"></g:FlowPanel>
 	</g:FlowPanel>
 
 </ui:UiBinder> 

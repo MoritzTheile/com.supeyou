@@ -27,29 +27,26 @@ public class ItemWidget extends WidgetView {
 	private void render() {
 
 		columnOne.clear();
-		columnOne.add(new Label(renderInfoString()));
-
+		columnOne.add(new Label(thisDTO.getId() + ""));
+		columnTwo.clear();
+		columnTwo.add(new Label(thisDTO.getUserLoginId() + ""));
 		columnThree.clear();
-		// columnThree.add(new com.supeyou.crudie.web.client.rpc.user2group.assoaeditor.AssoAEditorWidget(thisDTO, false));
+		columnThree.add(new Label(thisDTO.getSessionId() + ""));
+		columnFour.clear();
+		columnFour.add(new Label(thisDTO.getFormattedTimestamp() + ""));
+		columnFive.clear();
+		columnFive.add(new Label(thisDTO.getPageAgeSeconds() + ""));
+		columnSix.clear();
+		columnSix.add(new Label(thisDTO.getCategory() + ""));
+		columnSeven.clear();
+		columnSeven.add(new Label(thisDTO.getAction() + ""));
+		columnEight.clear();
+		columnEight.add(new Label(thisDTO.getValue() + ""));
+		columnNine.clear();
+		columnNine.add(new Label(thisDTO.getUserName() + ""));
+		columnTen.clear();
+		columnTen.add(new Label(thisDTO.getUserId() + ""));
 
-	}
-
-	private String renderInfoString() {
-		String infos = "";
-		if (thisDTO.getId() != null) {
-			infos += thisDTO.getId().value();
-		}
-		if (thisDTO.getCategory() != null) {
-			infos += thisDTO.getCategory().value();
-		}
-		if (thisDTO.getAction() != null) {
-			infos += thisDTO.getAction().value();
-		}
-		if (thisDTO.getValue() != null) {
-			infos += thisDTO.getValue().value();
-		}
-
-		return infos;
 	}
 
 	private CRUDProxyListener<EventDTO> listener = new CRUDProxyListener<EventDTO>() {

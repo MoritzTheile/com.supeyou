@@ -17,12 +17,33 @@ public class WidgetView extends Composite {
 
 	@UiField
 	FlowPanel columnOne;
+
 	@UiField
 	FlowPanel columnTwo;
+
 	@UiField
 	FlowPanel columnThree;
+
 	@UiField
 	FlowPanel columnFour;
+
+	@UiField
+	FlowPanel columnFive;
+
+	@UiField
+	FlowPanel columnSix;
+
+	@UiField
+	FlowPanel columnSeven;
+
+	@UiField
+	FlowPanel columnEight;
+
+	@UiField
+	FlowPanel columnNine;
+
+	@UiField
+	FlowPanel columnTen;
 
 	interface ThisBinder extends UiBinder<Widget, WidgetView> {
 	}
