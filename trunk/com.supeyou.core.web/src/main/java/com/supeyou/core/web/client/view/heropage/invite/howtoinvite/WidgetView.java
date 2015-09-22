@@ -16,18 +16,38 @@ public class WidgetView extends Composite {
 
 	@UiField
 	FlowPanel emailButton;
+	@UiField
+	FlowPanel emailButton1;
+	@UiField
+	FlowPanel emailButton2;
 
 	@UiField
 	FlowPanel whatsAppButton;
+	@UiField
+	FlowPanel whatsAppButton1;
+	@UiField
+	FlowPanel whatsAppButton2;
 
 	@UiField
 	FlowPanel googlePlusButton;
+	@UiField
+	FlowPanel googlePlusButton1;
+	@UiField
+	FlowPanel googlePlusButton2;
 
 	@UiField
 	FlowPanel facebookButton;
+	@UiField
+	FlowPanel facebookButton1;
+	@UiField
+	FlowPanel facebookButton2;
 
 	@UiField
 	FlowPanel twitterButton;
+	@UiField
+	FlowPanel twitterButton1;
+	@UiField
+	FlowPanel twitterButton2;
 
 	@UiField
 	FlowPanel copyAndPasteButton;
