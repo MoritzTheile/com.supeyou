@@ -70,7 +70,7 @@ public abstract class AskForEmailWidget extends WidgetView {
 
 	private void save() {
 
-		ActorStatics.fireActorEvent("click", "saveEmailButton");
+		ActorStatics.fireActorEvent("click", "saveEmailButton", field.getValue() + "");
 
 		UserDTO userDTO = LoginStateModel.i().getLoggedInUser();
 

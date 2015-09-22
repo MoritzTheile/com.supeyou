@@ -37,8 +37,6 @@ public class HeroPageWidget extends WidgetView {
 
 	private void render() {
 
-		ActorStatics.fireActorEvent("view", "heroPage");
-
 		supporterCardSlot.add(new HeroCardWidget(supporterDTO, VIEW.NODEVIEW));
 
 		{
@@ -48,6 +46,8 @@ public class HeroPageWidget extends WidgetView {
 
 				@Override
 				public void onClick(ClickEvent event) {
+
+					ActorStatics.fireActorEvent("click", "donateButton");
 
 					new PopupWidget(new ContentWrapperWidget(Text.i.DONATE_HeaderLabel(), new DonateWidget(supporterDTO)), true);
 
@@ -102,6 +102,8 @@ public class HeroPageWidget extends WidgetView {
 		@Override
 		public void onClick(ClickEvent event) {
 
+			ActorStatics.fireActorEvent("click", "inviteButton");
+
 			final PopupWidget popupWidget = new PopupWidget() {
 
 				public void onClose() {
@@ -133,11 +135,13 @@ public class HeroPageWidget extends WidgetView {
 
 			final PopupWidget popupWidget = new PopupWidget();
 
+			ActorStatics.fireActorEvent("popup", "askingForName");
+
 			AskForNameWidget contentWidget = new AskForNameWidget(supporterDTO) {
 
 				@Override
 				protected void onDismiss() {
-
+					ActorStatics.fireActorEvent("popup", "dismiss");
 					popupWidget.closePopup();
 
 				}
@@ -161,10 +165,14 @@ public class HeroPageWidget extends WidgetView {
 				}
 			};
 
+			ActorStatics.fireActorEvent("popup", "askingForEmail");
+
 			AskForEmailWidget contentWidget = new AskForEmailWidget(supporterDTO) {
 
 				@Override
 				protected void onDismiss() {
+
+					ActorStatics.fireActorEvent("popup", "dismiss");
 
 					popupWidget.closePopup();
 

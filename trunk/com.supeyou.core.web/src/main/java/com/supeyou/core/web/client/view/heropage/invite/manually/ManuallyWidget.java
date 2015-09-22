@@ -66,7 +66,7 @@ public abstract class ManuallyWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				ActorStatics.fireActorEvent("click", "markInvitationLink");
+				ActorStatics.fireActorEvent("click", "markInvitationLink", thisInvitationDTO.getToken() + "");
 
 				markText(linkLabel.getElement());
 
