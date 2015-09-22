@@ -58,7 +58,7 @@ public class RPCSession2EventCRUDServiceImpl extends RPCAbstrCRUDServiceImpl<Ses
 		eventDTO.setPageAgeSeconds(pageAgeSeconds);
 		eventDTO.setUserId(new SingleLineString256Type(actorDTO.getId() + ""));
 		eventDTO.setUserLoginId(new SingleLineString256Type(actorDTO.getLoginId() + ""));
-		eventDTO.setUserName(new SingleLineString256Type(actorDTO.getName() + ""));
+		eventDTO.setUserName(actorDTO.getName());
 		eventDTO.setSessionId(new SingleLineString256Type(sessionDTO.getId() + ""));
 
 		eventDTO.setFormattedTimestamp(new FormattedTimeType(new SimpleDateFormat(FormattedTimeType.dateFormat).format(new Date())));
