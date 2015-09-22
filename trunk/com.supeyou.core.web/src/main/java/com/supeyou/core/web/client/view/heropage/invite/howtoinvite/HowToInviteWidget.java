@@ -49,7 +49,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				Window.open("mailto:?subject=SupeYou invitation&body=%0A%0A%20%20%20%20" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)) + "%0A%0A", "_self", "");// "status=0,toolbar=0,menubar=0,location=0");
+				Window.open("mailto:?subject=SupeYou invitation&body=%0A%0A%20%20%20%20" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)) + "%0A(if you can%27t click copy to your browser)%0A", "_self", "");// "status=0,toolbar=0,menubar=0,location=0");
 
 				ActorStatics.fireActorEvent("click", "emailInvitation");
 
@@ -65,7 +65,8 @@ public abstract class HowToInviteWidget extends WidgetView {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				Window.open("whatsapp://send?text=" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)), "_self", "");// "status=0,toolbar=0,menubar=0,location=0");
+
+				Window.open("whatsapp://send?text=" + URL.encodePathSegment(ManuallyWidget.getInvitURL(invitationDTO)), "_self", "");// "status=0,toolbar=0,menubar=0,location=0");
 
 				copyAndPasteButton.add(new HintManualWidget());
 
