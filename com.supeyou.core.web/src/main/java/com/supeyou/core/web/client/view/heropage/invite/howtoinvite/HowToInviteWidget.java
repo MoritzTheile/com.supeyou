@@ -2,6 +2,7 @@ package com.supeyou.core.web.client.view.heropage.invite.howtoinvite;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.http.client.URL;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.supeyou.actor.web.client.login.ActorStatics;
@@ -115,7 +116,7 @@ public abstract class HowToInviteWidget extends WidgetView {
 					@Override
 					public void invitationCreated(InvitationDTO invitationDTO) {
 
-						Window.open("whatsapp://send?text=" + ManuallyWidget.getInvitURL(invitationDTO), "", "");// "status=0,toolbar=0,menubar=0,location=0");
+						Window.open("whatsapp://send?text=" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)), "_self", "");// "status=0,toolbar=0,menubar=0,location=0");
 
 						copyAndPasteButton.add(new HintManualWidget());
 
@@ -125,55 +126,6 @@ public abstract class HowToInviteWidget extends WidgetView {
 			}
 
 		}, ClickEvent.getType());
-		whatsAppButton1.addDomHandler(new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-
-				ActorStatics.fireActorEvent("click", "whatsappInvitation");
-
-				recommendationWidget.removePostItFromParent();
-
-				createInvitation("WhatsApp-Link", thisSupporterDTO, new InvitationCallback() {
-
-					@Override
-					public void invitationCreated(InvitationDTO invitationDTO) {
-
-						Window.open("whatsapp://send?text=" + ManuallyWidget.getInvitURL(invitationDTO), "_self", "");// "status=0,toolbar=0,menubar=0,location=0");
-
-						copyAndPasteButton.add(new HintManualWidget());
-
-					}
-				});
-
-			}
-
-		}, ClickEvent.getType());
-		whatsAppButton2.addDomHandler(new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-
-				ActorStatics.fireActorEvent("click", "whatsappInvitation");
-
-				recommendationWidget.removePostItFromParent();
-
-				createInvitation("WhatsApp-Link", thisSupporterDTO, new InvitationCallback() {
-
-					@Override
-					public void invitationCreated(InvitationDTO invitationDTO) {
-
-						Window.open("whatsapp://send?text=" + ManuallyWidget.getInvitURL(invitationDTO), "_blank", "");// "status=0,toolbar=0,menubar=0,location=0");
-
-						copyAndPasteButton.add(new HintManualWidget());
-
-					}
-				});
-
-			}
-
-		}, ClickEvent.getType());
-
 		googlePlusButton.addDomHandler(new ClickHandler() {
 
 			@Override

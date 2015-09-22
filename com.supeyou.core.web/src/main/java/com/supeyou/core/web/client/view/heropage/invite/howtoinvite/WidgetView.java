@@ -23,10 +23,6 @@ public class WidgetView extends Composite {
 
 	@UiField
 	FlowPanel whatsAppButton;
-	@UiField
-	FlowPanel whatsAppButton1;
-	@UiField
-	FlowPanel whatsAppButton2;
 
 	@UiField
 	FlowPanel googlePlusButton;
