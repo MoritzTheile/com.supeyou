@@ -196,7 +196,7 @@ public class HistoryController {
 		try {
 			if (URLHelper.queryStringToMap(URLHelper.getCurrentQueryString()).keySet().contains(com.supeyou.actor.iface.common.ActorStatics.UNSUBSCRIBE_TOKEN))
 			{
-				if (supporterDTO.getNotificationsEnabled()) {
+				if (supporterDTO.getNotificationsEnabled() == null || supporterDTO.getNotificationsEnabled()) {
 
 					supporterDTO.setNotificationsEnabled(false);
 
