@@ -1,6 +1,5 @@
 package com.supeyou.crudie.web.client.model;
 
-import com.supeyou.crudie.iface.common.HELPER;
 import com.supeyou.crudie.iface.datatype.enums.ROLE;
 import com.supeyou.crudie.iface.dto.UserDTO;
 
@@ -21,10 +20,6 @@ public class LoginStateModel extends AbstrObservable<Void> {
 		return getLoggedInUser() != null
 				&& getLoggedInUser().getRoles().contains(ROLE.ADMIN);
 
-	}
-
-	public static boolean isAnonymous(UserDTO userDTO) {
-		return userDTO.getLoginId().value().startsWith(HELPER.ANONYMMARKER) && userDTO.getName() == null;
 	}
 
 	// SINGLETON

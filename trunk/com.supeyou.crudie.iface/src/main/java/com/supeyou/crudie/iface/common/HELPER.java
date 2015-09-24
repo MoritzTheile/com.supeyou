@@ -2,6 +2,7 @@ package com.supeyou.crudie.iface.common;
 
 import com.supeyou.crudie.iface.datatype.types.AmountType;
 import com.supeyou.crudie.iface.datatype.types.DateType;
+import com.supeyou.crudie.iface.dto.UserDTO;
 
 public class HELPER {
 
@@ -34,5 +35,9 @@ public class HELPER {
 	}
 
 	public static final String ANONYMMARKER = "anonymousActor_";
+
+	public static boolean isAnonymous(UserDTO userDTO) {
+		return userDTO.getLoginId().value().startsWith(HELPER.ANONYMMARKER) && userDTO.getName() == null;
+	}
 
 }
