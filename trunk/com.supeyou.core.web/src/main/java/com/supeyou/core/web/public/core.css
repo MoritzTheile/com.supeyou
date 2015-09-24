@@ -563,11 +563,12 @@
 }
 .hero .image-slot .play-button{
 	position: absolute;
-	left:0px;
-	padding: 32px 80px 24px 80px;
-	height: 64px;
+	left:76px;
+	top:48px;
+	
+	height: 48pxpx;
 	width: 64px;
-	opacity: 0.6;
+	opacity: 1;
 	cursor: pointer;
 }
 
