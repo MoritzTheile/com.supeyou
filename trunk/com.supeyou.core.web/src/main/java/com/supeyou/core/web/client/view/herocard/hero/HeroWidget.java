@@ -78,7 +78,7 @@ public class HeroWidget extends WidgetView {
 
 			}, ClickEvent.getType());
 			{
-				Image image = new Image(GWT.getModuleBaseURL() + "/core/images/play.png");
+				Image image = new Image(GWT.getModuleBaseURL() + "/core/images/play.png?1");
 
 				imageSlot.add(image);
 
