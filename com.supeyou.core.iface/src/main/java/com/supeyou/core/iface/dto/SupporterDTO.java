@@ -18,6 +18,8 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 
 	private AmountType ownAmount;
 
+	private Boolean notificationsEnabled = true;
+
 	public AmountType getOwnAmount() {
 		return ownAmount;
 	}
@@ -92,6 +94,14 @@ public class SupporterDTO extends AbstrDTO<SupporterIDType> implements Serializa
 
 	public void setDecendantAmount(AmountType decendantAmount) {
 		this.decendantAmount = decendantAmount;
+	}
+
+	public Boolean getNotificationsEnabled() {
+		return notificationsEnabled;
+	}
+
+	public void setNotificationsEnabled(Boolean notificationsEnabled) {
+		this.notificationsEnabled = notificationsEnabled;
 	}
 
 }

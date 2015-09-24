@@ -21,6 +21,8 @@ public class SupporterEntity extends AbstrEntity<SupporterIDType> {
 
 	private Integer decendantAmount = 0;
 
+	private Boolean notificationsEnabled = true;
+
 	@OneToMany(mappedBy = "a"/* =the attribute name, not the column name! */, cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private Collection<Supporter2InvitationEntity> supporter2invitationCollection = new ArrayList<Supporter2InvitationEntity>();
 
@@ -116,6 +118,14 @@ public class SupporterEntity extends AbstrEntity<SupporterIDType> {
 
 	public void setSupporter2donationCollection(Collection<Supporter2DonationEntity> supporter2donationCollection) {
 		this.supporter2donationCollection = supporter2donationCollection;
+	}
+
+	public Boolean getNotificationsEnabled() {
+		return notificationsEnabled;
+	}
+
+	public void setNotificationsEnabled(Boolean notificationsEnabled) {
+		this.notificationsEnabled = notificationsEnabled;
 	}
 
 }

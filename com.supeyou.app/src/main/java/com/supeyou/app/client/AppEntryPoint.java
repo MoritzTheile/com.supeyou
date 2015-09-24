@@ -30,7 +30,7 @@ public class AppEntryPoint implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 
-		ActorStatics.fireActorEvent("window", "loading", URLHelper.getCurrentQueryString(null));
+		ActorStatics.fireActorEvent("window", "loading", URLHelper.getCurrentQueryString());
 
 		Window.addCloseHandler(new CloseHandler<Window>() {
 

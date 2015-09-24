@@ -83,7 +83,7 @@ public class ServletContextListenerImpl implements ServletContextListener {
 
 					}
 
-					if (dto.getDecendantAmount().value() > oldDTO.getDecendantAmount().value()) {
+					if (dto.getDecendantAmount().value() != null && oldDTO.getDecendantAmount() != null && dto.getDecendantAmount().value() > oldDTO.getDecendantAmount().value()) {
 
 						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "You raised " + HELPER.amount2eurostring(dto.getDecendantAmount()) + " Euro for  " + dto.getHeroDTO().getName().value() + " on SupeYou",
 								""

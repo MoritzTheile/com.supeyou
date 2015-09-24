@@ -13,9 +13,11 @@ import com.supeyou.core.iface.dto.InvitationDTO;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.mainmenu.MainMenuWidget;
 import com.supeyou.core.web.client.rpc.hero.RPCCRUDServiceAsync;
+import com.supeyou.core.web.client.rpc.supporter.RPCCRUDProxy;
 import com.supeyou.core.web.client.view.heropage.HeroPageWidget;
 import com.supeyou.core.web.client.view.landingpage.LandingPageWidget;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
+import com.supeyou.crudie.web.client.resources.URLHelper;
 
 public class HistoryController {
 
@@ -191,10 +193,25 @@ public class HistoryController {
 		Window.scrollTo(0, 0);
 
 		String historyToken = ANCHOR.HERO.name() + "_" + supporterDTO.getHeroDTO().getId().value();
+		try {
+			if (URLHelper.queryStringToMap(URLHelper.getCurrentQueryString()).keySet().contains(com.supeyou.actor.iface.common.ActorStatics.UNSUBSCRIBE_TOKEN))
+			{
+				if (supporterDTO.getNotificationsEnabled()) {
+
+					supporterDTO.setNotificationsEnabled(false);
+
+					RPCCRUDProxy.i().updadd(supporterDTO);
+
+					Window.alert("You successfully unsubscribed.");
+
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		if (!History.getToken().equals(historyToken)) {
 			History.newItem(historyToken, false);
 		}
 	}
-
 }

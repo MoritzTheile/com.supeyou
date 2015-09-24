@@ -25,6 +25,10 @@ public class URLHelper {
 		return urlString;
 	}
 
+	public static String getCurrentQueryString() {
+		return getCurrentQueryString(null);
+	}
+	
 	/**
 	 * 
 	 * Returns a queryString of the form '?key1=value1&key2=value2'.
@@ -46,7 +50,7 @@ public class URLHelper {
 
 	}
 
-	private static Map<String, String> queryStringToMap(String queryString) {
+	public static Map<String, String> queryStringToMap(String queryString) {
 
 		// removing '?'
 		if (queryString.startsWith("?")) {
