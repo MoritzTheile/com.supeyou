@@ -1,38 +1,29 @@
 package com.supeyou.app.server;
 
-import java.io.File;
 import java.util.Properties;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.Message.RecipientType;
 import javax.mail.MessagingException;
-import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 
 public class SendEmail
 {
 
 	public static void main(String[] args) {
 
-		sendEmail("test@moritztheile.de", "bcc@supeyou.com", "(html)Your SupeYou invitation was successful",
-				"Great! You have now 4 supporter for 4 invited.  <br>"
-						+ "<br>"
-						+ "Have a look at <a href=\"http://supeyou.com/?auth=asdf#HERO_asdf\">http://supeyou.com/?auth=asdf#HERO_asdf</a> <br>"
-						+ "<br>"
-						+ "<br>"
-						+ "<font size=\"-2\">(If you don't want notifications concerning asdf respond to this email with 'unsubscribe'.)</font><br>"
-						+ "<br>"
-						+ "<br>", true);
+		String link = "http://supeyou.com";
+
+		SendEmail.sendEmail("testa3489@moritztheile.de", "text Your SupeYou invitation was successful",
+
+				// "<a href=\"" + link + "\">" + link + "</a>", true
+				link, false
+				);
 	}
 
 	public static void sendEmail(String to, String subject, String text) {
@@ -92,31 +83,11 @@ public class SendEmail
 			// Set Subject: header field
 			message.setSubject(subject);
 
-			Multipart multipart = new MimeMultipart();
-			// Now set the actual message
-
-			MimeBodyPart messageBodyPart = new MimeBodyPart();
-
-			messageBodyPart.setText(text);
-			if (isHTML)
-				messageBodyPart.setHeader("Content-Type", "text/html");
-			multipart.addBodyPart(messageBodyPart);
-
-			if (fileNames.length > 0) {
-				for (String fileName : fileNames) {
-					// first - check, if the File exists
-					File file = new File(fileName);
-					if (file.exists()) {
-						messageBodyPart = new MimeBodyPart();
-						DataSource source = new FileDataSource(fileName);
-						messageBodyPart.setDataHandler(new DataHandler(source));
-						messageBodyPart.setFileName(file.getName());
-						multipart.addBodyPart(messageBodyPart);
-					}
-				}
+			if (isHTML) {
+				message.setContent(text, "text/html; charset=utf-8");
+			} else {
+				message.setText(text);
 			}
-
-			message.setContent(multipart);
 
 			// Send message
 			Transport.send(message, message.getAllRecipients());
