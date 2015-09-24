@@ -58,6 +58,11 @@ public class ServletContextListenerImpl implements ServletContextListener {
 			@Override
 			public void wasUpdated(SupporterDTO dto, SupporterDTO oldDTO) {
 
+				if (HELPER.isAnonymous(dto.getUserDTO())) {
+					// no mails if user is anonymous
+					return;
+				}
+
 				if (oldDTO != null) {
 
 					if (dto.getDecendentCount() != oldDTO.getDecendentCount()) {

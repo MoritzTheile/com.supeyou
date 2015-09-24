@@ -16,6 +16,7 @@ import com.supeyou.core.web.client.view.heropage.invite.askforemail.AskForEmailW
 import com.supeyou.core.web.client.view.heropage.invite.askforname.AskForNameWidget;
 import com.supeyou.core.web.client.view.heropage.invite.howtoinvite.HowToInviteWidget;
 import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidget;
+import com.supeyou.crudie.iface.common.HELPER;
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
@@ -156,7 +157,7 @@ public class HeroPageWidget extends WidgetView {
 
 	private void askForEmail() {
 
-		if (LoginStateModel.isAnonymous(LoginStateModel.i().getLoggedInUser())) {
+		if (HELPER.isAnonymous(LoginStateModel.i().getLoggedInUser())) {
 
 			final PopupWidget popupWidget = new PopupWidget() {
 				@Override
