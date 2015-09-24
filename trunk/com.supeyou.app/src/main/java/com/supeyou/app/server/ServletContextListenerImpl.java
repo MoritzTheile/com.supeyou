@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import com.supeyou.actor.iface.common.ActorStatics;
 import com.supeyou.core.iface.SupporterCRUDService;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.impl.SupporterCRUDServiceImpl;
@@ -59,10 +60,8 @@ public class ServletContextListenerImpl implements ServletContextListener {
 
 				if (oldDTO != null) {
 
-					String link = "http://supeyou.com/?auth=" + dto.getUserDTO().getAuthToken().value() + "#HERO_" + dto.getHeroDTO().getId().value();
-
 					if (dto.getDecendentCount() != oldDTO.getDecendentCount()) {
-						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "bcc@supeyou.com", "Your SupeYou invitation was successful",
+						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "Your SupeYou invitation was successful",
 								""
 										+ "<html>"
 										+ "<head></head>"
@@ -71,10 +70,12 @@ public class ServletContextListenerImpl implements ServletContextListener {
 										+ "<br>"
 										+ " You have now " + dto.getDecendentCount() + " supporter for " + dto.getHeroDTO().getName().value() + " invited.  <br>"
 										+ "<br>"
-										+ "You find your updated hero card here: <a href=\"" + link + "\">" + link + "</a>  <br>"
+										+ "You find your updated hero card here: <br>"
+										+ "<br>"
+										+ "<a href=\"" + getLink(dto, false) + "\">" + getLink(dto, false) + "</a>  <br>"
 										+ "<br>"
 										+ "<br>"
-										+ "(If you don't want notifications concerning " + dto.getHeroDTO().getName().value() + " respond to this email with 'unsubscribe'.)<br>"
+										+ "<font size=\"-2\">(If you don't want notifications concerning " + dto.getHeroDTO().getName().value() + " click <a href=\"" + getLink(dto, true) + "\">unsubscribe</a>.)</font><br>"
 										+ "<br>"
 										+ "<br>"
 										+ "</body>"
@@ -84,18 +85,20 @@ public class ServletContextListenerImpl implements ServletContextListener {
 
 					if (dto.getDecendantAmount().value() > oldDTO.getDecendantAmount().value()) {
 
-						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "bcc@supeyou.com", "You raised " + HELPER.amount2eurostring(dto.getDecendantAmount()) + " Euro for  " + dto.getHeroDTO().getName().value() + " on SupeYou",
+						SendEmail.sendEmail(dto.getUserDTO().getLoginId().value(), "You raised " + HELPER.amount2eurostring(dto.getDecendantAmount()) + " Euro for  " + dto.getHeroDTO().getName().value() + " on SupeYou",
 								""
 										+ "<html>"
 										+ "<head></head>"
 										+ "<body>"
 										+ "Thanks so much! If everybody raises as much money as you did we would have very powerful heroes!  <br>"
 										+ "<br>"
-										+ "You find your updated hero card here:  <a href=\"" + link + "\">" + link + "</a> <br>"
+										+ "You find your updated hero card here: <br>"
+										+ "<br>"
+										+ "<a href=\"" + getLink(dto, false) + "\">" + getLink(dto, false) + "</a> <br>"
 										+ "<br>"
 										+ "<br>"
 										+ "<br>"
-										+ "(If you don't want notifications concerning " + dto.getHeroDTO().getName().value() + " respond to this email with 'unsubscribe'.)<br>"
+										+ "<font size=\"-2\">(If you don't want notifications concerning " + dto.getHeroDTO().getName().value() + " click <a href=\"" + getLink(dto, true) + "\">unsubscribe</a>.)</font><br>"
 										+ "<br>"
 										+ "<br>"
 										+ "</body>"
@@ -104,6 +107,16 @@ public class ServletContextListenerImpl implements ServletContextListener {
 					}
 				}
 
+			}
+
+			private String getLink(SupporterDTO dto, boolean unsubscribe) {
+				String link = "http://supeyou.com/?auth=" + dto.getUserDTO().getAuthToken().value();
+
+				if (unsubscribe) {
+					link += "&" + ActorStatics.UNSUBSCRIBE_TOKEN;
+				}
+
+				return link + "#HERO_" + dto.getHeroDTO().getId().value();
 			}
 
 			@Override
