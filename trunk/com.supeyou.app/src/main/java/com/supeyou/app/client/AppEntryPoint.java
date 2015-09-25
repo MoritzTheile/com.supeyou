@@ -17,6 +17,7 @@ import com.supeyou.core.web.client.HistoryController;
 import com.supeyou.core.web.client.HistoryController.ANCHOR;
 import com.supeyou.core.web.client.resources.CoreStatics;
 import com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync;
+import com.supeyou.core.web.client.view.landingpageinvit.LandingPageInvitWidget;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.web.client.model.AppInfoModel;
@@ -132,8 +133,11 @@ public class AppEntryPoint implements EntryPoint {
 				public void onSuccess(SupporterDTO result) {
 
 					if (result.getHeroDTO() != null) {
-						History.newItem(ANCHOR.HERO.name() + "_" + result.getHeroDTO().getId().value(), false);
-						History.fireCurrentHistoryState();
+
+						RootPanel.get("main").clear();
+						RootPanel.get("main").add(new LandingPageInvitWidget(result));
+						Window.scrollTo(0, 0);
+
 					} else {
 						Window.alert("no hero found for invitation " + Window.Location.getParameter(CoreStatics.INVITTOKEN_KEY));
 						History.newItem(ANCHOR.LP.name());

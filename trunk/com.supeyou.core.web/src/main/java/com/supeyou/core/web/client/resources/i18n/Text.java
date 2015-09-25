@@ -23,6 +23,10 @@ public interface Text extends Messages {
 
 	String LANDINGPAGE_Text_HTML();
 
+	String LANDINGPAGEINVIT_Text_HTML();
+
+	String HEROSPAGE_FollowInvitation();
+
 	String HEROSPAGE_ChooseHero();
 
 	String HEROSPAGE_JoinAsHero();
