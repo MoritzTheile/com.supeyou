@@ -21,6 +21,9 @@ public class WidgetView extends Composite {
 	@UiField
 	HTML html;
 
+	@UiField
+	HTML videoHTML;
+
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}
 
