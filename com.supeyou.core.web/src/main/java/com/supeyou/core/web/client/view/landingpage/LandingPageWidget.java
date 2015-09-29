@@ -6,6 +6,7 @@ import com.google.gwt.user.client.History;
 import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.core.web.client.HistoryController.ANCHOR;
 import com.supeyou.core.web.client.resources.i18n.Text;
+import com.supeyou.core.web.client.view.heropage.video.wistia.WistiaWidget;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 
 public class LandingPageWidget extends WidgetView {
@@ -27,6 +28,8 @@ public class LandingPageWidget extends WidgetView {
 		});
 
 		chooseHeroButtonSlot.add(flatButtonWidget);
+
+		videoHTML.setHTML(WistiaWidget.htmlTemplate.replaceAll(WistiaWidget.urlToken, "//fast.wistia.net/embed/iframe/a6298wh0f6/?&autoPlay=false"));
 
 	}
 
