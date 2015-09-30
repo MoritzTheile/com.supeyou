@@ -33,7 +33,7 @@ public class LandingPageInvitWidget extends WidgetView {
 
 		chooseHeroButtonSlot.add(flatButtonWidget);
 
-		videoHTML.setHTML(WistiaWidget.htmlTemplate.replaceAll(WistiaWidget.urlToken, "//fast.wistia.net/embed/iframe/a6298wh0f6/?&autoPlay=false"));
+		videoHTML.setHTML(WistiaWidget.htmlTemplate.replaceAll(WistiaWidget.urlToken, "//fast.wistia.net/embed/iframe/6juhe730yt?&videoFoam=true&autoPlay=false"));
 
 	}
 }
