@@ -1,176 +1,4 @@
 #login *{
-	color:#EEEEEE;
-}
-
-
-body {
-	background: #fff !important;
-  	position:relative !important;
-}
-
-/* .chooser .option.whatsapp{
-	display:block;
-} */
-
-@media only screen and (min-width: 580px) {
-
-	/* .chooser .option.whatsapp{
-		display:none;
-	} */
-	
-	html{
-	
-height: 100%;
-	
-background-repeat: repeat;
-	
-/* background-image: url("core/images/nature2_background.jpg"); */
-	}
-	
-	body {
-	
-		width: 420px !important;
-	  	margin: 24px auto !important;
-	  
-	}
-} 
-
-
-#header {
-    padding:0;
-    margin:0;
-    /* position: fixed; */
-    position: relative;
-	top:0px;
-	right:0px;
-	left:0px;
-	height: 45px;
-    background-color: #EEEEEE;
-    
-    background-repeat: no-repeat;
-	background-position: 28px 0px;
-	background-size: 140px;
-    background-image: url("images/SupeYou-Logo.png");
-    
-}
-
-#title{
-	color: #777777;
-	font-size: 17px;
-	position: absolute;
-	top: 3px;
-	left: 22px;
-	width: 160px;
-	height: 48px;
-	cursor: pointer;
-}
-
-#login{
-	position: absolute;
-	top: 10px;
-	right: 10px;
-}
-
- #main {
-    padding:0;
-    margin:0;
-    
-    position: relative;
-    top:0px;
-	right:0px;
-	left:0px;
-	bottom:12px;
-	
-	overflow: auto;
-}
-
- #footer {
-    padding:0;
-    margin-top: 32px;
-/* position: fixed; */
-    position: relative;
-	right:0px;
-	left:0px;
-	bottom:0px;
-	height: 12px;
-   background-color:#EEEEEE;
-}
-
-#footer .app-version {
-	position: absolute;
-	right: 0px;
-	top: 1px;
-	font-size: 8px;
-}
-
-.landingpage-root .text{
-	margin: 50px 50px 10px 50px;
-	font-size: 20px;
-	text-align: center;
-	color: gray;
-}
-.landingpage-root .text.header{
-	
-}
-.landingpage-root .text.small{
-	font-size: 14px;
-	text-align: justify;
-	margin: 50px 20px 10px 20px;
-}
-
-.addhero-root .text{
-	margin-top: 30px;
-	margin-left: 30px;
-	margin-right: 30px;
-	margin-bottom:  60px;
-	font-size: 20px;
-	text-align: left;
-	color: gray;
-}
-
-.mission-root .text{
-	margin-top: 30px;
-	margin-left: 30px;
-	margin-right: 30px;
-	margin-bottom:  600px;
-	font-size: 20px;
-	text-align: left;
-	color: gray;
-}
-
-.main-menu .menu {
-	position: relative;
-	top: 0px;
-	right: 0px;
-	left:0px;
-	background-color: #EEEEEE;
-}
- 	
-.main-menu .menu > * {
-	cursor: pointer;
-	display: inline-block;	
-	padding-right: 24px;
-	padding-left: 24px;
-	padding-top: 6px;
-	padding-bottom: 6px;
-	border-right: solid 1px #DDDDDD;
-	border-top: solid 1px #DDDDDD;
-
-	color: #777777;
-
-
-}
-
-.main-menu .menu > *:hover {
-	color:black;
-	background-color: #F1F1F1;
-} 
-.main-menu .menu > *.selected {
-	color:black;
-	background-color: lightgray;
-} 
-
-#login *{
 	opacity: 0;
 }
 
@@ -200,42 +28,41 @@ body {
 	}
 } 
 
-
 #header {
     padding:0;
     margin:0;
     /* position: fixed; */
     position: relative;
-	top:0px;
-	right:0px;
-	left:0px;
-	height: 45px;
+    top:0px;
+    right:0px;
+    left:0px;
+    height: 45px;
     background-color: #EEEEEE;
-    
     background-repeat: no-repeat;
-	background-position: 28px 0px;
-	background-size: 140px;
+    background-position: 28px 0px;
+    background-size: 140px;
     background-image: url("images/SupeYou-Logo.png");
-    
 }
 
-#title{
-	color: #777777;
-	font-size: 17px;
-	position: absolute;
-	top: 3px;
-	left: 22px;
-	width: 160px;
-	height: 48px;
-	cursor: pointer;
-	padding: 12px 0 0 150px;
-}
 
 #login{
 	position: absolute;
 	top: 10px;
 	right: 10px;
 }
+#title{
+	color: #777777;
+	font-size: 17px;
+	position: absolute;
+	top: 3px;
+	left: 172px;
+	width: 160px;
+	/* height: 3px; */
+	cursor: pointer;
+	padding: 12px 0 0 0;
+}
+
+
 
  #main {
     padding:0;
@@ -250,30 +77,19 @@ body {
 	overflow: auto;
 }
 
- #footer {
-    padding:0;
-    margin-top: 32px;
-/* position: fixed; */
-    position: relative;
-	right:0px;
-	left:0px;
-	bottom:0px;
-	height: 12px;
-   background-color:#EEEEEE;
-}
-
-#footer .app-version {
-	position: absolute;
-	right: 0px;
-	top: 1px;
-	font-size: 8px;
-}
-
 .landingpage-root .text{
 	margin: 50px 50px 10px 50px;
 	font-size: 20px;
 	text-align: center;
 	color: gray;
+}
+.landingpage-root .text.header{
+	
+}
+.landingpage-root .text.small{
+	font-size: 14px;
+	text-align: justify;
+	margin: 50px 20px 10px 20px;
 }
 
 .addhero-root .text{
@@ -286,6 +102,7 @@ body {
 	color: gray;
 }
 
+
 .mission-root .text{
 	margin-top: 30px;
 	margin-left: 30px;
@@ -295,7 +112,6 @@ body {
 	text-align: left;
 	color: gray;
 }
-
 .main-menu .menu {
 	position: relative;
 	top: 0px;
@@ -326,6 +142,25 @@ body {
 	color:black;
 	background-color: lightgray;
 } 
+
+#footer {
+    padding:0;
+    margin-top: 32px;
+/* position: fixed; */
+    position: relative;
+	right:0px;
+	left:0px;
+	bottom:0px;
+	height: 12px;
+   background-color:#EEEEEE;
+}
+
+#footer .app-version {
+	position: absolute;
+	right: 0px;
+	top: 1px;
+	font-size: 8px;
+}
 
 #footer .impressum-html{
 	font-size:8px;
