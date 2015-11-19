@@ -11,7 +11,10 @@ import com.supeyou.core.web.client.view.herocard.supporterinfo.SupporterWidget;
 public class HeroCardWidget extends WidgetView {
 
 	public enum VIEW {
-		ROOTVIEW, NODEVIEW
+
+		ROOTVIEW,
+		NODEVIEW
+
 	}
 
 	public HeroCardWidget(SupporterDTO supporterDTO, VIEW view) {
@@ -42,7 +45,9 @@ public class HeroCardWidget extends WidgetView {
 	}
 
 	private void render(SupporterDTO supporterDTO, VIEW view) {
+
 		heroSlot.add(new HeroWidget(supporterDTO.getHeroDTO(), view));
+
 		if (VIEW.ROOTVIEW.equals(view)) {
 			supporterSlot.add(new RootSupporterWidget(supporterDTO));
 		} else {
