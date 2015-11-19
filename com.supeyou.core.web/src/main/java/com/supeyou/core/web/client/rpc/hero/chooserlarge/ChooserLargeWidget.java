@@ -34,7 +34,8 @@ public abstract class ChooserLargeWidget extends WidgetView {
 			@Override
 			public Widget getWidget(final HeroDTO data) {
 
-				return getHeroWidget(data);
+				Widget widget = getHeroWidget(data);
+				return widget;
 
 			}
 

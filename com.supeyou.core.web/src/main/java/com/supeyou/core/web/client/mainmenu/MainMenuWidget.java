@@ -67,8 +67,9 @@ public class MainMenuWidget extends WidgetView {
 						}
 
 						public HeroCardWidget getHeroWidget(final HeroDTO data) {
-
-							return new HeroCardWidget(data);
+							HeroCardWidget heroCardWidget = new HeroCardWidget(data);
+							heroCardWidget.removeStyleName("unselectable");
+							return heroCardWidget;
 						}
 					};
 				}
