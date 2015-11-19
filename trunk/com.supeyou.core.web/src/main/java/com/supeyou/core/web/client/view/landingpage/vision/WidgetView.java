@@ -1,4 +1,4 @@
-package com.supeyou.core.web.client.view.landingpageinvit;
+package com.supeyou.core.web.client.view.landingpage.vision;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -16,13 +16,7 @@ public class WidgetView extends Composite {
 	FlowPanel root;
 
 	@UiField
-	FlowPanel chooseHeroButtonSlot;
-
-	@UiField
-	HTML html;
-
-	@UiField
-	FlowPanel visionSlot;
+	HTML videoHTML;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {
 	}
