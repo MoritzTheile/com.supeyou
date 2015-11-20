@@ -130,6 +130,7 @@ body {
 	font-size: 14px;
 	text-align: justify;
 	margin: 50px 20px 10px 20px;
+	line-height: 1.5;
 }
 
 .addhero-root .text{
