@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:p1="urn:import:com.google.gwt.user.cellview.client"
+	>
+	<ui:with field='text' type='com.supeyou.crudie.web.client.resources.i18n.Text' />
+
+	<g:FlowPanel  styleName="back-button"  ui:field="itemRoot">
+		<g:Image ui:field="supeYouLogo" ></g:Image>
+	</g:FlowPanel>
+
+</ui:UiBinder> 
