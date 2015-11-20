@@ -8,41 +8,38 @@
  
 	<g:FlowPanel styleName="vision-root" ui:field="root">
 		<g:HTMLPanel>
-			<div class="text header">Die SupeYou-Vision</div>
+			<div class="text header vision">Die SupeYou-Vision</div>
 			<div class="text small">SupeYou ist mit einem kleinen Team im <a href="http://munich.impacthub.net/">ImpactHub München</a> entstanden. <br/>
 			<br/>
-			Die Idee zu SupeYou entstand als <a href="http://mtheile.com/#!PROJEKTE">Moritz Theile</a> fragte, wie es sein kann, dass die Spielautomatenindustrie 
-			Automaten aufstellen darf, die z.B. auch seinen Bruder auf perfide Weise abhängig gemacht haben und ganze Familien ins Unglück stürzen.<br/>
+			Die Idee zu SupeYou kam aus ganz persönlichen Gründen. 
+			<a href="http://mtheile.com/#!PROJEKTE">Moritz Theile</a> fragte sich, wie es sein kann, 
+			dass die Spielautomatenindustrie Automaten aufstellen darf, 
+			die z.B. auch seinen Bruder auf perfide Weise abhängig gemacht haben und ganze Familien ins Unglück stürzen.<br/>
 			<br/>
-			Es scheint offensichtlich zu sein, dass <b>viele Gesetze nicht im Interesse des gesellschaftlichen Wohles</b> beschlossen werden.
+			Es scheint offensichtlich zu sein, dass viele Gesetze nicht im Interesse des gesellschaftlichen Wohles beschlossen werden. 
 			Einen großen Anteil an diesem Missstand hat, unserer Meinung nach die gut organisierte Lobbyarbeit der Industrie.<br/>
 			<br/>
 			Wie kann sich die Gesellschaft dagegen wehren? <br/>
 			<br/>
-			Naheliegend ist eine <b>"Lobby des Volkes"</b>. 
-			Doch wie soll sie organisiert und finanziert werden? <br/>
+			Naheliegend ist eine "Lobby des Volkes". Doch wie soll sie organisiert und finanziert werden? <br/>
 			<br/>
 			Die Antworten liefert SupeYou.<br/>
 			<br/>
-			Es gibt <b>sehr fähige Bürger</b> die für Ihre Überzeugungen einstehen, aktiv geworden sind und schon viel erreicht haben.
-			<b>Wieviel größer könnte ihre Wirkung sein, wenn diesen Bürgern entsprechende finanzielle Mittel zur Verfügung ständen?</b> 
-			Wenn sie keine 40 Stunden Woche arbeiten müssten? Wenn sie sogar ein Team
-			von Mitstreitern bezahlen könnten?
-			Unter Umständen größer als die der professionellen Lobbyisten der Industrie! <br/>
+			Es gibt engagierte Bürger die für Ihre Überzeugungen einstehen, 
+			aktiv geworden sind und schon viel erreicht haben. Wieviel größer könnte ihre Wirkung sein, 
+			wenn diesen Bürgern entsprechende finanzielle Mittel zur Verfügung ständen?   <br/>
 			<br/>
-			Wir in der Masse könnten mit <b>Mikrospenden
-			eine Lobby formen</b> die der bestehenden ein echtes Gegengewicht gibt.<br/>
+			Wir in der Masse können mit Mikrospenden eine Lobby formen, 
+			die der bestehenden ein echtes Gegengewicht gibt.<br/>
+			Organisiert wird diese Lobby durch erfolgreiche Macher, 
+			die in Ihrem Feld bereits über große Erfahrung verfügen. 
+			Diese, wir nennen sie „Helden“, werden durch unsere Mikrospenden gesteuert. 
+			So lange wir ihnen vertrauen, muss uns ihr Engagement ein paar Euro im Monat wert sein!<br/>
 			<br/>
-			<b>Organisiert wäre diese Lobby durch erfolgreiche Idealisten</b>, die in Ihrem Feld bereits über große Erfahrung verfügen. Wir würden diese Helden durch Mikrospenden steuern. So lange wir
-			ihnen vertrauen, muss uns ihr Einsatz ein paar Euro im Monat wert sein!<br/>
+			Doch wie mobilisiert man Tausende seiner Mitmenschen, einen Helden zu unterstützen?<br/>
 			<br/>
-			Es gilt ein weiteres Problem zu lösen: <b>Wie mobilisiert man tausende seiner Mitmenschen</b> einen Helden zu unterstützen?<br/>
-			<br/>
-			<b>Durch die "Gamification" des Einladens</b>! 	Ein neuartiges Einladungssystem mit dem man genau sehen kann
-			wer Einladungen folgt und wer weitere Einladungen verschickt. Man ist live dabei, wie sich die Wirkung der eigenen Einladungen potenziert. Der Erfolg wird auf "Hero-Cards"
-			dargestellt, die sich mit den Karten anderer Unterstützer vergleichen lassen. Das weckt
-			den Spieltrieb. Mehr Einladungen werden verschickt. Die Lawine rollt. Es kann schnell passieren, dass man 
-			zig-Tausend Euro durch Einladungen generiert hat, obwohl man selbst lediglich einen Euro gespendet hat.  
+			Durch die "<b>Gamification</b>" des Einladens! Ein neuartiges Einladungssystem mit dem man genau sehen kann, wer Einladungen folgt und wer weitere Einladungen verschickt. Man ist live dabei, wenn sich die Wirkung der eigenen Einladungen potenziert. Das macht Spaß!
+			Mehr Einladungen werden verschickt. Die Lawine rollt. Es kann schnell passieren, dass man zig-Tausend Euro durch Einladungen generiert hat, obwohl man selbst lediglich einen Euro gespendet hat.
 			</div>
 			
 		</g:HTMLPanel>
@@ -50,21 +47,15 @@
 		<g:HTML styleName="video-root" ui:field="videoHTML"></g:HTML>
 		<g:HTMLPanel>
 			<div class="text small">
-			Die <b>Vision von SupeYou</b> ist zunächst in Deutschland und dann weltweit <b>dem Volk</b> das gleiche politische Instrument zu geben,
-			dass die Industrie bereits hat: <b>eine mächtige Lobby</b>. Aber auch ein Heer von Aktivisten die sich um akute Notstände kümmern kann mit SupeYou entstehen.<br/>
+			SupeYou gibt Euch die Chance, mit Euren Helden eine neue Lobby zu formen.<br/>
 			<br/>
-			Von Anfang an ist SupeYou auf dieses Ziel ausgerichtet. Schon in der ersten Version ist die Technik beliebig skalierbar.
-			<b>Millionen Benutzer können mühelos bedient werden</b>.<br/> 
+			Den entscheidenden Beitrag leistet IHR, indem ihr EINLADUNGEN verschickt Helden zu unterstützen.<br/> 
 			<br/>
-			Wir, das SupeYou-Team sind gespannt was in den nächsten Wochen passiert. Ihr könnt einen großen, den <b>entscheidenden Beitrag leisten indem Ihr
-			Einladungen verschickt</b>. <br/>
-			<br/>
-			Sehr dankbar sind wir auch für weitere Hero-Nominierungen. <br/>
+			Sehr dankbar sind wir auch für weitere Hero-Nominierungen.  <br/>
 			<br/>
 			Aktuelle Nominierungen:
-			<ul>
+			<ul style="text-align:left">
 			<li><a href="https://de.wikipedia.org/wiki/Markus_Beckedahl">Michael Beckedahl</a>, Digitale Freiheitsrechte</li>
-			<li><a href="https://de.wikipedia.org/wiki/Edward_Snowden">Edward Snowden</a>, Whistle-Blower</li>
 			<li><a href="https://de.wikipedia.org/wiki/Til_Schweiger">Till Schweiger</a>, Schauspieler und Flüchtlingshelfer</li>
 			<li><a href="http://www.spiegel.de/spiegel/print/d-72462716.html">Ilona Füchtenschnieder</a>, Glücksspielsucht e.V.</li>
 			<li><a href="https://de.wikipedia.org/wiki/Sascha_Lobo">Sascha Lobo</a>, Kolumnist</li>
@@ -74,22 +65,19 @@
 			<li><a href="http://www.br.de/puls/themen/netz/empoerungsformular-veganer-der-artgenosse-patrick-schoenfeld-meme-100.html">Patrick Schönfeld</a>, Vegan-Lobby</li>
 			<li><a href="https://sharethemeal.org/de/">Sebastian Stricker</a>, Share the Meal</li>
 			</ul>
-			Wer kontrolliert wie die Spenden verwendet werden? 
-			Wir, die Spender müssen unseren Heroes vertrauen, dass sie unsere Mikrospenden für ihre Mission einsetzen. Um das Vertrauen
-			 und damit den Spendenfluss zu erhalten müsste beispielsweise ein Till Schweiger zeigen, dass die Spenden
-			auch wirklich in die Flüchtlingshilfe geflossen sind. 
-			Je besser die Ergebnisse, desto mehr Vertrauen, desto mehr Spenden für neue Ergebnisse...<br/>
+			<!-- Wer kontrolliert wie die Spenden verwendet werden? Wir, die Spender müssen unseren Heroes vertrauen, 
+			dass sie unsere Mikrospenden für ihre Mission einsetzen. Um das Vertrauen und damit den Spendenfluss 
+			zu erhalten müsste beispielsweise ein Till Schweiger zeigen, dass die Spenden auch wirklich in die 
+			Flüchtlingshilfe geflossen sind. 
+			Je besser die Ergebnisse, desto mehr Vertrauen, desto mehr Spenden für neue Ergebnisse...<br/> -->
 			<br/>
-			Let's disrupt lobbyism!  ;-)<br/>
+			Unsere erste Heldin ist Tara. Sie arbeitet bei uns im ImpactHub und ist ein Musterbeispiel für Idealismus und Anpack-Mentalität. Sie hat auf ihren gut bezahlten Job verzichtet um ihrer Mission, den Bedürftigen zu helfen, nachzugehen. Für Ihre Integrität garantieren wir.<br/>
 			<br/>
-			P.S: Die vorliegende SupeYou-Version ist ein Prototyp der aus Kostengründen nur die notwendigsten Funktionen
-			in rudimentärem Design enthält. Nichts desto trotz kann er seine Wirkung schon voll entfalten. Lasst Euch davon
-			nicht aufhalten eine Lawine ins Rollen zu bringen!<br/>
+			Die vorliegende SupeYou-Version ist ein Prototyp, der aus Kostengründen zunächst nur die 
+			notwendigsten Funktionen in rudimentärem Design enthält. 
+			Lasst Euch davon nicht aufhalten, eine Lawine ins Rollen zu bringen!<br/>
 			<br/>
-			P.P.S: Die erste und einzige Heldin bisher ist Tara. Sie arbeitet bei uns im ImpactHub und ist ein
-			Musterbeispiel für Idealismus und Anpack-Mentalität. Sie hat auf ihren gut bezahlten Job verzichtet um ihrer Mission,
-			den Bedürftigen zu helfen, nachzugehen. Für Ihre Integrität garantieren wir. Um weitere Helden zu gewinnen wäre es toll
-			anhand von Tara zu zeigen, dass die SupeYou-Idee funktioniert. Also, auf gehts :-)
+			Auf gehts, let's disrupt lobbyism!  :-)
 			</div>
 		</g:HTMLPanel>
 	</g:FlowPanel>
