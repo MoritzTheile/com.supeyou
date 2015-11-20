@@ -32,7 +32,7 @@ public class LandingPageInvitWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				ActorStatics.fireActorEvent("click", "landingPageNext");
+				ActorStatics.fireActorEvent("click", "buttonFollowInvitation");
 
 				History.newItem(ANCHOR.HERO.name() + "_" + supporterDTO.getHeroDTO().getId().value(), false);
 				History.fireCurrentHistoryState();
