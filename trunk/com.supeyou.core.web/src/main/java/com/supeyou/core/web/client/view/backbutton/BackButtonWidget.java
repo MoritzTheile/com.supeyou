@@ -29,7 +29,7 @@ public class BackButtonWidget extends WidgetView {
 			@Override
 			public void onClick(ClickEvent event) {
 
-				if (History.getToken() == null) {
+				if (History.getToken() == null || History.getToken().isEmpty()) {
 					History.newItem(HistoryController.ANCHOR.LP.name());
 				} else if (History.getToken().startsWith(HistoryController.ANCHOR.HERO.name() + "_")) {
 					History.newItem(HistoryController.ANCHOR.HEROES.name());
@@ -44,7 +44,7 @@ public class BackButtonWidget extends WidgetView {
 	}
 
 	private void render() {
-		if (HistoryController.ANCHOR.LP.name().equals(History.getToken())) {
+		if (History.getToken() == null || History.getToken().isEmpty() || HistoryController.ANCHOR.LP.name().equals(History.getToken())) {
 			iconSlot.getElement().getStyle().setVisibility(Visibility.HIDDEN);
 		} else {
 			iconSlot.getElement().getStyle().setVisibility(Visibility.VISIBLE);
