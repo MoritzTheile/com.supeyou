@@ -25,6 +25,8 @@ public interface Text extends Messages {
 
 	String LANDINGPAGEINVIT_Text_HTML();
 
+	String LANDINGPAGE_ItsAGame_HTML();
+
 	String LANDINGPAGE_TextTwo_HTML();
 
 	String HEROSPAGE_FollowInvitation();

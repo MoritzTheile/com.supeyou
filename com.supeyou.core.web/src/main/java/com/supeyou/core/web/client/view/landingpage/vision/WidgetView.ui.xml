@@ -8,36 +8,15 @@
  
 	<g:FlowPanel styleName="vision-root" ui:field="root">
 		<g:HTMLPanel>
-			<div class="text header vision">Worum gehts?</div>
-			<div class="text small">SupeYou ist mit einem kleinen Team im <a href="http://munich.impacthub.net/">ImpactHub München</a> entstanden. <br/>
-			<!--<br/>
-			 Die Idee zu SupeYou kam aus ganz persönlichen Gründen. 
-			<a href="http://mtheile.com/#!PROJEKTE">Moritz Theile</a> fragte sich, wie es sein kann, 
-			dass die Spielautomatenindustrie Automaten aufstellen darf, 
-			die z.B. auch seinen Bruder auf perfide Weise abhängig gemacht haben und ganze Familien ins Unglück stürzen.<br/> -->
-			<br/>
-			Es scheint offensichtlich zu sein, dass viele Gesetze nicht im Interesse des gesellschaftlichen Wohles beschlossen werden. 
-			Einen großen Anteil an diesem Missstand hat, unserer Meinung nach die gut organisierte Lobbyarbeit der Industrie.<br/>
-			<br/>
-			Wie kann sich die Gesellschaft dagegen wehren? <br/>
-			<br/>
-			Naheliegend ist eine "Lobby des Volkes". Doch wie soll sie organisiert und finanziert werden? <br/>
-			<br/>
-			Die Antworten liefert SupeYou.<br/>
-			<br/>
-			Es gibt engagierte Bürger die für Ihre Überzeugungen einstehen, 
-			aktiv geworden sind und schon viel erreicht haben. Wieviel größer könnte ihre Wirkung sein, 
-			wenn diesen Bürgern entsprechende finanzielle Mittel zur Verfügung ständen?   <br/>
-			<br/>
-			Wir in der Masse können mit Mikrospenden an diese Helden eine Lobby formen, 
-			die der bestehenden ein echtes Gegengewicht gibt.<br/>
-			<br/>
-			Doch wie mobilisiert man Tausende seiner Mitmenschen, einen Helden zu unterstützen?<br/>
+			<div class="text header vision"></div>
+			<div class="text small">
+			Wie mobilisiert man Tausende seiner Mitmenschen, einen Helden zu unterstützen?<br/>
 			<br/>
 			Durch die "<b>Gamification</b>" des Einladens! 
 			Ein neuartiges Einladungssystem mit dem man genau sehen kann, wer Einladungen folgt und wer 
 			weitere Einladungen verschickt. Man ist live dabei, wenn sich die Wirkung der eigenen Einladungen potenziert. 
-			Das macht Spaß! Deswegen werden mehr Einladungen verschickt und die Lawine rollt :-) Es kann schnell passieren, dass man zig-Tausend Euro durch ein paar Einladungen generiert.
+			Das macht Spaß! Deswegen werden mehr Einladungen verschickt und die Lawine rollt :-) 
+			Es kann schnell passieren, dass man zig-Tausend Euro durch ein paar Einladungen generiert!
 			</div>
 			
 		</g:HTMLPanel>
@@ -45,7 +24,27 @@
 		<g:HTML styleName="video-root" ui:field="videoHTML"></g:HTML>
 		<g:HTMLPanel>
 			<div class="text small">
-			SupeYou gibt Euch die Chance, mit Euren Helden eine neue Lobby zu formen.<br/>
+			SupeYou ist mit einem kleinen Team im <a href="http://munich.impacthub.net/">ImpactHub München</a> entstanden. <br/>
+			<!--<br/>
+			 Die Idee zu SupeYou kam aus ganz persönlichen Gründen. 
+			<a href="http://mtheile.com/#!PROJEKTE">Moritz Theile</a> fragte sich, wie es sein kann, 
+			dass die Spielautomatenindustrie Automaten aufstellen darf, 
+			die z.B. auch seinen Bruder auf perfide Weise abhängig gemacht haben und ganze Familien ins Unglück stürzen.<br/> -->
+			<br/>
+			Es scheint für uns offensichtlich zu sein, dass viele Gesetze nicht im Interesse des gesellschaftlichen Wohles beschlossen werden. 
+			Einen großen Teil der Schuld geben wir der gut organisierten Industrielobby.<br/>
+			<br/>
+			Wie kann sich die Gesellschaft dagegen wehren? <br/>
+			<br/>
+			Naheliegend ist eine "Lobby des Volkes". Doch wie soll sie organisiert und finanziert werden? <br/>
+			<br/>
+			Die Antworten liefert SupeYou.<br/>
+			<br/>
+			Es gibt bereits engagierte Bürger die für Ihre Überzeugungen einstehen, 
+			aktiv geworden sind und schon viel erreicht haben. Wieviel größer könnte ihre Wirkung sein, 
+			wenn diesen Bürgern entsprechende finanzielle Mittel zur Verfügung ständen?   <br/>
+			<br/>
+			Wir in der Masse können diese Gegenlobby mit Mikrospenden finanzieren und steuern!<br/>
 			<br/>
 			Den entscheidenden Beitrag leistet IHR, indem ihr EINLADUNGEN verschickt.<br/> 
 			<br/>
@@ -73,7 +72,9 @@
 			<br/>
 			Die vorliegende SupeYou-Version ist ein Prototyp, der aus Kostengründen zunächst nur die 
 			notwendigsten Funktionen in rudimentärem Design enthält. 
-			Lasst Euch davon nicht aufhalten, das Spiel zu spielen und eine Lawine ins Rollen zu bringen!<br/>
+			Lasst Euch davon nicht abhalten, das Spiel zu spielen und eine Lawine ins Rollen zu bringen!<br/>
+			<br/>
+			Wenns bei Tara klappt nimmt dieses Projekt richtig fahrt auf!<br/>
 			<br/>
 			Auf gehts, let's disrupt lobbyism!  :-)
 			</div>
