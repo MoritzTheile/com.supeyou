@@ -18,6 +18,9 @@ public class WidgetView extends Composite {
 	FlowPanel chooseHeroButtonSlot;
 
 	@UiField
+	FlowPanel chooseHeroButtonSlot2;
+
+	@UiField
 	FlowPanel visionSlot;
 
 	interface ThisUiBinder extends UiBinder<Widget, WidgetView> {

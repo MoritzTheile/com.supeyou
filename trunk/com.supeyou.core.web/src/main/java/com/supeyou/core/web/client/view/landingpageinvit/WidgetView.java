@@ -19,6 +19,9 @@ public class WidgetView extends Composite {
 	FlowPanel chooseHeroButtonSlot;
 
 	@UiField
+	FlowPanel chooseHeroButtonSlot2;
+
+	@UiField
 	HTML html;
 
 	@UiField
