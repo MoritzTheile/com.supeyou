@@ -10,11 +10,11 @@
 		<g:HTMLPanel>
 			<div class="text header vision">Die SupeYou-Vision</div>
 			<div class="text small">SupeYou ist mit einem kleinen Team im <a href="http://munich.impacthub.net/">ImpactHub München</a> entstanden. <br/>
-			<br/>
-			Die Idee zu SupeYou kam aus ganz persönlichen Gründen. 
+			<!--<br/>
+			 Die Idee zu SupeYou kam aus ganz persönlichen Gründen. 
 			<a href="http://mtheile.com/#!PROJEKTE">Moritz Theile</a> fragte sich, wie es sein kann, 
 			dass die Spielautomatenindustrie Automaten aufstellen darf, 
-			die z.B. auch seinen Bruder auf perfide Weise abhängig gemacht haben und ganze Familien ins Unglück stürzen.<br/>
+			die z.B. auch seinen Bruder auf perfide Weise abhängig gemacht haben und ganze Familien ins Unglück stürzen.<br/> -->
 			<br/>
 			Es scheint offensichtlich zu sein, dass viele Gesetze nicht im Interesse des gesellschaftlichen Wohles beschlossen werden. 
 			Einen großen Anteil an diesem Missstand hat, unserer Meinung nach die gut organisierte Lobbyarbeit der Industrie.<br/>
@@ -49,6 +49,8 @@
 			<br/>
 			Den entscheidenden Beitrag leistet IHR, indem ihr EINLADUNGEN verschickt Helden zu unterstützen.<br/> 
 			<br/>
+			Unsere erste Heldin ist Tara. Sie arbeitet bei uns im ImpactHub und ist ein Musterbeispiel für Idealismus und Anpack-Mentalität. Sie hat auf ihren gut bezahlten Job verzichtet um ihrer Mission, den Bedürftigen zu helfen, nachzugehen. Für Ihre Integrität garantieren wir.<br/>
+			<br/>
 			Sehr dankbar sind wir auch für weitere Hero-Nominierungen.  <br/>
 			<br/>
 			Aktuelle Nominierungen:
@@ -68,8 +70,6 @@
 			zu erhalten müsste beispielsweise ein Till Schweiger zeigen, dass die Spenden auch wirklich in die 
 			Flüchtlingshilfe geflossen sind. 
 			Je besser die Ergebnisse, desto mehr Vertrauen, desto mehr Spenden für neue Ergebnisse...<br/> -->
-			<br/>
-			Unsere erste Heldin ist Tara. Sie arbeitet bei uns im ImpactHub und ist ein Musterbeispiel für Idealismus und Anpack-Mentalität. Sie hat auf ihren gut bezahlten Job verzichtet um ihrer Mission, den Bedürftigen zu helfen, nachzugehen. Für Ihre Integrität garantieren wir.<br/>
 			<br/>
 			Die vorliegende SupeYou-Version ist ein Prototyp, der aus Kostengründen zunächst nur die 
 			notwendigsten Funktionen in rudimentärem Design enthält. 
