@@ -6,6 +6,7 @@
 	<ui:with field='text' type='com.supeyou.crudie.web.client.resources.i18n.Text' />
 
 	<g:FlowPanel  styleName="back-button"  ui:field="itemRoot">
+		<g:FlowPanel styleName="icon-slot" ui:field="iconSlot"></g:FlowPanel>
 		<g:Image ui:field="supeYouLogo" ></g:Image>
 	</g:FlowPanel>
 
