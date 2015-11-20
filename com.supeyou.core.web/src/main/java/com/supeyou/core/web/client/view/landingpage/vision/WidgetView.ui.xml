@@ -8,7 +8,7 @@
  
 	<g:FlowPanel styleName="vision-root" ui:field="root">
 		<g:HTMLPanel>
-			<div class="text header vision">Die SupeYou-Vision</div>
+			<div class="text header vision">Worum gehts?</div>
 			<div class="text small">SupeYou ist mit einem kleinen Team im <a href="http://munich.impacthub.net/">ImpactHub München</a> entstanden. <br/>
 			<!--<br/>
 			 Die Idee zu SupeYou kam aus ganz persönlichen Gründen. 

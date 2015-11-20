@@ -16,7 +16,16 @@ public class LandingPageInvitWidget extends WidgetView {
 
 		html.setHTML(Text.i.LANDINGPAGEINVIT_Text_HTML().replaceAll("HeroName_TOKEN", supporterDTO.getHeroDTO().getName() + ""));
 
-		FlatButtonWidget flatButtonWidget = new FlatButtonWidget();
+		chooseHeroButtonSlot.add(getButton(supporterDTO));
+		chooseHeroButtonSlot2.add(getButton(supporterDTO));
+
+		visionSlot.add(new VisionWidget());
+
+	}
+
+	private FlatButtonWidget getButton(final SupporterDTO supporterDTO) {
+		FlatButtonWidget flatButtonWidget;
+		flatButtonWidget = new FlatButtonWidget();
 		flatButtonWidget.setText(Text.i.HEROSPAGE_FollowInvitation());
 		flatButtonWidget.addClickHandler(new ClickHandler() {
 
@@ -30,10 +39,6 @@ public class LandingPageInvitWidget extends WidgetView {
 
 			}
 		});
-
-		chooseHeroButtonSlot.add(flatButtonWidget);
-
-		visionSlot.add(new VisionWidget());
-
+		return flatButtonWidget;
 	}
 }
