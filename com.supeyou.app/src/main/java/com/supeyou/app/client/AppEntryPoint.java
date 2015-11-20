@@ -17,6 +17,7 @@ import com.supeyou.core.web.client.HistoryController;
 import com.supeyou.core.web.client.HistoryController.ANCHOR;
 import com.supeyou.core.web.client.resources.CoreStatics;
 import com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync;
+import com.supeyou.core.web.client.view.backbutton.BackButtonWidget;
 import com.supeyou.core.web.client.view.landingpageinvit.LandingPageInvitWidget;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.iface.dto.UserDTO;
@@ -42,6 +43,8 @@ public class AppEntryPoint implements EntryPoint {
 
 			}
 		});
+
+		RootPanel.get("back").add(new BackButtonWidget());
 
 		RootPanel.get("login").add(new LoginButtonWidget(LoginStateModel.i()));
 		RootPanel.get("title").addDomHandler(new ClickHandler() {
