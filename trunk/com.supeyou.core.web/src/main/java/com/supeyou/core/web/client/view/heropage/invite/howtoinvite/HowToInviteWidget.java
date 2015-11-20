@@ -14,7 +14,6 @@ import com.supeyou.core.web.client.rpc.invitation.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.view.heropage.invite.hintmanual.HintManualWidget;
 import com.supeyou.core.web.client.view.heropage.invite.manually.ManuallyWidget;
 import com.supeyou.core.web.client.view.heropage.invite.manually.ManuallyWidget.RENDERMODE;
-import com.supeyou.core.web.client.view.heropage.invite.recommendation.RecommendationWidget;
 import com.supeyou.crudie.iface.datatype.types.SingleLineString256Type;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.contentwrapper.ContentWrapperWidget;
@@ -42,8 +41,6 @@ public abstract class HowToInviteWidget extends WidgetView {
 			}
 		});
 
-		final RecommendationWidget recommendationWidget = new RecommendationWidget();
-
 		emailButton.addDomHandler(new ClickHandler() {
 
 			@Override
@@ -52,8 +49,6 @@ public abstract class HowToInviteWidget extends WidgetView {
 				Window.open("mailto:?subject=SupeYou invitation&body=%0A%0A%20%20%20%20" + URL.encode(ManuallyWidget.getInvitURL(invitationDTO)) + "%0A(if you can%27t click copy to your browser)%0A", "_self", "");// "status=0,toolbar=0,menubar=0,location=0");
 
 				ActorStatics.fireActorEvent("click", "emailInvitation");
-
-				recommendationWidget.removePostItFromParent();
 
 				copyAndPasteButton.add(new HintManualWidget());
 
@@ -71,8 +66,6 @@ public abstract class HowToInviteWidget extends WidgetView {
 				copyAndPasteButton.add(new HintManualWidget());
 
 				ActorStatics.fireActorEvent("click", "whatsappInvitation");
-
-				recommendationWidget.removePostItFromParent();
 
 			}
 
@@ -149,8 +142,6 @@ public abstract class HowToInviteWidget extends WidgetView {
 			}
 
 		}, ClickEvent.getType());
-
-		emailButton.add(recommendationWidget);
 
 	}
 
