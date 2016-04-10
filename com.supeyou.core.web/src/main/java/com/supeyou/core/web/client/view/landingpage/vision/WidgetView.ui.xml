@@ -24,33 +24,18 @@
 		<g:HTML styleName="video-root" ui:field="videoHTML"></g:HTML>
 		<g:HTMLPanel>
 			<div class="text small">
-			SupeYou ist mit einem kleinen Team im <a href="http://munich.impacthub.net/">ImpactHub München</a> entstanden. <br/>
+			SupeYou ist mit einem kleinen Team im <a href="http://munich.impacthub.net/">ImpactHub München</a> entstanden.<br/> 
+			
 			<!--<br/>
 			 Die Idee zu SupeYou kam aus ganz persönlichen Gründen. 
 			<a href="http://mtheile.com/#!PROJEKTE">Moritz Theile</a> fragte sich, wie es sein kann, 
 			dass die Spielautomatenindustrie Automaten aufstellen darf, 
 			die z.B. auch seinen Bruder auf perfide Weise abhängig gemacht haben und ganze Familien ins Unglück stürzen.<br/> -->
 			<br/>
-			Es scheint für uns offensichtlich zu sein, dass viele Gesetze nicht im Interesse des gesellschaftlichen Wohles beschlossen werden. 
-			Einen großen Teil der Schuld geben wir der gut organisierten Industrielobby.<br/>
-			<br/>
-			Wie kann sich die Gesellschaft dagegen wehren? <br/>
-			<br/>
-			Naheliegend ist eine "Lobby des Volkes". Doch wie soll sie organisiert und finanziert werden? <br/>
-			<br/>
-			Die Antworten liefert SupeYou.<br/>
-			<br/>
-			Es gibt bereits engagierte Bürger die für Ihre Überzeugungen einstehen, 
-			aktiv geworden sind und schon viel erreicht haben. Wieviel größer könnte ihre Wirkung sein, 
-			wenn diesen Bürgern entsprechende finanzielle Mittel zur Verfügung ständen?   <br/>
-			<br/>
-			Wir in der Masse können diese Gegenlobby mit Mikrospenden finanzieren und steuern!<br/>
-			<br/>
-			Den entscheidenden Beitrag leistet IHR, indem ihr EINLADUNGEN verschickt.<br/> 
-			<br/>
 			Unsere erste Heldin auf SupeYou ist Tara. Sie arbeitet bei uns im ImpactHub und ist ein Musterbeispiel für Idealismus und Anpack-Mentalität. Sie hat auf ihren gut bezahlten Job verzichtet um ihrer Mission, den Bedürftigen zu helfen, nachzugehen. Für Ihre Integrität garantieren wir.<br/>
 			<br/>
 			Sehr dankbar sind wir auch für weitere Hero-Nominierungen.  <br/>
+			<!-- 
 			<br/>
 			Aktuelle Nominierungen:
 			<ul style="text-align:left">
@@ -64,6 +49,7 @@
 			<li><a href="http://www.br.de/puls/themen/netz/empoerungsformular-veganer-der-artgenosse-patrick-schoenfeld-meme-100.html">Patrick Schönfeld</a>, Vegan-Lobby</li>
 			<li><a href="https://sharethemeal.org/de/">Sebastian Stricker</a>, Share the Meal</li>
 			</ul>
+			 -->
 			<!-- Wer kontrolliert wie die Spenden verwendet werden? Wir, die Spender müssen unseren Heroes vertrauen, 
 			dass sie unsere Mikrospenden für ihre Mission einsetzen. Um das Vertrauen und damit den Spendenfluss 
 			zu erhalten müsste beispielsweise ein Till Schweiger zeigen, dass die Spenden auch wirklich in die 
@@ -76,7 +62,7 @@
 			<br/>
 			Wenns bei Tara klappt nimmt dieses Projekt richtig Fahrt auf!<br/>
 			<br/>
-			Auf gehts, let's disrupt lobbyism!  :-)
+			Auf gehts! Wenn wir im Schnitt mehr als einen Helfer gewinnen funktionierts und Tara kann noch mehr bewirken :-)
 			</div>
 		</g:HTMLPanel>
 	</g:FlowPanel>
