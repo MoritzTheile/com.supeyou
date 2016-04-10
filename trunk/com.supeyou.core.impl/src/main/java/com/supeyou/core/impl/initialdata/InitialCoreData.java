@@ -118,7 +118,7 @@ public class InitialCoreData {
 		user_Marion = createUser("marion@mtheile.com");
 
 		hero_Moritz = createHero(user_Moritz, "Moritz Theile", "https://www.youtube.com/embed/2P87NS63K94/?autoplay=1", "paypal.com@moritztheile.de", "./heroPics/MoritzTheile.jpg", "http://mtheile.com", "SupeYou Developer", false);
-		hero_Martina = createHero(user_Martina, "Martina Fuchs", "https://www.youtube.com/embed/2P87NS63K94/?autoplay=1", "paypal.com@moritztheile.de", "./heroPics/MartinaFuchs.jpg", "http://moeglichkeits-coach.de", "SupeYou Coach", false);
+		hero_Martina = createHero(user_Martina, "Martina Fuchs", "https://www.youtube.com/embed/2P87NS63K94/?autoplay=1", "paypal.com@moritztheile.de", "./heroPics/MartinaFuchs.jpg", "http://moeglichkeits-coach.de", "SupeYou Coach", true);
 		hero_Nikolaus = createHero(user_Nikolaus, "Nikolaus Teixeira", "//fast.wistia.net/embed/iframe/fu70iweg6v", "spenden@fluechtlingenhelfen.de", "./heroPics/NikolausTeixeira.jpg", "http://willkommen-in-muenchen.de", "Engagiert sich für münchner Flüchtlinge", true);
 		hero_Tara = createHero(user_Tara, "Tara McCartney", "https://www.youtube.com/embed/2P87NS63K94/?autoplay=1", "paypal.com@moritztheile.de", "./heroPics/TaraMcCartney.jpg", "http://unitedforhope.org", "Dedicates her skills to empower India’s rural poor.", false);
 

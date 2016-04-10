@@ -37,7 +37,7 @@ body {
     right:0px;
     left:0px;
     height: 45px;
-    background-color: #EEEEEE;
+    background-color: #D5E2F8;
    /*  background-repeat: no-repeat;
     background-position: 28px 0px;
     background-size: 140px;
@@ -158,7 +158,7 @@ body {
 	top: 0px;
 	right: 0px;
 	left:0px;
-	background-color: #EEEEEE;
+	background-color: #D5E2F8;
 }
  	
 .main-menu .menu > * {
@@ -181,7 +181,7 @@ body {
 } 
 .main-menu .menu > *.selected {
 	color:black;
-	background-color: lightgray;
+	background-color: #A0C8F3;
 } 
 
 #footer {
@@ -193,7 +193,7 @@ body {
 	left:0px;
 	bottom:0px;
 	height: 12px;
-   background-color:#EEEEEE;
+   background-color:#D5E2F8;
 }
 
 #footer .app-version {
