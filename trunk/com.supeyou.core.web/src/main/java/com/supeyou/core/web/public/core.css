@@ -1,3 +1,11 @@
+#main{
+	text-align:center;
+}
+
+.landingpage-root {
+	max-width: 600px;
+	display: inline-block;
+}
 .landingpage-root .flat-button{
 	margin: 64px 50px 48px 50px;
 }
