@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Node;
-import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -93,16 +92,20 @@ public class SupporterTreeWidget extends WidgetView {
 
 	private void render() {
 
-		if (level == 1) {
-			amountLabel.getElement().getStyle().setDisplay(Display.NONE);
-			imageSlot.getElement().getStyle().setDisplay(Display.NONE);
-			nameLabel.getElement().getStyle().setDisplay(Display.NONE);
+		// if (level == 1) {
+		// amountLabel.getElement().getStyle().setDisplay(Display.NONE);
+		// imageSlot.getElement().getStyle().setDisplay(Display.NONE);
+		// nameLabel.getElement().getStyle().setDisplay(Display.NONE);
+		// }
+
+		if (loggedInSupporterDTO.getId().equals(supporterDTO.getId())) {
+			imageSlot.addStyleName("you");
 		}
 
 		edgeSlot.clear();
 		childrenSlot.clear();
 
-		amountLabel.setText(HELPER.cent2euro((getAmountValueNullsave(supporterDTO.getOwnAmount()) + getAmountValueNullsave(supporterDTO.getDecendantAmount()))) + " " + Text.i.EUROSYMBOL());
+		amountLabel.setText(HELPER.cent2euro((getAmountValueNullsave(supporterDTO.getOwnAmount())/* + getAmountValueNullsave(supporterDTO.getDecendantAmount()) */)) + " " + Text.i.EUROSYMBOL());
 		amountLabel.setTitle(" decendants=" + supporterDTO.getDecendentCount());
 
 		nameLabel.setHTML(getHtml(supporterDTO));
@@ -175,7 +178,8 @@ public class SupporterTreeWidget extends WidgetView {
 			}
 
 			if (level <= 2) {
-				html += getClickedLinks(supporterDTO2);
+				// not showing the name of the links yet
+				// html += getClickedLinks(supporterDTO2);
 			}
 
 		}

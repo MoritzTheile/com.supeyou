@@ -279,7 +279,16 @@
 .supporter-root.you .right-column{
 
 }
-
+.tree-view-toggle-label{
+	position: absolute;
+	right: 32px;
+	top: 18px;
+	text-align:right;
+	font-size: 11px;
+	color: gray;
+	cursor: pointer;
+	padding-bottom: 14px;
+}
 .supportertree-root{
 	
 	white-space: nowrap;
@@ -308,7 +317,7 @@
 
 
 .supportertree-slot{
-	
+	position: relative;
 	text-align: center;
 	
 }
@@ -329,11 +338,20 @@
 	
 }
 
+
 .supportertree-root .image-slot{
 	height: 20px;
 	background-repeat: no-repeat;
   	background-image: url("core/images/emoticon.smile.png");
   	background-position:50% 0px ;
+}
+
+.supportertree-root .image-slot.you{
+	height: 32px;
+  	background-repeat: no-repeat;
+  	background-image: url("core/images/emoticon.smile.large.anim.gif");
+  	background-size:32px;
+
 }
 
 .supportertree-root.gray{
@@ -367,7 +385,7 @@
 
 .heropage-button-slot.invitation{
 	text-align: center;
-	padding: 8px 0 22px 0;
+	padding: 8px 0 ^11px 0;
 }
 
 .heropage-button-slot.invitation .flat-button{

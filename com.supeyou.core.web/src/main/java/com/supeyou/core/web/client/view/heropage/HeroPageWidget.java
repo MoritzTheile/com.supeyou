@@ -3,6 +3,7 @@ package com.supeyou.core.web.client.view.heropage;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Label;
 import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
@@ -81,11 +82,39 @@ public class HeroPageWidget extends WidgetView {
 
 		supporterTreeSlot.clear();
 
+		Label viewToggleLabel = new Label();
+
+		supporterTreeSlot.add(viewToggleLabel);
+
+		viewToggleLabel.addStyleName("tree-view-toggle-label");
+
 		if (rootOfTree.equals(ROOT_OF_TREE.LOGGED_IN_USER)) {
+
+			viewToggleLabel.setText("[Show hero on top]");
+			viewToggleLabel.addClickHandler(new ClickHandler() {
+
+				@Override
+				public void onClick(ClickEvent event) {
+					rootOfTree = ROOT_OF_TREE.HERO;
+					renderSupporterTree();
+
+				}
+			});
 
 			renderSupporterTree2(loggedInSupporterDTO);
 
 		} else { // retrieving the hero self supporter. First the User, than the Supporter.
+
+			viewToggleLabel.setText("[Show me on top]");
+			viewToggleLabel.addClickHandler(new ClickHandler() {
+
+				@Override
+				public void onClick(ClickEvent event) {
+					rootOfTree = ROOT_OF_TREE.LOGGED_IN_USER;
+					renderSupporterTree();
+
+				}
+			});
 
 			final HeroDTO heroDTO = loggedInSupporterDTO.getHeroDTO();
 
