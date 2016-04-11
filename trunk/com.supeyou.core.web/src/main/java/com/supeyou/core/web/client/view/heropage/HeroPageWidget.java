@@ -4,6 +4,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.supeyou.actor.web.client.login.ActorStatics;
+import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
 import com.supeyou.core.iface.dto.Invitation2SupporterFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
@@ -19,6 +20,7 @@ import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidg
 import com.supeyou.crudie.iface.common.HELPER;
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
+import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.web.client.model.LoginStateModel;
 import com.supeyou.crudie.web.client.uiorga.flatbutton.FlatButtonWidget;
 import com.supeyou.crudie.web.client.uiorga.popup.PopupWidget;
@@ -26,11 +28,18 @@ import com.supeyou.crudie.web.client.uiorga.popup.contentwrapper.ContentWrapperW
 
 public class HeroPageWidget extends WidgetView {
 
-	private SupporterDTO supporterDTO;
+	private SupporterDTO loggedInSupporterDTO;
+
+	private ROOT_OF_TREE rootOfTree = ROOT_OF_TREE.HERO;
+
+	private enum ROOT_OF_TREE {
+		HERO,
+		LOGGED_IN_USER
+	}
 
 	public HeroPageWidget(SupporterDTO supporterDTO) {
 
-		this.supporterDTO = supporterDTO;
+		this.loggedInSupporterDTO = supporterDTO;
 
 		render();
 
@@ -38,7 +47,7 @@ public class HeroPageWidget extends WidgetView {
 
 	private void render() {
 
-		supporterCardSlot.add(new HeroCardWidget(supporterDTO, VIEW.NODEVIEW));
+		supporterCardSlot.add(new HeroCardWidget(loggedInSupporterDTO, VIEW.NODEVIEW));
 
 		{
 			FlatButtonWidget flatButtonWidget = new FlatButtonWidget();
@@ -50,7 +59,7 @@ public class HeroPageWidget extends WidgetView {
 
 					ActorStatics.fireActorEvent("click", "donateButton");
 
-					new PopupWidget(new ContentWrapperWidget(Text.i.DONATE_HeaderLabel(), new DonateWidget(supporterDTO)), true);
+					new PopupWidget(new ContentWrapperWidget(Text.i.DONATE_HeaderLabel(), new DonateWidget(loggedInSupporterDTO)), true);
 
 				}
 			});
@@ -64,9 +73,63 @@ public class HeroPageWidget extends WidgetView {
 
 			invitationButtonSlot.add(flatButtonWidget);
 		}
+		renderSupporterTree();
+
+	}
+
+	private void renderSupporterTree() {
+
+		supporterTreeSlot.clear();
+
+		if (rootOfTree.equals(ROOT_OF_TREE.LOGGED_IN_USER)) {
+
+			renderSupporterTree2(loggedInSupporterDTO);
+
+		} else { // retrieving the hero self supporter. First the User, than the Supporter.
+
+			final HeroDTO heroDTO = loggedInSupporterDTO.getHeroDTO();
+
+			com.supeyou.core.web.client.rpc.hero.RPCCRUDServiceAsync.i.getUser(heroDTO, new AsyncCallback<UserDTO>() {
+
+				@Override
+				public void onFailure(Throwable caught) {
+
+					caught.printStackTrace();
+
+				}
+
+				@Override
+				public void onSuccess(UserDTO result) {
+
+					com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync.i.get(result, heroDTO, new AsyncCallback<SupporterDTO>() {
+
+						@Override
+						public void onFailure(Throwable caught) {
+
+							caught.printStackTrace();
+
+						}
+
+						@Override
+						public void onSuccess(SupporterDTO result) {
+
+							renderSupporterTree2(result);
+
+						}
+
+					});
+
+				}
+			});
+
+		}
+
+	}
+
+	private void renderSupporterTree2(final SupporterDTO rootSupporterDTO) {
 		Invitation2SupporterFetchQuery supporterFetchQuery = new Invitation2SupporterFetchQuery();
 
-		supporterFetchQuery.setInvitor(supporterDTO);
+		supporterFetchQuery.setInvitor(rootSupporterDTO);
 
 		com.supeyou.core.web.client.rpc.invitation2supporter.RPCCRUDServiceAsync.i.fetchList(new Page(), supporterFetchQuery, new AsyncCallback<DTOFetchList<Invitation2SupporterDTO>>() {
 
@@ -82,7 +145,7 @@ public class HeroPageWidget extends WidgetView {
 
 				if (childrenDTO.size() > 0) {
 
-					supporterTreeSlot.add(new SupporterTreeWidget(supporterDTO));
+					supporterTreeSlot.add(new SupporterTreeWidget(loggedInSupporterDTO, rootSupporterDTO));
 
 				} else {
 
@@ -95,7 +158,6 @@ public class HeroPageWidget extends WidgetView {
 			}
 
 		});
-
 	}
 
 	private ClickHandler inviteClickHandler = new ClickHandler() {
@@ -113,7 +175,7 @@ public class HeroPageWidget extends WidgetView {
 
 			};
 
-			HowToInviteWidget content = new HowToInviteWidget(supporterDTO) {
+			HowToInviteWidget content = new HowToInviteWidget(loggedInSupporterDTO) {
 
 				@Override
 				protected void onDismiss() {
@@ -138,7 +200,7 @@ public class HeroPageWidget extends WidgetView {
 
 			ActorStatics.fireActorEvent("popup", "askingForName");
 
-			AskForNameWidget contentWidget = new AskForNameWidget(supporterDTO) {
+			AskForNameWidget contentWidget = new AskForNameWidget(loggedInSupporterDTO) {
 
 				@Override
 				protected void onDismiss() {
@@ -169,7 +231,7 @@ public class HeroPageWidget extends WidgetView {
 
 			ActorStatics.fireActorEvent("popup", "askingForEmail");
 
-			AskForEmailWidget contentWidget = new AskForEmailWidget(supporterDTO) {
+			AskForEmailWidget contentWidget = new AskForEmailWidget(loggedInSupporterDTO) {
 
 				@Override
 				protected void onDismiss() {

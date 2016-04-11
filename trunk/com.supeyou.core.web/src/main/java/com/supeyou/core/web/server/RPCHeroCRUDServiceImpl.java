@@ -6,14 +6,22 @@ import javax.servlet.annotation.WebServlet;
 
 import com.supeyou.core.iface.dto.HeroDTO;
 import com.supeyou.core.iface.dto.HeroFetchQuery;
+import com.supeyou.core.impl.HeroCRUDServiceImpl;
 import com.supeyou.core.web.client.rpc.hero.RPCCRUDService;
 import com.supeyou.crudie.iface.CRUDService;
+import com.supeyou.crudie.iface.datatype.CRUDException;
+import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.web.server.RPCAbstrCRUDServiceImpl;
 
 @WebServlet("/RPCHeroCRUDServiceImpl")
 public class RPCHeroCRUDServiceImpl extends RPCAbstrCRUDServiceImpl<HeroDTO, HeroFetchQuery> implements RPCCRUDService {
 
 	private static final long serialVersionUID = 893034576566110L;
+
+	@Override
+	public UserDTO getUser(HeroDTO heroDTO) throws CRUDException {
+		return HeroCRUDServiceImpl.i().getUser(getActor(), heroDTO);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

@@ -21,7 +21,9 @@ public class RPCSupporterCRUDServiceImpl extends RPCAbstrCRUDServiceImpl<Support
 
 	@Override
 	public SupporterDTO get(UserDTO userDTO, HeroDTO heroDTO) throws CRUDException {
+
 		return ((SupporterCRUDService) getCRUDService()).get(getActor(), userDTO, heroDTO);
+
 	}
 
 	@Override
