@@ -4,6 +4,7 @@
 
 
 body {
+	animation: default;
 	background: #fff !important;
   	position:relative !important;
 }
