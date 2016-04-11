@@ -24,6 +24,7 @@ import com.supeyou.crudie.iface.dto.DTOFetchList;
 public class SupporterTreeWidget extends WidgetView {
 
 	private final SupporterDTO supporterDTO;
+	private final SupporterDTO loggedInSupporterDTO;
 
 	private List<Invitation2SupporterDTO> childrenSupporterDTO;
 
@@ -40,11 +41,11 @@ public class SupporterTreeWidget extends WidgetView {
 
 	private COLLAPSE_MODE collapseMode = COLLAPSE_MODE.COLLAPSED;
 
-	public SupporterTreeWidget(final SupporterDTO supporterDTO) {
-		this(supporterDTO, false, null, 1);
+	public SupporterTreeWidget(final SupporterDTO loggedInSupporterDTO, final SupporterDTO supporterDTO) {
+		this(loggedInSupporterDTO, supporterDTO, false, null, 1);
 	}
 
-	private SupporterTreeWidget(final SupporterDTO supporterDTO, boolean treeDestroying, final SupporterTreeWidget parentWidget, Integer level) {
+	private SupporterTreeWidget(final SupporterDTO loggedInSupporterDTO, final SupporterDTO supporterDTO, boolean treeDestroying, final SupporterTreeWidget parentWidget, Integer level) {
 		this.treeDestroying = treeDestroying;
 
 		if (treeDestroying) {
@@ -57,6 +58,7 @@ public class SupporterTreeWidget extends WidgetView {
 
 		this.parentWidget = parentWidget;
 
+		this.loggedInSupporterDTO = loggedInSupporterDTO;
 		this.supporterDTO = supporterDTO;
 
 		if (level < 2) {
@@ -109,7 +111,7 @@ public class SupporterTreeWidget extends WidgetView {
 
 			for (Invitation2SupporterDTO childSupporterDTO : childrenSupporterDTO) {
 
-				childrenSlot.add(new SupporterTreeWidget(childSupporterDTO.getDtoB(), childSupporterDTO.getTreeDestroying(), thisWidget, new Integer(level + 1)));
+				childrenSlot.add(new SupporterTreeWidget(loggedInSupporterDTO, childSupporterDTO.getDtoB(), childSupporterDTO.getTreeDestroying(), thisWidget, new Integer(level + 1)));
 
 			}
 
