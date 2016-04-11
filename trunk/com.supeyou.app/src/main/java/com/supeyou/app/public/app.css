@@ -180,6 +180,7 @@ body {
 	background-color: #F1F1F1;
 } 
 .main-menu .menu > *.selected {
+	animation: default; /*preventing unwanted animation via stylesheet injection*/
 	color:black;
 	background-color: #A0C8F3;
 } 
