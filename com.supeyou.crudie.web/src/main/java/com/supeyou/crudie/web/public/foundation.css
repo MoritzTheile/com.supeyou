@@ -138,7 +138,7 @@
 	position:absolute;
 	top:0px;
 	left: 0px;
-	width: 300px;
+	/* width: 300px; */
 	padding: 6px 12px 6px 32px;
 	border-radius: 5px;
 	transition: all 0.40s ease-in-out;
