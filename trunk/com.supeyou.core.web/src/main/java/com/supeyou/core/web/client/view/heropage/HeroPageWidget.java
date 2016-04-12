@@ -1,5 +1,7 @@
 package com.supeyou.core.web.client.view.heropage;
 
+import java.util.List;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -10,6 +12,7 @@ import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
 import com.supeyou.core.iface.dto.Invitation2SupporterFetchQuery;
 import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
+import com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.view.herocard.HeroCardWidget;
 import com.supeyou.core.web.client.view.herocard.HeroCardWidget.VIEW;
 import com.supeyou.core.web.client.view.heropage.donate.DonateWidget;
@@ -174,7 +177,22 @@ public class HeroPageWidget extends WidgetView {
 
 				if (childrenDTO.size() > 0) {
 
-					supporterTreeSlot.add(new SupporterTreeWidget(loggedInSupporterDTO, rootSupporterDTO));
+					RPCCRUDServiceAsync.i.getSupporterInPathToRoot(loggedInSupporterDTO, new AsyncCallback<List<SupporterDTO>>() {
+
+						@Override
+						public void onSuccess(List<SupporterDTO> result) {
+
+							supporterTreeSlot.add(new SupporterTreeWidget(loggedInSupporterDTO, rootSupporterDTO, result));
+
+						}
+
+						@Override
+						public void onFailure(Throwable caught) {
+
+							caught.printStackTrace();
+
+						}
+					});
 
 				} else {
 

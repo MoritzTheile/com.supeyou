@@ -1,5 +1,7 @@
 package com.supeyou.core.web.client.rpc.supporter;
 
+import java.util.List;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.supeyou.core.iface.dto.HeroDTO;
@@ -15,5 +17,7 @@ public interface RPCCRUDServiceAsync extends RPCAbstractCRUDServiceAsync<Support
 	void get(UserDTO userDTO, HeroDTO heroDTO, AsyncCallback<SupporterDTO> callback);
 
 	void getOrCreateRootSupporter(HeroDTO heroDTO, AsyncCallback<SupporterDTO> callback);
+
+	void getSupporterInPathToRoot(SupporterDTO supporterDTO, AsyncCallback<List<SupporterDTO>> callback);
 
 }
