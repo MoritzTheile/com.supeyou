@@ -291,6 +291,7 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 
 	@Override
 	public List<SupporterDTO> getSupporterInPathToRoot(UserDTO actorDTO, final SupporterDTO supporterDTO) throws CRUDException {
+
 		return new TransactionTemplate<List<SupporterDTO>>(actorDTO, STATICS.getEntityManager()) {
 
 			public void checkPermissions(UserEntity actor) throws CRUDException {

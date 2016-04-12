@@ -1,5 +1,7 @@
 package com.supeyou.core.web.client.rpc.supporter;
 
+import java.util.List;
+
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import com.supeyou.core.iface.dto.HeroDTO;
@@ -15,5 +17,7 @@ public interface RPCCRUDService extends RemoteService, RPCAbstractCRUDService<Su
 	SupporterDTO get(UserDTO userDTO, HeroDTO heroDTO) throws CRUDException;
 
 	SupporterDTO getOrCreateRootSupporter(HeroDTO heroDTO) throws CRUDException;
+
+	List<SupporterDTO> getSupporterInPathToRoot(SupporterDTO supporterDTO) throws CRUDException;
 
 }

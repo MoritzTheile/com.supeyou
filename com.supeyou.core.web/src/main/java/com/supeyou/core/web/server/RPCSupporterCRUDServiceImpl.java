@@ -1,6 +1,7 @@
 package com.supeyou.core.web.server;
 
 import java.lang.reflect.Method;
+import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -28,7 +29,13 @@ public class RPCSupporterCRUDServiceImpl extends RPCAbstrCRUDServiceImpl<Support
 
 	@Override
 	public SupporterDTO getOrCreateRootSupporter(HeroDTO heroDTO) throws CRUDException {
+
 		return ((SupporterCRUDService) getCRUDService()).getOrCreateRootSupporter(getActor(), heroDTO);
+	}
+
+	@Override
+	public List<SupporterDTO> getSupporterInPathToRoot(SupporterDTO supporterDTO) throws CRUDException {
+		return ((SupporterCRUDService) getCRUDService()).getSupporterInPathToRoot(getActor(), supporterDTO);
 	}
 
 	@SuppressWarnings("unchecked")

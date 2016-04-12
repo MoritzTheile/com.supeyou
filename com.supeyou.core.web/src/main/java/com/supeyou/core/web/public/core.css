@@ -353,6 +353,14 @@
   	background-size:32px;
 
 }
+.supportertree-root .image-slot.hero{
+	height: 36px;
+  	background-repeat: no-repeat;
+  	background-image: url("core/images/hero.png");
+  	background-size:48px;
+  	background-: 16px;
+
+}
 
 .supportertree-root.gray{
     opacity: 0.5;

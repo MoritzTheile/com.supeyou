@@ -24,6 +24,7 @@ public class SupporterTreeWidget extends WidgetView {
 
 	private final SupporterDTO supporterDTO;
 	private final SupporterDTO loggedInSupporterDTO;
+	private final List<SupporterDTO> nodesToExpand;
 
 	private List<Invitation2SupporterDTO> childrenSupporterDTO;
 
@@ -40,11 +41,11 @@ public class SupporterTreeWidget extends WidgetView {
 
 	private COLLAPSE_MODE collapseMode = COLLAPSE_MODE.COLLAPSED;
 
-	public SupporterTreeWidget(final SupporterDTO loggedInSupporterDTO, final SupporterDTO supporterDTO) {
-		this(loggedInSupporterDTO, supporterDTO, false, null, 1);
+	public SupporterTreeWidget(final SupporterDTO loggedInSupporterDTO, final SupporterDTO supporterDTO, List<SupporterDTO> nodesToExpand) {
+		this(loggedInSupporterDTO, supporterDTO, nodesToExpand, false, null, 1);
 	}
 
-	private SupporterTreeWidget(final SupporterDTO loggedInSupporterDTO, final SupporterDTO supporterDTO, boolean treeDestroying, final SupporterTreeWidget parentWidget, Integer level) {
+	private SupporterTreeWidget(final SupporterDTO loggedInSupporterDTO, final SupporterDTO supporterDTO, List<SupporterDTO> nodesToExpand, boolean treeDestroying, final SupporterTreeWidget parentWidget, Integer level) {
 		this.treeDestroying = treeDestroying;
 
 		if (treeDestroying) {
@@ -59,6 +60,7 @@ public class SupporterTreeWidget extends WidgetView {
 
 		this.loggedInSupporterDTO = loggedInSupporterDTO;
 		this.supporterDTO = supporterDTO;
+		this.nodesToExpand = nodesToExpand;
 
 		if (level < 2) {
 			collapseMode = COLLAPSE_MODE.EXPANDED;
@@ -100,6 +102,11 @@ public class SupporterTreeWidget extends WidgetView {
 
 		if (loggedInSupporterDTO.getId().equals(supporterDTO.getId())) {
 			imageSlot.addStyleName("you");
+		} else {
+			if (level == 1) {
+				// we can assume that it is the hero
+				imageSlot.addStyleName("hero");
+			}
 		}
 
 		edgeSlot.clear();
@@ -114,7 +121,7 @@ public class SupporterTreeWidget extends WidgetView {
 
 			for (Invitation2SupporterDTO childSupporterDTO : childrenSupporterDTO) {
 
-				childrenSlot.add(new SupporterTreeWidget(loggedInSupporterDTO, childSupporterDTO.getDtoB(), childSupporterDTO.getTreeDestroying(), thisWidget, new Integer(level + 1)));
+				childrenSlot.add(new SupporterTreeWidget(loggedInSupporterDTO, childSupporterDTO.getDtoB(), nodesToExpand, childSupporterDTO.getTreeDestroying(), thisWidget, new Integer(level + 1)));
 
 			}
 
