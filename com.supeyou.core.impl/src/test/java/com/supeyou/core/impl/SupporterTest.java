@@ -2,11 +2,14 @@ package com.supeyou.core.impl;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 import com.supeyou.core.iface.dto.Invitation2SupporterDTO;
 import com.supeyou.core.iface.dto.Invitation2SupporterFetchQuery;
+import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.impl.initialdata.InitialCoreData;
 import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.Page;
@@ -38,4 +41,22 @@ public class SupporterTest {
 		Assert.assertEquals(3, fetchList.size());
 
 	}
+
+	@Test
+	public void testb() throws CRUDException {
+
+		assertNotNull(InitialCoreData.i().admin);
+
+		List<SupporterDTO> supporterInPathToRoot = SupporterCRUDServiceImpl.i().getSupporterInPathToRoot(InitialCoreData.i().admin, InitialCoreData.i().supporter_Eugen);
+
+		Assert.assertEquals(5, supporterInPathToRoot.size());
+
+		Assert.assertTrue(supporterInPathToRoot.contains(InitialCoreData.i().supporter_Eugen));
+		Assert.assertTrue(supporterInPathToRoot.contains(InitialCoreData.i().supporter_Andrea));
+		Assert.assertTrue(supporterInPathToRoot.contains(InitialCoreData.i().supporter_Hermann));
+		Assert.assertTrue(supporterInPathToRoot.contains(InitialCoreData.i().supporter_Hugo));
+		Assert.assertTrue(supporterInPathToRoot.contains(InitialCoreData.i().rootSupporter_Martina));
+
+	}
+
 }
