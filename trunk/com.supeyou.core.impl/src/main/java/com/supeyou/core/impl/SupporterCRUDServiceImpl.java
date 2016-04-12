@@ -2,6 +2,7 @@ package com.supeyou.core.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -285,6 +286,58 @@ public class SupporterCRUDServiceImpl extends AbstrCRUDServiceImpl<SupporterDTO,
 		}
 
 		return null;
+
+	}
+
+	@Override
+	public List<SupporterDTO> getSupporterInPathToRoot(UserDTO actorDTO, final SupporterDTO supporterDTO) throws CRUDException {
+		return new TransactionTemplate<List<SupporterDTO>>(actorDTO, STATICS.getEntityManager()) {
+
+			public void checkPermissions(UserEntity actor) throws CRUDException {
+
+				// STATICS.checkActorNotNull(actor);
+				// STATICS.checkActorIsAdmin(actor);
+
+			}
+
+			protected List<SupporterDTO> transactionBody() throws Exception {
+
+				List<SupporterEntity> supporterEntityList = new ArrayList<>();
+
+				recurseCollect(em, em.find(SupporterEntity.class, supporterDTO.getId().value()), supporterEntityList);
+
+				List<SupporterDTO> supporterDTOList = new ArrayList<>();
+
+				for (SupporterEntity entity : supporterEntityList) {
+
+					SupporterDTO dto = helper.entity2DTO(entity);
+
+					postprocessEntity2DTO(em, entity, dto);
+
+					supporterDTOList.add(dto);
+
+				}
+
+				return supporterDTOList;
+
+			}
+
+			private void recurseCollect(EntityManager em, SupporterEntity aSupporterEntity, List<SupporterEntity> collectedAncestorSupporters) {
+
+				Collection<SupporterEntity> directAncestorSupporters = getDirectAncestors(em, aSupporterEntity, true);
+
+				collectedAncestorSupporters.add(aSupporterEntity);
+
+				for (SupporterEntity supporterEntity : directAncestorSupporters) {
+
+					// recursion
+					recurseCollect(em, supporterEntity, collectedAncestorSupporters);
+
+				}
+
+			}
+
+		}.execute();
 
 	}
 
