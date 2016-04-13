@@ -1,5 +1,6 @@
 package com.supeyou.core.web.client.view.heropage.supportertree;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.dom.client.Element;
@@ -45,7 +46,7 @@ public class SupporterTreeWidget extends WidgetView {
 		this(loggedInSupporterDTO, supporterDTO, nodesToExpand, false, null, 1);
 	}
 
-	private SupporterTreeWidget(final SupporterDTO loggedInSupporterDTO, final SupporterDTO supporterDTO, List<SupporterDTO> nodesToExpand, boolean treeDestroying, final SupporterTreeWidget parentWidget, Integer level) {
+	private SupporterTreeWidget(final SupporterDTO loggedInSupporterDTO, final SupporterDTO supporterDTO, List<SupporterDTO> nodesToExpand_, boolean treeDestroying, final SupporterTreeWidget parentWidget, Integer level) {
 		this.treeDestroying = treeDestroying;
 
 		if (treeDestroying) {
@@ -60,11 +61,11 @@ public class SupporterTreeWidget extends WidgetView {
 
 		this.loggedInSupporterDTO = loggedInSupporterDTO;
 		this.supporterDTO = supporterDTO;
-		this.nodesToExpand = nodesToExpand;
+		this.nodesToExpand = nodesToExpand_;
 
-		if (level < 2) {
-			collapseMode = COLLAPSE_MODE.EXPANDED;
-		}
+		// if (level < 2) {
+		// collapseMode = COLLAPSE_MODE.EXPANDED;
+		// }
 
 		Invitation2SupporterFetchQuery supporterFetchQuery = new Invitation2SupporterFetchQuery();
 
@@ -82,7 +83,26 @@ public class SupporterTreeWidget extends WidgetView {
 			@Override
 			public void onSuccess(DTOFetchList<Invitation2SupporterDTO> childrenDTO) {
 
-				childrenSupporterDTO = childrenDTO;
+				childrenSupporterDTO = new ArrayList<>();
+
+				// to have the path to logged in user always on the left of tree:
+				// first adding the node to expand/the root to logged in user
+				for (Invitation2SupporterDTO invitation2SupporterDTO : childrenDTO) {
+
+					if (nodesToExpand.contains(invitation2SupporterDTO.getDtoB())) {
+						childrenSupporterDTO.add(invitation2SupporterDTO);
+					}
+
+				}
+
+				// than adding rest
+				for (Invitation2SupporterDTO invitation2SupporterDTO : childrenDTO) {
+
+					if (!nodesToExpand.contains(invitation2SupporterDTO.getDtoB())) {
+						childrenSupporterDTO.add(invitation2SupporterDTO);
+					}
+
+				}
 
 				render();
 
@@ -100,36 +120,87 @@ public class SupporterTreeWidget extends WidgetView {
 		// nameLabel.getElement().getStyle().setDisplay(Display.NONE);
 		// }
 
-		if (loggedInSupporterDTO.getId().equals(supporterDTO.getId())) {
-			imageSlot.addStyleName("you");
+		if (supporterIsYou(loggedInSupporterDTO, supporterDTO)) {
+			root.addStyleName("you");
+			nameLabel.setHTML(getHtml(supporterDTO) + " (You)");
+		} else if (supporterIsHero(loggedInSupporterDTO, supporterDTO)) {
+			root.addStyleName("hero");
+			nameLabel.setHTML(getHtml(supporterDTO) + " (Hero)");
 		} else {
-			if (level == 1) {
-				// we can assume that it is the hero
-				imageSlot.addStyleName("hero");
-			}
+			nameLabel.setHTML(getHtml(supporterDTO));
+
 		}
 
 		edgeSlot.clear();
 		childrenSlot.clear();
 
-		amountLabel.setText(HELPER.cent2euro((getAmountValueNullsave(supporterDTO.getOwnAmount())/* + getAmountValueNullsave(supporterDTO.getDecendantAmount()) */)) + " " + Text.i.EUROSYMBOL());
+		if (supporterIsHero(loggedInSupporterDTO, supporterDTO)) {
+			amountLabel.setText(HELPER.cent2euro((getAmountValueNullsave(supporterDTO.getDecendantAmount()) + getAmountValueNullsave(supporterDTO.getDecendantAmount()))) + " " + Text.i.EUROSYMBOL());
+		} else {
+			amountLabel.setText(HELPER.cent2euro((getAmountValueNullsave(supporterDTO.getOwnAmount())/* + getAmountValueNullsave(supporterDTO.getDecendantAmount()) */)) + " " + Text.i.EUROSYMBOL());
+		}
+
+		// not showing zero values
+		if (0 < getAmountValueNullsave(supporterDTO.getOwnAmount()) || supporterIsHero(loggedInSupporterDTO, supporterDTO)) {
+			amountLabel.removeStyleName("hide");
+		} else {
+			amountLabel.addStyleName("hide");
+		}
 		amountLabel.setTitle(" decendants=" + supporterDTO.getDecendentCount());
 
-		nameLabel.setHTML(getHtml(supporterDTO));
-
+		int shownChildren = 0;
 		if (COLLAPSE_MODE.EXPANDED.equals(collapseMode)) {
 
 			for (Invitation2SupporterDTO childSupporterDTO : childrenSupporterDTO) {
-
+				shownChildren++;
 				childrenSlot.add(new SupporterTreeWidget(loggedInSupporterDTO, childSupporterDTO.getDtoB(), nodesToExpand, childSupporterDTO.getTreeDestroying(), thisWidget, new Integer(level + 1)));
 
 			}
 
+			expandButtonSlot.clear();
+			// if (level > 1)
+			{
+				Label collapseButton = new Label("-");
+				collapseButton.addClickHandler(new ClickHandler() {
+
+					@Override
+					public void onClick(ClickEvent event) {
+
+						collapseMode = COLLAPSE_MODE.COLLAPSED;
+
+						render();
+
+					}
+				});
+				expandButtonSlot.add(collapseButton);
+			}
 		} else {
 
 			if (!childrenSupporterDTO.isEmpty() && !treeDestroying) {
 
-				Label expandButton = new Label("+ " + supporterDTO.getDecendentCount());
+				Label expandButton = new Label("+");
+
+				if (nodesToExpand.contains(supporterDTO)) {
+
+					expandButton.setText("+ " + (childrenSupporterDTO.size() - 1));
+
+					for (Invitation2SupporterDTO childSupporterDTO : childrenSupporterDTO) {
+
+						if (!nodesToExpand.contains(childSupporterDTO.getDtoB())) {
+
+							continue;
+
+						}
+						shownChildren++;
+						childrenSlot.add(new SupporterTreeWidget(loggedInSupporterDTO, childSupporterDTO.getDtoB(), nodesToExpand, childSupporterDTO.getTreeDestroying(), thisWidget, new Integer(level + 1)));
+
+					}
+
+				} else {
+
+					expandButton.setText("+ " + childrenSupporterDTO.size());
+
+				}
 
 				expandButton.addClickHandler(new ClickHandler() {
 
@@ -142,8 +213,10 @@ public class SupporterTreeWidget extends WidgetView {
 
 					}
 				});
-
-				edgeSlot.add(expandButton);
+				expandButtonSlot.clear();
+				if (childrenSupporterDTO.size() - shownChildren > 0) {
+					expandButtonSlot.add(expandButton);
+				}
 
 			}
 
@@ -153,6 +226,16 @@ public class SupporterTreeWidget extends WidgetView {
 
 		}
 
+	}
+
+	private boolean supporterIsHero(SupporterDTO loggedInSupporterDTO2, SupporterDTO supporterDTO2) {
+		// we can assume its the hero:
+		return !supporterIsYou(loggedInSupporterDTO2, supporterDTO2) && level == 1;
+
+	}
+
+	private boolean supporterIsYou(SupporterDTO loggedInSupporterDTO2, SupporterDTO supporterDTO2) {
+		return loggedInSupporterDTO.getId().equals(supporterDTO.getId());
 	}
 
 	public static Integer getAmountValueNullsave(AmountType amountType) {

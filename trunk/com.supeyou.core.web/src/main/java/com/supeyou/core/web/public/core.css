@@ -301,16 +301,14 @@
 .supportertree-root .amount-label{
 	margin: 0 12px;
 }
-
-.supportertree-root .edge-slot>.gwt-Label{
-	margin: 12px 48px;
-	padding: 3px 10px 5px 6px;
-	font-size:16px;
+.supportertree-root .expand-button-slot>.gwt-Label{
+	display: inline-block;
+	margin: 6px 48px;
+	padding: 0px 7px 1px 6px;
+	font-size:14px;
 	background-color: lightgray;
 	color: white;
-	border-radius: 112px;
-	
-
+	border-radius: 12px;
 	cursor: pointer;
 }
 
@@ -323,8 +321,7 @@
 }
 
 .supportertree-root .edge-slot{
-	height: 50px;
-	
+	height: 24px;
 }
 
 .supporter-root .you-image{
@@ -338,7 +335,14 @@
 	
 }
 
-
+.supportertree-root .invited-by-slot{
+	height: 64px;
+	min-width: 64px;
+	background-repeat: no-repeat;
+  	background-image: url("core/images/invitedby.png");
+  	background-position:50% 3px ;
+  	background-size: 60px;
+}
 .supportertree-root .image-slot{
 	height: 20px;
 	background-repeat: no-repeat;
@@ -346,20 +350,25 @@
   	background-position:50% 0px ;
 }
 
-.supportertree-root .image-slot.you{
+.supportertree-root.you>.image-slot{
 	height: 32px;
   	background-repeat: no-repeat;
   	background-image: url("core/images/emoticon.smile.large.anim.gif");
   	background-size:32px;
 
 }
-.supportertree-root .image-slot.hero{
+.supportertree-root.hero>.image-slot{
 	height: 36px;
   	background-repeat: no-repeat;
   	background-image: url("core/images/hero.png");
   	background-size:48px;
   	background-: 16px;
 
+}
+
+.supportertree-root.you>.name-Label, .supportertree-root.hero>.name-Label{
+	font-size: 14px;
+	color:gray;
 }
 
 .supportertree-root.gray{
@@ -382,8 +391,38 @@
 	padding: 8px 0 22px 0;
 }
 
+.heropage-root .dont-break-invit1{
+	display:inline-block;
+	padding: 30px 0px 30px 0px;
+	width:240px;
+	font-size: 16px;
+    text-align: left;
+    color: gray;
+}
+
+
+.heropage-root .dont-break-invit2{
+	display:inline-block;
+	padding: 0px 0px 30px 0px;
+	width:240px;
+	font-size: 16px;
+    text-align: left;
+    color: gray;
+}
+
+.heropage-root .please-donate{
+	display:inline-block;
+	padding: 60px 0px 0px 0px;
+	width:240px;
+	font-size: 16px;
+    text-align: left;
+    color: gray;
+}
+
+
+
 .heropage-button-slot.donation{
-	margin-top: 12px;
+	margin-top: 32px;
 	text-align: center;
 	padding: 8px 0 22px 0;
 }

@@ -135,4 +135,10 @@ public interface Text extends Messages {
 
 	String ASK_FOR_EMAIL_Name_HTML();
 
+	String DONTBREAKINVIT1();
+
+	String DONTBREAKINVIT2();
+
+	String PLEASE_DONATE();
+
 }

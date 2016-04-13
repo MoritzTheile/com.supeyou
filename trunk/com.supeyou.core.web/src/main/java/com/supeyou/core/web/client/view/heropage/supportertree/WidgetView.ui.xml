@@ -7,10 +7,11 @@
 		type='com.supeyou.core.web.client.resources.i18n.Text' />
  
 	<g:FlowPanel styleName="supportertree-root" ui:field="root">
-	
+		<g:FlowPanel styleName="invited-by-slot"></g:FlowPanel>
 		<g:Label styleName="amount-label" ui:field="amountLabel"/>
 		<g:FlowPanel styleName="image-slot" ui:field="imageSlot"/>
 		<g:HTML styleName="name-Label" ui:field="nameLabel"/>
+		<g:FlowPanel styleName="expand-button-slot" ui:field="expandButtonSlot"/>
 		<g:FlowPanel styleName="edge-slot" ui:field="edgeSlot"/>
 		<g:FlowPanel styleName="children-slot" ui:field="childrenSlot"/>
 		
