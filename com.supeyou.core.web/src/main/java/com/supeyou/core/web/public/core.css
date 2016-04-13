@@ -350,6 +350,7 @@ vertical-align: top;
 	background-size: 60px;
 }
 .supportertree-root .image-slot{
+	min-width: 48px;
 	height: 20px;
 	background-repeat: no-repeat;
   	background-image: url("core/images/emoticon.smile.png");
@@ -357,7 +358,7 @@ vertical-align: top;
 }
 
 .supportertree-root.you>.image-slot{
-	height: 32px;
+	height: 38px;
   	background-repeat: no-repeat;
   	background-image: url("core/images/emoticon.smile.large.anim.gif");
   	background-size:32px;

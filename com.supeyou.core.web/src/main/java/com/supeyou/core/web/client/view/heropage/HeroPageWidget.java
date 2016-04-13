@@ -220,7 +220,7 @@ public class HeroPageWidget extends WidgetView {
 			final PopupWidget popupWidget = new PopupWidget() {
 
 				public void onClose() {
-					// askForEmail();
+					askForEmail();
 				};
 
 			};
@@ -267,7 +267,6 @@ public class HeroPageWidget extends WidgetView {
 
 	}
 
-	@SuppressWarnings("unused")
 	private void askForEmail() {
 
 		if (HELPER.isAnonymous(LoginStateModel.i().getLoggedInUser())) {
