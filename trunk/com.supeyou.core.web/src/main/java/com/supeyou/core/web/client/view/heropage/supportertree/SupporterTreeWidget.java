@@ -135,7 +135,7 @@ public class SupporterTreeWidget extends WidgetView {
 		childrenSlot.clear();
 
 		if (supporterIsHero(loggedInSupporterDTO, supporterDTO)) {
-			amountLabel.setText(HELPER.cent2euro((getAmountValueNullsave(supporterDTO.getDecendantAmount()) + getAmountValueNullsave(supporterDTO.getDecendantAmount()))) + " " + Text.i.EUROSYMBOL());
+			amountLabel.setText(HELPER.cent2euro((getAmountValueNullsave(supporterDTO.getDecendantAmount()) + getAmountValueNullsave(supporterDTO.getOwnAmount()))) + " " + Text.i.EUROSYMBOL());
 		} else {
 			amountLabel.setText(HELPER.cent2euro((getAmountValueNullsave(supporterDTO.getOwnAmount())/* + getAmountValueNullsave(supporterDTO.getDecendantAmount()) */)) + " " + Text.i.EUROSYMBOL());
 		}
@@ -228,6 +228,14 @@ public class SupporterTreeWidget extends WidgetView {
 
 	}
 
+	// protected void onLoad() {
+	//
+	// if (parentWidget != null) {
+	// parentWidget.childFinishedLoading(supporterDTO);
+	// }
+	//
+	// }
+
 	private boolean supporterIsHero(SupporterDTO loggedInSupporterDTO2, SupporterDTO supporterDTO2) {
 		// we can assume its the hero:
 		return !supporterIsYou(loggedInSupporterDTO2, supporterDTO2) && level == 1;
@@ -276,6 +284,7 @@ public class SupporterTreeWidget extends WidgetView {
 		return html;
 	}
 
+	@SuppressWarnings("unused")
 	private String getClickedLinks(SupporterDTO supporterDTO2) {
 
 		if (supporterDTO2.getInvitationDTOs().size() == 0) {
@@ -299,10 +308,13 @@ public class SupporterTreeWidget extends WidgetView {
 	}
 
 	protected void childFinishedLoading(SupporterDTO childSupporterDTO) {
+
 		renderEdges();
+
 		if (parentWidget != null) {
 			parentWidget.childFinishedLoading(supporterDTO);
 		}
+
 	};
 
 	/**

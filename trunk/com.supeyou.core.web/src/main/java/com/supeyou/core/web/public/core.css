@@ -291,19 +291,23 @@
 }
 .supportertree-root{
 	
-	white-space: nowrap;
-	padding: 0;
-	display: inline-block;
-	vertical-align: top;
+/* width: 100%; */
 	
+white-space: nowrap;
+	
+padding: 0;
+	
+display: inline-block;
+	
+vertical-align: top;
 }
 
 .supportertree-root .amount-label{
-	margin: 0 12px;
+	padding: 0 12px;
 }
 .supportertree-root .expand-button-slot>.gwt-Label{
 	display: inline-block;
-	margin: 6px 48px;
+	margin: 6px 0px; 
 	padding: 0px 7px 1px 6px;
 	font-size:14px;
 	background-color: lightgray;
@@ -334,14 +338,16 @@
   	background-position: 50% 0px;
 	
 }
-
+.supportertree-root.hero> .invited-by-slot{
+	display:none;
+}
 .supportertree-root .invited-by-slot{
 	height: 64px;
-	min-width: 64px;
+	/* min-width: 64px; */
 	background-repeat: no-repeat;
-  	background-image: url("core/images/invitedby.png");
-  	background-position:50% 3px ;
-  	background-size: 60px;
+	background-image: url("core/images/invitedby.png");
+	background-position:50% 3px;
+	background-size: 60px;
 }
 .supportertree-root .image-slot{
 	height: 20px;
