@@ -9,9 +9,12 @@
 	<g:FlowPanel styleName="heropage-root" ui:field="root">
 	
 		<g:FlowPanel styleName="supporter-card-slot" ui:field="supporterCardSlot"></g:FlowPanel>
-		<g:FlowPanel styleName="heropage-button-slot donation" ui:field="donationButtonSlot"></g:FlowPanel>
-		<g:FlowPanel styleName="heropage-button-slot invitation" ui:field="invitationButtonSlot"></g:FlowPanel>
+		<g:Label styleName="dont-break-invit1" text="{text.DONTBREAKINVIT1}"></g:Label>
 		<g:FlowPanel styleName="supportertree-slot" ui:field="supporterTreeSlot"></g:FlowPanel>
+		<g:Label styleName="dont-break-invit2" text="{text.DONTBREAKINVIT2}"></g:Label>
+		<g:FlowPanel styleName="heropage-button-slot invitation" ui:field="invitationButtonSlot"></g:FlowPanel>
+		<g:Label styleName="please-donate" text="{text.PLEASE_DONATE}"></g:Label>
+		<g:FlowPanel styleName="heropage-button-slot donation" ui:field="donationButtonSlot"></g:FlowPanel>
 	
 	</g:FlowPanel>
 

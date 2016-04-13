@@ -91,6 +91,9 @@ public class HeroPageWidget extends WidgetView {
 
 		viewToggleLabel.addStyleName("tree-view-toggle-label");
 
+		// not showing for now
+		viewToggleLabel.setStyleName("hide");
+
 		if (rootOfTree.equals(ROOT_OF_TREE.LOGGED_IN_USER)) {
 
 			viewToggleLabel.setText("[Show hero on top]");

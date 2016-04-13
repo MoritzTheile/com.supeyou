@@ -209,3 +209,7 @@ body {
 	font-size:8px;
 	margin-left: 4px;
 }
+
+.hide{
+	display: none;
+}

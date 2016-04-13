@@ -23,6 +23,8 @@ public class WidgetView extends Composite {
 	@UiField
 	HTML nameLabel;
 	@UiField
+	FlowPanel expandButtonSlot;
+	@UiField
 	FlowPanel edgeSlot;
 	@UiField
 	FlowPanel childrenSlot;
