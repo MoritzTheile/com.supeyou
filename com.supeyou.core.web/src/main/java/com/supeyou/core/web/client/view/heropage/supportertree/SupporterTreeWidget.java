@@ -122,10 +122,10 @@ public class SupporterTreeWidget extends WidgetView {
 
 		if (supporterIsYou(loggedInSupporterDTO, supporterDTO)) {
 			root.addStyleName("you");
-			nameLabel.setHTML(getHtml(supporterDTO) + " (You)");
+			nameLabel.setHTML(getHtml(supporterDTO) + "<br> (You)");
 		} else if (supporterIsHero(loggedInSupporterDTO, supporterDTO)) {
 			root.addStyleName("hero");
-			nameLabel.setHTML(getHtml(supporterDTO) + " (Hero)");
+			nameLabel.setHTML(getHtml(supporterDTO) + "<br> (Hero)");
 		} else {
 			nameLabel.setHTML(getHtml(supporterDTO));
 
