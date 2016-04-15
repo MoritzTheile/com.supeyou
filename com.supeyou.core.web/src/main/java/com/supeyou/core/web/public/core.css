@@ -342,12 +342,13 @@ vertical-align: top;
 	display:none;
 }
 .supportertree-root .invited-by-slot{
+	margin-right: 0px;
 	height: 64px;
 	/* min-width: 64px; */
 	background-repeat: no-repeat;
 	background-image: url("core/images/invitedby.png");
-	background-position:50% 3px;
-	background-size: 60px;
+	background-position:50% 0px;
+	
 }
 .supportertree-root .image-slot{
 	min-width: 48px;
@@ -387,8 +388,8 @@ vertical-align: top;
 }
 
 .supportertree-root .name-Label{
-	
-	padding: 0 6px;
+	width: 90px;
+	padding: 0 0px;
 	font-size: 9px;
 	
 }

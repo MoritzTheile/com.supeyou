@@ -186,11 +186,12 @@ public class SupporterTreeWidget extends WidgetView {
 
 					for (Invitation2SupporterDTO childSupporterDTO : childrenSupporterDTO) {
 
-						if (!nodesToExpand.contains(childSupporterDTO.getDtoB())) {
+						if (!nodesToExpand.contains(childSupporterDTO.getDtoB()) || childSupporterDTO.getTreeDestroying()) {
 
 							continue;
 
 						}
+
 						shownChildren++;
 						childrenSlot.add(new SupporterTreeWidget(loggedInSupporterDTO, childSupporterDTO.getDtoB(), nodesToExpand, childSupporterDTO.getTreeDestroying(), thisWidget, new Integer(level + 1)));
 
