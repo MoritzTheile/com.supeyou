@@ -9,6 +9,7 @@
 	<g:FlowPanel styleName="supportertree-root" ui:field="root">
 		<g:FlowPanel styleName="invited-by-slot"></g:FlowPanel>
 		<g:Label styleName="amount-label" ui:field="amountLabel"/>
+		<g:Label styleName="auth-token-label" ui:field="authTokenLabel"/>
 		<g:FlowPanel styleName="image-slot" ui:field="imageSlot"/>
 		<g:HTML styleName="name-Label" ui:field="nameLabel"/>
 		<g:FlowPanel styleName="expand-button-slot" ui:field="expandButtonSlot"/>

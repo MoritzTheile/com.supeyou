@@ -369,6 +369,9 @@
   	background-: 16px;
 
 }
+.supportertree-root.hero>.name-Label{
+	margin-bottom: 12px;
+}
 
 .supportertree-root.you>.name-Label, .supportertree-root.hero>.name-Label{
 	font-size: 14px;
@@ -400,8 +403,8 @@
 	padding: 30px 0px 30px 0px;
 	width:240px;
 	font-size: 16px;
-    text-align: left;
-    color: gray;
+	/* text-align: left; */
+	color: gray;
 }
 
 
@@ -410,8 +413,8 @@
 	padding: 0px 0px 30px 0px;
 	width:240px;
 	font-size: 16px;
-    text-align: left;
-    color: gray;
+	/* text-align: left; */
+	color: gray;
 }
 
 .heropage-root .please-donate{
@@ -419,8 +422,8 @@
 	padding: 60px 0px 0px 0px;
 	width:240px;
 	font-size: 16px;
-    text-align: left;
-    color: gray;
+	/* text-align: left; */
+	color: gray;
 }
 
 

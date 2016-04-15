@@ -120,6 +120,8 @@ public class SupporterTreeWidget extends WidgetView {
 		// nameLabel.getElement().getStyle().setDisplay(Display.NONE);
 		// }
 
+		authTokenLabel.setText(supporterDTO.getUserDTO().getAuthToken().value());
+		authTokenLabel.addStyleName("hide");
 		if (supporterIsYou(loggedInSupporterDTO, supporterDTO)) {
 			root.addStyleName("you");
 			nameLabel.setHTML(getHtml(supporterDTO) + "<br> (You)");

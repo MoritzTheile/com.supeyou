@@ -19,6 +19,8 @@ public class WidgetView extends Composite {
 	@UiField
 	Label amountLabel;
 	@UiField
+	Label authTokenLabel;
+	@UiField
 	FlowPanel imageSlot;
 	@UiField
 	HTML nameLabel;
