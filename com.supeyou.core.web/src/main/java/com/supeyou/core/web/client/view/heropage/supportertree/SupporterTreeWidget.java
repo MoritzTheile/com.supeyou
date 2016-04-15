@@ -182,8 +182,6 @@ public class SupporterTreeWidget extends WidgetView {
 
 				if (nodesToExpand.contains(supporterDTO)) {
 
-					expandButton.setText("+ " + (childrenSupporterDTO.size() - 1));
-
 					for (Invitation2SupporterDTO childSupporterDTO : childrenSupporterDTO) {
 
 						if (!nodesToExpand.contains(childSupporterDTO.getDtoB()) || childSupporterDTO.getTreeDestroying()) {
@@ -197,11 +195,9 @@ public class SupporterTreeWidget extends WidgetView {
 
 					}
 
-				} else {
-
-					expandButton.setText("+ " + childrenSupporterDTO.size());
-
 				}
+
+				expandButton.setText("+ " + (childrenSupporterDTO.size() - shownChildren));
 
 				expandButton.addClickHandler(new ClickHandler() {
 

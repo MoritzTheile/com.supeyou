@@ -291,15 +291,10 @@
 }
 .supportertree-root{
 	
-/* width: 100%; */
-	
-white-space: nowrap;
-	
-padding: 0;
-	
-display: inline-block;
-	
-vertical-align: top;
+	white-space: nowrap;
+	padding: 0;
+	display: inline-block;
+	vertical-align: top;
 }
 
 .supportertree-root .amount-label{
@@ -307,7 +302,7 @@ vertical-align: top;
 }
 .supportertree-root .expand-button-slot>.gwt-Label{
 	display: inline-block;
-	margin: 6px 0px; 
+	margin: 18px 0px;
 	padding: 0px 7px 1px 6px;
 	font-size:14px;
 	background-color: lightgray;
@@ -326,6 +321,7 @@ vertical-align: top;
 
 .supportertree-root .edge-slot{
 	height: 24px;
+	/* margin-top:12px; */
 }
 
 .supporter-root .you-image{
@@ -388,10 +384,10 @@ vertical-align: top;
 }
 
 .supportertree-root .name-Label{
-	width: 90px;
 	padding: 0 0px;
 	font-size: 9px;
-	
+	display:inline-block;
+	min-width: 96px;
 }
 
 .heropage-button-slot{
