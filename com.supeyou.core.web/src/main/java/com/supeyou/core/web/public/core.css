@@ -261,12 +261,14 @@
 }
 
 .your-decendants{
-	font-size: 16px;
+	font-size: 14px;
 	margin-top: 3px;
-	margin-bottom: 12px;
-	max-width: 100px;
+	/* margin-bottom: 12px; */
+	max-width: 128px;
 }
-
+.supporter-root.you .your-result{
+	font-size: 28px;
+}
 .supporter-root.you .your-generated-result{
 	font-size: 28px;
 }
