@@ -12,11 +12,11 @@
 			<g:Label styleName="you-label" text="{text.THATS_YOU}" ui:field="youLabel"></g:Label>
 		</g:FlowPanel>
 		<g:FlowPanel styleName="right-column" ui:field="rightColumn">
-			<g:Label styleName="your-decendants" ui:field="yourDecendants"></g:Label>
 			<g:Label styleName="your-generated-result" text="{text.EUROSYMBOL}" ui:field="yourGeneratedResult"></g:Label>
 			<g:Label styleName="your-generated-result-label" text="{text.YOUR_GENERATED_RESULT}" ui:field="yourGeneratedResultLabel"></g:Label>
 			<g:Label styleName="your-result" text="{text.EUROSYMBOL}" ui:field="yourResult"></g:Label>
 			<g:Label styleName="your-result-label" text="{text.YOUR_RESULT}" ui:field="yourResultLabel"></g:Label>
+			<g:Label styleName="your-decendants" ui:field="yourDecendants"></g:Label>
 	</g:FlowPanel>
 	</g:FlowPanel>
 
