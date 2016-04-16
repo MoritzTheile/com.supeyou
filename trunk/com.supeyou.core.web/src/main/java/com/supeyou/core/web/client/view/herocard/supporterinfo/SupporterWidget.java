@@ -23,8 +23,35 @@ public class SupporterWidget extends WidgetView {
 
 	private void pollingRender(final SupporterDTO supporterDTO) {
 
-		yourGeneratedResult.setText(HELPER.cent2euro(SupporterTreeWidget.getAmountValueNullsave(supporterDTO.getDecendantAmount()) + SupporterTreeWidget.getAmountValueNullsave(supporterDTO.getOwnAmount())) + " " + Text.i.EUROSYMBOL());
-		yourResult.setText(HELPER.cent2euro(SupporterTreeWidget.getAmountValueNullsave(supporterDTO.getOwnAmount())) + " " + Text.i.EUROSYMBOL());
+		yourDecendants.setText(supporterDTO.getDecendentCount() + " Supporter invited by you");
+
+		if (0 < SupporterTreeWidget.getAmountValueNullsave(supporterDTO.getDecendantAmount()) + SupporterTreeWidget.getAmountValueNullsave(supporterDTO.getOwnAmount())) {
+
+			yourGeneratedResult.setText(HELPER.cent2euro(SupporterTreeWidget.getAmountValueNullsave(supporterDTO.getDecendantAmount()) + SupporterTreeWidget.getAmountValueNullsave(supporterDTO.getOwnAmount())) + " " + Text.i.EUROSYMBOL());
+
+			yourGeneratedResult.removeStyleName("hide");
+			yourGeneratedResultLabel.removeStyleName("hide");
+
+		} else {
+
+			yourGeneratedResult.addStyleName("hide");
+			yourGeneratedResultLabel.addStyleName("hide");
+
+		}
+
+		if (0 < SupporterTreeWidget.getAmountValueNullsave(supporterDTO.getOwnAmount())) {
+
+			yourResult.setText(HELPER.cent2euro(SupporterTreeWidget.getAmountValueNullsave(supporterDTO.getDecendantAmount()) + SupporterTreeWidget.getAmountValueNullsave(supporterDTO.getOwnAmount())) + " " + Text.i.EUROSYMBOL());
+
+			yourResult.removeStyleName("hide");
+			yourResultLabel.removeStyleName("hide");
+
+		} else {
+
+			yourResult.addStyleName("hide");
+			yourResultLabel.addStyleName("hide");
+
+		}
 
 		new Timer() {
 

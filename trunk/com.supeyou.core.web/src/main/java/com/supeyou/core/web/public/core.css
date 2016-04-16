@@ -259,6 +259,14 @@
 	text-align:left;
 	margin: 12px 0;
 }
+
+.your-decendants{
+	font-size: 16px;
+	margin-top: 3px;
+	margin-bottom: 12px;
+	max-width: 100px;
+}
+
 .supporter-root.you .your-generated-result{
 	font-size: 28px;
 }
@@ -655,6 +663,11 @@
 	width: 64px;
 	opacity: 1;
 	cursor: pointer;
+}
+
+.hero .supportercount-slot{
+	font-size: 16px;
+	margin-bottom: 16px;
 }
 
 .hero .website-slot{
