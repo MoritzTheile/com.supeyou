@@ -76,6 +76,15 @@ public abstract class AskForEmailWidget extends WidgetView {
 
 		userDTO.setLoginId(new SingleLineString256Type(field.getValue().value()));
 
+		// useEmailFirstPartAsName
+		if (LoginStateModel.i().getLoggedInUser().getName() == null || LoginStateModel.i().getLoggedInUser().getName().equals("")) {
+
+			String[] splittedEmail = field.getValue().value().split("@");
+
+			userDTO.setName(new SingleLineString256Type(splittedEmail[0]));
+
+		}
+
 		RPCCRUDProxy.i().updadd(userDTO);
 
 		onDismiss();

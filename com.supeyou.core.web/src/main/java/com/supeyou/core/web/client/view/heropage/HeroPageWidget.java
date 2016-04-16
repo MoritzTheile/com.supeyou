@@ -18,7 +18,6 @@ import com.supeyou.core.web.client.view.herocard.HeroCardWidget.VIEW;
 import com.supeyou.core.web.client.view.heropage.donate.DonateWidget;
 import com.supeyou.core.web.client.view.heropage.howitworks.HowItWorksWidget;
 import com.supeyou.core.web.client.view.heropage.invite.askforemail.AskForEmailWidget;
-import com.supeyou.core.web.client.view.heropage.invite.askforname.AskForNameWidget;
 import com.supeyou.core.web.client.view.heropage.invite.howtoinvite.HowToInviteWidget;
 import com.supeyou.core.web.client.view.heropage.supportertree.SupporterTreeWidget;
 import com.supeyou.crudie.iface.common.HELPER;
@@ -242,31 +241,6 @@ public class HeroPageWidget extends WidgetView {
 
 	};
 
-	private void askForName() {
-
-		if (LoginStateModel.i().getLoggedInUser().getName() == null || LoginStateModel.i().getLoggedInUser().getName().equals("")) {
-
-			final PopupWidget popupWidget = new PopupWidget();
-
-			ActorStatics.fireActorEvent("popup", "askingForName");
-
-			AskForNameWidget contentWidget = new AskForNameWidget(loggedInSupporterDTO) {
-
-				@Override
-				protected void onDismiss() {
-					ActorStatics.fireActorEvent("popup", "dismiss");
-					popupWidget.closePopup();
-
-				}
-
-			};
-
-			popupWidget.init(new ContentWrapperWidget(Text.i.ASK_FOR_NAME_Header(), contentWidget));
-
-		}
-
-	}
-
 	private void askForEmail() {
 
 		if (HELPER.isAnonymous(LoginStateModel.i().getLoggedInUser())) {
@@ -274,7 +248,7 @@ public class HeroPageWidget extends WidgetView {
 			final PopupWidget popupWidget = new PopupWidget() {
 				@Override
 				public void onClose() {
-					askForName();
+					// nothing
 				}
 			};
 
@@ -294,11 +268,6 @@ public class HeroPageWidget extends WidgetView {
 			};
 
 			popupWidget.init(new ContentWrapperWidget(Text.i.ASK_FOR_EMAIL_Header(), contentWidget));
-
-		} else
-		{
-
-			askForName();
 
 		}
 

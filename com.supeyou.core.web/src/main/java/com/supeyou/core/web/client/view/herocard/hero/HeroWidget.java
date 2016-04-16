@@ -98,7 +98,25 @@ public class HeroWidget extends WidgetView {
 				}
 			}, ClickEvent.getType());
 
+			RPCCRUDServiceAsync.i.getOrCreateRootSupporter(thisDTO, new AsyncCallback<SupporterDTO>() {
+
+				@Override
+				public void onFailure(Throwable caught) {
+					caught.printStackTrace();
+
+				}
+
+				@Override
+				public void onSuccess(SupporterDTO result) {
+
+					supporterCountSlot.add(new Label(result.getDecendentCount() + " Supporter"));
+
+				}
+
+			});
+
 		} else {
+
 			websiteSlot.addDomHandler(new ClickHandler() {
 
 				@Override
@@ -107,7 +125,9 @@ public class HeroWidget extends WidgetView {
 					event.preventDefault();
 
 				}
+
 			}, ClickEvent.getType());
+
 		}
 		websiteSlot.clear();
 		if (thisDTO.getWebsiteURL() != null) {
@@ -117,22 +137,6 @@ public class HeroWidget extends WidgetView {
 		if (thisDTO.getComment() != null) {
 			commentSlot.add(new HTML(thisDTO.getComment().value()));
 		}
-		RPCCRUDServiceAsync.i.getOrCreateRootSupporter(thisDTO, new AsyncCallback<SupporterDTO>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				caught.printStackTrace();
-
-			}
-
-			@Override
-			public void onSuccess(SupporterDTO result) {
-
-				supporterCountSlot.add(new Label(result.getDecendentCount() + " Supporters"));
-
-			}
-
-		});
 
 	}
 
