@@ -5,13 +5,16 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.supeyou.actor.web.client.login.ActorStatics;
 import com.supeyou.core.iface.dto.HeroDTO;
+import com.supeyou.core.iface.dto.SupporterDTO;
 import com.supeyou.core.web.client.resources.i18n.Text;
 import com.supeyou.core.web.client.rpc.hero.RPCCRUDProxy;
+import com.supeyou.core.web.client.rpc.supporter.RPCCRUDServiceAsync;
 import com.supeyou.core.web.client.view.herocard.HeroCardWidget.VIEW;
 import com.supeyou.core.web.client.view.heropage.video.VideoWidget;
 import com.supeyou.crudie.web.client.rpc.abstr.crud.RPCAbstractCRUDProxy.CRUDProxyListener;
@@ -114,6 +117,22 @@ public class HeroWidget extends WidgetView {
 		if (thisDTO.getComment() != null) {
 			commentSlot.add(new HTML(thisDTO.getComment().value()));
 		}
+		RPCCRUDServiceAsync.i.getOrCreateRootSupporter(thisDTO, new AsyncCallback<SupporterDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				caught.printStackTrace();
+
+			}
+
+			@Override
+			public void onSuccess(SupporterDTO result) {
+
+				supporterCountSlot.add(new Label(result.getDecendentCount() + " Supporters"));
+
+			}
+
+		});
 
 	}
 

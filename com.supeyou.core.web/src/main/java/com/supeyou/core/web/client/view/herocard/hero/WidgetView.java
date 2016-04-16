@@ -23,6 +23,8 @@ public class WidgetView extends Composite {
 	FlowPanel websiteSlot;
 	@UiField
 	FlowPanel commentSlot;
+	@UiField
+	FlowPanel supporterCountSlot;
 
 	interface ThisBinder extends UiBinder<Widget, WidgetView> {
 	}

@@ -28,6 +28,9 @@ public class WidgetView extends Composite {
 	FlowPanel rightColumn;
 
 	@UiField
+	Label yourDecendants;
+
+	@UiField
 	Label yourGeneratedResult;
 
 	@UiField
