@@ -1,0 +1,5 @@
+/target/
+/SupeYouDB/
+/derby.log
+/.settings/
+/.classpath
