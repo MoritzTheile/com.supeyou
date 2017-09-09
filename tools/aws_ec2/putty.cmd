@@ -1,0 +1,1 @@
+Start "" /B "C:\Program Files\PuTTY\putty.exe" -ssh ec2-user@35.159.23.15 22 -i "C:\Users\MoritzTheile\Dropbox\com.mtheile.keys\aws\JenkinsServerKeyPair.ppk"
