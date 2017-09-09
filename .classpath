@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="com.supeyou.actor.iface/src/main/java"/>
+	<classpathentry kind="src" path="com.supeyou.actor.iface/target/classes"/>
+	<classpathentry kind="src" path="com.supeyou.actor.impl/src/main/java"/>
+	<classpathentry kind="src" path="com.supeyou.actor.impl/src/test/java"/>
+	<classpathentry kind="src" path="com.supeyou.actor.web/src/main/java"/>
+	<classpathentry kind="src" path="com.supeyou.actor.web/target/classes"/>
+	<classpathentry kind="src" path="com.supeyou.app/src/main/java"/>
+	<classpathentry kind="src" path="com.supeyou.app/target/.generated"/>
+	<classpathentry kind="src" path="com.supeyou.auth.web/src/main/java"/>
+	<classpathentry kind="src" path="com.supeyou.auth.web/target/classes"/>
+	<classpathentry kind="src" path="com.supeyou.core.iface/src/main/java"/>
+	<classpathentry kind="src" path="com.supeyou.core.iface/target/classes"/>
+	<classpathentry kind="src" path="com.supeyou.core.impl/src/main/java"/>
+	<classpathentry kind="src" path="com.supeyou.core.impl/src/test/java"/>
+	<classpathentry kind="src" path="com.supeyou.core.web/src/main/java"/>
+	<classpathentry kind="src" path="com.supeyou.core.web/target/classes"/>
+	<classpathentry kind="src" path="com.supeyou.crudie.iface/src/main/java"/>
+	<classpathentry kind="src" path="com.supeyou.crudie.iface/target/classes"/>
+	<classpathentry kind="src" path="com.supeyou.crudie.iface.test/src/test/java"/>
+	<classpathentry kind="src" path="com.supeyou.crudie.impl/src/main/java"/>
+	<classpathentry kind="src" path="com.supeyou.crudie.web/src/main/java"/>
+	<classpathentry kind="src" path="com.supeyou.crudie.web/target/classes"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
