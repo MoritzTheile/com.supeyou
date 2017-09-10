@@ -8,10 +8,6 @@
 		<relativePath>../com.supeyou.project</relativePath>
 	</parent>
 	<artifactId>core.impl</artifactId>
-	<properties>
-		<hibernate.version>3.6.6.Final</hibernate.version>
-
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.supeyou</groupId>
