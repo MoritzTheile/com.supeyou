@@ -61,7 +61,7 @@
 			-->
 			
 			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL92Dialect " />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL92Dialect" />
 			<property name="hibernate.connection.url" value="jdbc:postgresql://${RDS_HOSTNAME}:${RDS_PORT}/${RDS_DB_NAME}" />
 			<property name="hibernate.connection.username" value="${RDS_USERNAME}" />
 			<property name="hibernate.connection.password" value="${RDS_PASSWORD}" />
@@ -92,7 +92,7 @@
             <property name="hibernate.c3p0.idle_test_period" value="3000"/-->
  
 			<property name="hibernate.max_fetch_depth" value="3" />
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<!-- validate | update | create | create-drop | ${hbm2dll}/-->
 			
 			<property name="hibernate.generate_statistics" value="false" />

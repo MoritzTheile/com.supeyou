@@ -21,8 +21,9 @@
 		<dependency>
 		    <groupId>org.postgresql</groupId>
 		    <artifactId>postgresql</artifactId>
-		    <version>9.2-1002-jdbc4</version>
-		</dependency>		<dependency>
+		    <version>42.1.4</version>
+		</dependency>		
+		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derbyclient</artifactId>
 			<version>10.10.1.1</version>
