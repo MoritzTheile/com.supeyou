@@ -12,7 +12,7 @@ phases:
       - echo Build started on `date`
   post_build:
     commands:
-      - mvn package
+      - mvn package -DRDS_PORT=$RDS_PORT -DRDS_USERNAME=$RDS_USERNAME -DRDS_PASSWORD=$RDS_PASSWORD -DRDS_DB_NAME=$RDS_DB_NAME -DRDS_HOSTNAME=$RDS_HOSTNAME
       - mv com.supeyou.app/target/app-0.0.1-SNAPSHOT.war com.supeyou.app/target/ROOT.war 
       - touch com.supeyou.app/target/deleteme.war
       - echo Build completed on `date`
