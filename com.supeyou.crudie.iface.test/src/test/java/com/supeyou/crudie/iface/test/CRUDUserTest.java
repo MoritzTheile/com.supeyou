@@ -80,7 +80,7 @@ public class CRUDUserTest {
 		long timestampStop = System.currentTimeMillis();
 
 		System.out.println("Export in: " + (timestampStop - timestampStart) + "ms");
-		Assert.assertTrue((timestampStop - timestampStart) < 1500);
+		Assert.assertTrue((timestampStop - timestampStart) < 20000);
 
 		Assert.assertNotNull(fileIDType);
 
