@@ -15,6 +15,7 @@ import com.supeyou.core.impl.SupporterCRUDServiceImpl;
 import com.supeyou.core.impl.initialdata.InitialCoreData;
 import com.supeyou.crudie.iface.CRUDObserver;
 import com.supeyou.crudie.iface.common.HELPER;
+import com.supeyou.crudie.iface.datatype.CRUDException;
 import com.supeyou.crudie.iface.datatype.Page;
 import com.supeyou.crudie.iface.datatype.types.AbstrType;
 import com.supeyou.crudie.iface.dto.DTOFetchList;
@@ -22,6 +23,7 @@ import com.supeyou.crudie.iface.dto.UserDTO;
 import com.supeyou.crudie.iface.dto.UserFetchQuery;
 import com.supeyou.crudie.impl.UserCRUDServiceImpl;
 import com.supeyou.crudie.impl.initialdata.InitialData;
+import com.supeyou.crudie.impl.util.STATICS;
 
 public class ServletContextListenerImpl implements ServletContextListener {
 	private static final Logger log = Logger.getLogger(ServletContextListenerImpl.class.getName());
@@ -29,18 +31,22 @@ public class ServletContextListenerImpl implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent event) {
 
 		log.info("servlet context initialized (codemarker=e9rg9a0)");
-		try {
-			UserDTO admin = UserCRUDServiceImpl.i().getInitialAdmin();
-			DTOFetchList<UserDTO> fetchList = UserCRUDServiceImpl.i().fetchList(admin, new Page(), new UserFetchQuery());
-			if (fetchList.size() == 1) { // the one user is the initial admin
-				InitialData.i();
-				InitialCoreData.i();
-			} else {
-				log.info("found more than one user (" + fetchList.size() + "), that means db is not fresh");
-			}
-		} catch (Exception e) {
-			log.log(Level.SEVERE, "ERROR during data initializing", e);
-		}
+		
+		//to update DB prior to any service calls from outside:
+		STATICS.getEntityManager();
+		
+//		try {
+//			UserDTO admin = UserCRUDServiceImpl.i().getInitialAdmin();
+//			DTOFetchList<UserDTO> fetchList = UserCRUDServiceImpl.i().fetchList(admin, new Page(), new UserFetchQuery());
+//			if (fetchList.size() == 1) { // the one user is the initial admin
+//				InitialData.i();
+//				InitialCoreData.i();
+//			} else {
+//				log.info("found more than one user (" + fetchList.size() + "), that means db is not fresh");
+//			}
+//		} catch (Exception e) {
+//			log.log(Level.SEVERE, "ERROR during data initializing", e);
+//		}
 
 		try {
 			registerMailNotificator();
