@@ -1,0 +1,22 @@
+1. DerbyDB nach local kopieren
+
+2. sql mit folgendem Werkzeug generieren: (ACHTUNG: schema name is case sensitive!)
+
+	java -jar derby2pg.jar output.sql "jdbc:derby:SupeYouDB;user=sa;password=pass1234" SA true
+
+3 sql vorbereiten:
+3.1. Nur Copy-Statements im output.sql behalten
+	
+	psql -h mtheiletestrds.chp07jsm0quq.eu-central-1.rds.amazonaws.com -p 5432 -U MoritzTheile -W supeyou
+3.2. copy statements so ordnen, das beim Import keine FK-constraints verletzt werden (hoffentlich ist das möglich...)
+3.3. kleinere Nacharbeiten, z.B. \N mit true/false ersetzen falls es entsprechende constraints gibt
+
+
+4. DB vorbereiten:
+4.1. Zieldb resetten
+4.1. In persistence.xml hbm2dll = create setzen und applikation einmal starten
+4.2. sql mit psql importieren
+	psql -h aa1fwdx6zegysqh.chp07jsm0quq.eu-central-1.rds.amazonaws.com  -p 5432 -U MoritzTheile -W ebdb
+	bill=# \i output.data.sql
+
+5. hbm2dll auf update setzen und nochmal starten
