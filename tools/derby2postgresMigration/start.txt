@@ -8,7 +8,7 @@
 3.1. Nur Copy-Statements im output.sql behalten
 	
 	psql -h mtheiletestrds.chp07jsm0quq.eu-central-1.rds.amazonaws.com -p 5432 -U MoritzTheile -W supeyou
-3.2. copy statements so ordnen, das beim Import keine FK-constraints verletzt werden (hoffentlich ist das möglich...)
+3.2. copy statements so ordnen, das beim Import keine FK-constraints verletzt werden (hoffentlich ist das mï¿½glich...)
 3.3. kleinere Nacharbeiten, z.B. \N mit true/false ersetzen falls es entsprechende constraints gibt
 
 
@@ -17,6 +17,6 @@
 4.1. In persistence.xml hbm2dll = create setzen und applikation einmal starten
 4.2. sql mit psql importieren
 	psql -h aa1fwdx6zegysqh.chp07jsm0quq.eu-central-1.rds.amazonaws.com  -p 5432 -U MoritzTheile -W ebdb
-	bill=# \i output.data.sql
+	bill=# \i output.data.ainsi.sql
 
 5. hbm2dll auf update setzen und nochmal starten
