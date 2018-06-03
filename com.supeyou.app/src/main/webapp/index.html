@@ -23,6 +23,20 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 </script>
+<style>
+
+#main {
+    background-color: ghostwhite;
+}
+
+#Video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+}
+</style>
 </head>
 
 <!--                                           -->
@@ -31,6 +45,10 @@
 <!-- to create a completely dynamic UI.        -->
 <!--                                           -->
 <body>
+
+	<video autoplay muted loop id="backgroundVideo">
+	  <source src="background.clouds.mp4" type="video/mp4">
+	</video>
 
 	<!-- OPTIONAL: include this if you want history support -->
 	<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
